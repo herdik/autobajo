@@ -1,0 +1,56 @@
+@media (max-width: 940px) {
+
+    
+    header nav {
+        display: none;
+        position: absolute;
+        top: 0px;
+        width: 100%;
+        height: 100%; 
+        background: black;
+        z-index: 1;
+        position: fixed;
+    }
+
+    header nav #main-menu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        min-height: 100vh;
+        background: black;
+    }
+
+    .menu-icon {
+        display: block;
+        color: white;
+        font-size: 23px;
+        margin-right: 20px;
+        cursor: pointer;
+        z-index: 1;
+    }
+
+
+    .div-menu-part {
+        width: 75%; 
+        height: 350px;
+        
+    }
+
+    .div-menu-part:hover {
+        scale: 1;
+        color: #fff;
+    }
+    .logo {
+        z-index: -1;
+    }
+
+}
+
+
+@media (min-width: 940px){
+    header nav {
+        /* important means more dominant than style what is marked ou/scratched */
+        display: block !important;
+    }
+}

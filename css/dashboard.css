@@ -1,0 +1,62 @@
+main {
+    min-height: 100vh;
+    background: linear-gradient(black, rgba(0, 0, 0, 0.507)),
+                url(../img/background-photo.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+main h1 {
+    color: #fff;
+    margin-top: 80px;
+}
+
+.dashboard-menu {  
+    margin-top: 20px;
+    max-width: 1280px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 20px;
+}
+
+.div-menu-part {
+    width: 350px;
+    height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border: 1px solid #fff;
+    color: #fff;
+    transition: 0.5s all linear;
+}
+.div-menu-images {
+    width: 80%;
+    height: 100%;
+    cursor: pointer;
+}
+span { 
+    width: 15%;
+    height: 100%;
+    text-orientation: upright;
+    writing-mode: vertical-rl;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+.div-menu-part:hover {
+    color: #b30606;
+    scale: 1.05;
+}
