@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
         $_SESSION["logged_in_user_id"] = $id;
 
         // Nastavenie role uživatela
-        $_SESSION["role"] = "admin";
+        $_SESSION["role"] = User::getUserRole($connection, $id);
 
         Url::redirectUrl("/autobajo/admin/my-dashboard.php");
      

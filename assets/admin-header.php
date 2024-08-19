@@ -1,9 +1,10 @@
 <header>
+
 <div class="logo">
-        <a href="./index.php">
-            <img src="./img/autobajo-logo-transparent.png" alt="">
+        <a href="./my-dashboard.php">
+            <img src="../img/autobajo-logo-transparent.png" alt="">
         </a>
-    </div>
+</div>
 
     <nav>
 

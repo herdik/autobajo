@@ -3,89 +3,6 @@
 class User {
 
 
-
-
-    /**
-     *
-     * RETURN ONE PLAYER FROM DATABASE
-     *
-     * @param object $connection - connection to database
-     * @param integer $player_Id - id for one player
-     * @return array asoc array with one player
-     */
-    public static function getPlayer($connection, $player_Id, $columns = "first_name, second_name, country, player_club, player_club_id, player_Image, player_cue, player_break_cue, player_jump_cue"){
-        $sql = "SELECT $columns
-                FROM player_user
-                WHERE player_Id = :player_Id";
-        
-
-        // connect sql amend to database
-        $stmt = $connection->prepare($sql);
-
-        // all parameters to send to Database
-        $stmt->bindValue(":player_Id", $player_Id, PDO::PARAM_INT);
-
-        try {
-            if($stmt->execute()){
-                // asscoc array for one player
-                return $stmt->fetch();
-            } else {
-                throw Exception ("Príkaz pre získanie všetkých dát o hráčovi sa nepodaril");
-            }
-        } catch (Exception $e){
-            // 3 je že vyberiem vlastnú cestu k súboru
-            error_log("Chyba pri funkcii getPlayer, získanie informácií z databázy zlyhalo\n", 3, "../errors/error.log");
-            echo "Výsledná chyba je: " . $e->getMessage();
-        }
-    }
-
-
-    /**
-     *
-     * RETURN ONE USER FROM DATABASE
-     *
-     * @param object $connection - connection to database
-     * @param integer $player_Id - id for one user
-     * @return array asoc array with one user
-     */
-    public static function getUser($connection, $player_Id){
-        $sql = "SELECT  player_Id,
-                        user_email,
-                        first_name, 
-                        second_name, 
-                        country, 
-                        player_club,
-                        player_club_id,
-                        player_Image, 
-                        player_cue, 
-                        player_break_cue, 
-                        player_jump_cue
-                FROM player_user
-                WHERE player_Id = :player_Id";
-        
-
-        // connect sql amend to database
-        $stmt = $connection->prepare($sql);
-
-        // all parameters to send to Database
-        $stmt->bindValue(":player_Id", $player_Id, PDO::PARAM_INT);
-
-        try {
-            if($stmt->execute()){
-                // asscoc array for one player
-                return $stmt->fetch();
-            } else {
-                throw Exception ("Príkaz pre získanie všetkých dát o užívateľovi sa nepodaril");
-            }
-        } catch (Exception $e){
-            // 3 je že vyberiem vlastnú cestu k súboru
-            error_log("Chyba pri funkcii getUser, získanie informácií z databázy zlyhalo\n", 3, "../errors/error.log");
-            echo "Výsledná chyba je: " . $e->getMessage();
-        }
-    }
-
-
-
     /**
      *
      * RETURN ID USER FROM DATABASE
@@ -154,6 +71,41 @@ class User {
         } catch (Exception $e){
             // 3 je že vyberiem vlastnú cestu k súboru
             error_log("Chyba pri funkcii authentication, získanie informácií z databázy zlyhalo\n", 3, "../errors/error.log");
+            echo "Výsledná chyba je: " . $e->getMessage();
+        }
+    }
+
+
+    /**
+     *
+     * RETURN ONE USER FROM DATABASE
+     *
+     * @param object $connection - connection to database
+     * @param integer $user_id - $user_id who is logged in
+     * @return array asoc array with one user
+     */
+    public static function getUserRole($connection, $user_id){
+        $sql = "SELECT role
+                FROM user
+                WHERE user_id = :user_id";
+        
+
+        // connect sql amend to database
+        $stmt = $connection->prepare($sql);
+
+        // all parameters to send to Database
+        $stmt->bindValue(":user_id", $user_id, PDO::PARAM_INT);
+
+        try {
+            if($stmt->execute()){
+                // asscoc array for one player
+                return $stmt->fetch()["role"];
+            } else {
+                throw Exception ("Príkaz pre získanie role o užívateľovi sa nepodaril");
+            }
+        } catch (Exception $e){
+            // 3 je že vyberiem vlastnú cestu k súboru
+            error_log("Chyba pri funkcii getUserRole, získanie informácií z databázy zlyhalo\n", 3, "../errors/error.log");
             echo "Výsledná chyba je: " . $e->getMessage();
         }
     }
