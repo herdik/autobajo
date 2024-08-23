@@ -11,7 +11,7 @@
         <ul id="main-menu">
             
             <?php if ($_SESSION["role"] === "admin"): ?>
-            <li><a href="./reg-add-player.php">Nový inzerát</a></li>            
+            <li><a href="./advertisement.php">Nový inzerát</a></li>            
             <?php endif ?> 
             
             <li><a href="#">Autá</a></li>

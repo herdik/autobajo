@@ -17,7 +17,7 @@ if (!Auth::isLoggedIn()){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hlavný panel - administrácia</title>
+    <title>Typ inzerátu</title>
 
     <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
 
@@ -44,10 +44,13 @@ if (!Auth::isLoggedIn()){
         <h1>Typ inzerátu</h1>
         <section class="dashboard-menu">
 
-            <article class="div-menu-part part-cars">
-                <img class="div-menu-images" src="../img/cars-advert.jpg" alt="">
-                <span class="cars">Pridať auto</span>
-            </article>
+            <a href="./reg-form-car.php
+            ">  
+                <article class="div-menu-part part-cars">
+                    <img class="div-menu-images" src="../img/cars-advert.jpg" alt="">
+                    <span class="cars">Pridať auto</span>
+                </article>
+            </a>
 
             <article class="div-menu-part part-tires">
                 <img class="div-menu-images" src="../img/tires-advert.jpg" alt="">

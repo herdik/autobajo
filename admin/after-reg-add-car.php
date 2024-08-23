@@ -1,0 +1,15 @@
+<?php
+
+// verifying by session if visitor have access to this website
+require "../classes/Authorization.php";
+// get session
+session_start();
+// authorization for visitor - if has access to website 
+if (!Auth::isLoggedIn()){
+    die ("nepovolený prístup");
+} 
+
+var_dump($_POST);
+var_dump($_FILES);
+
+?>
