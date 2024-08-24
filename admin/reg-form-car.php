@@ -54,7 +54,7 @@ $image_sequence = null;
 
                 
                     <div class="basic-car-info">
-                        <input type="text" id="answerCarBrand" name="car_brand" placeholder="Značka auta" list="car-brands" autocomplete=“off” value="" required>
+                        <input type="text" id="answerCarBrand" name="car_brand" placeholder="Značka auta" list="car-brands" autocomplete="off" value="" required />
                         <datalist id="car-brands">
                         
                             <option data-value=""></option>
@@ -64,7 +64,7 @@ $image_sequence = null;
                     </div>
 
                     <div class="basic-car-info">
-                        <input type="text" id="answerCarModel" name="car_model" placeholder="Model auta" list="car-models" autocomplete=“off” value="" required>
+                        <input type="text" id="answerCarModel" name="car_model" placeholder="Model auta" list="car-models" autocomplete="off" value="" required />
                         <datalist id="car-models">
                         
                             <option data-value=""></option>
@@ -73,7 +73,7 @@ $image_sequence = null;
                     </div> 
 
                     <div class="basic-car-info">
-                        <input type="text" name="car_color" placeholder="Farba auta" required>
+                        <input type="text" name="car_color" placeholder="Farba auta" required />
                     </div>
 
                     <div class="basic-car-info">
@@ -114,7 +114,7 @@ $image_sequence = null;
                      
                     <div class="basic-car-info">
                         <span>Dopln. výbava vozidla</span>
-                        <textarea name="vehicle_equipment" id="vehicle-equipment" rows="5" placeholder="Nepovinný údaj"></textarea>
+                        <textarea name="other_equipment" id="other-equipment" rows="5" placeholder="Nepovinný údaj"></textarea>
                     </div>
 
                     <div class="basic-car-info">
@@ -135,59 +135,59 @@ $image_sequence = null;
                     <div class="car-equipment">
                         <div class="car-equipment-category">
                             <label for="el-windows">Elekt. okná</label>
-                            <input type="checkbox" name="el_windows" id="el-windows">
+                            <input type="checkbox" name="vehicle_equipment[]" id="el-windows" value="0">
                         </div>
 
                         <div class="car-equipment-category">
                             <label for="el-seats">Elekt. sedadlá</label>
-                            <input type="checkbox" name="el_seats" id="el-seats">
+                            <input type="checkbox" name="vehicle_equipment[]" id="el-seats" value="1">
                         </div>
 
                         <div class="car-equipment-category">
                             <label for="no-key-start">Bezkľúč. štartovanie</label>
-                            <input type="checkbox" name="no_key_start" id="no-key-start">
+                            <input type="checkbox" name="vehicle_equipment[]" id="no-key-start" value="2">
                         </div>
 
                         <div class="car-equipment-category">
                             <label for="airbag">Airbag</label>
-                            <input type="checkbox" name="airbag" id="airbag">
+                            <input type="checkbox" name="vehicle_equipment[]" id="airbag" value="3">
                         </div>
 
                         <div class="car-equipment-category">
                             <label for="tempomat">Tempomat</label>
-                            <input type="checkbox" name="tempomat" id="tempomat">
+                            <input type="checkbox" name="vehicle_equipment[]" id="tempomat" value="4">
                         </div>
 
                         <div class="car-equipment-category">
                             <label for="heated-seat">Vyhriev. sedadlá</label>
-                            <input type="checkbox" name="heated_seat" id="heated-seat">
+                            <input type="checkbox" name="vehicle_equipment[]" id="heated-seat" value="5">
                         </div>
 
                         <div class="car-equipment-category">
                             <label for="parking-sensor">Park. senzory</label>
-                            <input type="checkbox" name="parking_sensor" id="parking-sensor">
+                            <input type="checkbox" name="vehicle_equipment[]" id="parking-sensor" value="6">
                         </div>
 
                         <div class="car-equipment-category">
                             <label for="isofix">Isofix</label>
-                            <input type="checkbox" name="isofix" id="isofix">
+                            <input type="checkbox" name="vehicle_equipment[]" id="isofix" value="7">
                         </div>
 
                         <div class="car-equipment-category">
                             <label for="alu-rimes">Hlin. disky</label>
-                            <input type="checkbox" name="alu_rimes" id="alu-rimes">
+                            <input type="checkbox" name="vehicle_equipment[]" id="alu-rimes" value="8">
                         </div>
                         <div class="car-equipment-category">
                             <label for="air-condition">Klimatizácia</label>
-                            <input type="checkbox" name="air_condition" id="air-condition">
+                            <input type="checkbox" name="vehicle_equipment[]" id="air-condition" value="9">
                         </div>
                         <div class="car-equipment-category">
                             <label for="towing-device">Ťažné zariadenie</label>
-                            <input type="checkbox" name="towing_device" id="towing-device">
+                            <input type="checkbox" name="vehicle_equipment[]" id="towing-device" value="10">
                         </div>
                         <div class="car-equipment-category">
                             <label for="alarm">Alarm</label>
-                            <input type="checkbox" name="alarm" id="alarm">
+                            <input type="checkbox" name="vehicle_equipment[]" id="alarm" value="11">
                         </div>
                     </div>
                 </div>
@@ -204,7 +204,10 @@ $image_sequence = null;
     
     <?php require "../assets/footer.php" ?>
     <script src="../js/header.js"></script> 
-    <script src="../js/show-image-name.js"></script>           
+    <script src="../js/show-image-name.js"></script>       
+    <script src="../js/reg-form.js"></script>       
+        
+
 </body>
 </html>
 

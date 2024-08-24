@@ -61,11 +61,13 @@ main {
     transition: all 0.3s linear;
     background-color: #b30606;
     color: #fff;
+    transition: 0.4s all linear;
 }
 
 .signin-form input[type="submit"]:hover {
-    color: #be9524;
-    border: 5px solid #be9524;
+    color: #b30606;
+    border: 5px solid #b30606;
+    background-color: #fff;
 }
 
 
