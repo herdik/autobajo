@@ -28,7 +28,7 @@ main {
 
 .div-menu-part {
     width: 250px;
-    height: 560px;
+    height: 360px;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -57,17 +57,22 @@ span {
     scale: 1.05;
 }
 
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
 .part-cars {
-    animation: fromLeft 4s linear;
+    animation: fromLeft 1s linear;
 }
 .part-tires {
-    animation: fromTop 4s linear;
+    animation: fromTop 1s linear;
 }
 .part-rimes {
-    animation: fromBottom 4s linear;
+    animation: fromBottom 1s linear;
 }
 .part-servis {
-    animation: fromRight 4s linear;
+    animation: fromRight 1s linear;
 }
 
 

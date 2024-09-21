@@ -86,4 +86,32 @@ class Car {
         }
     }
 
+
+    /**
+     *
+     * RETURN ALL CARS ADVERTISEMENT INFO FROM DATABASE
+     *
+     * @param object $connection - connection to database
+     *
+     * @return array array of objects, one object mean one car infos
+     */
+    public static function getAllCarsAdvertisement($connection, $columns = "*"){
+        $sql = "SELECT $columns
+                FROM car_advertisement";
+
+        $stmt = $connection->prepare($sql);
+
+        try {
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            } else {
+                throw new Exception ("Príkaz pre získanie všetkých dát o kontaktných informáciách sa nepodaril");
+            }
+        } catch (Exception $e){
+            // 3 je že vyberiem vlastnú cestu k súboru
+            error_log("Chyba pri funckii getAllCarsAdvertisement, príkaz pre získanie informácií z databázy zlyhal\n", 3, "./errors/error.log");
+            echo "Výsledná chyba je: " . $e->getMessage();
+        }
+    }
+
 }

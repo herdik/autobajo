@@ -1,0 +1,108 @@
+main {
+    min-height: 100vh;
+    background: url(../img/background-photo.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+}
+
+main h1 {
+    color: #fff;
+    text-align: center;
+    margin-top: 100px;
+    width: 100%;
+    max-width: 960px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 5px solid #fff;
+    border-bottom: 0px;
+}
+
+.tires-service-menu {  
+    margin-top: 5px;
+    width: 100%;
+    max-width: 960px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 5px;
+    margin-bottom: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 5px solid #fff;
+}
+.wheels {
+    width: 100%;
+    padding: 10px;
+}
+
+.wheels h2 {
+    color: #fff;
+    text-align: center;
+    background-color: #b30606;
+    font-size: 26px;
+    
+    
+}
+.wheels h3 {
+    color: #fff;
+    text-align: left;
+    margin-bottom: 5px;
+    border-bottom: 2px solid #fff;
+    font-size: 22px;
+}
+.wheels span {
+    font-size: 18px;
+}
+.wheels p {
+    color: #fff;
+    text-align: center;
+    
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.line-info {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    /* gap: 10px; */
+    margin-bottom: 5px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #b3060681;
+        
+    }
+}
+
+.product-info {
+    width: 70%;
+    color: #fff;
+    background-color: transparent;
+}
+
+.price {
+    color: #fff;
+    background-color: transparent;
+    text-align: right;
+    width: 30%;
+}
+
+
+
+
+

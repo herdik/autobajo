@@ -52,11 +52,13 @@ if (!Auth::isLoggedIn()){
                 <span class="cars">Nový inzerát</span>
             </article>
             </a>
+            <a href="./car-advertisement.php
+            ">
             <article class="div-menu-part part-cars">
                 <img class="div-menu-images" src="../img/cars.jpg" alt="">
                 <span class="cars">Autá</span>
             </article>
-
+            </a>
             <article class="div-menu-part part-tires">
                 <img class="div-menu-images" src="../img/tires.jpg" alt="">
                 <span class="tires">Pneumatiky</span>
@@ -67,11 +69,13 @@ if (!Auth::isLoggedIn()){
                 <span class="rimes">Disky</span>
             </article>
 
+            <a href="./tires-service.php
+            ">
             <article class="div-menu-part part-servis">
                 <img class="div-menu-images" src="../img/servis.jpg" alt="">
                 <span class="servis">Pneuservis</span>
             </article>
-
+            </a>
         </section>
         
 

@@ -13,8 +13,8 @@
             <li><a href="#">Autá</a></li>
             <li><a href="#">Pneumatiky</a></li>
             <li><a href="#">Disky</a></li>
-            <li><a href="#">Pneuservis</a></li>
-            <li><a href="#">O nás</a></li>
+            <li><a href="./global-tires-service.php">Pneuservis</a></li>
+            <li><a href="./about-us.php">O nás</a></li>
             <li><a href="./signin.php">Prihlásenie</a></li>
             
 

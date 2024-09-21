@@ -1,0 +1,175 @@
+main {
+    min-height: 100vh;
+    background: url(../img/background-photo.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+}
+
+main h1 {
+    color: #fff;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.5);
+    border: 5px solid #fff;
+    width: 100%;
+}
+
+.tires-service-menu {  
+    margin-top: 5px;
+    width: 100%;
+    max-width: 1280px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 5px;
+    margin-bottom: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 5px solid #fff;
+}
+
+.tires-service-menu :last-child {
+    width: 100%;
+}
+
+.wheels {
+    width: 50%;
+    padding: 10px;
+}
+
+.wheels h2 {
+    color: #fff;
+    text-align: center;
+    
+}
+.wheels h3 {
+    color: #fff;
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    /* display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center; */
+}
+
+.line-info {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 5px;
+}
+
+/* .line-info :nth-child(2) {
+    width: 60%;
+    border: 4px solid #b30606;
+    background-color: #fff;
+} */
+/* .line-info :nth-child(3) {
+    background-color: #b30606;
+    color: #fff;
+    width: 30%;
+} */
+.line-info :nth-child(4) {
+    background-color: #b30606;
+    color: #fff;
+    width: 35px;
+    border: 3px #fff solid;
+    cursor: pointer;
+}
+.line-info :nth-child(5) {
+    background-color: #10da09;
+    border: 3px #fff solid;
+    font-weight: bold;
+    color: #fff;
+    width: 35px;
+    cursor: pointer;
+}
+
+.product-info {
+    width: 60%;
+    border: 4px solid #b30606;
+    background-color: #fff;
+}
+
+.price {
+    background-color: #b30606;
+    color: #fff;
+    position: relative;
+    border: 3px #fff solid;
+    width: 30%;
+}
+
+.price::before {
+    content: "€/ks";
+    position: absolute;
+    color: #fff;
+    right: 32px;
+    font-size: 18px;
+    top: 8px;
+}
+
+
+input[type="text"] {
+    outline: none;
+    width: 100%;
+    /* border: 3px #fff solid; */
+    /* background-color: #fff; */
+    font-size: 18px;
+    text-align: center;
+    color: #000;
+    /* padding: 6px 8px;
+    margin-bottom: 5px; */
+    width: 100%;
+    padding: 6px 4px;
+    word-wrap: break-word;
+    word-break: break-all;
+} 
+
+input[type="number"] {
+    outline: none;
+    background-color: #b30606;
+    width: 100%;
+    /* border: 3px #fff solid; */
+    font-size: 18px;
+    text-align: left;
+    color: #fff;
+    height: 100%;
+    padding: 6px 4px 6px 12px;
+    
+}
+
+input[type="submit"] {
+    padding: 3px 4px 3px 3px;
+    text-align: center;
+}
+
+.new_line {
+    text-decoration: none;
+    color: #fff;
+    background-color: #10da09;
+    border-radius: 50%;
+    padding: 0px 10px;
+
+}
+
+
+

@@ -45,10 +45,12 @@
                 <span class="rimes">Disky</span>
             </article>
 
+            <a href="./global-tires-service.php">
             <article class="div-menu-part part-servis">
                 <img class="div-menu-images" src="./img/servis.jpg" alt="">
                 <span class="servis">Pneuservis</span>
             </article>
+            </a>
             
         </section>
         
