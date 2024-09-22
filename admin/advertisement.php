@@ -52,10 +52,13 @@ if (!Auth::isLoggedIn()){
                 </article>
             </a>
 
+            <a href="./reg-form-tire.php
+            ">
             <article class="div-menu-part part-tires">
                 <img class="div-menu-images" src="../img/tires-advert.jpg" alt="">
                 <span class="tires">Pridať pneumatiky</span>
             </article>
+            </a>
 
             <article class="div-menu-part part-rimes">
                 <img class="div-menu-images" src="../img/rimes-advert.jpg" alt="">

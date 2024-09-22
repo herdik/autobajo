@@ -25,7 +25,7 @@ class User {
 
         try {
             if($stmt->execute()){
-                // asscoc array for one player and we want to get player_Id
+                // asscoc array for one user and we want to get user_id
                 return $stmt->fetch();
             } else {
                 throw Exception ("Príkaz pre získanie všetkých ID o užívateľovi sa nepodaril");

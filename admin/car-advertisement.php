@@ -66,8 +66,10 @@ if (count($cars_advertisements) === 0) {
         <section class="cars-menu">
 
             <?php foreach ($cars_advertisements as $one_car): ?>
+
+            <a href="./car-profil.php?car_id=<?= htmlspecialchars($one_car["car_id"]) ?>"> 
             <article class="car-advertisement">
-                
+              
                 <?php if ($one_car["car_image"] != "no-photo-car.jpg"): ?>
 
                     <div class="car-picture" style="
@@ -130,7 +132,10 @@ if (count($cars_advertisements) === 0) {
 
                     
                 </div>
+                
             </article>
+            </a>        
+            
             <?php endforeach ?>
         </section>
         

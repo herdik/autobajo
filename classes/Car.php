@@ -114,4 +114,40 @@ class Car {
         }
     }
 
+    /**
+     *
+     * RETURN ID CAR FROM DATABASE
+     *
+     * @param object $connection - connection to database
+     * @param int car_id - represent one car id
+     * @return array all info for one car_id
+     */
+    public static function getCar($connection, $car_id){
+        $sql = "SELECT *
+                FROM car_advertisement
+                WHERE car_id = :car_id";
+        
+
+        // connect sql amend to database
+        $stmt = $connection->prepare($sql);
+
+        // all parameters to send to Database
+        $stmt->bindValue(":car_id", $car_id, PDO::PARAM_INT);
+
+        try {
+            if($stmt->execute()){
+                // asscoc array for one car
+                return $stmt->fetch();
+            } else {
+                throw Exception ("Príkaz pre získanie všetkých dát o inzeráte auta sa nepodaril");
+            }
+        } catch (Exception $e){
+            // 3 je že vyberiem vlastnú cestu k súboru
+            error_log("Chyba pri funkcii getCar, získanie informácií z databázy zlyhalo\n", 3, "../errors/error.log");
+            echo "Výsledná chyba je: " . $e->getMessage();
+        }
+
+
+    }
+
 }

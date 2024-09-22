@@ -32,6 +32,12 @@ main h1 {
     margin-bottom: 20px;
 }
 
+.cars-menu a {
+    width: 100%;
+    text-decoration: none;
+    color: black;
+}
+
 .car-advertisement {
     width: 100%;
     height: 270px;

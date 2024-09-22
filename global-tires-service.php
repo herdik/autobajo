@@ -38,7 +38,7 @@ $adhesive_weight = AdhesiveWeight::getAllAdhesiveWeight($connection);
     <link href="https://fonts.googleapis.com/css2?family=Kodchasan:wght@200&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="./css/general.css">
-    <link rel="stylesheet" href="./css/admin-header.css">
+    <link rel="stylesheet" href="./css/header.css">
     <link rel="stylesheet" href="./css/footer.css">
     <link rel="stylesheet" href="./css/global-tires-service.css">
     <link rel="stylesheet" href="./query/header-query.css">
