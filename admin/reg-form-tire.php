@@ -12,6 +12,8 @@ if (!Auth::isLoggedIn()){
 // control if user choose image from image gallery 
 $image_sequence = null;
 
+
+
 ?>
 
 
@@ -20,7 +22,7 @@ $image_sequence = null;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrácia auta</title>
+    <title>Registrácia pneumatík</title>
 
     <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
 
@@ -32,7 +34,7 @@ $image_sequence = null;
     <link rel="stylesheet" href="../css/general.css">
     <link rel="stylesheet" href="../css/admin-header.css">
     <link rel="stylesheet" href="../css/footer.css">
-    <link rel="stylesheet" href="../css/reg-form-car.css">
+    <link rel="stylesheet" href="../css/reg-form-tire.css">
     <link rel="stylesheet" href="../query/header-query.css">
 
     <script src="https://kit.fontawesome.com/ed8b583ef3.js" crossorigin="anonymous"></script>
@@ -46,7 +48,7 @@ $image_sequence = null;
 
         <section class="registration">
 
-            <h1>Registrácia auta</h1>
+            <h1>Registrácia pneumatík</h1>
 
             <form id="registration-form" action="after-reg-add-car.php" method="POST" enctype="multipart/form-data">
 
@@ -54,18 +56,19 @@ $image_sequence = null;
 
                 
                     <div class="basic-car-info">
-                        <input type="text" id="answerCarBrand" name="car_brand" placeholder="Značka auta" list="car-brands" autocomplete="off" value="" required />
-                        <datalist id="car-brands">
-                        
-                            <option data-value=""></option>
-                    
-                        </datalist>
+                        <label for="tires-category">Kategória:</label>
+                        <select name="tires-category" id="tires-category">
+                            <option value="Osobné">Osobné</option>
+                            <option value="SUV">SUV</option>
+                            <option value="Nákladné">Nákladné</option>
+                        </select>
 
                     </div>
 
                     <div class="basic-car-info">
-                        <input type="text" id="answerCarModel" name="car_model" placeholder="Model auta" list="car-models" autocomplete="off" value="" required />
-                        <datalist id="car-models">
+                        <label for="tires-category">Značka:</label>
+                        <input type="text" id="answerTiresBrand" name="tire_brand" placeholder="Zadaj/Vyber" list="tires_brand" autocomplete="off" value="" required />
+                        <datalist id="tires_brand">
                         
                             <option data-value=""></option>
                     
@@ -73,48 +76,135 @@ $image_sequence = null;
                     </div> 
 
                     <div class="basic-car-info">
-                        <input type="text" name="car_color" placeholder="Farba auta" required />
+                        <label for="tires-model">Model:</label>
+                        <input type="text" id="answerTiresModel" name="tire_model" placeholder="Zadaj/Vyber" list="tires-model" autocomplete="off" value="" required />
+                        <datalist id="tires-model">
+                        
+                            <option data-value=""></option>
+                    
+                        </datalist>
                     </div>
 
                     <div class="basic-car-info">
-                        <input type="number" name="year_of_manufacture" placeholder="Rok výroby" required>
-                    </div>
-
-                    <div class="basic-car-info">
-                        <input type="number" name="engine_volume" placeholder="Objem motora" required>
-                    </div>
-
-                    <div class="basic-car-info">   
-                        <input type="number" name="car_price" placeholder="Cena" required>
-                    </div>
-
-                    <div class="basic-car-info">
-                        <label for="fuel-type">Druh paliva:</label>
-                        <select name="fuel_type" id="fuel-type">
-                            <option value="Benzín">Benzín</option>
-                            <option value="Diesel">Diesel</option>
-                            <option value="LPG">LPG</option>
-                            <option value="Hybrid">Hybrid</option>
-                            <option value="Elektro">Elektro</option>
+                    <label for="type">Obdobie:</label>
+                        <select name="type" id="type">
+                            <option value="Letné">Letné</option>
+                            <option value="Zimné">Zimné</option>
+                            <option value="Celoročné">Celoročné</option>
                         </select>
                     </div>
 
                     <div class="basic-car-info">
-                        <label for="gearbox">Prevodovka:</label>
-                        <select name="gearbox" id="gearbox">
-                            <option value="Manuálna">Manuálna</option>
-                            <option value="Automatická">Automatická</option>
+                        <label for="year">Rok výroby</label>
+                        <input id="year" type="number" name="year_of_manufacture" value="<?= htmlspecialchars(date("Y")); ?>" step="1" required>
+                    </div>
+
+                    <div class="basic-car-info">
+                    <label for="with">Šírka</label>
+                    <select name="width" id="width" onfocus='this.size=5;' onblur='this.size=1;' 
+                    onchange='this.size=1; this.blur();'>
+                        <option value="6.4">6.4</option>
+                        <?php for ($i = 6.5; $i <= 17.5; $i+=0.5): ?>
+                            <option value="<?= htmlspecialchars($i); ?>"><?= htmlspecialchars($i); ?></option>
+                        <?php endfor; ?>
+                    <?php for ($i = 27; $i <= 39; $i++): ?>
+                        <option value="<?= htmlspecialchars($i); ?>"><?= htmlspecialchars($i); ?></option>
+                    <?php endfor; ?>
+
+                    <?php for ($i = 115; $i <= 455; $i+=10): ?>
+                        <option value="<?= htmlspecialchars($i); ?>"><?= htmlspecialchars($i); ?></option>
+                        <?php if ($i === 235 || $i === 275 || $i === 295 || $i === 335 || $i === 435): ?>
+                            <option value="<?= htmlspecialchars($i+5); ?>"><?= htmlspecialchars($i+5); ?></option>
+                        <?php elseif ($i == 315): ?>
+                            <option value="<?= htmlspecialchars($i+3); ?>"><?= htmlspecialchars($i+3); ?></option>
+                        <?php endif; ?>
+                    <?php endfor; ?>
+                    <option value="460">460</option>
+                    <option value="480">480</option>
+                    <option value="495">495</option>
+                    <option value="500">500</option>
+                    <option value="525">525</option>
+                    <option value="540">540</option>
+                    <option value="620">620</option>
+                    </select>
+                    </div>
+
+                    <div class="basic-car-info">   
+                    <label for="height">Výška</label>
+                    <select name="height" id="height" onfocus='this.size=5;' onblur='this.size=1;' 
+                    onchange='this.size=1; this.blur();'>
+                        <?php for ($i = 6; $i <= 13.5; $i+=0.5): ?>
+                            <option value="<?= htmlspecialchars($i); ?>"><?= htmlspecialchars($i); ?></option>
+                        <?php endfor; ?>
+
+                        <?php for ($i = 25; $i <= 100; $i+=5): ?>
+                            <option value="<?= htmlspecialchars($i); ?>"><?= htmlspecialchars($i); ?></option>
+                            <?php if ($i === 80): ?>
+                                <option value="<?= htmlspecialchars($i+2); ?>"><?= htmlspecialchars($i+2); ?></option>
+                            <?php endif; ?>
+                        <?php endfor; ?>
+                    </select>
+                    </div>
+
+                    <div class="basic-car-info">
+                        <label for="construction">Konštrukcia:</label>
+                        <select name="construction" id="construction">
+                            <option value="R">R</option>
+                            <option value="D">D</option>
+                            <option value="ZR">ZR</option>
+                            <option value="B">B</option>
+                        </select>
+                    </div>
+
+                    <div class="basic-car-info">
+                    <label for="average">Priemer:</label>
+                        <select name="average" id="average" onfocus='this.size=5;' onblur='this.size=1;' 
+                        onchange='this.size=1; this.blur();'>
+                        <?php for ($i = 10; $i <= 30; $i++): ?>
+                            
+                            <option value="<?= htmlspecialchars($i); ?>"><?= htmlspecialchars($i); ?></option>
+                            <?php if ($i === 16 || $i === 17): ?>
+                                <option value="<?= htmlspecialchars($i+0.5); ?>"><?= htmlspecialchars($i+0.5); ?></option>
+                            <?php elseif ($i == 19): ?>
+                                <option value="<?= htmlspecialchars($i+0.5); ?>"><?= htmlspecialchars($i+0.5); ?></option>
+                                <option value="<?= htmlspecialchars($i+0.9); ?>"><?= htmlspecialchars($i+0.9); ?></option>
+                            <?php endif; ?>
+                        <?php endfor; ?>
                         </select>
                     </div>
 
                     <div class="basic-car-info">  
-                        <span>Opis vozidla</span>
-                        <textarea name="car_description" id="car-description" rows="5" placeholder="Nepovinný údaj"></textarea>
+                        <label for="weight-index">Hmotnostný index</label>
+                        <select name="weight_index" id="weight-index" onfocus='this.size=5;' onblur='this.size=1;' 
+                        onchange='this.size=1; this.blur();'>
+                        <?php for ($i = 60; $i <= 170; $i++): ?>
+                            <option value="<?= htmlspecialchars($i); ?>"><?= htmlspecialchars($i); ?></option>
+                        <?php endfor; ?>
+                        </select>
                     </div>   
                      
+                    <?php $alphas = range('A', 'Z'); ?>
+                    
+
                     <div class="basic-car-info">
-                        <span>Dopln. výbava vozidla</span>
-                        <textarea name="other_equipment" id="other-equipment" rows="5" placeholder="Nepovinný údaj"></textarea>
+                        <label for="speed-index">Rýchlostný index:</label>
+                        <select name="speed_index" id="speed-index" onfocus='this.size=5;' onblur='this.size=1;' 
+                        onchange='this.size=1; this.blur();'>
+                        <?php foreach ($alphas as $letter): ?>
+                            <?php if ($letter != "A"): ?>
+                            <option value="<?= htmlspecialchars($letter); ?>"><?= htmlspecialchars($letter); ?></option>
+                            <?php else: ?>
+                                <?php for ($i = 1; $i <= 8; $i++): ?>
+                                    <option value="<?= htmlspecialchars($letter . $i); ?>"><?= htmlspecialchars($letter . $i); ?></option>
+                                <?php endfor; ?>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                        </select>
+                    </div>
+
+                    <div class="basic-car-info">  
+                        <label for="price">Cena pneumatiky:</label> 
+                        <input id="price" type="number" name="tire_price" placeholder="Zadaj" required>
                     </div>
 
                     <div class="basic-car-info">
@@ -125,72 +215,10 @@ $image_sequence = null;
                             <p style="opacity:1;">Zvolený obrázok: Obrázok č.<?= htmlspecialchars($image_sequence) ?></p>
                         <?php endif; ?>
                         
-                        <input id="car-image" type="file" name="car_image">
+                        <input id="car-image" type="file" name="tire_image">
                     </div>
                 </div> 
-                <div class="supplementary-car-info">
                 
-                    <p class="supplementary-equipment">Výbava</p>    
-
-                    <div class="car-equipment">
-                        <div class="car-equipment-category">
-                            <label for="el-windows">Elekt. okná</label>
-                            <input type="checkbox" name="vehicle_equipment[]" id="el-windows" value="0">
-                        </div>
-
-                        <div class="car-equipment-category">
-                            <label for="el-seats">Elekt. sedadlá</label>
-                            <input type="checkbox" name="vehicle_equipment[]" id="el-seats" value="1">
-                        </div>
-
-                        <div class="car-equipment-category">
-                            <label for="no-key-start">Bezkľúč. štartovanie</label>
-                            <input type="checkbox" name="vehicle_equipment[]" id="no-key-start" value="2">
-                        </div>
-
-                        <div class="car-equipment-category">
-                            <label for="airbag">Airbag</label>
-                            <input type="checkbox" name="vehicle_equipment[]" id="airbag" value="3">
-                        </div>
-
-                        <div class="car-equipment-category">
-                            <label for="tempomat">Tempomat</label>
-                            <input type="checkbox" name="vehicle_equipment[]" id="tempomat" value="4">
-                        </div>
-
-                        <div class="car-equipment-category">
-                            <label for="heated-seat">Vyhriev. sedadlá</label>
-                            <input type="checkbox" name="vehicle_equipment[]" id="heated-seat" value="5">
-                        </div>
-
-                        <div class="car-equipment-category">
-                            <label for="parking-sensor">Park. senzory</label>
-                            <input type="checkbox" name="vehicle_equipment[]" id="parking-sensor" value="6">
-                        </div>
-
-                        <div class="car-equipment-category">
-                            <label for="isofix">Isofix</label>
-                            <input type="checkbox" name="vehicle_equipment[]" id="isofix" value="7">
-                        </div>
-
-                        <div class="car-equipment-category">
-                            <label for="alu-rimes">Hlin. disky</label>
-                            <input type="checkbox" name="vehicle_equipment[]" id="alu-rimes" value="8">
-                        </div>
-                        <div class="car-equipment-category">
-                            <label for="air-condition">Klimatizácia</label>
-                            <input type="checkbox" name="vehicle_equipment[]" id="air-condition" value="9">
-                        </div>
-                        <div class="car-equipment-category">
-                            <label for="towing-device">Ťažné zariadenie</label>
-                            <input type="checkbox" name="vehicle_equipment[]" id="towing-device" value="10">
-                        </div>
-                        <div class="car-equipment-category">
-                            <label for="alarm">Alarm</label>
-                            <input type="checkbox" name="vehicle_equipment[]" id="alarm" value="11">
-                        </div>
-                    </div>
-                </div>
 
                 <div class="confirm-btn">
                     <input class="btn" type="submit" name="submit" value="Pridať">

@@ -60,10 +60,13 @@ if (!Auth::isLoggedIn()){
             </article>
             </a>
 
+            <a href="./reg-form-wheel.php
+            ">
             <article class="div-menu-part part-rimes">
                 <img class="div-menu-images" src="../img/rimes-advert.jpg" alt="">
                 <span class="rimes">Pridať disky</span>
             </article>
+            </a>
 
         </section>
         

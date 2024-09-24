@@ -51,7 +51,8 @@ main {
     width: 33.33%;
     
 }
-.basic-car-info:nth-child(13) {
+
+.basic-car-info:nth-child(10) {
     width: 100%;
     display: flex;
     flex-direction: column;

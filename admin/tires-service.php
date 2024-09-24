@@ -233,7 +233,8 @@ $adhesive_weight = AdhesiveWeight::getAllAdhesiveWeight($connection);
     </main>
     
     <?php require "../assets/footer.php" ?>
-    <script src="../js/header.js"></script>            
+    <script src="../js/header.js"></script>    
+    <script src="../js/change-confirmed.js"></script>    
 </body>
 </html>
 
