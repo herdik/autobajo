@@ -54,6 +54,19 @@ main {
 
 .basic-car-info:nth-child(10) {
     width: 100%;
+}
+
+textarea {
+    background: #fff;
+    font-size: 18px;
+    color: #000;
+    border: 3px #fff solid;
+    padding: 10px;
+    width: 100%;
+}
+
+.basic-car-info:nth-child(11) {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -87,10 +100,16 @@ select {
     margin: 0 10px 15px 10px;
     font-size: 20px;
     width: 100%;
+    cursor: pointer;
 }
 
 option {
     padding: 6px 8px;
+    cursor: pointer;
+}
+
+select:hover, option:hover {
+    cursor: pointer;
 }
 
 .basic-car-info label {

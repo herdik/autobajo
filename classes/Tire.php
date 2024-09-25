@@ -56,8 +56,8 @@ class Tire {
         try {
             // execute all data to SQL Database to car_advertisement
             if($stmt->execute()){
-                $car_id = $connection->lastInsertId();
-                return $car_id;
+                $tire_id = $connection->lastInsertId();
+                return $tire_id;
             } else {
                 throw new Exception ("Vytvorenie nového inzerátu pneumatiky sa neuskutočnilo");
             }

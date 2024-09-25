@@ -49,14 +49,14 @@ $image_sequence = null;
 
             <h1>Registrácia diskov</h1>
 
-            <form id="registration-form" action="after-reg-add-car.php" method="POST" enctype="multipart/form-data">
+            <form id="registration-form" action="after-reg-add-wheel.php" method="POST" enctype="multipart/form-data">
 
                 <div class="main-car-info">
 
                 
                     <div class="basic-car-info">
-                        <label for="wheels-category">Kategória:</label>
-                        <select name="wheels-category" id="wheels-category">
+                        <label for="wheel-category">Kategória:</label>
+                        <select name="wheel_category" id="wheel-category">
                             <option value="Hliníkové">Hliníkové</option>
                             <option value="Plechové">Plechové</option>
                         </select>
@@ -127,8 +127,8 @@ $image_sequence = null;
 
                     <div class="basic-car-info">
                         <label for="answerWheelsColor">Farba disku:</label>
-                        <input type="text" id="answerWheelsColor" name="wheel-color" placeholder="Zadaj/Vyber" list="wheels_color" autocomplete="off" value="" required />
-                        <datalist id="wheels_color">
+                        <input type="text" id="answerWheelsColor" name="wheel_color" placeholder="Zadaj/Vyber" list="wheels-color" autocomplete="off" value="" required />
+                        <datalist id="wheels-color">
                         
                             <option data-value=""></option>
                     
@@ -140,6 +140,11 @@ $image_sequence = null;
                         <input id="price" type="number" name="wheel_price" placeholder="Zadaj" required>
                     </div>
 
+                    <div class="basic-car-info">  
+                        <span>Opis disku</span>
+                        <textarea name="wheel_description" id="tire-description" rows="5" placeholder="Nepovinný údaj"></textarea>
+                    </div> 
+
                     <div class="basic-car-info">
                         <label for="car-image" id="choose-img-text">Vybrať</label>
                         <?php if (htmlspecialchars($image_sequence) == NULL): ?>
@@ -148,7 +153,7 @@ $image_sequence = null;
                             <p style="opacity:1;">Zvolený obrázok: Obrázok č.<?= htmlspecialchars($image_sequence) ?></p>
                         <?php endif; ?>
                         
-                        <input id="car-image" type="file" name="car_image">
+                        <input id="car-image" type="file" name="wheel_image">
                     </div>
                 </div> 
                 
