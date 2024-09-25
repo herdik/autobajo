@@ -105,7 +105,7 @@ class Car {
             if($stmt->execute()){
                 return $stmt->fetchAll(PDO::FETCH_ASSOC);
             } else {
-                throw new Exception ("Príkaz pre získanie všetkých dát o kontaktných informáciách sa nepodaril");
+                throw new Exception ("Príkaz pre získanie všetkých dát o inzerátoch áut sa nepodaril");
             }
         } catch (Exception $e){
             // 3 je že vyberiem vlastnú cestu k súboru

@@ -50,14 +50,14 @@ $image_sequence = null;
 
             <h1>Registrácia pneumatík</h1>
 
-            <form id="registration-form" action="after-reg-add-car.php" method="POST" enctype="multipart/form-data">
+            <form id="registration-form" action="after-reg-add-tire.php" method="POST" enctype="multipart/form-data">
 
                 <div class="main-car-info">
 
                 
                     <div class="basic-car-info">
-                        <label for="tires-category">Kategória:</label>
-                        <select name="tires-category" id="tires-category">
+                        <label for="tire-category">Kategória:</label>
+                        <select name="tire_category" id="tire-category">
                             <option value="Osobné">Osobné</option>
                             <option value="SUV">SUV</option>
                             <option value="Nákladné">Nákladné</option>
@@ -66,7 +66,7 @@ $image_sequence = null;
                     </div>
 
                     <div class="basic-car-info">
-                        <label for="tires-category">Značka:</label>
+                        <label for="answerTiresBrand">Značka:</label>
                         <input type="text" id="answerTiresBrand" name="tire_brand" placeholder="Zadaj/Vyber" list="tires_brand" autocomplete="off" value="" required />
                         <datalist id="tires_brand">
                         
@@ -206,6 +206,11 @@ $image_sequence = null;
                         <label for="price">Cena pneumatiky:</label> 
                         <input id="price" type="number" name="tire_price" placeholder="Zadaj" required>
                     </div>
+
+                    <div class="basic-car-info">  
+                        <span>Opis pneumatiky</span>
+                        <textarea name="tire_description" id="tire-description" rows="5" placeholder="Nepovinný údaj"></textarea>
+                    </div> 
 
                     <div class="basic-car-info">
                         <label for="car-image" id="choose-img-text">Vybrať</label>
