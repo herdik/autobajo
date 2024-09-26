@@ -66,7 +66,11 @@ $inside_index = 12;
             
             <article class="heading">
 
-                <img src="../img/cars.jpg" alt="cars.jpg">
+                <?php if ($car_infos["car_image"] === "no-photo-car.jpg"): ?>
+                    <img src="../img/no-photo-car/no-photo-car.jpg" alt="no-photo-car">
+                <?php else: ?>
+                    <img src="../uploads/cars/<?= htmlspecialchars($car_infos["car_id"]) ?>/<?= htmlspecialchars($car_infos["car_image"]) ?>" alt="">
+                <?php endif; ?>
 
                 <div class="main-car-info">
 
@@ -114,7 +118,7 @@ $inside_index = 12;
                         </div>
                         <div class="car engine">
                             <!-- <i class="fa-solid fa-gear"></i> -->
-                            <span class="sub-heading">Prevodovka</span>
+                            <span class="sub-heading">Objem motora</span>
                             <span><?= htmlspecialchars($car_infos["engine_volume"]) ?></span>
                         </div>
                     </div>
@@ -137,7 +141,7 @@ $inside_index = 12;
             </article>
 
             <article class="other-info part">
-                <h2>Výbava vozidla <i class="fa-solid fa-car"></i> <i class="fa-solid fa-toolbox"></i></i></h2> 
+                <h2>Výbava vozidla</h2> 
                 
                 <?php foreach($car_equipments as $car_equipment): ?>
                     <?php if ($car_infos[$inside_index]): ?>
@@ -153,7 +157,7 @@ $inside_index = 12;
             </article>
 
             <article class="vehicle-condition part">
-                <h2>Stav vozidla a doplnková výbava <i class="fa-solid fa-screwdriver-wrench"></i></h2> 
+                <h2>Stav vozidla a doplnková výbava</h2> 
 
                 <div class="check box">
                     <p><?= htmlspecialchars($car_infos["other_equipment"]) ?></p>
@@ -162,7 +166,7 @@ $inside_index = 12;
             </article>
 
             <article class="vehicle-price part">
-                <h2>Cena vozidla <i class="fa-solid fa-money-bill-wave"></i></i></h2> 
+                <h2>Cena vozidla</h2> 
 
                 <div class="car-price box">
                 

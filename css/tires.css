@@ -19,7 +19,7 @@ main h1 {
     margin-top: 80px;
 }
 
-.cars-menu {  
+.tires-menu {  
     margin-top: 20px;
     width: 100%;
     max-width: 1280px;
@@ -32,13 +32,13 @@ main h1 {
     margin-bottom: 20px;
 }
 
-.cars-menu a {
+.tires-menu a {
     width: 100%;
     text-decoration: none;
     color: black;
 }
 
-.car-advertisement {
+.tire-advertisement {
     width: 100%;
     height: 270px;
     display: flex;
@@ -49,12 +49,12 @@ main h1 {
     
 }
 
-.car-picture {
+.tire-picture {
     width: 30%;
     height: 100%;
 }
 
-.basic-car-info {
+.basic-tire-info {
     width: 70%;
     background-color: #fff;
     display: flex;
@@ -64,7 +64,7 @@ main h1 {
 
 }
 
-.car-brand {
+.tire-brand {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -73,31 +73,39 @@ main h1 {
     gap: 10px;
 }
 
-.car-brand h2 {
+.tire-brand h2 {
     font-weight: bold;
 }
 
-.car-description h2 {
-    color: #b30606;
+.tire-type {
+    text-align: center;
+}
+.tire-type h2{
+    font-weight: bold
 }
 
-.car {
+.product-type {
+    color: #b30606;
+    font-size: 20px;
+}
+
+.tire {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.car :nth-child(1){
+.tire :nth-child(1){
     font-weight: bold;
     font-size: 24px;
 }
-.car :nth-child(2){
+.tire :nth-child(2){
     font-weight: bold;
     font-size: 20px;
     color: #b30606;
 }
 
-.car-infos {
+.tire-infos {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -106,16 +114,12 @@ main h1 {
 
 }
 
-/* .sub-heading {
-    font-weight: bold;
-} */
-
-.car-price {
+.tire-price {
     background-color: #b30606;
     width: 100%;
 }
 
-.car-price  h2 {
+.tire-price  h2 {
     color: #fff;
     font-weight: bolder;
     font-size: 36px;

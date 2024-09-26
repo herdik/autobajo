@@ -1,6 +1,6 @@
 <?php
 require "../classes/Database.php";
-require "../classes/Car.php";
+require "../classes/Wheel.php";
 
 
 
@@ -18,7 +18,7 @@ if (!Auth::isLoggedIn()){
 $database = new Database();
 $connection = $database->connectionDB();
 
-$cars_advertisements = Car::getAllCarsAdvertisement($connection, "car_id, car_brand, car_model, year_of_manufacture, past_km, fuel_type, car_description, car_price, car_image");
+$wheels_advertisements = Wheel::getAllWheelsAdvertisement($connection, "wheel_id, wheel_brand, wheel_model, wheel_average, spacing, width, et, wheel_color, wheel_image, wheel_price");
 
 ?>
 
@@ -40,7 +40,7 @@ $cars_advertisements = Car::getAllCarsAdvertisement($connection, "car_id, car_br
     <link rel="stylesheet" href="../css/general.css">
     <link rel="stylesheet" href="../css/admin-header.css">
     <link rel="stylesheet" href="../css/footer.css">
-    <link rel="stylesheet" href="../css/cars.css">
+    <link rel="stylesheet" href="../css/wheels.css">
     <link rel="stylesheet" href="../query/header-query.css">
 
     <script src="https://kit.fontawesome.com/ed8b583ef3.js" crossorigin="anonymous"></script>
@@ -52,21 +52,21 @@ $cars_advertisements = Car::getAllCarsAdvertisement($connection, "car_id, car_br
 
     <main>
 
-        <h1>Ponuka automobilov</h1>
+        <h1>Ponuka diskov</h1>
 
-        <?php if (count($cars_advertisements) != 0 || $cars_advertisements != null): ?>
+        <?php if ($wheels_advertisements != null): ?>
 
-        <section class="cars-menu">
+        <section class="wheels-menu">
 
-            <?php foreach ($cars_advertisements as $one_car): ?>
+            <?php foreach ($wheels_advertisements as $one_wheel): ?>
 
-            <a href="./car-profil.php?car_id=<?= htmlspecialchars($one_car["car_id"]) ?>"> 
-            <article class="car-advertisement">
+            <a href="./wheel-profil.php?wheel_id=<?= htmlspecialchars($one_wheel["wheel_id"]) ?>"> 
+            <article class="wheel-advertisement">
               
-                <?php if ($one_car["car_image"] != "no-photo-car.jpg"): ?>
+                <?php if ($one_wheel["wheel_image"] != "no-photo-car.jpg"): ?>
 
-                    <div class="car-picture" style="
-                                    background: url(../uploads/cars/<?= htmlspecialchars($one_car["car_id"]) ?>/<?= htmlspecialchars($one_car["car_image"]) ?>);
+                    <div class="wheel-picture" style="
+                                    background: url(../uploads/wheels/<?= htmlspecialchars($one_wheel["wheel_id"]) ?>/<?= htmlspecialchars($one_wheel["wheel_image"]) ?>);
                                     background-size: cover;
                                     background-position: center;
                                     background-repeat: no-repeat;
@@ -74,7 +74,7 @@ $cars_advertisements = Car::getAllCarsAdvertisement($connection, "car_id, car_br
                     </div>
                 
                 <?php else: ?>
-                    <div class="car-picture" style="
+                    <div class="wheel-picture" style="
                                     background: url(../img/no-photo-car/no-photo-car.jpg);
                                     background-size: cover;
                                     background-position: center;
@@ -84,43 +84,46 @@ $cars_advertisements = Car::getAllCarsAdvertisement($connection, "car_id, car_br
 
                 <?php endif ?>
 
-                <div class="basic-car-info">
+                <div class="basic-wheel-info">
 
-                    <div class="car-brand">
-                        <h2 class="heading"><?= htmlspecialchars($one_car["car_brand"]) ?></h2>
-                        <h3 class="model"><?= htmlspecialchars($one_car["car_model"]) ?></h3>
+                    <div class="wheel-brand">
+                        <h2 class="heading"><?= htmlspecialchars($one_wheel["wheel_brand"]) ?></h2>
+                        <h3 class="model"><?= htmlspecialchars($one_wheel["wheel_model"]) ?></h3>
                     </div>
 
-                    <div class="car-description">
-                        <h2><?= htmlspecialchars($one_car["car_description"]) ?></h2>
+                    <div class="wheel-color">
+                        <h2>Farba:</h2>
+                        <span class="product-color"><?= htmlspecialchars($one_wheel["wheel_color"]) ?></span>
                     </div>
 
-                    <div class="car-infos">
+                    <div class="wheel-infos">
 
-                        <div class="car year">
-                            <!-- <i class="fa-solid fa-hourglass-start"></i> -->
-                            <span class="sub-heading">Rok výroby</span>
-                            <span><?= htmlspecialchars($one_car["year_of_manufacture"]) ?></span>
+                        <div class="wheel year">
+                            <span class="sub-heading">Šírka</span>
+                            <span><?= htmlspecialchars($one_wheel["width"]) ?></span>
                         </div>
 
-                        <div class="car kilometer">
-                            <!-- <i class="fa-solid fa-car-side"></i> -->
-                            <!-- <i class="fa-solid fa-route"></i> -->
-                            <span class="sub-heading">Počet km</span>
-                            <span><?= htmlspecialchars(number_format($one_car["past_km"],0,","," ")) ?></span>
+                        <div class="wheel average">
+                            <span class="sub-heading">Priemer</span>
+                            <span><?= htmlspecialchars($one_wheel["wheel_average"])?></span>
                         </div>
 
-                        <div class="car fuel">
+                        <div class="wheel spacing">
+                            <span class="sub-heading">Rozteč</span>
+                            <span><?= htmlspecialchars($one_wheel["spacing"]) ?></span>
+                        </div>
+
+                        <div class="wheel et">
                             <!-- <i class="fa-solid fa-gas-pump"></i> -->
-                            <span class="sub-heading">Palivo</span>
-                            <span><?= htmlspecialchars($one_car["fuel_type"]) ?></span>
+                            <span class="sub-heading">ET</span>
+                            <span><?= htmlspecialchars($one_wheel["et"])?></span>
                         </div>
             
             
                     </div>
 
-                    <div class="car-price">
-                        <h2><?= htmlspecialchars(number_format($one_car["car_price"],0,","," ")) ?> &#8364;</h2>
+                    <div class="wheel-price">
+                        <h2><?= htmlspecialchars(number_format($one_wheel["wheel_price"],0,","," ")) ?> &#8364;</h2>
                     </div>
 
                     
@@ -130,6 +133,7 @@ $cars_advertisements = Car::getAllCarsAdvertisement($connection, "car_id, car_br
             </a>        
             
             <?php endforeach ?>
+        
         </section>
 
         <?php endif ?>

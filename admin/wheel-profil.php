@@ -1,7 +1,7 @@
 <?php
 
 require "../classes/Database.php";
-require "../classes/Car.php";
+require "../classes/Wheel.php";
 
 // verifying by session if visitor have access to this website
 require "../classes/Authorization.php";
@@ -17,19 +17,14 @@ $database = new Database();
 $connection = $database->connectionDB();
 
 
-if (isset($_GET["car_id"]) and is_numeric($_GET["car_id"])){
-    $car_infos = Car::getCar($connection, $_GET["car_id"]);
-    $car_equipments = ["Elektrické okná", "Elektrické sedadlá", "Bezkľúčové štartovanie", "Airbag", "Tempomat", "Vyhrievané sedadlá", "Parkovacie senzory", "Isofix", "Hlin. disky/Elektróny", "Klimatizácia", "Ťažné zariadenie", "Alarm"];
+if (isset($_GET["wheel_id"]) and is_numeric($_GET["wheel_id"])){
+    $wheel_infos = Wheel::getWheel($connection, $_GET["wheel_id"]);
 } else {
-    $car_infos = null;
-    $car_equipments = null;
+    $wheel_infos = null;
 }
 
 // control if user choose image from image gallery 
 $image_sequence = null;
-
-// first index for $car_equipments loop
-$inside_index = 12;
 
 ?>
 
@@ -38,7 +33,7 @@ $inside_index = 12;
 <head>
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profil auto</title>
+    <title>Profil pneumatík</title>
 
     <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
 
@@ -50,7 +45,7 @@ $inside_index = 12;
     <link rel="stylesheet" href="../css/general.css">
     <link rel="stylesheet" href="../css/admin-header.css">
     <link rel="stylesheet" href="../css/footer.css">
-    <link rel="stylesheet" href="../css/car-profil.css">
+    <link rel="stylesheet" href="../css/wheel-profil.css">
     <link rel="stylesheet" href="../query/header-query.css">
 
     <script src="https://kit.fontawesome.com/ed8b583ef3.js" crossorigin="anonymous"></script>
@@ -62,61 +57,58 @@ $inside_index = 12;
 
     <main>
 
-        <section class="advertisement-car">
+        <section class="advertisement-wheel">
             
             <article class="heading">
 
-                <img src="../img/cars.jpg" alt="cars.jpg">
+                <img src="../img/rim.jpg" alt="">
 
-                <div class="main-car-info">
+                <div class="main-wheel-info">
 
-                    <div class="car-brand">
-                        <h2 class="car-name"><?= htmlspecialchars($car_infos["car_brand"]) ?></h2>
-                        <h3 class="model"><?= htmlspecialchars($car_infos["car_model"]) ?></h3>
+                    <div class="wheel-brand">
+                        <h2 class="wheel-name"><?= htmlspecialchars($wheel_infos["wheel_brand"]) ?></h2>
+                        <h3 class="model"><?= htmlspecialchars($wheel_infos["wheel_model"]) ?></h3>
                     </div>
 
-                    <div class="car-description">
-                        <h2><?= htmlspecialchars($car_infos["car_description"]) ?></h2>
+                    <div class="wheel-description">
+                        <h2>Farba: <?= htmlspecialchars($wheel_infos["wheel_color"]) ?></h2>
                     </div>
 
-                    <div class="car-infos">
+                    <div class="wheel-infos">
 
-                        <div class="car year">
-                            <!-- <i class="fa-solid fa-hourglass-start"></i> -->
-                            <span class="sub-heading">Rok výroby</span>
-                            <span><?= htmlspecialchars($car_infos["year_of_manufacture"]) ?></span>
+                        <div class="wheel category">
+                            
+                            <span class="sub-heading">Kategória</span>
+                            <span><?= htmlspecialchars($wheel_infos["wheel_category"]) ?></span>
                         </div>
 
-                        <div class="car kilometer">
-                            <!-- <i class="fa-solid fa-car-side"></i> -->
-                            <!-- <i class="fa-solid fa-route"></i> -->
-                            <span class="sub-heading">Počet km</span>
-                            <span><?= htmlspecialchars(number_format($car_infos["past_km"],0,","," ")) ?></span>
+                        <div class="wheel average">
+                            
+                            <span class="sub-heading">Priemer</span>
+                            <span><?= htmlspecialchars($wheel_infos["wheel_average"]) ?></span>
                         </div>
-
-                        <div class="car fuel">
-                            <!-- <i class="fa-solid fa-gas-pump"></i> -->
-                            <span class="sub-heading">Palivo</span>
-                            <span><?= htmlspecialchars($car_infos["fuel_type"]) ?></span>
-                        </div>
+                        
                     </div>
 
-                    <div class="car-infos">
-                        <div class="car color">
-                            <!-- <i class="fa-solid fa-palette"></i> -->
-                            <span class="sub-heading">Farba</span>
-                            <span><?= htmlspecialchars($car_infos["car_color"]) ?></span>
+                    <div class="wheel-infos">
+                        
+                        <div class="wheel width">
+                            
+                            <span class="sub-heading">Šírka</span>
+                            <span><?= htmlspecialchars($wheel_infos["width"]) ?></span>
                         </div>
-                        <div class="car gear">
-                            <!-- <i class="fa-solid fa-gear"></i> -->
-                            <span class="sub-heading">Prevodovka</span>
-                            <span><?= htmlspecialchars($car_infos["gearbox"]) ?></span>
+
+                        <div class="wheel spacing">
+                            <span class="sub-heading">Rozteč</span>
+                            <span><?= htmlspecialchars($wheel_infos["spacing"]) ?></span>
                         </div>
-                        <div class="car engine">
-                            <!-- <i class="fa-solid fa-gear"></i> -->
-                            <span class="sub-heading">Prevodovka</span>
-                            <span><?= htmlspecialchars($car_infos["engine_volume"]) ?></span>
+
+                        <div class="wheel et">
+                            
+                            <span class="sub-heading">ET</span>
+                            <span><?= htmlspecialchars($wheel_infos["et"]) ?></span>
                         </div>
+                        
                     </div>
                 
                 </div>
@@ -132,41 +124,25 @@ $inside_index = 12;
                     <p style="opacity:1;">Zvolený obrázok: Obrázok č.<?= htmlspecialchars($image_sequence) ?></p>
                 <?php endif; ?>
                 
-                <input id="car-image" type="file" name="car_image" multiple="multiple">
+                <input id="car-image" type="file" name="wheel_image" multiple="multiple">
                     
             </article>
 
-            <article class="other-info part">
-                <h2>Výbava vozidla <i class="fa-solid fa-car"></i> <i class="fa-solid fa-toolbox"></i></i></h2> 
-                
-                <?php foreach($car_equipments as $car_equipment): ?>
-                    <?php if ($car_infos[$inside_index]): ?>
-                        <div class="check box">
-                            <i class="fa-solid fa-clipboard-check"></i>
-                            <span><?= htmlspecialchars($car_equipment) ?></span>
-                            
-                        </div>
-                    <?php endif; ?>
-                    <?php $inside_index++; ?>
-                <?php endforeach; ?>
-                
-            </article>
-
-            <article class="vehicle-condition part">
-                <h2>Stav vozidla a doplnková výbava <i class="fa-solid fa-screwdriver-wrench"></i></h2> 
+            <article class="wheels-condition part">
+                <h2>Popis disku </h2> 
 
                 <div class="check box">
-                    <p><?= htmlspecialchars($car_infos["other_equipment"]) ?></p>
+                    <p><?= htmlspecialchars($wheel_infos["wheel_description"]) ?></p>
                     
                 </div>
             </article>
 
-            <article class="vehicle-price part">
-                <h2>Cena vozidla <i class="fa-solid fa-money-bill-wave"></i></i></h2> 
+            <article class="wheels-price part">
+                <h2>Cena disku</h2> 
 
-                <div class="car-price box">
+                <div class="wheel-price box">
                 
-                    <h2><?= htmlspecialchars(number_format($car_infos["car_price"],0,","," ")) ?> &#8364;</h2>
+                    <h2><?= htmlspecialchars(number_format($wheel_infos["wheel_price"],0,","," ")) ?> &#8364;</h2>
                     
                 </div>
 

@@ -111,13 +111,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
                     }
 
                     if ($car_id && $image_id) {
-                        if(!file_exists("../uploads/" . $car_id)){
+                        if(!file_exists("../uploads/cars/" . $car_id)){
                             // 0777 authorizations
-                            mkdir("../uploads/" . $car_id, 0777, true);
+                            mkdir("../uploads/cars/" . $car_id, 0777, true);
                         }
     
                         // create path where will save image
-                        $image_upload_path = "../uploads/" . $car_id . "/" . $new_image_name;
+                        $image_upload_path = "../uploads/cars/" . $car_id . "/" . $new_image_name;
     
                         // upload image - change temporary image path for path to current registered player
                         move_uploaded_file($image_tmp_name, $image_upload_path);

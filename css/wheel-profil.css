@@ -1,0 +1,212 @@
+main {
+    min-height: 100vh;
+    background: url(../img/background-photo.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+}
+
+/* css for all wheel advertisement */
+
+.advertisement-wheel {  
+    width: 100%;
+    max-width: 1280px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    background: rgba(0, 0, 0, 0.774);
+    border: 5px solid #fff;
+}
+
+/* css for all wheel advertisement */
+
+/* heading part */
+
+.heading {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+/* heading image */
+.heading img {
+    width: 50%;
+}
+/* heading image */
+
+/* main wheel info */
+.main-wheel-info {
+    width: 50%;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+/* main wheel info */
+
+/* wheel brand and model */
+.wheel-brand {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.wheel-brand h2 {
+    font-weight: bold;
+    font-size: 32px;
+}
+.wheel-brand h3 {
+    font-weight: bold;
+    font-size: 28px;
+}
+/* wheel brand and model */
+
+/* wheel description */
+.wheel-description h2 {
+    color: #fff;
+    text-align: center;
+}
+/* wheel description */
+
+/* basic wheel info */
+.wheel-infos {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+
+}
+
+.wheel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 33%;
+}
+
+.wheel :nth-child(1){
+    font-weight: bold;
+    font-size: 26px;
+}
+.wheel :nth-child(2){
+    font-weight: bold;
+    font-size: 20px;
+    color: #fff;
+}
+/* basic wheel info */
+
+/* heading part */
+
+
+
+
+/* picture gallery */
+.images  {
+    padding-top: 15px;
+    margin-top: 15px;
+    color: #fff;
+    font-size: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* button to select images to pictures gallery */
+
+
+#car-image {
+    display: none;
+}  
+
+#choose-img-text {
+    padding: 8px 15px;
+    cursor: pointer;
+    color: #fff;
+    border: 5px solid #b30606;
+    background-color: #b30606;
+    font-weight: bold;
+    transition: 0.4s all linear;
+}
+
+#choose-img-text:hover {
+    cursor: pointer;
+    color: #b30606;
+    border: 5px solid #b30606;
+    background-color: #fff;
+}
+
+#picture-titel {
+    margin: 20px 0;
+    font-size: 20px;
+}
+/* button to select images to pictures gallery */
+
+/* picture gallery */
+
+
+/* Other equipments and vehicle condition */
+
+/* settings for sequence */
+.part {
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    
+}
+
+.part :nth-child(2) {
+    margin-top: 20px;
+}
+.part h2{
+    text-align: center;
+    border-bottom: 3px solid #fff;
+    padding-bottom: 10px;
+}
+/* settings for sequence */
+
+/* settings inside in sequence */
+.box {
+    font-size: 25px;
+    width: 100%;
+}
+/* settings inside in sequence */
+
+/* wheel price */
+.wheel-price {
+    background-color: #b30606;
+}
+/* wheel price */
+
+
+/* Other equipments and vehicle condition */
+
+
+
+
+
+
+
+
+
+
+
+
+

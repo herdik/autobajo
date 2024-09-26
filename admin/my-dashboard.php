@@ -59,15 +59,22 @@ if (!Auth::isLoggedIn()){
                 <span class="cars">Autá</span>
             </article>
             </a>
+
+            <a href="./tire-advertisement.php
+            ">
             <article class="div-menu-part part-tires">
                 <img class="div-menu-images" src="../img/tires.jpg" alt="">
                 <span class="tires">Pneumatiky</span>
             </article>
+            </a>
 
+            <a href="./wheel-advertisement.php
+            ">
             <article class="div-menu-part part-rimes">
                 <img class="div-menu-images" src="../img/rim.jpg" alt="">
                 <span class="rimes">Disky</span>
             </article>
+            </a>
 
             <a href="./tires-service.php
             ">
