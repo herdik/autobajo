@@ -30,17 +30,20 @@ class Car {
      * @param string $air_condition - air_condition
      * @param string $towing_device - towing_device
      * @param string $alarm - alarm
+     * @param boolean $active - active advertisement
+     * @param boolean $reserved - reseerved - advertisement
+     * @param boolean $sold - sold advertisement
      * @param string $car_image - car_image
      *
      * @return integer $car_id - id for car advertisement
      * 
      */
-    public static function createCarAdvertisement($connection, $car_brand, $car_model, $car_color, $year_of_manufacture, $engine_volume, $car_price, $fuel_type, $gearbox, $car_description, $other_equipment, $el_windows, $el_seats, $no_key_start, $airbag, $tempomat, $heated_seat, $parking_sensor, $isofix, $alu_rimes, $air_condition, $towing_device, $alarm, $car_image) {
+    public static function createCarAdvertisement($connection, $car_brand, $car_model, $car_color, $year_of_manufacture, $engine_volume, $car_price, $fuel_type, $gearbox, $car_description, $other_equipment, $el_windows, $el_seats, $no_key_start, $airbag, $tempomat, $heated_seat, $parking_sensor, $isofix, $alu_rimes, $air_condition, $towing_device, $alarm, $active, $reserved, $sold, $car_image) {
 
 
         // sql scheme
-        $sql = "INSERT INTO car_advertisement (car_brand, car_model, car_color, year_of_manufacture, engine_volume, car_price, fuel_type, gearbox, car_description, other_equipment, el_windows, el_seats, no_key_start, airbag, tempomat, heated_seat, parking_sensor, isofix, alu_rimes, air_condition, towing_device, alarm, car_image)
-        VALUES ( :car_brand, :car_model, :car_color, :year_of_manufacture, :engine_volume, :car_price, :fuel_type, :gearbox, :car_description, :other_equipment, :el_windows, :el_seats, :no_key_start, :airbag, :tempomat, :heated_seat, :parking_sensor, :isofix, :alu_rimes, :air_condition, :towing_device, :alarm, :car_image)";
+        $sql = "INSERT INTO car_advertisement (car_brand, car_model, car_color, year_of_manufacture, engine_volume, car_price, fuel_type, gearbox, car_description, other_equipment, el_windows, el_seats, no_key_start, airbag, tempomat, heated_seat, parking_sensor, isofix, alu_rimes, air_condition, towing_device, alarm, active, reserved, sold, car_image)
+        VALUES ( :car_brand, :car_model, :car_color, :year_of_manufacture, :engine_volume, :car_price, :fuel_type, :gearbox, :car_description, :other_equipment, :el_windows, :el_seats, :no_key_start, :airbag, :tempomat, :heated_seat, :parking_sensor, :isofix, :alu_rimes, :air_condition, :towing_device, :alarm, :active, :reserved, :sold, :car_image)";
 
         // prepare data to send to Database
         $stmt = $connection->prepare($sql);
@@ -68,6 +71,9 @@ class Car {
         $stmt->bindValue(":air_condition", $air_condition, PDO::PARAM_BOOL);
         $stmt->bindValue(":towing_device", $towing_device, PDO::PARAM_BOOL);
         $stmt->bindValue(":alarm", $alarm, PDO::PARAM_BOOL);
+        $stmt->bindValue(":active", $active, PDO::PARAM_BOOL);
+        $stmt->bindValue(":reserved", $reserved, PDO::PARAM_BOOL);
+        $stmt->bindValue(":sold", $sold, PDO::PARAM_BOOL);
         $stmt->bindValue(":car_image", $car_image, PDO::PARAM_STR);
     
 
@@ -95,9 +101,11 @@ class Car {
      *
      * @return array array of objects, one object mean one car infos
      */
-    public static function getAllCarsAdvertisement($connection, $columns = "*"){
+    public static function getAllCarsAdvertisement($connection, $status, $columns = "*"){
         $sql = "SELECT $columns
-                FROM car_advertisement";
+                FROM car_advertisement
+                WHERE active = $status
+                ORDER BY car_id DESC";
 
         $stmt = $connection->prepare($sql);
 
@@ -148,6 +156,52 @@ class Car {
         }
 
 
+    }
+
+
+    /**
+     *
+     * RETURN BOOLEAN FROM DATABASE AFTER UPDATED CAR ADVERTISEMENT
+     *
+     * @param object $connection - database connection
+     * @param string $active - active advertisement
+     * @param string $reserved - reserved advertisement
+     * @param int $sold -  sold advertisement
+     * @param int $car_id -  spesific car advertisement
+     * 
+     * @return boolean if update is successful
+     */
+    public static function updateCarStatusAdvertisement($connection, $active, $reserved, $sold, $car_id){
+
+        $sql = "UPDATE car_advertisement
+                SET active = :active,
+                    reserved = :reserved,
+                    sold = :sold
+                WHERE car_id = :car_id";
+        
+
+        // connect sql amend to database
+        $stmt = $connection->prepare($sql);
+
+        // all parameters to send to Database
+        // filling and bind values will be execute to Database
+        $stmt->bindValue(":car_id", $car_id, PDO::PARAM_INT);
+        $stmt->bindValue(":active", $active, PDO::PARAM_STR);
+        $stmt->bindValue(":reserved", $reserved, PDO::PARAM_STR);
+        $stmt->bindValue(":sold", $sold, PDO::PARAM_STR);
+        
+        
+        try {
+            if($stmt->execute()){
+                return true;
+            } else {
+                throw Exception ("Príkaz pre update zmeny statusu inzerátu sa nepodaril");
+            }
+        } catch (Exception $e){
+            // 3 je že vyberiem vlastnú cestu k súboru
+            error_log("Chyba pri funkcii updateCarStatusAdvertisement, získanie informácií z databázy zlyhalo\n", 3, "../errors/error.log");
+            echo "Výsledná chyba je: " . $e->getMessage();
+        }
     }
 
 }

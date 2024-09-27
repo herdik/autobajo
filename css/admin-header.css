@@ -12,6 +12,8 @@ header {
     align-items: center;
     height: 80px;
     margin-bottom: 20px;
+    /* z-index: 100;
+    background-color: black; */
 }
 
 header .logo img {

@@ -21,18 +21,21 @@ class Tire {
      * @param string $speed_index - speed_index
      * @param integer $tire_price - tire_price
      * @param string $tire_description - tire_description
+     * @param boolean $active - active advertisement
+     * @param boolean $reserved - reseerved - advertisement
+     * @param boolean $sold - sold advertisement
      * @param string $tire_image - tire_image
     
-     * @return integer $car_id - id for car advertisement
+     * @return integer $tire_id - id for tire advertisement
      * 
      */
     
-    public static function createTireAdvertisement($connection, $tire_category, $tire_brand, $tire_model, $type, $year_of_manufacture, $width, $height, $construction, $average, $weight_index, $speed_index, $tire_price, $tire_description, $tire_image) {
+    public static function createTireAdvertisement($connection, $tire_category, $tire_brand, $tire_model, $type, $year_of_manufacture, $width, $height, $construction, $average, $weight_index, $speed_index, $tire_price, $tire_description, $active, $reserved, $sold, $tire_image) {
 
 
         // sql scheme
-        $sql = "INSERT INTO tire_advertisement (tire_category, tire_brand, tire_model, type, year_of_manufacture, width, height, construction, average, weight_index, speed_index, tire_price, tire_description, tire_image)
-        VALUES (:tire_category, :tire_brand, :tire_model, :type, :year_of_manufacture, :width, :height, :construction, :average, :weight_index, :speed_index, :tire_price, :tire_description, :tire_image)";
+        $sql = "INSERT INTO tire_advertisement (tire_category, tire_brand, tire_model, type, year_of_manufacture, width, height, construction, average, weight_index, speed_index, tire_price, tire_description, active, reserved, sold, tire_image)
+        VALUES (:tire_category, :tire_brand, :tire_model, :type, :year_of_manufacture, :width, :height, :construction, :average, :weight_index, :speed_index, :tire_price, :tire_description, :active, :reserved, :sold, :tire_image)";
 
         // prepare data to send to Database
         $stmt = $connection->prepare($sql);
@@ -51,10 +54,13 @@ class Tire {
         $stmt->bindValue(":speed_index", $speed_index, PDO::PARAM_STR);
         $stmt->bindValue(":tire_price", $tire_price, PDO::PARAM_INT);
         $stmt->bindValue(":tire_description", $tire_description, PDO::PARAM_STR);
+        $stmt->bindValue(":active", $active, PDO::PARAM_BOOL);
+        $stmt->bindValue(":reserved", $reserved, PDO::PARAM_BOOL);
+        $stmt->bindValue(":sold", $sold, PDO::PARAM_BOOL);
         $stmt->bindValue(":tire_image", $tire_image, PDO::PARAM_STR);
         
         try {
-            // execute all data to SQL Database to car_advertisement
+            // execute all data to SQL Database to tire_advertisement
             if($stmt->execute()){
                 $tire_id = $connection->lastInsertId();
                 return $tire_id;
@@ -76,9 +82,11 @@ class Tire {
      *
      * @return array array of objects, one object mean one tire infos
      */
-    public static function getAllTiresAdvertisement($connection, $columns = "*"){
+    public static function getAllTiresAdvertisement($connection, $status, $columns = "*"){
         $sql = "SELECT $columns
-                FROM tire_advertisement";
+                FROM tire_advertisement
+                WHERE active = $status
+                ORDER BY tire_id DESC";
 
         $stmt = $connection->prepare($sql);
 
@@ -97,7 +105,7 @@ class Tire {
 
     /**
      *
-     * RETURN ID CAR FROM DATABASE
+     * RETURN ID TIRE FROM DATABASE
      *
      * @param object $connection - connection to database
      * @param int tire_id - represent one tire_id
@@ -117,7 +125,7 @@ class Tire {
 
         try {
             if($stmt->execute()){
-                // asscoc array for one car
+                // asscoc array for one tire
                 return $stmt->fetch();
             } else {
                 throw Exception ("Príkaz pre získanie všetkých dát o inzeráte pneumatiky sa nepodaril");
@@ -129,6 +137,52 @@ class Tire {
         }
 
 
+    }
+
+    
+    /**
+     *
+     * RETURN BOOLEAN FROM DATABASE AFTER UPDATED TIRE ADVERTISEMENT
+     *
+     * @param object $connection - database connection
+     * @param string $active - active advertisement
+     * @param string $reserved - reserved advertisement
+     * @param int $sold -  sold advertisement
+     * @param int $tire_id -  spesific tire advertisement
+     * 
+     * @return boolean if update is successful
+     */
+    public static function updateTireStatusAdvertisement($connection, $active, $reserved, $sold, $tire_id){
+
+        $sql = "UPDATE tire_advertisement
+                SET active = :active,
+                    reserved = :reserved,
+                    sold = :sold
+                WHERE tire_id = :tire_id";
+        
+
+        // connect sql amend to database
+        $stmt = $connection->prepare($sql);
+
+        // all parameters to send to Database
+        // filling and bind values will be execute to Database
+        $stmt->bindValue(":tire_id", $tire_id, PDO::PARAM_INT);
+        $stmt->bindValue(":active", $active, PDO::PARAM_STR);
+        $stmt->bindValue(":reserved", $reserved, PDO::PARAM_STR);
+        $stmt->bindValue(":sold", $sold, PDO::PARAM_STR);
+        
+        
+        try {
+            if($stmt->execute()){
+                return true;
+            } else {
+                throw Exception ("Príkaz pre update zmeny statusu inzerátu sa nepodaril");
+            }
+        } catch (Exception $e){
+            // 3 je že vyberiem vlastnú cestu k súboru
+            error_log("Chyba pri funkcii updateTireStatusAdvertisement, získanie informácií z databázy zlyhalo\n", 3, "../errors/error.log");
+            echo "Výsledná chyba je: " . $e->getMessage();
+        }
     }
 
 }

@@ -18,7 +18,7 @@ if (!Auth::isLoggedIn()){
 $database = new Database();
 $connection = $database->connectionDB();
 
-$wheels_advertisements = Wheel::getAllWheelsAdvertisement($connection, "wheel_id, wheel_brand, wheel_model, wheel_average, spacing, width, et, wheel_color, wheel_image, wheel_price");
+$wheels_advertisements = Wheel::getAllWheelsAdvertisement($connection, true, "wheel_id, wheel_brand, wheel_model, wheel_average, spacing, width, et, wheel_color, wheel_image, reserved, sold, wheel_price");
 
 ?>
 
@@ -62,6 +62,16 @@ $wheels_advertisements = Wheel::getAllWheelsAdvertisement($connection, "wheel_id
 
             <a href="./wheel-profil.php?wheel_id=<?= htmlspecialchars($one_wheel["wheel_id"]) ?>"> 
             <article class="wheel-advertisement">
+
+                <?php if ($one_wheel["reserved"]): ?>
+                    <div class="advert-label">
+                        Rezervované
+                    </div>
+                <?php elseif ($one_wheel["sold"]): ?>
+                    <div class="advert-label">
+                        Predané
+                    </div>
+                <?php endif; ?>
               
                 <?php if ($one_wheel["wheel_image"] != "no-photo-car.jpg"): ?>
 

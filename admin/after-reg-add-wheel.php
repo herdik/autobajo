@@ -75,7 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
                     $new_image_name = uniqid("IMG-", true) . "." . $image_extension;
 
                     // save all wheel dvertisement do SQL wheel_advertisement table
-                    $wheel_id = Wheel::createWheelAdvertisement($connection, $wheel_category, $wheel_brand, $wheel_model, $wheel_average, $spacing, $width, $et, $wheel_color, $wheel_price, $wheel_description, $new_image_name);
+                    $wheel_id = Wheel::createWheelAdvertisement($connection, $wheel_category, $wheel_brand, $wheel_model, $wheel_average, $spacing, $width, $et, $wheel_color, $wheel_price, $wheel_description, true, false, false, $new_image_name);
 
                     if ($wheel_id) {
                         // save title image for wheel advertisement to wheel_image table
@@ -114,7 +114,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
                 $new_image_name = "no-photo-car.jpg";
 
                 // save all wheel dvertisement do SQL wheel_advertisement table
-                $wheel_id = Wheel::createWheelAdvertisement($connection, $wheel_category, $wheel_brand, $wheel_model, $wheel_average, $spacing, $width, $et, $wheel_color, $wheel_price, $wheel_description, $new_image_name);
+                $wheel_id = Wheel::createWheelAdvertisement($connection, $wheel_category, $wheel_brand, $wheel_model, $wheel_average, $spacing, $width, $et, $wheel_color, $wheel_price, $wheel_description, true, false, false, $new_image_name);
 
                 if ($wheel_id) {
                     // save title image for wheel advertisement to wheel_image table

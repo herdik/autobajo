@@ -46,8 +46,26 @@ main h1 {
     flex-wrap: wrap;
     border: 5px solid #fff;
     padding: 5px;
-    
+    position: relative;
 }
+
+
+/* label on image */
+.advert-label {
+    left: 15px;
+    top: 15px;
+    position: absolute;
+    width: 160px;
+    background-color: #b30606;
+    border-radius: 50%;
+    padding: 60px 0px;
+    color: #fff;
+    font-size: 22px;
+    text-align: center;
+    transform: rotate(-45deg);
+    font-weight: bold;
+}
+/* label on image */
 
 .tire-picture {
     width: 30%;

@@ -61,7 +61,25 @@ $image_sequence = null;
             
             <article class="heading">
 
-                <img src="../img/tires.jpg" alt="tires.jpg">
+                <?php if ($tire_infos["tire_image"] === "no-photo-car.jpg"): ?>
+                    <img src="../img/no-photo-car/no-photo-car.jpg" alt="no-photo-car">
+                <?php else: ?>
+                    <img src="../uploads/tires/<?= htmlspecialchars($tire_infos["tire_id"]) ?>/<?= htmlspecialchars($tire_infos["tire_image"]) ?>" alt="">
+                <?php endif; ?>
+
+                <?php if ($tire_infos["reserved"]): ?>
+                    <div class="advert-label">
+                        Rezervované
+                    </div>
+                <?php elseif ($tire_infos["sold"]): ?>
+                    <div class="advert-label">
+                        Predané
+                    </div>
+                <?php elseif (!$tire_infos["active"]): ?>
+                    <div class="advert-label">
+                        Neaktívny
+                    </div>
+                <?php endif; ?>
 
                 <div class="main-tire-info">
 
@@ -111,17 +129,42 @@ $image_sequence = null;
 
             </article>
 
-            <article class="images">
-            
-                <label for="car-image" id="choose-img-text">Vybrať</label>
-                <?php if (htmlspecialchars($image_sequence) == NULL): ?>
-                    <p id="picture-titel" style="opacity:1; color:white; font-size:24px;">Doplniť galériu</p>
-                <?php else: ?>
-                    <p style="opacity:1;">Zvolený obrázok: Obrázok č.<?= htmlspecialchars($image_sequence) ?></p>
-                <?php endif; ?>
+            <article class="management-part">
+
+                <div class="slider-gallery">
+
+                </div>
                 
-                <input id="car-image" type="file" name="tire_image" multiple="multiple">
-                    
+
+                <div class="administration">
+                    <h2>Administrácia</h2>
+
+                    <div class="administration-part">
+                        <a class="btn" href="./after-update-tire-advert.php">Upraviť</a>
+                        <a class="btn" href="./after-update-tire-advert.php">Galéria</a>
+
+                        <?php if ($tire_infos["active"]): ?>
+                            <a class="btn" href="./after-update-tire-advert.php?active=false&tire_id=<?= htmlspecialchars($tire_infos["tire_id"]) ?>">Dektivovať</a>
+                        <?php else: ?>
+                            <a class="btn-green" href="./after-update-tire-advert.php?active=true&tire_id=<?= htmlspecialchars($tire_infos["tire_id"]) ?>">Aktivovať</a>
+                        <?php endif; ?>
+
+                        <?php if ($tire_infos["reserved"]): ?>
+                            <a class="btn-green" href="./after-update-tire-advert.php?reserved=false&tire_id=<?= htmlspecialchars($tire_infos["tire_id"]) ?>">Dostupné</a>
+                            <?php else: ?>
+                                <a class="btn" href="./after-update-tire-advert.php?reserved=true&tire_id=<?= htmlspecialchars($tire_infos["tire_id"]) ?>">Rezervované</a>
+                        <?php endif; ?>   
+                        
+                        <?php if ($tire_infos["sold"]): ?>
+                            <a class="btn-green" href="./after-update-tire-advert.php?sold=false&tire_id=<?= htmlspecialchars($tire_infos["tire_id"]) ?>">Dostupné</a>
+                            <?php else: ?>
+                                <a class="btn" href="./after-update-tire-advert.php?sold=true&tire_id=<?= htmlspecialchars($tire_infos["tire_id"]) ?>">Predané</a>
+                        <?php endif; ?> 
+
+                    </div>
+                </div>
+
+
             </article>
 
             <article class="tires-condition part">
@@ -149,7 +192,7 @@ $image_sequence = null;
     </main>
     
     <?php require "../assets/footer.php" ?>
-    <script src="../js/show-image-name-car-advert.js"></script>  
+    
     <script src="../js/header.js"></script>                   
 </body>
 </html>

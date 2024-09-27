@@ -18,7 +18,7 @@ if (!Auth::isLoggedIn()){
 $database = new Database();
 $connection = $database->connectionDB();
 
-$cars_advertisements = Car::getAllCarsAdvertisement($connection, "car_id, car_brand, car_model, year_of_manufacture, past_km, fuel_type, car_description, car_price, car_image");
+$cars_advertisements = Car::getAllCarsAdvertisement($connection, true, "car_id, car_brand, car_model, year_of_manufacture, past_km, fuel_type, car_description, car_price, reserved, sold, car_image");
 
 ?>
 
@@ -62,6 +62,16 @@ $cars_advertisements = Car::getAllCarsAdvertisement($connection, "car_id, car_br
 
             <a href="./car-profil.php?car_id=<?= htmlspecialchars($one_car["car_id"]) ?>"> 
             <article class="car-advertisement">
+
+                <?php if ($one_car["reserved"]): ?>
+                    <div class="advert-label">
+                        Rezervované
+                    </div>
+                <?php elseif ($one_car["sold"]): ?>
+                    <div class="advert-label">
+                        Predané
+                    </div>
+                <?php endif; ?>
               
                 <?php if ($one_car["car_image"] != "no-photo-car.jpg"): ?>
 

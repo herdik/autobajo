@@ -26,6 +26,7 @@ main {
     padding: 5px;
     background: rgba(0, 0, 0, 0.774);
     border: 5px solid #fff;
+    position: relative;
 }
 
 /* css for all tire advertisement */
@@ -43,6 +44,25 @@ main {
     width: 50%;
 }
 /* heading image */
+
+/* label on image */
+.advert-label {
+    left: 15px;
+    top: 15px;
+    position: absolute;
+    width: 160px;
+    background-color: #b30606;
+    border-radius: 50%;
+    padding: 60px 0px;
+    color: #fff;
+    font-size: 22px;
+    text-align: center;
+    transform: rotate(-45deg);
+    font-weight: bold;
+}
+/* label on image */
+
+
 
 /* main tire info */
 .main-tire-info {
@@ -113,27 +133,42 @@ main {
 /* heading part */
 
 
-
-
-/* picture gallery */
-.images  {
-    padding-top: 15px;
-    margin-top: 15px;
+/* administration */
+.management-part {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+}
+.slider-gallery {
+    width: 40%;
+    border: 1px solid #fff;
+}
+.administration  {
+    width: 60%;
+    gap: 20px;
     color: #fff;
     font-size: 20px;
-    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
+    border: 1px solid #fff;
 }
-/* button to select images to pictures gallery */
 
+.administration-part {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    gap: 20px;
+}
 
-#car-image {
-    display: none;
-}  
+/* button administration */
 
-#choose-img-text {
+.btn {
     padding: 8px 15px;
     cursor: pointer;
     color: #fff;
@@ -141,22 +176,34 @@ main {
     background-color: #b30606;
     font-weight: bold;
     transition: 0.4s all linear;
+    text-decoration: none;
 }
-
-#choose-img-text:hover {
+.btn:hover {
     cursor: pointer;
     color: #b30606;
     border: 5px solid #b30606;
     background-color: #fff;
 }
 
-#picture-titel {
-    margin: 20px 0;
-    font-size: 20px;
+.btn-green{
+    padding: 8px 15px;
+    cursor: pointer;
+    color: #fff;
+    font-weight: bold;
+    transition: 0.4s all linear;
+    text-decoration: none;
+    background-color: green;
+    border: 5px solid green;
 }
-/* button to select images to pictures gallery */
+.btn-green:hover {
+    cursor: pointer;
+    color: green;
+    border: 5px solid green;
+    background-color: #fff;
+}
+/* button administration */
 
-/* picture gallery */
+/* administration */
 
 
 /* Other equipments and vehicle condition */

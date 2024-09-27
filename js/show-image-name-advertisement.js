@@ -1,5 +1,5 @@
 let message = document.querySelector(".images p");
-let img_file = document.querySelector("#car-image");
+let img_file = document.querySelector("#image-name");
 
 
 img_file.addEventListener("input", ()=> {

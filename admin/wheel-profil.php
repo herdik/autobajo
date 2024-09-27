@@ -61,7 +61,25 @@ $image_sequence = null;
             
             <article class="heading">
 
-                <img src="../img/rim.jpg" alt="">
+                <?php if ($wheel_infos["wheel_image"] === "no-photo-car.jpg"): ?>
+                    <img src="../img/no-photo-car/no-photo-car.jpg" alt="no-photo-car">
+                <?php else: ?>
+                    <img src="../uploads/wheels/<?= htmlspecialchars($wheel_infos["wheel_id"]) ?>/<?= htmlspecialchars($wheel_infos["wheel_image"]) ?>" alt="">
+                <?php endif; ?>
+
+                <?php if ($wheel_infos["reserved"]): ?>
+                    <div class="advert-label">
+                        Rezervované
+                    </div>
+                <?php elseif ($wheel_infos["sold"]): ?>
+                    <div class="advert-label">
+                        Predané
+                    </div>
+                <?php elseif (!$wheel_infos["active"]): ?>
+                    <div class="advert-label">
+                        Neaktívny
+                    </div>
+                <?php endif; ?>
 
                 <div class="main-wheel-info">
 
@@ -108,24 +126,49 @@ $image_sequence = null;
                             <span class="sub-heading">ET</span>
                             <span><?= htmlspecialchars($wheel_infos["et"]) ?></span>
                         </div>
-                        
+
                     </div>
                 
                 </div>
 
             </article>
 
-            <article class="images">
-            
-                <label for="car-image" id="choose-img-text">Vybrať</label>
-                <?php if (htmlspecialchars($image_sequence) == NULL): ?>
-                    <p id="picture-titel" style="opacity:1; color:white; font-size:24px;">Doplniť galériu</p>
-                <?php else: ?>
-                    <p style="opacity:1;">Zvolený obrázok: Obrázok č.<?= htmlspecialchars($image_sequence) ?></p>
-                <?php endif; ?>
+            <article class="management-part">
+
+                <div class="slider-gallery">
+
+                </div>
                 
-                <input id="car-image" type="file" name="wheel_image" multiple="multiple">
-                    
+
+                <div class="administration">
+                    <h2>Administrácia</h2>
+
+                    <div class="administration-part">
+                        <a class="btn" href="./after-update-wheel-advert.php">Upraviť</a>
+                        <a class="btn" href="./after-update-wheel-advert.php">Galéria</a>
+
+                        <?php if ($wheel_infos["active"]): ?>
+                            <a class="btn" href="./after-update-wheel-advert.php?active=false&wheel_id=<?= htmlspecialchars($wheel_infos["wheel_id"]) ?>">Dektivovať</a>
+                        <?php else: ?>
+                            <a class="btn-green" href="./after-update-wheel-advert.php?active=true&wheel_id=<?= htmlspecialchars($wheel_infos["wheel_id"]) ?>">Aktivovať</a>
+                        <?php endif; ?>
+
+                        <?php if ($wheel_infos["reserved"]): ?>
+                            <a class="btn-green" href="./after-update-wheel-advert.php?reserved=false&wheel_id=<?= htmlspecialchars($wheel_infos["wheel_id"]) ?>">Dostupné</a>
+                            <?php else: ?>
+                                <a class="btn" href="./after-update-wheel-advert.php?reserved=true&wheel_id=<?= htmlspecialchars($wheel_infos["wheel_id"]) ?>">Rezervované</a>
+                        <?php endif; ?>   
+                        
+                        <?php if ($wheel_infos["sold"]): ?>
+                            <a class="btn-green" href="./after-update-wheel-advert.php?sold=false&wheel_id=<?= htmlspecialchars($wheel_infos["wheel_id"]) ?>">Dostupné</a>
+                            <?php else: ?>
+                                <a class="btn" href="./after-update-wheel-advert.php?sold=true&wheel_id=<?= htmlspecialchars($wheel_infos["wheel_id"]) ?>">Predané</a>
+                        <?php endif; ?> 
+
+                    </div>
+                </div>
+
+
             </article>
 
             <article class="wheels-condition part">
@@ -153,7 +196,7 @@ $image_sequence = null;
     </main>
     
     <?php require "../assets/footer.php" ?>
-    <script src="../js/show-image-name-car-advert.js"></script>  
+    
     <script src="../js/header.js"></script>                   
 </body>
 </html>

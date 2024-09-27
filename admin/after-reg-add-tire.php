@@ -78,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
                     $new_image_name = uniqid("IMG-", true) . "." . $image_extension;
 
                     // save all tire dvertisement do SQL tire_advertisement table
-                    $tire_id = Tire::createTireAdvertisement($connection, $tire_category, $tire_brand, $tire_model, $type, $year_of_manufacture, $width, $height, $construction, $average, $weight_index, $speed_index, $tire_price, $tire_description, $new_image_name);
+                    $tire_id = Tire::createTireAdvertisement($connection, $tire_category, $tire_brand, $tire_model, $type, $year_of_manufacture, $width, $height, $construction, $average, $weight_index, $speed_index, $tire_price, $tire_description, true, false, false, $new_image_name);
 
                     if ($tire_id) {
                         // save title image for tire advertisement to tire_image table
@@ -115,7 +115,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
                 $new_image_name = "no-photo-car.jpg";
 
                 // save all tire dvertisement do SQL tire_advertisement table
-                $tire_id = Tire::createTireAdvertisement($connection, $tire_category, $tire_brand, $tire_model, $type, $year_of_manufacture, $width, $height, $construction, $average, $weight_index, $speed_index, $tire_price, $tire_description, $new_image_name);
+                $tire_id = Tire::createTireAdvertisement($connection, $tire_category, $tire_brand, $tire_model, $type, $year_of_manufacture, $width, $height, $construction, $average, $weight_index, $speed_index, $tire_price, $tire_description, true, false, false, $new_image_name);
 
                 if ($tire_id) {
                     // save title image for tire advertisement to tire_image table

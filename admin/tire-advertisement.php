@@ -18,7 +18,7 @@ if (!Auth::isLoggedIn()){
 $database = new Database();
 $connection = $database->connectionDB();
 
-$tires_advertisements = Tire::getAllTiresAdvertisement($connection, "tire_id, tire_brand, tire_model, type, width, height, construction, average, tire_price, tire_image");
+$tires_advertisements = Tire::getAllTiresAdvertisement($connection, true, "tire_id, tire_brand, tire_model, type, width, height, construction, average, tire_price, reserved, sold, tire_image");
 
 // var_dump($tires_advertisements);
 ?>
@@ -63,6 +63,16 @@ $tires_advertisements = Tire::getAllTiresAdvertisement($connection, "tire_id, ti
 
             <a href="./tire-profil.php?tire_id=<?= htmlspecialchars($one_tire["tire_id"]) ?>"> 
             <article class="tire-advertisement">
+
+                <?php if ($one_tire["reserved"]): ?>
+                    <div class="advert-label">
+                        Rezervované
+                    </div>
+                <?php elseif ($one_tire["sold"]): ?>
+                    <div class="advert-label">
+                        Predané
+                    </div>
+                <?php endif; ?>
               
                 <?php if ($one_tire["tire_image"] != "no-photo-car.jpg"): ?>
 

@@ -108,7 +108,7 @@ $image_sequence = null;
                     </div>
 
                     <div class="basic-car-info">  
-                        <span>Opis vozidla</span>
+                        <span>Parametre vozidla</span>
                         <textarea name="car_description" id="car-description" rows="5" placeholder="Nepovinný údaj"></textarea>
                     </div>   
                      
@@ -118,14 +118,14 @@ $image_sequence = null;
                     </div>
 
                     <div class="basic-car-info">
-                        <label for="car-image" id="choose-img-text">Vybrať</label>
+                        <label for="image-name" id="choose-img-text">Vybrať</label>
                         <?php if (htmlspecialchars($image_sequence) == NULL): ?>
                             <p id="picture-titel" style="opacity:1; color:white; font-size:24px;">Titulný obrázok</p>
                         <?php else: ?>
                             <p style="opacity:1;">Zvolený obrázok: Obrázok č.<?= htmlspecialchars($image_sequence) ?></p>
                         <?php endif; ?>
                         
-                        <input id="car-image" type="file" name="car_image">
+                        <input id="image-name" type="file" name="car_image">
                     </div>
                 </div> 
                 <div class="supplementary-car-info">

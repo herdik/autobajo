@@ -1,5 +1,4 @@
 <?php
-
 require "../classes/Database.php";
 require "../classes/Car.php";
 
@@ -31,6 +30,7 @@ $image_sequence = null;
 // first index for $car_equipments loop
 $inside_index = 12;
 
+// var_dump($car_infos["reserved"]);
 ?>
 
 <!DOCTYPE html>
@@ -70,6 +70,20 @@ $inside_index = 12;
                     <img src="../img/no-photo-car/no-photo-car.jpg" alt="no-photo-car">
                 <?php else: ?>
                     <img src="../uploads/cars/<?= htmlspecialchars($car_infos["car_id"]) ?>/<?= htmlspecialchars($car_infos["car_image"]) ?>" alt="">
+                <?php endif; ?>
+                
+                <?php if ($car_infos["reserved"]): ?>
+                    <div class="advert-label">
+                        Rezervované
+                    </div>
+                <?php elseif ($car_infos["sold"]): ?>
+                    <div class="advert-label">
+                        Predané
+                    </div>
+                <?php elseif (!$car_infos["active"]): ?>
+                    <div class="advert-label">
+                        Neaktívny
+                    </div>
                 <?php endif; ?>
 
                 <div class="main-car-info">
@@ -127,17 +141,42 @@ $inside_index = 12;
 
             </article>
 
-            <article class="images">
-            
-                <label for="car-image" id="choose-img-text">Vybrať</label>
-                <?php if (htmlspecialchars($image_sequence) == NULL): ?>
-                    <p id="picture-titel" style="opacity:1; color:white; font-size:24px;">Doplniť galériu</p>
-                <?php else: ?>
-                    <p style="opacity:1;">Zvolený obrázok: Obrázok č.<?= htmlspecialchars($image_sequence) ?></p>
-                <?php endif; ?>
+            <article class="management-part">
+
+                <div class="slider-gallery">
+
+                </div>
+                 
+
+                <div class="administration">
+                    <h2>Administrácia</h2>
+
+                    <div class="administration-part">
+                        <a class="btn" href="./after-update-car-advert.php">Upraviť</a>
+                        <a class="btn" href="./after-update-car-advert.php">Galéria</a>
+
+                        <?php if ($car_infos["active"]): ?>
+                            <a class="btn" href="./after-update-car-advert.php?active=false&car_id=<?= htmlspecialchars($car_infos["car_id"]) ?>">Dektivovať</a>
+                        <?php else: ?>
+                            <a class="btn-green" href="./after-update-car-advert.php?active=true&car_id=<?= htmlspecialchars($car_infos["car_id"]) ?>">Aktivovať</a>
+                        <?php endif; ?>
+
+                        <?php if ($car_infos["reserved"]): ?>
+                            <a class="btn-green" href="./after-update-car-advert.php?reserved=false&car_id=<?= htmlspecialchars($car_infos["car_id"]) ?>">Dostupné</a>
+                            <?php else: ?>
+                                <a class="btn" href="./after-update-car-advert.php?reserved=true&car_id=<?= htmlspecialchars($car_infos["car_id"]) ?>">Rezervované</a>
+                        <?php endif; ?>   
+                        
+                        <?php if ($car_infos["sold"]): ?>
+                            <a class="btn-green" href="./after-update-car-advert.php?sold=false&car_id=<?= htmlspecialchars($car_infos["car_id"]) ?>">Dostupné</a>
+                            <?php else: ?>
+                                <a class="btn" href="./after-update-car-advert.php?sold=true&car_id=<?= htmlspecialchars($car_infos["car_id"]) ?>">Predané</a>
+                        <?php endif; ?> 
+
+                    </div>
+                </div>
                 
-                <input id="car-image" type="file" name="car_image" multiple="multiple">
-                    
+                
             </article>
 
             <article class="other-info part">
@@ -181,7 +220,7 @@ $inside_index = 12;
     </main>
     
     <?php require "../assets/footer.php" ?>
-    <script src="../js/show-image-name-car-advert.js"></script>  
+    
     <script src="../js/header.js"></script>                   
 </body>
 </html>
