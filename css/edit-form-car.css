@@ -1,0 +1,217 @@
+main {
+    min-height: 100vh;
+    background: url(../img/background-photo.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding-top: 50px;
+}
+
+.registration h1 {
+    color: #fff;
+    border-bottom: 5px #fff solid;
+    width: 80%;
+    text-align: center;
+    font-size: 35px;
+}
+
+.registration {  
+    width: 100%;
+    max-width: 680px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 30px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 2px solid #fff;
+    box-shadow: #b30606 5px;
+    padding: 15px;
+}
+
+.main-car-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 10px 0px 10px;
+}
+
+.basic-car-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 33.33%;
+    
+}
+
+.basic-car-info:nth-child(7),
+.basic-car-info:nth-child(8), 
+.basic-car-info:nth-child(9),
+.basic-car-info:nth-child(10) {
+    /* justify-content: end; */
+    width: 48%;
+}
+
+.basic-car-info:nth-child(11) {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.basic-car-info:nth-child(11) {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+input[type="number"], input[type="text"] {
+    outline: none;
+    width: 100%;
+    background: #fff;
+    border: 3px #fff solid;
+    font-size: 20px;
+    text-align: center;
+    color: #000;
+    padding: 6px 8px;
+    margin: 0 10px 15px 10px;
+    /* text-transform: capitalize; */
+}
+
+.basic-car-info span {
+    color: #fff;
+    font-size: 20px;
+}
+
+select {
+    padding: 6px 25px;
+    margin: 0 10px 15px 10px;
+    font-size: 20px;
+    width: 100%;
+}
+
+option {
+    padding: 6px 8px;
+}
+
+.basic-car-info label {
+    color: #fff;
+    font-size: 20px;
+    margin-top: 15px;
+}
+
+.supplementary-car-info {
+    width: 100%;
+    color: #fff;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.supplementary-equipment {
+    width: 100%;
+    color: #fff;
+    text-align: center;
+    font-size: 24px;
+    border-bottom: 3px solid #fff;
+    flex-wrap: wrap;  
+}
+
+.car-equipment {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    
+}
+.car-equipment-category {
+    width: 25%;
+    display: flex;
+    height: 40px;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.car-equipment-category label, 
+.car-equipment-category input {
+    cursor: pointer;
+}
+
+#picture-titel {
+    margin: 20px 0;
+    font-size: 20px;
+}
+
+textarea {
+    background: #fff;
+    font-size: 18px;
+    color: #000;
+    border: 3px #fff solid;
+    padding: 10px;
+    width: 100%;
+}
+
+input[type="submit"]{
+    margin-top: 18px;
+    border: 5px solid #b30606;
+    background-color: #b30606;
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s linear;
+    color: #fff;
+}
+
+input[type="submit"]:hover {
+    color: #b30606;
+    border: 5px solid #b30606;
+    background-color: #fff;
+    font-weight: bold;
+    transition: 0.4s all linear;
+}
+
+input[type="checkbox"] {
+    position: relative;
+    appearance: none;
+    background-color: #fff;
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+input[type="checkbox"]:checked {
+    background-color: #b30606;
+}
+input[type="checkbox"]::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 5px;
+    width: 4px;
+    height: 9px;
+    border: 4px solid transparent;
+    border-left: none;
+    border-top: none;
+    transform: rotate(45deg);
+}
+
+input[type="checkbox"]:checked:before {
+    border-color: #fff;
+}
+

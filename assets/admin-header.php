@@ -19,6 +19,8 @@
             <li><a href="./wheel-advertisement.php">Disky</a></li>
             <li><a href="./tires-service.php">Pneuservis</a></li>
             <li><a href="./admin-about-us.php">O nás</a></li>
+            <li><a href="#">História</a></li>
+            <li><a href="#">Zmena hesla</a></li>
             <li><a href="./log-out.php">Odhlásiť</a></li>
                 
         </ul>

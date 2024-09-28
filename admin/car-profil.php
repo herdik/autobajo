@@ -152,7 +152,7 @@ $inside_index = 12;
                     <h2>Administrácia</h2>
 
                     <div class="administration-part">
-                        <a class="btn" href="./after-update-car-advert.php">Upraviť</a>
+                        <a class="btn" href="./edit-car-advertisement.php?car_id=<?= htmlspecialchars($car_infos["car_id"]) ?>">Upraviť</a>
                         <a class="btn" href="./after-update-car-advert.php">Galéria</a>
 
                         <?php if ($car_infos["active"]): ?>
