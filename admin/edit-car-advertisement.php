@@ -67,13 +67,12 @@ $inside_index = 12;
 
         <section class="registration">
 
-            <h1>Registrácia auta</h1>
+            <h1>Editácia auta</h1>
 
-            <form id="registration-form" action="after-reg-add-car.php" method="POST" enctype="multipart/form-data">
-
+            <form id="registration-form" action="after-edit-car-form.php" method="POST">
+                <input type="hidden" name="car_id" value="<?= htmlspecialchars($car_infos["car_id"]) ?>">
                 <div class="main-car-info">
-
-                
+                    
                     <div class="basic-car-info">
                         <input type="text" id="answerCarBrand" name="car_brand" placeholder="Značka auta" list="car-brands" autocomplete="off" value="<?= htmlspecialchars($car_infos["car_brand"]) ?>" required />
                         <datalist id="car-brands">
@@ -106,26 +105,31 @@ $inside_index = 12;
                     </div>
 
                     <div class="basic-car-info">   
-                        <input type="number" name="car_price" placeholder="Cena" value="<?= htmlspecialchars($car_infos["car_price"]) ?>" required>
+                        <input type="number" name="past_km" placeholder="Počet km" value="<?= htmlspecialchars($car_infos["past_km"]) ?>" required>
                     </div>
-
+                    
                     <div class="basic-car-info">
                         <label for="fuel-type">Druh paliva:</label>
                         <select name="fuel_type" id="fuel-type">
-                            <option value="Benzín">Benzín</option>
-                            <option value="Diesel">Diesel</option>
-                            <option value="LPG">LPG</option>
-                            <option value="Hybrid">Hybrid</option>
-                            <option value="Elektro">Elektro</option>
+                            <option <?php echo ($car_infos["fuel_type"] === 'Benzín') ? 'selected' : ''; ?> value='Benzín'>Benzín</option>
+                            <option <?php echo ($car_infos["fuel_type"] === 'Diesel') ? 'selected' : ''; ?> value="Diesel">Diesel</option>
+                            <option <?php echo ($car_infos["fuel_type"] === 'LPG') ? 'selected' : ''; ?> value="LPG">LPG</option>
+                            <option <?php echo ($car_infos["fuel_type"] === 'Hybrid') ? 'selected' : ''; ?> value="Hybrid">Hybrid</option>
+                            <option <?php echo ($car_infos["fuel_type"] === 'Elektro') ? 'selected' : ''; ?> value="Elektro">Elektro</option>
                         </select>
                     </div>
 
                     <div class="basic-car-info">
                         <label for="gearbox">Prevodovka:</label>
                         <select name="gearbox" id="gearbox">
-                            <option value="Manuálna">Manuálna</option>
-                            <option value="Automatická">Automatická</option>
+                            <option <?php echo ($car_infos["gearbox"] === 'Manuálna') ? 'selected' : ''; ?> value="Manuálna">Manuálna</option>
+                            <option <?php echo ($car_infos["gearbox"] === 'Automatická') ? 'selected' : ''; ?> value="Automatická">Automatická</option>
                         </select>
+                    </div>
+
+                    <div class="basic-car-info">   
+                        <label for="car-price">Cena:</label>
+                        <input type="number" name="car_price" placeholder="Cena" value="<?= htmlspecialchars($car_infos["car_price"]) ?>" required>
                     </div>
 
                     <div class="basic-car-info">  

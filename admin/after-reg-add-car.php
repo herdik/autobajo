@@ -36,6 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
     $car_color = $_POST["car_color"];
     $year_of_manufacture = $_POST["year_of_manufacture"];
     $engine_volume = $_POST["engine_volume"];
+    $past_km = $_POST["past_km"];
     $car_price = $_POST["car_price"];
     $fuel_type = $_POST["fuel_type"];
     $gearbox = $_POST["gearbox"];
@@ -103,7 +104,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
                     $new_image_name = uniqid("IMG-", true) . "." . $image_extension;
 
                     // save all car dvertisement do SQL car_advertisement table
-                    $car_id = Car::createCarAdvertisement($connection, $car_brand, $car_model, $car_color, $year_of_manufacture, $engine_volume, $car_price, $fuel_type, $gearbox, $car_description, $other_equipment, $vehicle_equipment[0], $vehicle_equipment[1], $vehicle_equipment[2], $vehicle_equipment[3], $vehicle_equipment[4], $vehicle_equipment[5], $vehicle_equipment[6], $vehicle_equipment[7], $vehicle_equipment[8], $vehicle_equipment[9], $vehicle_equipment[10], $vehicle_equipment[11], true, false, false, $new_image_name);
+                    $car_id = Car::createCarAdvertisement($connection, $car_brand, $car_model, $car_color, $year_of_manufacture, $engine_volume, $past_km, $car_price, $fuel_type, $gearbox, $car_description, $other_equipment, $vehicle_equipment[0], $vehicle_equipment[1], $vehicle_equipment[2], $vehicle_equipment[3], $vehicle_equipment[4], $vehicle_equipment[5], $vehicle_equipment[6], $vehicle_equipment[7], $vehicle_equipment[8], $vehicle_equipment[9], $vehicle_equipment[10], $vehicle_equipment[11], true, false, false, $new_image_name);
 
                     if ($car_id) {
                         // save title image for car advertisement to car_image table
@@ -140,7 +141,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
                 $new_image_name = "no-photo-car.jpg";
 
                 // save all car dvertisement do SQL car_advertisement table
-                $car_id = Car::createCarAdvertisement($connection, $car_brand, $car_model, $car_color, $year_of_manufacture, $engine_volume, $car_price, $fuel_type, $gearbox, $car_description, $other_equipment, $vehicle_equipment[0], $vehicle_equipment[1], $vehicle_equipment[2], $vehicle_equipment[3], $vehicle_equipment[4], $vehicle_equipment[5], $vehicle_equipment[6], $vehicle_equipment[7], $vehicle_equipment[8], $vehicle_equipment[9], $vehicle_equipment[10], $vehicle_equipment[11], true, false, false, $new_image_name);
+                $car_id = Car::createCarAdvertisement($connection, $car_brand, $car_model, $car_color, $year_of_manufacture, $engine_volume, $past_km, $car_price, $fuel_type, $gearbox, $car_description, $other_equipment, $vehicle_equipment[0], $vehicle_equipment[1], $vehicle_equipment[2], $vehicle_equipment[3], $vehicle_equipment[4], $vehicle_equipment[5], $vehicle_equipment[6], $vehicle_equipment[7], $vehicle_equipment[8], $vehicle_equipment[9], $vehicle_equipment[10], $vehicle_equipment[11], true, false, false, $new_image_name);
 
                 if ($car_id) {
                     // save title image for car advertisement to car_image table

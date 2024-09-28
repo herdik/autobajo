@@ -85,7 +85,7 @@ $image_sequence = null;
                     </div>
 
                     <div class="basic-car-info">   
-                        <input type="number" name="car_price" placeholder="Cena" required>
+                        <input type="number" name="past_km" placeholder="Počet km" required>
                     </div>
 
                     <div class="basic-car-info">
@@ -105,6 +105,11 @@ $image_sequence = null;
                             <option value="Manuálna">Manuálna</option>
                             <option value="Automatická">Automatická</option>
                         </select>
+                    </div>
+
+                    <div class="basic-car-info">  
+                        <label for="car-price">Cena:</label> 
+                        <input type="number" name="car_price" placeholder="Cena" required id="car-price">
                     </div>
 
                     <div class="basic-car-info">  
