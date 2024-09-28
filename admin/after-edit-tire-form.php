@@ -15,8 +15,6 @@ if (!Auth::isLoggedIn()){
 
 
 if ($_SERVER["REQUEST_METHOD"] === "POST"){
-
-    var_dump($_POST);
     
     // database connection
     $database = new Database();

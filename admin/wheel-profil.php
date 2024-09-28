@@ -144,7 +144,7 @@ $image_sequence = null;
                     <h2>Administrácia</h2>
 
                     <div class="administration-part">
-                        <a class="btn" href="./after-update-wheel-advert.php">Upraviť</a>
+                        <a class="btn" href="./edit-wheel-advertisement.php?wheel_id=<?= htmlspecialchars($wheel_infos["wheel_id"]) ?>">Upraviť</a>
                         <a class="btn" href="./after-update-wheel-advert.php">Galéria</a>
 
                         <?php if ($wheel_infos["active"]): ?>
