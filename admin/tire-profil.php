@@ -140,7 +140,7 @@ $image_sequence = null;
                     <h2>Administrácia</h2>
 
                     <div class="administration-part">
-                        <a class="btn" href="./after-update-tire-advert.php">Upraviť</a>
+                        <a class="btn" href="./edit-tire-advertisement.php?tire_id=<?= htmlspecialchars($tire_infos["tire_id"]) ?>">Upraviť</a>
                         <a class="btn" href="./after-update-tire-advert.php">Galéria</a>
 
                         <?php if ($tire_infos["active"]): ?>

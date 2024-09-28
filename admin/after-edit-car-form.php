@@ -16,11 +16,6 @@ if (!Auth::isLoggedIn()){
 
 if ($_SERVER["REQUEST_METHOD"] === "POST"){
 
-    var_dump($_POST);
-    
-    // if is error create error message
-    $redirect_status_error = true;
-
     // database connection
     $database = new Database();
     $connection = $database->connectionDB();

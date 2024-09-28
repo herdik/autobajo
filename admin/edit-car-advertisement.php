@@ -111,19 +111,19 @@ $inside_index = 12;
                     <div class="basic-car-info">
                         <label for="fuel-type">Druh paliva:</label>
                         <select name="fuel_type" id="fuel-type">
-                            <option <?php echo ($car_infos["fuel_type"] === 'Benzín') ? 'selected' : ''; ?> value='Benzín'>Benzín</option>
-                            <option <?php echo ($car_infos["fuel_type"] === 'Diesel') ? 'selected' : ''; ?> value="Diesel">Diesel</option>
-                            <option <?php echo ($car_infos["fuel_type"] === 'LPG') ? 'selected' : ''; ?> value="LPG">LPG</option>
-                            <option <?php echo ($car_infos["fuel_type"] === 'Hybrid') ? 'selected' : ''; ?> value="Hybrid">Hybrid</option>
-                            <option <?php echo ($car_infos["fuel_type"] === 'Elektro') ? 'selected' : ''; ?> value="Elektro">Elektro</option>
+                            <option <?php echo (htmlspecialchars($car_infos["fuel_type"]) === 'Benzín') ? 'selected' : ''; ?> value='Benzín'>Benzín</option>
+                            <option <?php echo (htmlspecialchars($car_infos["fuel_type"]) === 'Diesel') ? 'selected' : ''; ?> value="Diesel">Diesel</option>
+                            <option <?php echo (htmlspecialchars($car_infos["fuel_type"]) === 'LPG') ? 'selected' : ''; ?> value="LPG">LPG</option>
+                            <option <?php echo (htmlspecialchars($car_infos["fuel_type"]) === 'Hybrid') ? 'selected' : ''; ?> value="Hybrid">Hybrid</option>
+                            <option <?php echo (htmlspecialchars($car_infos["fuel_type"]) === 'Elektro') ? 'selected' : ''; ?> value="Elektro">Elektro</option>
                         </select>
                     </div>
 
                     <div class="basic-car-info">
                         <label for="gearbox">Prevodovka:</label>
                         <select name="gearbox" id="gearbox">
-                            <option <?php echo ($car_infos["gearbox"] === 'Manuálna') ? 'selected' : ''; ?> value="Manuálna">Manuálna</option>
-                            <option <?php echo ($car_infos["gearbox"] === 'Automatická') ? 'selected' : ''; ?> value="Automatická">Automatická</option>
+                            <option <?php echo (htmlspecialchars($car_infos["gearbox"]) === 'Manuálna') ? 'selected' : ''; ?> value="Manuálna">Manuálna</option>
+                            <option <?php echo (htmlspecialchars($car_infos["gearbox"]) === 'Automatická') ? 'selected' : ''; ?> value="Automatická">Automatická</option>
                         </select>
                     </div>
 

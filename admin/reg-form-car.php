@@ -77,7 +77,7 @@ $image_sequence = null;
                     </div>
 
                     <div class="basic-car-info">
-                        <input type="number" name="year_of_manufacture" placeholder="Rok výroby" required>
+                        <input type="number" name="year_of_manufacture" placeholder="Rok výroby" value="<?= htmlspecialchars(date("Y")); ?>" required>
                     </div>
 
                     <div class="basic-car-info">
