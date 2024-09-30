@@ -17,10 +17,14 @@ $database = new Database();
 $connection = $database->connectionDB();
 
 
-if (isset($_GET["wheel_id"]) and is_numeric($_GET["wheel_id"])){
+if ((isset($_GET["wheel_id"]) and is_numeric($_GET["wheel_id"])) and (isset($_GET["active_advertisement"]) and is_numeric($_GET["active_advertisement"]))){
     $wheel_infos = Wheel::getWheel($connection, $_GET["wheel_id"]);
+
+    // active true means aktice advertisement active false/0 means advertisement in history
+    $active_advertisement = $_GET["active_advertisement"];
 } else {
     $wheel_infos = null;
+    $active_advertisement = null;
 }
 
 // control if user choose image from image gallery 
@@ -153,17 +157,20 @@ $image_sequence = null;
                             <a class="btn-green" href="./after-update-wheel-advert.php?active=true&wheel_id=<?= htmlspecialchars($wheel_infos["wheel_id"]) ?>">Aktivovať</a>
                         <?php endif; ?>
 
-                        <?php if ($wheel_infos["reserved"]): ?>
-                            <a class="btn-green" href="./after-update-wheel-advert.php?reserved=false&wheel_id=<?= htmlspecialchars($wheel_infos["wheel_id"]) ?>">Dostupné</a>
-                            <?php else: ?>
-                                <a class="btn" href="./after-update-wheel-advert.php?reserved=true&wheel_id=<?= htmlspecialchars($wheel_infos["wheel_id"]) ?>">Rezervované</a>
-                        <?php endif; ?>   
-                        
-                        <?php if ($wheel_infos["sold"]): ?>
-                            <a class="btn-green" href="./after-update-wheel-advert.php?sold=false&wheel_id=<?= htmlspecialchars($wheel_infos["wheel_id"]) ?>">Dostupné</a>
-                            <?php else: ?>
-                                <a class="btn" href="./after-update-wheel-advert.php?sold=true&wheel_id=<?= htmlspecialchars($wheel_infos["wheel_id"]) ?>">Predané</a>
-                        <?php endif; ?> 
+
+                        <?php if ($active_advertisement): ?>
+                            <?php if ($wheel_infos["reserved"]): ?>
+                                <a class="btn-green" href="./after-update-wheel-advert.php?reserved=false&wheel_id=<?= htmlspecialchars($wheel_infos["wheel_id"]) ?>">Dostupné</a>
+                                <?php else: ?>
+                                    <a class="btn" href="./after-update-wheel-advert.php?reserved=true&wheel_id=<?= htmlspecialchars($wheel_infos["wheel_id"]) ?>">Rezervované</a>
+                            <?php endif; ?>   
+                            
+                            <?php if ($wheel_infos["sold"]): ?>
+                                <a class="btn-green" href="./after-update-wheel-advert.php?sold=false&wheel_id=<?= htmlspecialchars($wheel_infos["wheel_id"]) ?>">Dostupné</a>
+                                <?php else: ?>
+                                    <a class="btn" href="./after-update-wheel-advert.php?sold=true&wheel_id=<?= htmlspecialchars($wheel_infos["wheel_id"]) ?>">Predané</a>
+                            <?php endif; ?> 
+                        <?php endif; ?>
 
                     </div>
                 </div>

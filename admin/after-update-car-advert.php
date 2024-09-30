@@ -76,7 +76,11 @@ if (($_SERVER["REQUEST_METHOD"] === "GET") || ($_SERVER["REQUEST_METHOD"] === "P
     } 
     
     if (!$redirect_status_error){
-        Url::redirectUrl("/autobajo/admin/car-profil.php?car_id=$car_id");
+        if ($action === "active") {
+            Url::redirectUrl("/autobajo/admin/car-advertisement.php"); 
+        } else {
+            Url::redirectUrl("/autobajo/admin/car-profil.php?car_id=$car_id&active_advertisement=1");
+        }
     } else {
         $not_added_car = "Update inzerátu sa nepodaril.";
         Url::redirectUrl("/autobajo/admin/logedin-error.php?logedin_error=$not_added_car"); 

@@ -18,7 +18,17 @@ if (!Auth::isLoggedIn()){
 $database = new Database();
 $connection = $database->connectionDB();
 
-$cars_advertisements = Car::getAllCarsAdvertisement($connection, true, "car_id, car_brand, car_model, year_of_manufacture, past_km, fuel_type, car_description, car_price, reserved, sold, car_image");
+if (isset($_GET["car_history"]) and is_numeric($_GET["car_history"])){
+    // active_advertisement means show active advetisement or show history
+    $active_advertisement = $_GET["car_history"];
+    $cars_advertisements = Car::getAllCarsAdvertisement($connection, $active_advertisement, "car_id, car_brand, car_model, year_of_manufacture, past_km, fuel_type, car_description, car_price, reserved, sold, car_image");
+} else {
+    // active_advertisement means show active advetisement or show history
+    $active_advertisement = 1;
+    $cars_advertisements = Car::getAllCarsAdvertisement($connection, $active_advertisement, "car_id, car_brand, car_model, year_of_manufacture, past_km, fuel_type, car_description, car_price, reserved, sold, car_image");
+}
+
+
 
 ?>
 
@@ -60,7 +70,7 @@ $cars_advertisements = Car::getAllCarsAdvertisement($connection, true, "car_id, 
 
             <?php foreach ($cars_advertisements as $one_car): ?>
 
-            <a href="./car-profil.php?car_id=<?= htmlspecialchars($one_car["car_id"]) ?>"> 
+            <a href="./car-profil.php?car_id=<?= htmlspecialchars($one_car["car_id"]) ?>&active_advertisement=<?= htmlspecialchars($active_advertisement) ?>"> 
             <article class="car-advertisement">
 
                 <?php if ($one_car["reserved"]): ?>

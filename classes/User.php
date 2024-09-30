@@ -111,4 +111,44 @@ class User {
     }
 
 
+    /**
+     *
+     * RETURN BOOLEAN FROM DATABASE AFTER UPDATED USER PASSWORD
+     *
+     * @param object $connection - database connection
+     * @param string $password - user password
+     * @param int $user_id -  spesific user
+     * 
+     * @return boolean if update is successful
+     */
+    public static function updateUserPassword($connection, $password, $user_id){
+
+        $sql = "UPDATE user
+                SET password = :password
+                WHERE user_id = :user_id";
+        
+
+        // connect sql amend to database
+        $stmt = $connection->prepare($sql);
+
+        // all parameters to send to Database
+        // filling and bind values will be execute to Database
+        $stmt->bindValue(":user_id", $user_id, PDO::PARAM_INT);
+        $stmt->bindValue(":password", password_hash($password, PASSWORD_DEFAULT), PDO::PARAM_STR);
+        
+        
+        try {
+            if($stmt->execute()){
+                return true;
+            } else {
+                throw Exception ("Príkaz pre update hesla užívateľa sa nepodaril");
+            }
+        } catch (Exception $e){
+            // 3 je že vyberiem vlastnú cestu k súboru
+            error_log("Chyba pri funkcii updateUserPassword, získanie informácií z databázy zlyhalo\n", 3, "../errors/error.log");
+            echo "Výsledná chyba je: " . $e->getMessage();
+        }
+    }
+
+
 }

@@ -18,7 +18,15 @@ if (!Auth::isLoggedIn()){
 $database = new Database();
 $connection = $database->connectionDB();
 
-$wheels_advertisements = Wheel::getAllWheelsAdvertisement($connection, true, "wheel_id, wheel_brand, wheel_model, wheel_average, spacing, width, et, wheel_color, wheel_image, reserved, sold, wheel_price");
+if (isset($_GET["rim_history"]) and is_numeric($_GET["rim_history"])){
+    // active_advertisement means show active advetisement or show history
+    $active_advertisement = $_GET["rim_history"];
+    $wheels_advertisements = Wheel::getAllWheelsAdvertisement($connection, $active_advertisement, "wheel_id, wheel_brand, wheel_model, wheel_average, spacing, width, et, wheel_color, wheel_image, reserved, sold, wheel_price");
+} else {
+    // active_advertisement means show active advetisement or show history
+    $active_advertisement = 1;
+    $wheels_advertisements = Wheel::getAllWheelsAdvertisement($connection, $active_advertisement, "wheel_id, wheel_brand, wheel_model, wheel_average, spacing, width, et, wheel_color, wheel_image, reserved, sold, wheel_price");
+}
 
 ?>
 
@@ -60,7 +68,7 @@ $wheels_advertisements = Wheel::getAllWheelsAdvertisement($connection, true, "wh
 
             <?php foreach ($wheels_advertisements as $one_wheel): ?>
 
-            <a href="./wheel-profil.php?wheel_id=<?= htmlspecialchars($one_wheel["wheel_id"]) ?>"> 
+            <a href="./wheel-profil.php?wheel_id=<?= htmlspecialchars($one_wheel["wheel_id"]) ?>&active_advertisement=<?= htmlspecialchars($active_advertisement) ?>"> 
             <article class="wheel-advertisement">
 
                 <?php if ($one_wheel["reserved"]): ?>

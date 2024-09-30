@@ -76,7 +76,11 @@ if (($_SERVER["REQUEST_METHOD"] === "GET") || ($_SERVER["REQUEST_METHOD"] === "P
     } 
     
     if (!$redirect_status_error){
-        Url::redirectUrl("/autobajo/admin/wheel-profil.php?wheel_id=$wheel_id");
+        if ($action === "active") {
+            Url::redirectUrl("/autobajo/admin/wheel-advertisement.php?");
+        } else {
+            Url::redirectUrl("/autobajo/admin/wheel-profil.php?wheel_id=$wheel_id&active_advertisement=1");
+        }
     } else {
         $not_added_wheel = "Update inzerátu sa nepodaril.";
         Url::redirectUrl("/autobajo/admin/logedin-error.php?logedin_error=$not_added_wheel"); 

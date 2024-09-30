@@ -18,9 +18,16 @@ if (!Auth::isLoggedIn()){
 $database = new Database();
 $connection = $database->connectionDB();
 
-$tires_advertisements = Tire::getAllTiresAdvertisement($connection, true, "tire_id, tire_brand, tire_model, type, width, height, construction, average, tire_price, reserved, sold, tire_image");
+if (isset($_GET["tire_history"]) and is_numeric($_GET["tire_history"])){
+    // active_advertisement means show active advetisement or show history
+    $active_advertisement = $_GET["tire_history"];
+    $tires_advertisements = Tire::getAllTiresAdvertisement($connection, $active_advertisement, "tire_id, tire_brand, tire_model, type, width, height, construction, average, tire_price, reserved, sold, tire_image");
+} else {
+    // active_advertisement means show active advetisement or show history
+    $active_advertisement = 1;
+    $tires_advertisements = Tire::getAllTiresAdvertisement($connection, $active_advertisement, "tire_id, tire_brand, tire_model, type, width, height, construction, average, tire_price, reserved, sold, tire_image");
+}
 
-// var_dump($tires_advertisements);
 ?>
 
 
@@ -61,7 +68,7 @@ $tires_advertisements = Tire::getAllTiresAdvertisement($connection, true, "tire_
 
             <?php foreach ($tires_advertisements as $one_tire): ?>
 
-            <a href="./tire-profil.php?tire_id=<?= htmlspecialchars($one_tire["tire_id"]) ?>"> 
+            <a href="./tire-profil.php?tire_id=<?= htmlspecialchars($one_tire["tire_id"]) ?>&active_advertisement=<?= htmlspecialchars($active_advertisement) ?>"> 
             <article class="tire-advertisement">
 
                 <?php if ($one_tire["reserved"]): ?>

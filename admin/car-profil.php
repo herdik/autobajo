@@ -16,16 +16,17 @@ $database = new Database();
 $connection = $database->connectionDB();
 
 
-if (isset($_GET["car_id"]) and is_numeric($_GET["car_id"])){
+if ((isset($_GET["car_id"]) and is_numeric($_GET["car_id"])) and (isset($_GET["active_advertisement"]) and is_numeric($_GET["active_advertisement"]))){
     $car_infos = Car::getCar($connection, $_GET["car_id"]);
     $car_equipments = ["Elektrické okná", "Elektrické sedadlá", "Bezkľúčové štartovanie", "Airbag", "Tempomat", "Vyhrievané sedadlá", "Parkovacie senzory", "Isofix", "Hlin. disky/Elektróny", "Klimatizácia", "Ťažné zariadenie", "Alarm"];
+    
+    // active true means aktice advertisement active false/0 means advertisement in history
+    $active_advertisement = $_GET["active_advertisement"];
 } else {
     $car_infos = null;
     $car_equipments = null;
+    $active_advertisement = null;
 }
-
-// control if user choose image from image gallery 
-$image_sequence = null;
 
 // first index for $car_equipments loop
 $inside_index = 12;
@@ -153,7 +154,7 @@ $inside_index = 12;
 
                     <div class="administration-part">
                         <a class="btn" href="./edit-car-advertisement.php?car_id=<?= htmlspecialchars($car_infos["car_id"]) ?>">Upraviť</a>
-                        <a class="btn" href="./after-update-car-advert.php">Galéria</a>
+                        <a class="btn" href="./gallery-dashboard.php?car_id=<?= htmlspecialchars($car_infos["car_id"]) ?>">Galéria</a>
 
                         <?php if ($car_infos["active"]): ?>
                             <a class="btn" href="./after-update-car-advert.php?active=false&car_id=<?= htmlspecialchars($car_infos["car_id"]) ?>">Dektivovať</a>
@@ -161,17 +162,19 @@ $inside_index = 12;
                             <a class="btn-green" href="./after-update-car-advert.php?active=true&car_id=<?= htmlspecialchars($car_infos["car_id"]) ?>">Aktivovať</a>
                         <?php endif; ?>
 
-                        <?php if ($car_infos["reserved"]): ?>
-                            <a class="btn-green" href="./after-update-car-advert.php?reserved=false&car_id=<?= htmlspecialchars($car_infos["car_id"]) ?>">Dostupné</a>
-                            <?php else: ?>
-                                <a class="btn" href="./after-update-car-advert.php?reserved=true&car_id=<?= htmlspecialchars($car_infos["car_id"]) ?>">Rezervované</a>
-                        <?php endif; ?>   
-                        
-                        <?php if ($car_infos["sold"]): ?>
-                            <a class="btn-green" href="./after-update-car-advert.php?sold=false&car_id=<?= htmlspecialchars($car_infos["car_id"]) ?>">Dostupné</a>
-                            <?php else: ?>
-                                <a class="btn" href="./after-update-car-advert.php?sold=true&car_id=<?= htmlspecialchars($car_infos["car_id"]) ?>">Predané</a>
-                        <?php endif; ?> 
+                        <?php if ($active_advertisement): ?>
+                            <?php if ($car_infos["reserved"]): ?>
+                                <a class="btn-green" href="./after-update-car-advert.php?reserved=false&car_id=<?= htmlspecialchars($car_infos["car_id"]) ?>">Dostupné</a>
+                                <?php else: ?>
+                                    <a class="btn" href="./after-update-car-advert.php?reserved=true&car_id=<?= htmlspecialchars($car_infos["car_id"]) ?>">Rezervované</a>
+                            <?php endif; ?>   
+                            
+                            <?php if ($car_infos["sold"]): ?>
+                                <a class="btn-green" href="./after-update-car-advert.php?sold=false&car_id=<?= htmlspecialchars($car_infos["car_id"]) ?>">Dostupné</a>
+                                <?php else: ?>
+                                    <a class="btn" href="./after-update-car-advert.php?sold=true&car_id=<?= htmlspecialchars($car_infos["car_id"]) ?>">Predané</a>
+                            <?php endif; ?> 
+                        <?php endif; ?>
 
                     </div>
                 </div>

@@ -17,14 +17,15 @@ $database = new Database();
 $connection = $database->connectionDB();
 
 
-if (isset($_GET["tire_id"]) and is_numeric($_GET["tire_id"])){
+if ((isset($_GET["tire_id"]) and is_numeric($_GET["tire_id"])) and (isset($_GET["active_advertisement"]) and is_numeric($_GET["active_advertisement"]))){
     $tire_infos = Tire::getTire($connection, $_GET["tire_id"]);
+
+    // active true means aktice advertisement active false/0 means advertisement in history
+    $active_advertisement = $_GET["active_advertisement"];
 } else {
     $tire_infos = null;
+    $active_advertisement = null;
 }
-
-// control if user choose image from image gallery 
-$image_sequence = null;
 
 ?>
 
@@ -149,17 +150,20 @@ $image_sequence = null;
                             <a class="btn-green" href="./after-update-tire-advert.php?active=true&tire_id=<?= htmlspecialchars($tire_infos["tire_id"]) ?>">Aktivovať</a>
                         <?php endif; ?>
 
-                        <?php if ($tire_infos["reserved"]): ?>
-                            <a class="btn-green" href="./after-update-tire-advert.php?reserved=false&tire_id=<?= htmlspecialchars($tire_infos["tire_id"]) ?>">Dostupné</a>
-                            <?php else: ?>
-                                <a class="btn" href="./after-update-tire-advert.php?reserved=true&tire_id=<?= htmlspecialchars($tire_infos["tire_id"]) ?>">Rezervované</a>
-                        <?php endif; ?>   
-                        
-                        <?php if ($tire_infos["sold"]): ?>
-                            <a class="btn-green" href="./after-update-tire-advert.php?sold=false&tire_id=<?= htmlspecialchars($tire_infos["tire_id"]) ?>">Dostupné</a>
-                            <?php else: ?>
-                                <a class="btn" href="./after-update-tire-advert.php?sold=true&tire_id=<?= htmlspecialchars($tire_infos["tire_id"]) ?>">Predané</a>
-                        <?php endif; ?> 
+
+                        <?php if ($active_advertisement): ?>
+                            <?php if ($tire_infos["reserved"]): ?>
+                                <a class="btn-green" href="./after-update-tire-advert.php?reserved=false&tire_id=<?= htmlspecialchars($tire_infos["tire_id"]) ?>">Dostupné</a>
+                                <?php else: ?>
+                                    <a class="btn" href="./after-update-tire-advert.php?reserved=true&tire_id=<?= htmlspecialchars($tire_infos["tire_id"]) ?>">Rezervované</a>
+                            <?php endif; ?>   
+                            
+                            <?php if ($tire_infos["sold"]): ?>
+                                <a class="btn-green" href="./after-update-tire-advert.php?sold=false&tire_id=<?= htmlspecialchars($tire_infos["tire_id"]) ?>">Dostupné</a>
+                                <?php else: ?>
+                                    <a class="btn" href="./after-update-tire-advert.php?sold=true&tire_id=<?= htmlspecialchars($tire_infos["tire_id"]) ?>">Predané</a>
+                            <?php endif; ?> 
+                        <?php endif; ?>
 
                     </div>
                 </div>

@@ -17,7 +17,7 @@ if (!Auth::isLoggedIn()){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hlavný panel - administrácia</title>
+    <title>História - administrácia</title>
 
     <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
 
@@ -41,18 +41,11 @@ if (!Auth::isLoggedIn()){
 
     <main>
 
-        <h1>Hlavný panel</h1>
+        <h1>História - administrácia</h1>
         <section class="dashboard-menu">
 
             
-            <a href="./advertisement.php
-            ">
-            <article class="div-menu-part part-advertisement">
-                <img class="div-menu-images" src="../img/advertisement.jpg" alt="">
-                <span class="cars">Nový inzerát</span>
-            </article>
-            </a>
-            <a href="./car-advertisement.php
+            <a href="./car-advertisement.php?car_history=0
             ">
             <article class="div-menu-part part-cars">
                 <img class="div-menu-images" src="../img/cars.jpg" alt="">
@@ -60,7 +53,7 @@ if (!Auth::isLoggedIn()){
             </article>
             </a>
 
-            <a href="./tire-advertisement.php
+            <a href="./tire-advertisement.php?tire_history=0
             ">
             <article class="div-menu-part part-tires">
                 <img class="div-menu-images" src="../img/tires.jpg" alt="">
@@ -68,7 +61,7 @@ if (!Auth::isLoggedIn()){
             </article>
             </a>
 
-            <a href="./wheel-advertisement.php
+            <a href="./wheel-advertisement.php?rim_history=0
             ">
             <article class="div-menu-part part-rimes">
                 <img class="div-menu-images" src="../img/rim.jpg" alt="">
@@ -76,21 +69,7 @@ if (!Auth::isLoggedIn()){
             </article>
             </a>
 
-            <a href="./tires-service.php
-            ">
-            <article class="div-menu-part part-servis">
-                <img class="div-menu-images" src="../img/servis.jpg" alt="">
-                <span class="servis">Pneuservis</span>
-            </article>
-            </a>
-
-            <a href="./history-dashboard.php
-            ">
-            <article class="div-menu-part part-history">
-                <img class="div-menu-images" src="../img/history.jpg" alt="">
-                <span class="servis">História</span>
-            </article>
-            </a>
+            
         </section>
         
 
