@@ -74,5 +74,49 @@ class CarImage {
             echo "Výsledná chyba je: " . $e->getMessage();
         }
     }
+    
+
+    /**
+     *
+     * RETURN BOOLEAN FROM DATABASE AFTER UPDATED CAR IMAGE
+     *
+     * @param object $connection - database connection
+     * @param int $car_id - specifically id for specifically car advertisement
+     * @param string $image_name - image_name for specifically car advertisement
+     * @param bool $title_image - title_image for specifically car advertisement
+     *
+     * 
+     * @return boolean true or false
+     */
+    public static function updateCarImage($connection, $car_id, $image_name, $title_image){
+
+        $sql = "UPDATE car_image
+                SET image_name = :image_name,
+                    title_image = :title_image
+                WHERE car_id = :car_id";
+        
+
+        // connect sql amend to database
+        $stmt = $connection->prepare($sql);
+
+        // all parameters to send to Database
+        // filling and bind values will be execute to Database
+        $stmt->bindValue(":car_id", $car_id, PDO::PARAM_INT);
+        $stmt->bindValue(":image_name", $image_name, PDO::PARAM_STR);
+        $stmt->bindValue(":title_image", $title_image, PDO::PARAM_BOOL);
+        
+        
+        try {
+            if($stmt->execute()){
+                return true;
+            } else {
+                throw Exception ("Príkaz pre update obrázku auta inzerátu sa nepodaril");
+            }
+        } catch (Exception $e){
+            // 3 je že vyberiem vlastnú cestu k súboru
+            error_log("Chyba pri funkcii updateCarImage, získanie informácií z databázy zlyhalo\n", 3, "../errors/error.log");
+            echo "Výsledná chyba je: " . $e->getMessage();
+        }
+    }
 
 }

@@ -149,7 +149,7 @@ $image_sequence = null;
 
                     <div class="administration-part">
                         <a class="btn" href="./edit-wheel-advertisement.php?wheel_id=<?= htmlspecialchars($wheel_infos["wheel_id"]) ?>">Upraviť</a>
-                        <a class="btn" href="./after-update-wheel-advert.php">Galéria</a>
+                        <a class="btn" href="./gallery-wheel.php?wheel_id=<?= htmlspecialchars($wheel_infos["wheel_id"]) ?>">Galéria</a>
 
                         <?php if ($wheel_infos["active"]): ?>
                             <a class="btn" href="./after-update-wheel-advert.php?active=false&wheel_id=<?= htmlspecialchars($wheel_infos["wheel_id"]) ?>">Dektivovať</a>

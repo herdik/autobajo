@@ -21,8 +21,12 @@ if (isset($_GET["car_id"]) and is_numeric($_GET["car_id"])){
     $car_id = $_GET["car_id"];
     $car_images = CarImage::getAllCarsImages($connection, $car_id);
 } else {
+    $car_id = null;
     $car_images = null;
 }
+
+// control if user choose image from image gallery 
+$image_sequence = null;
 ?>
 
 
@@ -51,15 +55,66 @@ if (isset($_GET["car_id"]) and is_numeric($_GET["car_id"])){
 </head>
 <body>
 
-    <?php require "../assets/admin-header.php" ?>
-
     <main>
+    <?php require "../assets/admin-header.php" ?>
+        
+        <h2>Pridať obrázky do galérie</h2>
+        <section class="add-new-images">
+            <form id="registration-form-image" action="./after-reg-add-image.php" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="car_id" value="<?= htmlspecialchars($car_id) ?>">
+
+                <div class="add-image gallery">
+                    
+                    <label for="image-name-gallery" id="choose-img-text">Vybrať</label>
+                    <?php if (htmlspecialchars($image_sequence) == NULL): ?>
+                        <p id="picture-titel" style="opacity:1; color:white; font-size:24px;">Vybrané obrázky: 0</p>
+                    <?php else: ?>
+                        <p style="opacity:1;">Zvolený obrázok: Obrázok č.<?= htmlspecialchars($image_sequence) ?></p>
+                    <?php endif; ?>
+                    
+                    <input id="image-name-gallery" type="file" name="car_image[]" multiple>
+                    <input class="btn" id="btn-gall" type="submit" name="submit" value="Pridať">
+
+                </div>
+            </form>
+        </section>
+        <h2 class="title-image">Vybrať nový titulný obrázok **</h2>
+        <section class="add-new-images">
+            <form id="registration-form-image" action="./after-reg-add-image.php" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="car_id" value="<?= htmlspecialchars($car_id) ?>">
+
+                <div class="add-image title">
+                    
+                    <label for="image-name-title" id="choose-img-text">Vybrať</label>
+                    <?php if (htmlspecialchars($image_sequence) == NULL): ?>
+                        <p id="picture-titel" style="opacity:1; color:white; font-size:24px;">Vybrané obrázky: 0</p>
+                    <?php else: ?>
+                        <p style="opacity:1;">Zvolený obrázok: Obrázok č.<?= htmlspecialchars($image_sequence) ?></p>
+                    <?php endif; ?>
+                    
+                    <input id="image-name-title" type="file" name="car_image">
+                    <input class="btn" id="btn-title" type="submit" name="submit" value="Pridať">
+
+                </div>
+            </form>
+        </section>
+        <h3>** alebo vyber z Galérie</h3>
+        <section class="admin-gallery">
+                <input type="hidden" name="car_id" value="<?= htmlspecialchars($car_id) ?>">
+
+                <div class="add-delete">
+                    <input class="btn" id="image-name-add"type="submit" name="add" value="Pridať">
+                    <input class="btn" id="image-name-delete"type="submit" name="delete" value="Vymazať">
+
+                </div>
+        </section>
+
 
         <h1>Galéria</h1>
         <section class="dashboard-menu">
+         
 
-            
-        <article class="div-menu-part">
+            <article class="div-menu-part">
                 
                     <?php foreach ($car_images as $car_image): ?>
                     <div class="div-menu-images">
@@ -68,26 +123,22 @@ if (isset($_GET["car_id"]) and is_numeric($_GET["car_id"])){
                     
                     </div>
                     <?php endforeach; ?>
+
+                    
                     
             </article>
 
             
-            <!-- <article class="div-menu-part">
-                    <h2>Všetky obrázky</h2>
-                    <a href="./tires-service.php">
-                    <div class="div-menu-images">
-                        <img  src="../img/gal-images.jpg" alt="">
-                    </div>
-                </a>
-            </article> -->
-            
         </section>
         
-
+        
     </main>
     
     <?php require "../assets/footer.php" ?>
     <script src="../js/header.js"></script>    
+    <script src="../js/show-image-info-advertisement.js"></script>   
+    <script src="../js/reg-form.js"></script>   
+    <script src="../js/choose-image-gallery.js"></script>   
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>        
 </body>
 </html>

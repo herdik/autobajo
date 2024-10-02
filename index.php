@@ -24,7 +24,7 @@
 </head>
 <body>
 
-    <?php require "./assets/header.php" ?>
+<?php require "./assets/header.php" ?>
 
     <main>
 

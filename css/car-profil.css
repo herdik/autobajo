@@ -43,6 +43,7 @@ main {
 /* heading image */
 .heading img {
     width: 50%;
+    max-height: 420px;
 }
 /* heading image */
 

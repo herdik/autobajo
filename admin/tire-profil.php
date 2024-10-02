@@ -142,7 +142,7 @@ if ((isset($_GET["tire_id"]) and is_numeric($_GET["tire_id"])) and (isset($_GET[
 
                     <div class="administration-part">
                         <a class="btn" href="./edit-tire-advertisement.php?tire_id=<?= htmlspecialchars($tire_infos["tire_id"]) ?>">Upraviť</a>
-                        <a class="btn" href="./after-update-tire-advert.php">Galéria</a>
+                        <a class="btn" href="./gallery-tire.php?tire_id=<?= htmlspecialchars($tire_infos["tire_id"]) ?>">Galéria</a>
 
                         <?php if ($tire_infos["active"]): ?>
                             <a class="btn" href="./after-update-tire-advert.php?active=false&tire_id=<?= htmlspecialchars($tire_infos["tire_id"]) ?>">Dektivovať</a>

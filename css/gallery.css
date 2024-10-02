@@ -12,6 +12,7 @@ main {
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
+    color: #fff;
 }
 
 main h1 {
@@ -21,10 +22,115 @@ main h1 {
     border-bottom: 3px solid #fff;
     padding-bottom: 5px;
 }
-
-.dashboard-menu {  
+main h2 {
+    margin-bottom: 20px;
+}
+main h3 {
     margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.title-image {
+    margin-top: 20px;
+}
+
+/****************** form to add images *********************/
+
+.add-new-images {
+    width: 100%;
     max-width: 1280px;
+    border: 3px solid #fff;
+}
+.admin-gallery {
+    width: 100%;
+    max-width: 1280px;
+    
+}
+
+.add-image {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.add-image > p{
+    width: 50%;
+    text-align: center;
+    text-wrap: wrap; 
+}
+
+.add-delete {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+
+/* styled image choose button and hide system button and text (info about images) */
+#image-name-gallery {
+    display: none;
+}
+#image-name-title {
+    display: none;
+}
+
+#choose-img-text {
+    border: 5px solid #b30606;
+    background-color: #b30606;
+    padding: 8px 12px;
+    font-size: 20px;
+    font-weight: bold;
+    transition: 0.4s all linear;
+    text-align: center;
+    cursor: pointer;
+    width: 25%;
+}
+
+#choose-img-text:hover {
+    cursor: pointer;
+    color: #b30606;
+    border: 5px solid #b30606;
+    background-color: #fff;
+}
+/* styled image choose button and hide system button and text (info about images) */
+
+/* submit button to add new images */
+input[type="submit"]{
+    border: 5px solid #b30606;
+    background-color: #b30606;
+    padding: 8px 12px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s linear;
+    color: #fff;
+    width: 25%;
+    text-align: center;
+}
+
+input[type="submit"]:hover {
+    color: #b30606;
+    border: 5px solid #b30606;
+    background-color: #fff;
+    font-weight: bold;
+    transition: 0.4s all linear;
+}
+/* submit button to add new images */
+
+/****************** form to add images *********************/
+
+
+/* show images part */
+.dashboard-menu { 
+    width: 100%; 
+    max-width: 1480px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -34,15 +140,18 @@ main h1 {
 }
 
 .div-menu-part {
+    margin-top: 20px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     transition: 0.5s all linear;
+    gap: 20px;
 }
 .div-menu-images {
-    max-width: 590px;
-    height: 350px;
+    width: 450px;
+    height: 250px;
     cursor: pointer;
     border: 1px solid #fff;
     color: #fff;
@@ -52,23 +161,13 @@ main h1 {
     height: 100%;
     object-fit: cover;
 }
-h2 { 
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 1.8rem;
-    text-align: center;
-    color: #fff;
-    width: fit-content;
-    margin-bottom: 10px;
-}
 
-.div-menu-part:hover {
-    color: #b30606;
+
+.div-menu-images:hover {
     scale: 1.05;
 }
-a {
-    text-decoration: none;
-}
+/* show images part */
+
 
 
 @keyframes gradualVisibility {
