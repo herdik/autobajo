@@ -127,7 +127,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
     if (!$redirect_status){
     
         if ($wheel_id && $image_id){
-            Url::redirectUrl("/autobajo/admin/wheel-profil.php?wheel_id=$wheel_id");
+            Url::redirectUrl("/autobajo/admin/wheel-profil.php?wheel_id=$wheel_id&active_advertisement=1");
         } else {
             $not_added_wheel = "Nový inzerát disku sa nepodarilo pridať";
             Url::redirectUrl("/autobajo/admin/logedin-error.php?logedin_error=$not_added_wheel");

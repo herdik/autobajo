@@ -108,7 +108,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
 
                     if ($car_id) {
                         // save title image for car advertisement to car_image table
-                        $image_id = CarImage::insertCarImage($connection, $car_id, $new_image_name, true);
+                        $image_id = CarImage::insertCarImage($connection, $car_id, $new_image_name);
                     }
 
                     if ($car_id && $image_id) {
@@ -145,7 +145,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
 
                 if ($car_id) {
                     // save title image for car advertisement to car_image table
-                    $image_id = CarImage::insertCarImage($connection, $car_id, $new_image_name, true);
+                    $image_id = CarImage::insertCarImage($connection, $car_id, $new_image_name);
                 }
             }
         }
@@ -154,7 +154,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
     if (!$redirect_status){
     
         if ($car_id && $image_id){
-            Url::redirectUrl("/autobajo/admin/car-profil.php?car_id=$car_id");
+            Url::redirectUrl("/autobajo/admin/car-profil.php?car_id=$car_id&active_advertisement=1");
         } else {
             $not_added_car = "Nový inzerát auta sa nepodarilo pridať";
             Url::redirectUrl("/autobajo/admin/logedin-error.php?logedin_error=$not_added_car");

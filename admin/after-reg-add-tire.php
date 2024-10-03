@@ -128,7 +128,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
     if (!$redirect_status){
     
         if ($tire_id && $image_id){
-            Url::redirectUrl("/autobajo/admin/tire-profil.php?tire_id=$tire_id");
+            Url::redirectUrl("/autobajo/admin/tire-profil.php?tire_id=$tire_id&active_advertisement=1");
         } else {
             $not_added_tire = "Nový inzerát pneumatiky sa nepodarilo pridať";
             Url::redirectUrl("/autobajo/admin/logedin-error.php?logedin_error=$not_added_tire");

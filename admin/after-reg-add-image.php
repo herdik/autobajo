@@ -2,6 +2,7 @@
 
 require "../classes/Database.php";
 require "../classes/Url.php";
+require "../classes/Car.php";
 require "../classes/CarImage.php";
 
 // verifying by session if visitor have access to this website
@@ -25,9 +26,24 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
     // car_id representing special id for one car_advertisement to SQL database 
     $car_id = $_POST["car_id"];
     
+    // gallery 1 means add pistures to gallery and gallery 0 means add title image 
+    $gallery = filter_var($_POST["gallery"], FILTER_VALIDATE_BOOLEAN);
+
     // title image for car advertisement
     $car_images = $_FILES["car_image"];
-    $image_count = count($_FILES["car_image"]["name"]);
+
+    if (!$gallery) {
+        $car_image = $car_images;
+        $car_images = array();
+        foreach ($car_image as $key => $value){
+            $new_array = array();
+            $new_array[0] = $value;
+            $car_images[$key] = $new_array;
+            
+        }
+    }
+    
+    $image_count = count($car_images["name"]);
     
     // count not uloaded pictures
     $count_error_images = 0;
@@ -66,8 +82,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
                             // uniq name for image
                             $new_image_name = uniqid("IMG-", true) . "." . $image_extension;
 
+
+                            // save new title image
+                            if (!$gallery){
+                                $updated_title_img = Car::updateCarImageAdvertisement($connection, $new_image_name, $car_id);
+                            }
                             // save title image for car advertisement to car_image table
-                            $image_id = CarImage::insertCarImage($connection, $car_id, $new_image_name, false);
+                            $image_id = CarImage::insertCarImage($connection, $car_id, $new_image_name);
+                            
+                            
                             
 
                             if ($image_id) {
@@ -108,7 +131,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
     }   
 
     if ($uploaded_images > 0){
-        Url::redirectUrl("/autobajo/admin/gallery-car.php?car_id=$car_id&message_error=$count_error_images");
+        if (!$gallery){
+            Url::redirectUrl("/autobajo/admin/car-profil.php?car_id=$car_id&active_advertisement=1");
+        } else {
+            Url::redirectUrl("/autobajo/admin/gallery-car.php?car_id=$car_id&message_error=$count_error_images");
+        }
+        
     } else {
         $not_added_car = "Zvolené obrázky sa nepodarilo nahrať";
         Url::redirectUrl("/autobajo/admin/logedin-error.php?logedin_error=$not_added_car");

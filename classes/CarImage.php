@@ -11,22 +11,20 @@ class CarImage {
      * @param object $connection - database connection
      * @param int $car_id - specifically id for specifically car advertisement
      * @param string $image_name - image_name for specifically car advertisement
-     * @param bool $title_image - title_image for specifically car advertisement
      *
      * 
      * @return boolean true or false
      * 
      */
-    public static function insertCarImage($connection, $car_id, $image_name, $title_image){
-        $sql = "INSERT INTO car_image (car_id, image_name, title_image)
-                VALUES (:car_id, :image_name, :title_image)";
+    public static function insertCarImage($connection, $car_id, $image_name){
+        $sql = "INSERT INTO car_image (car_id, image_name)
+                VALUES (:car_id, :image_name)";
        
         $stmt = $connection->prepare($sql);
 
 
         $stmt->bindValue(":car_id", $car_id, PDO::PARAM_INT);
         $stmt->bindValue(":image_name", $image_name, PDO::PARAM_STR);
-        $stmt->bindValue(":title_image", $title_image, PDO::PARAM_BOOL);
 
 
         try {
@@ -83,16 +81,14 @@ class CarImage {
      * @param object $connection - database connection
      * @param int $car_id - specifically id for specifically car advertisement
      * @param string $image_name - image_name for specifically car advertisement
-     * @param bool $title_image - title_image for specifically car advertisement
      *
      * 
      * @return boolean true or false
      */
-    public static function updateCarImage($connection, $car_id, $image_name, $title_image){
+    public static function updateCarImage($connection, $car_id, $image_name){
 
         $sql = "UPDATE car_image
-                SET image_name = :image_name,
-                    title_image = :title_image
+                SET image_name = :image_name
                 WHERE car_id = :car_id";
         
 
@@ -103,7 +99,6 @@ class CarImage {
         // filling and bind values will be execute to Database
         $stmt->bindValue(":car_id", $car_id, PDO::PARAM_INT);
         $stmt->bindValue(":image_name", $image_name, PDO::PARAM_STR);
-        $stmt->bindValue(":title_image", $title_image, PDO::PARAM_BOOL);
         
         
         try {

@@ -54,9 +54,9 @@ $image_sequence = null;
 
 </head>
 <body>
-
-    <main>
     <?php require "../assets/admin-header.php" ?>
+    <main>
+    
         
         <h2>Pridať obrázky do galérie</h2>
         <section class="add-new-images">
@@ -72,6 +72,7 @@ $image_sequence = null;
                         <p style="opacity:1;">Zvolený obrázok: Obrázok č.<?= htmlspecialchars($image_sequence) ?></p>
                     <?php endif; ?>
                     
+                    <input type="hidden" name="gallery" value="true">
                     <input id="image-name-gallery" type="file" name="car_image[]" multiple>
                     <input class="btn" id="btn-gall" type="submit" name="submit" value="Pridať">
 
@@ -92,6 +93,7 @@ $image_sequence = null;
                         <p style="opacity:1;">Zvolený obrázok: Obrázok č.<?= htmlspecialchars($image_sequence) ?></p>
                     <?php endif; ?>
                     
+                    <input type="hidden" name="gallery" value="false">
                     <input id="image-name-title" type="file" name="car_image">
                     <input class="btn" id="btn-title" type="submit" name="submit" value="Pridať">
 
@@ -114,12 +116,16 @@ $image_sequence = null;
         <section class="dashboard-menu">
          
 
-            <article class="div-menu-part">
+            <article class="images-part">
                 
                     <?php foreach ($car_images as $car_image): ?>
                     <div class="div-menu-images">
-                    
-                        <img src="../uploads/cars/<?= htmlspecialchars($car_id) ?>/<?= htmlspecialchars($car_image["image_name"]) ?>" alt="">
+
+                        <?php if ($car_image["image_name"] === "no-photo-car.jpg"): ?>
+                            <img src="../img/no-photo-car/no-photo-car.jpg" alt="no-photo-car">
+                        <?php else: ?>
+                            <img src="../uploads/cars/<?= htmlspecialchars($car_id) ?>/<?= htmlspecialchars($car_image["image_name"]) ?>" alt="">
+                        <?php endif; ?>
                     
                     </div>
                     <?php endforeach; ?>
