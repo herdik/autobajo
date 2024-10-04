@@ -79,7 +79,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
 
                     if ($wheel_id) {
                         // save title image for wheel advertisement to wheel_image table
-                        $image_id = WheelImage::insertWheelImage($connection, $wheel_id, $new_image_name, true);
+                        $image_id = WheelImage::insertWheelImage($connection, $wheel_id, $new_image_name);
                         var_dump($image_id);
                         var_dump($wheel_id);
                     }
@@ -118,7 +118,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
 
                 if ($wheel_id) {
                     // save title image for wheel advertisement to wheel_image table
-                    $image_id = WheelImage::insertWheelImage($connection, $wheel_id, $new_image_name, true);
+                    $image_id = WheelImage::insertWheelImage($connection, $wheel_id, $new_image_name);
                 }
             }
         }

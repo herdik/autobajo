@@ -1,9 +1,15 @@
+
+
 let allImages = document.querySelectorAll(".div-menu-images")
 
 let add_btn = document.getElementById("image-name-add")
 let delete_btn = document.getElementById("image-name-delete")
 
-let remove = false;
+let addImg = document.getElementById("image-id")
+
+let selectedGalImages = []
+
+
 
 add_btn.addEventListener("click", changeColorAdd)
 
@@ -80,6 +86,12 @@ function selectImage () {
     allImages.forEach((oneImage) => {
         if (oneImage === this) {
             this.style.border = "5px solid #b30606"
+
+            // add select images to form add new title img
+            addImg.value = this.closest("div").children[0].value
+            console.log(addImg)
+            
+
         } else {
             oneImage.style.border = "1px solid #fff"
         }
@@ -90,6 +102,16 @@ function selectImage () {
 function selectImages () {
     this.style.border = "5px solid #b30606"
 }
+
+// $(document).ready(function () {
+//     $('#image-submit').click(function (e) { 
+//         e.preventDefault();
+        
+//         if (add_btn.style.backgroundColor){
+//             makesomething
+//         }
+//     });
+// });
 
 
 

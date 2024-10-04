@@ -166,6 +166,29 @@ input[type="submit"]:hover {
 .div-menu-images:hover {
     scale: 1.05;
 }
+
+/* form to add selected title image or delete images frpm gallery */
+#edit-form {
+    width: 25%;
+    text-align: center;
+}
+#image-submit {
+    width: 100%;
+    border: 5px solid green;
+    background-color: green;
+
+    &:hover {
+        color: green;
+        border: 5px solid green;
+        background-color: #fff;
+        font-weight: bold;
+        transition: 0.4s all linear;
+    }
+}
+
+
+/* form to add selected title image or delete images frpm gallery */
+
 /* show images part */
 
 

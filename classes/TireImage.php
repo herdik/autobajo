@@ -11,22 +11,20 @@ class TireImage {
      * @param object $connection - database connection
      * @param int $tire_id - specifically id for specifically tire advertisement
      * @param string $image_name - image_name for specifically tire advertisement
-     * @param bool $title_image - title_image for specifically tire advertisement
      *
      * 
      * @return boolean true or false
      * 
      */
-    public static function insertTireImage($connection, $tire_id, $image_name, $title_image){
-        $sql = "INSERT INTO tire_image (tire_id, image_name, title_image)
-                VALUES (:tire_id, :image_name, :title_image)";
+    public static function insertTireImage($connection, $tire_id, $image_name){
+        $sql = "INSERT INTO tire_image (tire_id, image_name)
+                VALUES (:tire_id, :image_name)";
        
         $stmt = $connection->prepare($sql);
 
 
         $stmt->bindValue(":tire_id", $tire_id, PDO::PARAM_INT);
         $stmt->bindValue(":image_name", $image_name, PDO::PARAM_STR);
-        $stmt->bindValue(":title_image", $title_image, PDO::PARAM_BOOL);
 
 
         try {

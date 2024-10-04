@@ -11,22 +11,20 @@ class WheelImage {
      * @param object $connection - database connection
      * @param int $wheel_id - specifically id for specifically wheel advertisement
      * @param string $image_name - image_name for specifically wheel advertisement
-     * @param bool $title_image - title_image for specifically wheel advertisement
      *
      * 
      * @return boolean true or false
      * 
      */
-    public static function insertWheelImage($connection, $wheel_id, $image_name, $title_image){
-        $sql = "INSERT INTO wheel_image (wheel_id, image_name, title_image)
-                VALUES (:wheel_id, :image_name, :title_image)";
+    public static function insertWheelImage($connection, $wheel_id, $image_name){
+        $sql = "INSERT INTO wheel_image (wheel_id, image_name)
+                VALUES (:wheel_id, :image_name)";
        
         $stmt = $connection->prepare($sql);
 
 
         $stmt->bindValue(":wheel_id", $wheel_id, PDO::PARAM_INT);
         $stmt->bindValue(":image_name", $image_name, PDO::PARAM_STR);
-        $stmt->bindValue(":title_image", $title_image, PDO::PARAM_BOOL);
 
 
         try {

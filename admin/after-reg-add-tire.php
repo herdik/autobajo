@@ -82,7 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
 
                     if ($tire_id) {
                         // save title image for tire advertisement to tire_image table
-                        $image_id = TireImage::insertTireImage($connection, $tire_id, $new_image_name, true);
+                        $image_id = TireImage::insertTireImage($connection, $tire_id, $new_image_name);
                     }
 
                     if ($tire_id && $image_id) {
@@ -119,7 +119,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
 
                 if ($tire_id) {
                     // save title image for tire advertisement to tire_image table
-                    $image_id = TireImage::insertTireImage($connection, $tire_id, $new_image_name, true);
+                    $image_id = TireImage::insertTireImage($connection, $tire_id, $new_image_name);
                 }
             }
         }

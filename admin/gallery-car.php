@@ -72,6 +72,7 @@ $image_sequence = null;
                         <p style="opacity:1;">Zvolený obrázok: Obrázok č.<?= htmlspecialchars($image_sequence) ?></p>
                     <?php endif; ?>
                     
+                    <!-- add images to gallery -->
                     <input type="hidden" name="gallery" value="true">
                     <input id="image-name-gallery" type="file" name="car_image[]" multiple>
                     <input class="btn" id="btn-gall" type="submit" name="submit" value="Pridať">
@@ -93,7 +94,9 @@ $image_sequence = null;
                         <p style="opacity:1;">Zvolený obrázok: Obrázok č.<?= htmlspecialchars($image_sequence) ?></p>
                     <?php endif; ?>
                     
+                    <!-- title img -->
                     <input type="hidden" name="gallery" value="false">
+
                     <input id="image-name-title" type="file" name="car_image">
                     <input class="btn" id="btn-title" type="submit" name="submit" value="Pridať">
 
@@ -102,13 +105,28 @@ $image_sequence = null;
         </section>
         <h3>** alebo vyber z Galérie</h3>
         <section class="admin-gallery">
-                <input type="hidden" name="car_id" value="<?= htmlspecialchars($car_id) ?>">
+        
+                
+
+                
 
                 <div class="add-delete">
+
                     <input class="btn" id="image-name-add"type="submit" name="add" value="Pridať">
+
+                    <form id="edit-form" action="./after-reg-add-image.php" method="POST">
+
+                        <input type="hidden" name="car_id" value="<?= htmlspecialchars($car_id) ?>">
+                        <input type="hidden" id="image-id" name="image_id" value="<?= htmlspecialchars($car_image["image_id"]) ?>">
+
+                        <input class="btn" id="image-submit"type="submit" name="delete" value=" <- Potvrdiť ->">
+
+                    </form>   
+
                     <input class="btn" id="image-name-delete"type="submit" name="delete" value="Vymazať">
 
                 </div>
+          
         </section>
 
 
@@ -117,13 +135,17 @@ $image_sequence = null;
          
 
             <article class="images-part">
-                
+               
                     <?php foreach ($car_images as $car_image): ?>
                     <div class="div-menu-images">
+                        
+                        <input type="hidden" name="image_id" value="<?= htmlspecialchars($car_image["image_id"]) ?>">
 
                         <?php if ($car_image["image_name"] === "no-photo-car.jpg"): ?>
+
                             <img src="../img/no-photo-car/no-photo-car.jpg" alt="no-photo-car">
                         <?php else: ?>
+                            
                             <img src="../uploads/cars/<?= htmlspecialchars($car_id) ?>/<?= htmlspecialchars($car_image["image_name"]) ?>" alt="">
                         <?php endif; ?>
                     
@@ -131,7 +153,7 @@ $image_sequence = null;
                     <?php endforeach; ?>
 
                     
-                    
+               
             </article>
 
             
@@ -141,11 +163,14 @@ $image_sequence = null;
     </main>
     
     <?php require "../assets/footer.php" ?>
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
     <script src="../js/header.js"></script>    
     <script src="../js/show-image-info-advertisement.js"></script>   
     <script src="../js/reg-form.js"></script>   
     <script src="../js/choose-image-gallery.js"></script>   
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>        
+            
 </body>
 </html>
 
