@@ -74,13 +74,13 @@ $image_sequence = null;
                     
                     <!-- add images to gallery -->
                     <input type="hidden" name="gallery" value="true">
-                    <input id="image-name-gallery" type="file" name="car_image[]" multiple>
+                    <input id="image-name-gallery" type="file" name="car_image[]" multiple required>
                     <input class="btn" id="btn-gall" type="submit" name="submit" value="Pridať">
 
                 </div>
             </form>
         </section>
-        <h2 class="title-image">Vybrať nový titulný obrázok **</h2>
+        <h2 class="title-image">Vybrať nový titulný obrázok</h2>
         <section class="add-new-images">
             <form id="registration-form-image" action="./after-reg-add-image.php" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="car_id" value="<?= htmlspecialchars($car_id) ?>">
@@ -97,33 +97,50 @@ $image_sequence = null;
                     <!-- title img -->
                     <input type="hidden" name="gallery" value="false">
 
-                    <input id="image-name-title" type="file" name="car_image">
+                    <input id="image-name-title" type="file" name="car_image" required>
                     <input class="btn" id="btn-title" type="submit" name="submit" value="Pridať">
 
                 </div>
             </form>
         </section>
-        <h3>** alebo vyber z Galérie</h3>
         <section class="admin-gallery">
         
                 
-
-                
-
                 <div class="add-delete">
+                           
+                    <div class="add-part">
+                        <div class="button-info">
+                            <h3>Vybrať titulný obrázok z Galérie</h3> 
+                        </div>
+                        
+                        <input class="btn" id="image-name-add"type="submit" name="add" value="Pridať">
 
-                    <input class="btn" id="image-name-add"type="submit" name="add" value="Pridať">
+                        <form class="edit-form" action="./after-reg-add-image.php" method="POST">
 
-                    <form id="edit-form" action="./after-reg-add-image.php" method="POST">
+                            <input type="hidden" name="action" value="add">
+                            <input type="hidden" name="gallery" value="false">
+                            <input type="hidden" id="image-id-add" name="image_id" value="">
 
-                        <input type="hidden" name="car_id" value="<?= htmlspecialchars($car_id) ?>">
-                        <input type="hidden" id="image-id" name="image_id" value="<?= htmlspecialchars($car_image["image_id"]) ?>">
+                            <input class="btn" id="image-submit-add" type="submit" name="submit" value="Potvrdiť">
 
-                        <input class="btn" id="image-submit"type="submit" name="delete" value=" <- Potvrdiť ->">
+                        </form> 
+                    </div>
 
-                    </form>   
+                    <div class="deleted-part">
+                        <div class="button-info">
+                            <h3>Odstrániť obrázok z Galérie</h3>
+                        </div>
+                        <input class="btn" id="image-name-delete"type="submit" name="delete" value="Vymazať">
 
-                    <input class="btn" id="image-name-delete"type="submit" name="delete" value="Vymazať">
+                        <form class="edit-form" method="POST">
+
+                            <input type="hidden" id="image-id-delete" name="image_id" value="">
+
+                            <input class="btn" id="image-submit-delete" type="submit" name="submit" value="Potvrdiť">
+
+                        </form> 
+
+                    </div>
 
                 </div>
           

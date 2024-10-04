@@ -114,4 +114,42 @@ class CarImage {
         }
     }
 
+
+     /**
+     *
+     * RETURN CAR IMAGE FROM DATABASE
+     *
+     * @param object $connection - connection to database
+     * @param int image_id - represent one image_id
+     * @return array all info for one image
+     */
+    public static function getCarImage($connection, $image_id){
+        $sql = "SELECT *
+                FROM car_image
+                WHERE image_id = :image_id";
+        
+
+        // connect sql amend to database
+        $stmt = $connection->prepare($sql);
+
+        // all parameters to send to Database
+        $stmt->bindValue(":image_id", $image_id, PDO::PARAM_INT);
+
+        try {
+            if($stmt->execute()){
+                // asscoc array for one car
+                return $stmt->fetch();
+            } else {
+                throw Exception ("Príkaz pre získanie všetkých dát o obrázku auta sa nepodaril");
+            }
+        } catch (Exception $e){
+            // 3 je že vyberiem vlastnú cestu k súboru
+            error_log("Chyba pri funkcii getCarImage, získanie informácií z databázy zlyhalo\n", 3, "../errors/error.log");
+            echo "Výsledná chyba je: " . $e->getMessage();
+        }
+
+
+    }
+
+
 }
