@@ -20,6 +20,7 @@ let confirmBtnDel = document.getElementById("image-submit-delete")
 // default for confirm button is disabled
 confirmBtnDel.disabled = true
 
+// array of images to delete from gallery
 let selectedGalImages = []
 
 
@@ -140,7 +141,6 @@ function selectImage () {
 
             // add select images (info from nearest input for selected image) to form/input add new title image
             addImg.value = this.closest("div").children[0].value
-            console.log(addImg)
 
             if (addImg.value.length > 0){
                 // confirm button to update title image is enabled
@@ -159,15 +159,29 @@ function selectImages () {
     this.style.border = "5px solid #b30606"
 }
 
-// $(document).ready(function () {
-//     $('#image-submit').click(function (e) { 
-//         e.preventDefault();
+
+// JQUERY
+$(document).ready(function () {
+    $("#btn-gall").click(function (e) { 
+        e.preventDefault();
+        let galImages = $("#registration-form-images")[0]
+        let formData = new FormData(galImages)
+        formData.append('submit', "Pridať")
         
-//         if (add_btn.style.backgroundColor){
-//             makesomething
-//         }
-//     });
-// });
+        console.log()
+        $.ajax({
+            type: "POST",
+            url: "after-reg-add-image.php",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function () {
+                window.location.reload()
+            }
+        });   
+
+    });
+});
 
 
 

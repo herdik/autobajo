@@ -60,7 +60,7 @@ $image_sequence = null;
         
         <h2>Pridať obrázky do galérie</h2>
         <section class="add-new-images">
-            <form id="registration-form-image" action="./after-reg-add-image.php" method="POST" enctype="multipart/form-data">
+            <form id="registration-form-images" action="./after-reg-add-image.php" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="car_id" value="<?= htmlspecialchars($car_id) ?>">
 
                 <div class="add-image gallery">
@@ -74,8 +74,10 @@ $image_sequence = null;
                     
                     <!-- add images to gallery -->
                     <input type="hidden" name="gallery" value="true">
-                    <input id="image-name-gallery" type="file" name="car_image[]" multiple required>
+                    <input id="image-name-gallery" name="car_image[]" class="gallery-img" type="file"  multiple required>
                     <input class="btn" id="btn-gall" type="submit" name="submit" value="Pridať">
+
+                    
 
                 </div>
             </form>
@@ -134,6 +136,8 @@ $image_sequence = null;
 
                         <form class="edit-form" method="POST">
 
+                            <input type="hidden" name="action" value="add">
+                            <input type="hidden" name="gallery" value="false">
                             <input type="hidden" id="image-id-delete" name="image_id" value="">
 
                             <input class="btn" id="image-submit-delete" type="submit" name="submit" value="Potvrdiť">

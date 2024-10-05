@@ -20,6 +20,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
     $database = new Database();
     $connection = $database->connectionDB();
 
+    // using ajax and jquery
+    $refresh_page = false;
+
     // how many images were successfully uploaded
     $uploaded_images = 0;
 
@@ -30,6 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
     // insert new image/images
     if ($_POST["submit"] === "Pridať"){
 
+        
         // car_id representing special id for one car_advertisement to SQL database 
         $car_id = $_POST["car_id"];
 
@@ -45,17 +49,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
                 $car_images[$key] = $new_array;
                 
             }
+            $refresh_page = true;
         }
         
         $image_count = count($car_images["name"]);
-        
+
         // count not uloaded pictures
         $count_error_images = 0;
 
         // update all vehicle equipment according registration form for car advertisement
         if($image_count > 0){
             for($i=0; $i<$image_count;$i++){
-        
+                
                 // isset is not null
                 if(isset($_POST["submit"]) && isset($car_images)){
                     
@@ -134,6 +139,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
             }
         }   
     } else {
+        $refresh_page = true;
         // update title image
         if ($_POST["action"] === "add" and isset($_POST["submit"])){
             $image_id = $_POST["image_id"];
@@ -156,17 +162,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
         }
     }
 
-    if ($uploaded_images > 0){
-        if (!$gallery){
-            Url::redirectUrl("/autobajo/admin/car-profil.php?car_id=$car_id&active_advertisement=1");
+    if ($refresh_page){
+        if ($uploaded_images > 0){
+            if (!$gallery){
+                Url::redirectUrl("/autobajo/admin/car-profil.php?car_id=$car_id&active_advertisement=1");
+            } else {
+                Url::redirectUrl("/autobajo/admin/gallery-car.php?car_id=$car_id&message_error=$count_error_images");
+            }
+            
         } else {
-            Url::redirectUrl("/autobajo/admin/gallery-car.php?car_id=$car_id&message_error=$count_error_images");
+            $not_added_car = "Zvolené obrázky sa nepodarilo nahrať";
+            Url::redirectUrl("/autobajo/admin/logedin-error.php?logedin_error=$not_added_car");
         }
-        
-    } else {
-        $not_added_car = "Zvolené obrázky sa nepodarilo nahrať";
-        Url::redirectUrl("/autobajo/admin/logedin-error.php?logedin_error=$not_added_car");
     }
+    
     
 } else {
     $not_authorization = "Nepovolený prístup";
