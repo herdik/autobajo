@@ -263,7 +263,7 @@ class Tire {
 
      /**
      *
-     * RETURN BOOLEAN FROM DATABASE AFTER UPDATED CAR ADVERTISEMENT TITLE IMAGE
+     * RETURN BOOLEAN FROM DATABASE AFTER UPDATED TIRE ADVERTISEMENT TITLE IMAGE
      *
      * @param object $connection - database connection
      * @param string $tire_image - tire advertisement title image

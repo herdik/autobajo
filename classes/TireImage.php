@@ -44,7 +44,7 @@ class TireImage {
 
     /**
      *
-     * RETURN ALL CARS IMAGES INFO FROM DATABASE
+     * RETURN ALL TIRES IMAGES INFO FROM DATABASE
      *
      * @param object $connection - connection to database
      * @param object $tire_id - tire_id
@@ -77,7 +77,7 @@ class TireImage {
 
     /**
      *
-     * RETURN BOOLEAN FROM DATABASE AFTER UPDATED CAR IMAGE
+     * RETURN BOOLEAN FROM DATABASE AFTER UPDATED TIRE IMAGE
      *
      * @param object $connection - database connection
      * @param int $tire_id - specifically id for specifically tire advertisement
@@ -118,7 +118,7 @@ class TireImage {
 
      /**
      *
-     * RETURN CAR IMAGE FROM DATABASE
+     * RETURN TIRE IMAGE FROM DATABASE
      *
      * @param object $connection - connection to database
      * @param int image_id - represent one image_id
