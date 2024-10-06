@@ -219,12 +219,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
                 // get name for image 
                 $uploaded_image_name = TireImage::getTireImage($connection, $image_id[$i])["image_name"];
     
-                // create path where will delete image from folder
-                $image_delete_path = "../uploads/tires/" . strval($tire_id) . "/" . strval($uploaded_image_name);
+                // if gallery has default picture no dot delete default picture
+                if ($uploaded_image_name === "no-photo-car.jpg"){
+                    $delete_file = true;
+                } else {
+                    // create path where will delete image from folder
+                    $image_delete_path = "../uploads/tires/" . strval($tire_id) . "/" . strval($uploaded_image_name);
 
-                // deleted file from Folder
-                $delete_file = TireImage::deleteTireImageFromDirectory($image_delete_path);
-
+                    // deleted file from Folder
+                    $delete_file = TireImage::deleteTireImageFromDirectory($image_delete_path);
+                }
+                
                 if ($delete_file){
                     // delete image in database 
                     $deleted_all_img = TireImage::deleteTireImage($connection, $image_id[$i]);

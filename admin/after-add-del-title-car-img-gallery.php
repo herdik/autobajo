@@ -219,11 +219,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
                 // get name for image 
                 $uploaded_image_name = CarImage::getCarImage($connection, $image_id[$i])["image_name"];
     
-                // create path where will delete image from folder
-                $image_delete_path = "../uploads/cars/" . strval($car_id) . "/" . strval($uploaded_image_name);
-
-                // deleted file from Folder
-                $delete_file = CarImage::deleteCarImageFromDirectory($image_delete_path);
+                // if gallery has default picture no dot delete default picture
+                if ($uploaded_image_name === "no-photo-car.jpg"){
+                    $delete_file = true;
+                } else {
+                    // create path where will delete image from folder
+                    $image_delete_path = "../uploads/cars/" . strval($car_id) . "/" . strval($uploaded_image_name);
+                    
+                    // deleted file from Folder
+                    $delete_file = CarImage::deleteCarImageFromDirectory($image_delete_path);
+                }
 
                 if ($delete_file){
                     // delete image in database 
