@@ -150,7 +150,7 @@ $image_sequence = null;
           
         </section>
 
-
+        <h1 class="error-message hide-error">Počet chybných hlásení: </h1>               
         <h1>Galéria</h1>
         <section class="dashboard-menu">
          

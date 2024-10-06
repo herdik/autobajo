@@ -203,8 +203,17 @@ $(document).ready(function () {
             data: formData,
             contentType: false,
             processData: false,
-            success: function () {
-                window.location.reload()
+            success: function (response) {
+                // response is number of errors 
+                // change response to integer
+                let error = parseInt(response)
+                if(error > 0){
+                    $(".error-message")[0].textContent += response + " " + "!!!"
+                    $(".error-message").removeClass("hide-error")
+                } else {
+                    window.location.reload()
+                }
+                
             }
         });   
 
@@ -231,8 +240,16 @@ $(document).ready(function () {
             data: forDeleteData,
             contentType: false,
             processData: false,
-            success: function () {
-                window.location.reload()
+            success: function (res) {
+                // res is number of errors 
+                // change res to integer
+                let error = parseInt(res)
+                if(error > 0){
+                    $(".error-message")[0].textContent += res + " " + "!!!"
+                    $(".error-message").removeClass("hide-error")
+                } else {
+                    window.location.reload()
+                }
             }
         }); 
 

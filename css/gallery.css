@@ -204,9 +204,13 @@ input[type="submit"]:hover {
     scale: 1.05;
 }
 
-
-
 /* show images part */
+
+/* error message */
+.hide-error {
+    display: none;
+}
+/* error message */
 
 
 
