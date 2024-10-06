@@ -134,11 +134,11 @@ $image_sequence = null;
                         </div>
                         <input class="btn" id="image-name-delete"type="submit" name="delete" value="Vymazať">
 
-                        <form class="edit-form" method="POST">
+                        <form class="edit-form" id="delete-form" method="POST">
 
-                            <input type="hidden" name="action" value="add">
-                            <input type="hidden" name="gallery" value="false">
-                            <input type="hidden" id="image-id-delete" name="image_id" value="">
+                            <input type="hidden" name="action" value="delete">
+                            <input type="hidden" name="gallery" value="true">
+                            <input type="hidden" id="image-id-delete" name="image_id[]" value="">
 
                             <input class="btn" id="image-submit-delete" type="submit" name="submit" value="Potvrdiť">
 

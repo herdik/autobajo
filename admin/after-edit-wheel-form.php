@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
 
     
     if ($update_wheel){
-        Url::redirectUrl("/autobajo/admin/wheel-profil.php?wheel_id=$wheel_id");
+        Url::redirectUrl("/autobajo/admin/wheel-profil.php?wheel_id=$wheel_id&active_advertisement=1");
     } else {
         $not_update_done = "Update inzerátu sa nepodaril.";
         Url::redirectUrl("/autobajo/admin/logedin-error.php?logedin_error=$not_update_done"); 

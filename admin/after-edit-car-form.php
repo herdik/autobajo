@@ -72,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
 
     
     if ($update_car){
-        Url::redirectUrl("/autobajo/admin/car-profil.php?car_id=$car_id");
+        Url::redirectUrl("/autobajo/admin/car-profil.php?car_id=$car_id&active_advertisement=1");
     } else {
         $not_update_done = "Update inzerátu sa nepodaril.";
         Url::redirectUrl("/autobajo/admin/logedin-error.php?logedin_error=$not_update_done"); 

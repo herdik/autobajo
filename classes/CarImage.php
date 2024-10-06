@@ -152,4 +152,72 @@ class CarImage {
     }
 
 
+    /**
+     *
+     * DELETE SELECTED IMAGE FROM FOLDER
+     *
+     * @param object $connection - connection to database
+     * @param string $path
+     * 
+     * @return boolean if delete file is successful
+     */
+    public static function deleteCarImageFromDirectory($path){
+        try {
+            // check File is exists
+            if(!file_exists($path)){
+                throw new Exception("Súbor neexistuje a preto nemôže byť zmazaný");
+            }
+    
+            // delete image from folder
+            if(unlink($path)){
+                return true;
+            } else {
+                throw new Exception("Pri zmazání súboru došlo k chybe");
+            }
+        } catch (Exception $e){
+            // 3 je že vyberiem vlastnú cestu k súboru
+            error_log("Chyba pri funkcii deleteCarImageFromDirectory, získanie informácií z databázy zlyhalo\n", 3, "../errors/error.log");
+            echo "Výsledná chyba je: " . $e->getMessage();
+        }
+    }
+
+
+
+    /**
+     *
+     * DELETE SELECTED IMAGE FROM GALLERY AND FROM DATABASE
+     *
+     * @param object $connection - connection to database
+     * @param integer $image_id - truck wheel for truck service
+     * 
+     * @return boolean if delete is successful
+     */
+    public static function deleteCarImage($connection, $image_id){
+        $sql = "DELETE 
+                FROM car_image
+                WHERE image_id = :image_id";
+        
+
+        // connect sql amend to database
+        $stmt = $connection->prepare($sql);
+
+        // all parameters to send to Database
+        // filling and bind values will be execute to Database
+        $stmt->bindValue(":image_id", $image_id, PDO::PARAM_INT);
+
+        try {
+            if($stmt->execute()){
+                return true;
+            } else {
+                throw Exception ("Príkaz pre vymazanie všetkých dát o vybranom obrázku z galérie sa nepodaril");
+            }
+        } catch (Exception $e){
+            // 3 je že vyberiem vlastnú cestu k súboru
+            error_log("Chyba pri funkcii deleteCarImage, získanie informácií z databázy zlyhalo\n", 3, "../errors/error.log");
+            echo "Výsledná chyba je: " . $e->getMessage();
+        }
+    }
+
+
+    
 }

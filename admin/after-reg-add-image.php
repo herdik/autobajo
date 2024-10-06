@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
     $gallery = filter_var($_POST["gallery"], FILTER_VALIDATE_BOOLEAN);
 
 
-    // insert new image/images
+    // ************ insert new title image/ add images to gallery *********
     if ($_POST["submit"] === "Pridať"){
 
         
@@ -40,6 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
         // title image for car advertisement
         $car_images = $_FILES["car_image"];
 
+        // settings for title image - set as array
         if (!$gallery) {
             $car_image = $car_images;
             $car_images = array();
@@ -49,9 +50,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
                 $car_images[$key] = $new_array;
                 
             }
+            // basic settings for title image to redirect profil advertisement and title image will be uploaded 
             $refresh_page = true;
         }
-        
+        // settings for title image - set as array
+
+        // checking number of images
         $image_count = count($car_images["name"]);
 
         // count not uloaded pictures
@@ -138,10 +142,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
                 }
             }
         }   
+    // ************ insert new title image/ add images to gallery *********
     } else {
-        $refresh_page = true;
-        // update title image
+        
+        // ********* update title image from gallery *************
         if ($_POST["action"] === "add" and isset($_POST["submit"])){
+            // use redirect to profil
+            $refresh_page = true;
+
             $image_id = $_POST["image_id"];
             $image_name = CarImage::getCarImage($connection, $image_id)["image_name"];
             $car_id = CarImage::getCarImage($connection, $image_id)["car_id"];
@@ -159,6 +167,52 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
                 $not_updated = "Zvolené obrázky sa nepodarilo nahrať";
                 Url::redirectUrl("/autobajo/admin/logedin-error.php?logedin_error=$not_updated");
             }
+        // ********* update title image from gallery *************
+        } else {
+        // ***** deleted selected images from gallery and folder********
+            // get string array in array
+            $images_id = $_POST["image_id"];
+            // convert string array to classy array
+            $image_id = explode(",", $images_id[0]);
+            // control array for delete images
+            $deleted_all_img = array();
+
+            // loop to delete one for one image which is selected by user
+            for ($i=0; $i < count($image_id); $i++){
+                // get car id 
+                $car_id = CarImage::getCarImage($connection, $image_id[$i])["car_id"];
+                // get name for image 
+                $uploaded_image_name = CarImage::getCarImage($connection, $image_id[$i])["image_name"];
+    
+                // create path where will delete image from folder
+                $image_delete_path = "../uploads/cars/" . strval($car_id) . "/" . strval($uploaded_image_name);
+
+                // deleted file from Folder
+                $delete_file = CarImage::deleteCarImageFromDirectory($image_delete_path);
+
+                if ($delete_file){
+                    // delete image in database 
+                    $deleted_all_img[] = CarImage::deleteCarImage($connection, $image_id[$i]);
+                } else {
+                    // if some file wasn't deleted add false to array
+                    $deleted_all_img[] = false;
+                } 
+                
+                
+            }
+            if(!count(array_unique($deleted_all_img)) === 1){
+                // redirect to error site
+                $not_deleted = "Niektoré obrázky sa nepodarilo vymazať";
+                Url::redirectUrl("/autobajo/admin/logedin-error.php?logedin_error=$not_deleted");
+
+                if(!current($deleted_all_img)){
+                    // redirect to error site
+                    $not_deleted = "Niektoré obrázky sa nepodarilo vymazať";
+                    Url::redirectUrl("/autobajo/admin/logedin-error.php?logedin_error=$not_deleted");
+                }
+            }
+            $refresh_page = false;
+        // ***** deleted selected images from gallery and folder********
         }
     }
 

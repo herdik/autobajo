@@ -52,9 +52,13 @@ document.addEventListener("keydown", function(event) {
         // reset selected value for title image which was selected from image gallery
         addImg.value = ""
 
+        // reset array for selected images to be deleted
+        selectedGalImages = []
+
         // default for confirm button to update title image is disabled
         confirmBtnAdd.disabled = true
-
+        // default for confirm button to delete images is disabled
+        confirmBtnDel.disabled = true
 
         allImages.forEach((oneImage) => {
             
@@ -84,6 +88,12 @@ function changeColorAdd () {
     delete_btn.style.borderColor = "#b30606"
     delete_btn.style.color = "#fff"
 
+    // default for confirm button to delete images is disabled
+    confirmBtnDel.disabled = true
+
+    // reset array for selected images to be deleted
+    selectedGalImages = []
+
     // main setting for gallery - SELECT ONE IMAGE
     allImages.forEach((oneImage) => {
 
@@ -112,6 +122,7 @@ function changeColorDel () {
 
     // reset selected value for title image which was selected from image gallery
     addImg.value = ""
+
 
     // default for confirm button to update title image is disabled
     confirmBtnAdd.disabled = true
@@ -156,7 +167,25 @@ function selectImage () {
 
 // function for images to select multiple images if delete button is actived
 function selectImages () {
+    // add red border to selected images which is prepared for delete
     this.style.border = "5px solid #b30606"
+
+    // selected image to delete operation
+    let delImg = this.closest("div").children[0].value
+
+    let index = selectedGalImages.indexOf(delImg)
+    
+    if (index < 0){
+        // array all images to be deleted from database
+        selectedGalImages.push(delImg)
+    } else {
+        selectedGalImages.splice(index, 1)
+        // this.removeEventListener("click", selectImages)
+        this.style.border = "1px solid #fff"
+    }
+
+    // confirm button to delete images is enabled
+    confirmBtnDel.disabled = false
 }
 
 
@@ -168,7 +197,6 @@ $(document).ready(function () {
         let formData = new FormData(galImages)
         formData.append('submit', "Pridať")
         
-        console.log()
         $.ajax({
             type: "POST",
             url: "after-reg-add-image.php",
@@ -179,6 +207,34 @@ $(document).ready(function () {
                 window.location.reload()
             }
         });   
+
+    });
+});
+
+$(document).ready(function () {
+    $("#image-submit-delete").click(function (e) { 
+        e.preventDefault();
+
+        let forDeleteData
+
+        if (selectedGalImages.length > 0) {
+            $("#image-id-delete").val(selectedGalImages)
+            let deleteGalImg = $("#delete-form")[0]
+            forDeleteData = new FormData(deleteGalImg)
+            forDeleteData.append('submit', "Potvrdiť")
+        }
+
+
+        $.ajax({
+            type: "POST",
+            url: "after-reg-add-image.php",
+            data: forDeleteData,
+            contentType: false,
+            processData: false,
+            success: function () {
+                window.location.reload()
+            }
+        }); 
 
     });
 });
