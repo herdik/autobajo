@@ -1,7 +1,7 @@
 <?php
 
 require "../classes/Database.php";
-require "../classes/CarImage.php";
+require "../classes/TireImage.php";
 
 // verifying by session if visitor have access to this website
 require "../classes/Authorization.php";
@@ -17,12 +17,12 @@ $database = new Database();
 $connection = $database->connectionDB();
 
 
-if (isset($_GET["car_id"]) and is_numeric($_GET["car_id"])){
-    $car_id = $_GET["car_id"];
-    $car_images = CarImage::getAllCarsImages($connection, $car_id);
+if (isset($_GET["tire_id"]) and is_numeric($_GET["tire_id"])){
+    $tire_id = $_GET["tire_id"];
+    $tire_images = TireImage::getAllTiresImages($connection, $tire_id);
 } else {
-    $car_id = null;
-    $car_images = null;
+    $tire_id = null;
+    $tire_images = null;
 }
 
 // control if user choose image from image gallery 
@@ -60,8 +60,8 @@ $image_sequence = null;
         
         <h2>Pridať obrázky do galérie</h2>
         <section class="add-new-images">
-            <form id="registration-form-images" action="./after-add-del-title-car-img-gallery.php" method="POST" enctype="multipart/form-data">
-                <input type="hidden" name="car_id" value="<?= htmlspecialchars($car_id) ?>">
+            <form id="registration-form-images" action="./after-add-del-title-tire-img-gallery.php" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="tire_id" value="<?= htmlspecialchars($tire_id) ?>">
 
                 <div class="add-image gallery">
                     
@@ -74,7 +74,7 @@ $image_sequence = null;
                     
                     <!-- add images to gallery -->
                     <input type="hidden" name="gallery" value="true">
-                    <input id="image-name-gallery" name="car_image[]" class="gallery-img" type="file"  multiple required>
+                    <input id="image-name-gallery" name="tire_image[]" class="gallery-img" type="file"  multiple required>
                     <input class="btn" id="btn-gall" type="submit" name="submit" value="Pridať">
 
                     
@@ -84,8 +84,8 @@ $image_sequence = null;
         </section>
         <h2 class="title-image">Vybrať nový titulný obrázok</h2>
         <section class="add-new-images">
-            <form id="registration-form-image" action="./after-add-del-title-car-img-gallery.php" method="POST" enctype="multipart/form-data">
-                <input type="hidden" name="car_id" value="<?= htmlspecialchars($car_id) ?>">
+            <form id="registration-form-image" action="./after-add-del-title-tire-img-gallery.php" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="tire_id" value="<?= htmlspecialchars($tire_id) ?>">
 
                 <div class="add-image title">
                     
@@ -99,7 +99,7 @@ $image_sequence = null;
                     <!-- title img -->
                     <input type="hidden" name="gallery" value="false">
 
-                    <input id="image-name-title" type="file" name="car_image" required>
+                    <input id="image-name-title" type="file" name="tire_image" required>
                     <input class="btn" id="btn-title" type="submit" name="submit" value="Pridať">
 
                 </div>
@@ -117,7 +117,7 @@ $image_sequence = null;
                         
                         <input class="btn" id="image-name-add"type="submit" name="add" value="Pridať">
 
-                        <form class="edit-form" action="./after-add-del-title-car-img-gallery.php" method="POST">
+                        <form class="edit-form" action="./after-add-del-title-tire-img-gallery.php" method="POST">
 
                             <input type="hidden" name="action" value="add">
                             <input type="hidden" name="gallery" value="false">
@@ -157,17 +157,17 @@ $image_sequence = null;
 
             <article class="images-part">
                
-                    <?php foreach ($car_images as $car_image): ?>
+                    <?php foreach ($tire_images as $tire_image): ?>
                     <div class="div-menu-images">
                         
-                        <input type="hidden" name="image_id" value="<?= htmlspecialchars($car_image["image_id"]) ?>">
+                        <input type="hidden" name="image_id" value="<?= htmlspecialchars($tire_image["image_id"]) ?>">
 
-                        <?php if ($car_image["image_name"] === "no-photo-car.jpg"): ?>
+                        <?php if ($tire_image["image_name"] === "no-photo-car.jpg"): ?>
 
-                            <img src="../img/no-photo-car/no-photo-car.jpg" alt="no-photo-car">
+                            <img src="../img/no-photo-tire/no-photo-car.jpg" alt="no-photo-car">
                         <?php else: ?>
                             
-                            <img src="../uploads/cars/<?= htmlspecialchars($car_id) ?>/<?= htmlspecialchars($car_image["image_name"]) ?>" alt="">
+                            <img src="../uploads/tires/<?= htmlspecialchars($tire_id) ?>/<?= htmlspecialchars($tire_image["image_name"]) ?>" alt="">
                         <?php endif; ?>
                     
                     </div>
@@ -190,7 +190,7 @@ $image_sequence = null;
     <script src="../js/header.js"></script>    
     <script src="../js/show-image-info-advertisement.js"></script>   
     <script src="../js/reg-form.js"></script>   
-    <script src="../js/choose-car-image-gallery.js"></script>   
+    <script src="../js/choose-tire-image-gallery.js"></script>   
             
 </body>
 </html>

@@ -199,7 +199,7 @@ $(document).ready(function () {
         
         $.ajax({
             type: "POST",
-            url: "after-reg-add-image.php",
+            url: "after-add-del-title-car-img-gallery.php",
             data: formData,
             contentType: false,
             processData: false,
@@ -236,7 +236,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: "POST",
-            url: "after-reg-add-image.php",
+            url: "after-add-del-title-car-img-gallery.php",
             data: forDeleteData,
             contentType: false,
             processData: false,

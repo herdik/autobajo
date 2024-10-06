@@ -261,4 +261,44 @@ class Tire {
         }
     }
 
+     /**
+     *
+     * RETURN BOOLEAN FROM DATABASE AFTER UPDATED CAR ADVERTISEMENT TITLE IMAGE
+     *
+     * @param object $connection - database connection
+     * @param string $tire_image - tire advertisement title image
+     * @param int $tire_id -  spesific tire advertisement
+     * 
+     * @return boolean if update is successful
+     */
+    public static function updateTireImageAdvertisement($connection, $tire_image, $tire_id){
+
+        $sql = "UPDATE tire_advertisement
+                SET tire_image = :tire_image
+                WHERE tire_id = :tire_id";
+        
+
+        // connect sql amend to database
+        $stmt = $connection->prepare($sql);
+
+        // all parameters to send to Database
+        // filling and bind values will be execute to Database
+        $stmt->bindValue(":tire_id", $tire_id, PDO::PARAM_INT);
+        $stmt->bindValue(":tire_image", $tire_image, PDO::PARAM_STR);
+        
+        
+        
+        try {
+            if($stmt->execute()){
+                return true;
+            } else {
+                throw Exception ("Príkaz pre update zmeny statusu inzerátu sa nepodaril");
+            }
+        } catch (Exception $e){
+            // 3 je že vyberiem vlastnú cestu k súboru
+            error_log("Chyba pri funkcii updateTireImageAdvertisement, získanie informácií z databázy zlyhalo\n", 3, "../errors/error.log");
+            echo "Výsledná chyba je: " . $e->getMessage();
+        }
+    }
+
 }
