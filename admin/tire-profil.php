@@ -2,6 +2,7 @@
 
 require "../classes/Database.php";
 require "../classes/Tire.php";
+require "../classes/TireImage.php";
 
 // verifying by session if visitor have access to this website
 require "../classes/Authorization.php";
@@ -19,12 +20,14 @@ $connection = $database->connectionDB();
 
 if ((isset($_GET["tire_id"]) and is_numeric($_GET["tire_id"])) and (isset($_GET["active_advertisement"]) and is_numeric($_GET["active_advertisement"]))){
     $tire_infos = Tire::getTire($connection, $_GET["tire_id"]);
+    $tire_images = TireImage::getAllTiresImages($connection, $_GET["tire_id"]);
 
     // active true means aktice advertisement active false/0 means advertisement in history
     $active_advertisement = $_GET["active_advertisement"];
 } else {
     $tire_infos = null;
     $active_advertisement = null;
+    $tire_images = null;
 }
 
 ?>
@@ -53,35 +56,71 @@ if ((isset($_GET["tire_id"]) and is_numeric($_GET["tire_id"])) and (isset($_GET[
 
 </head>
 <body>
-
+   
     <?php require "../assets/admin-header.php" ?>
+
+    <dialog class="gallery-slider" id="gallery-slider">
+
+        <div class="close">X</div>
+
+        <div class="left arrow"></div>
+
+        <div class="show-image">
+
+        <?php if ($tire_infos["tire_image"] === "no-photo-car.jpg"): ?>
+            <img src="../img/no-photo-car/no-photo-car.jpg" alt="no-photo-car">
+        <?php else: ?>
+            <img src="../uploads/tires/<?= htmlspecialchars($tire_infos["tire_id"]) ?>/<?= htmlspecialchars($tire_infos["tire_image"]) ?>" alt="">
+        <?php endif; ?>
+        
+        <?php foreach ($tire_images as $tire_image): ?>
+            <?php if ($tire_image["image_name"] != $tire_infos["tire_image"]): ?>
+                <?php if ($tire_image["image_name"] === "no-photo-car.jpg"): ?>
+                    <img src="../img/no-photo-car/no-photo-car.jpg" alt="no-photo-car">
+                <?php else: ?>
+                    <img src="../uploads/tires/<?= htmlspecialchars($tire_image["tire_id"]) ?>/<?= htmlspecialchars($tire_image["image_name"]) ?>" alt="">
+                <?php endif; ?>
+            <?php endif; ?>
+        <?php endforeach; ?>
+
+        <div class="img-info"></div>
+
+        </div>
+
+        <div class="right arrow"></div>   
+
+    </dialog>
 
     <main>
 
         <section class="advertisement-tire">
             
             <article class="heading">
+                <div class="main-image">    
 
-                <?php if ($tire_infos["tire_image"] === "no-photo-car.jpg"): ?>
-                    <img src="../img/no-photo-car/no-photo-car.jpg" alt="no-photo-car">
-                <?php else: ?>
-                    <img src="../uploads/tires/<?= htmlspecialchars($tire_infos["tire_id"]) ?>/<?= htmlspecialchars($tire_infos["tire_image"]) ?>" alt="">
-                <?php endif; ?>
+                    <?php if ($tire_infos["tire_image"] === "no-photo-car.jpg"): ?>
+                        <img src="../img/no-photo-car/no-photo-car.jpg" alt="no-photo-car">
+                    <?php else: ?>
+                        <img src="../uploads/tires/<?= htmlspecialchars($tire_infos["tire_id"]) ?>/<?= htmlspecialchars($tire_infos["tire_image"]) ?>" alt="">
+                    <?php endif; ?>
 
-                <?php if ($tire_infos["reserved"]): ?>
-                    <div class="advert-label">
-                        Rezervované
-                    </div>
-                <?php elseif ($tire_infos["sold"]): ?>
-                    <div class="advert-label">
-                        Predané
-                    </div>
-                <?php elseif (!$tire_infos["active"]): ?>
-                    <div class="advert-label">
-                        Neaktívny
-                    </div>
-                <?php endif; ?>
+                    <?php if ($tire_infos["reserved"]): ?>
+                        <div class="advert-label">
+                            Rezervované
+                        </div>
+                    <?php elseif ($tire_infos["sold"]): ?>
+                        <div class="advert-label">
+                            Predané
+                        </div>
+                    <?php elseif (!$tire_infos["active"]): ?>
+                        <div class="advert-label">
+                            Neaktívny
+                        </div>
+                    <?php endif; ?>
+                    <div class="gallery-text">Otvoriť galériu</div> 
 
+                </div>
+                
                 <div class="main-tire-info">
 
                     <div class="tire-brand">
@@ -131,11 +170,6 @@ if ((isset($_GET["tire_id"]) and is_numeric($_GET["tire_id"])) and (isset($_GET[
             </article>
 
             <article class="management-part">
-
-                <div class="slider-gallery">
-
-                </div>
-                
 
                 <div class="administration">
                     <h2>Administrácia</h2>
@@ -197,6 +231,7 @@ if ((isset($_GET["tire_id"]) and is_numeric($_GET["tire_id"])) and (isset($_GET[
     
     <?php require "../assets/footer.php" ?>
     
-    <script src="../js/header.js"></script>                   
+    <script src="../js/header.js"></script>  
+    <script src="../js/show-gallery.js"></script>                  
 </body>
 </html>

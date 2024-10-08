@@ -69,12 +69,12 @@ main h1 {
 /* label on image */
 
 .car-picture {
-    width: 30%;
+    width: 40%;
     height: 100%;
 }
 
 .basic-car-info {
-    width: 70%;
+    width: 60%;
     background-color: #fff;
     display: flex;
     flex-direction: column;

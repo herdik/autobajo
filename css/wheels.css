@@ -63,16 +63,17 @@ main h1 {
     text-align: center;
     transform: rotate(-45deg);
     font-weight: bold;
+    border: 2px dashed #fff;
 }
 /* label on image */
 
 .wheel-picture {
-    width: 30%;
+    width: 40%;
     height: 100%;
 }
 
 .basic-wheel-info {
-    width: 70%;
+    width: 60%;
     background-color: #fff;
     display: flex;
     flex-direction: column;

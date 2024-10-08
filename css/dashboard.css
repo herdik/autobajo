@@ -38,8 +38,8 @@ main h1 {
     justify-content: flex-start;
     border: 1px solid #fff;
     color: #fff;
-    animation: gradualVisibility 2s linear;
-    transition: 0.5s all linear;
+    animation: gradualVisibility 1.2s linear;
+    transition: .4s all linear;
 }
 .div-menu-images {
     width: 80%;

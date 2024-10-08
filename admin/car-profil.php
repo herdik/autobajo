@@ -1,6 +1,7 @@
 <?php
 require "../classes/Database.php";
 require "../classes/Car.php";
+require "../classes/CarImage.php";
 
 // verifying by session if visitor have access to this website
 require "../classes/Authorization.php";
@@ -19,6 +20,8 @@ $connection = $database->connectionDB();
 if ((isset($_GET["car_id"]) and is_numeric($_GET["car_id"])) and (isset($_GET["active_advertisement"]) and is_numeric($_GET["active_advertisement"]))){
     $car_infos = Car::getCar($connection, $_GET["car_id"]);
     $car_equipments = ["Elektrické okná", "Elektrické sedadlá", "Bezkľúčové štartovanie", "Airbag", "Tempomat", "Vyhrievané sedadlá", "Parkovacie senzory", "Isofix", "Hlin. disky/Elektróny", "Klimatizácia", "Ťažné zariadenie", "Alarm"];
+    $car_images = CarImage::getAllCarsImages($connection, $_GET["car_id"]);
+
     
     // active true means aktice advertisement active false/0 means advertisement in history
     $active_advertisement = $_GET["active_advertisement"];
@@ -26,12 +29,11 @@ if ((isset($_GET["car_id"]) and is_numeric($_GET["car_id"])) and (isset($_GET["a
     $car_infos = null;
     $car_equipments = null;
     $active_advertisement = null;
+    $car_images = null;
 }
 
 // first index for $car_equipments loop
 $inside_index = 12;
-
-// var_dump($car_infos["reserved"]);
 ?>
 
 <!DOCTYPE html>
@@ -58,35 +60,71 @@ $inside_index = 12;
 
 </head>
 <body>
-
+    
     <?php require "../assets/admin-header.php" ?>
+
+    <dialog class="gallery-slider" id="gallery-slider">
+
+        <div class="close">X</div>
+
+        <div class="left arrow"></div>
+
+        <div class="show-image">
+
+        <?php if ($car_infos["car_image"] === "no-photo-car.jpg"): ?>
+            <img src="../img/no-photo-car/no-photo-car.jpg" alt="no-photo-car">
+        <?php else: ?>
+            <img src="../uploads/cars/<?= htmlspecialchars($car_infos["car_id"]) ?>/<?= htmlspecialchars($car_infos["car_image"]) ?>" alt="">
+        <?php endif; ?>
+        
+        <?php foreach ($car_images as $car_image): ?>
+            <?php if ($car_image["image_name"] != $car_infos["car_image"]): ?>
+                <?php if ($car_image["image_name"] === "no-photo-car.jpg"): ?>
+                    <img src="../img/no-photo-car/no-photo-car.jpg" alt="no-photo-car">
+                <?php else: ?>
+                    <img src="../uploads/cars/<?= htmlspecialchars($car_image["car_id"]) ?>/<?= htmlspecialchars($car_image["image_name"]) ?>" alt="">
+                <?php endif; ?>
+            <?php endif; ?>
+        <?php endforeach; ?>
+
+        <div class="img-info"></div>
+
+        </div>
+
+        <div class="right arrow"></div>   
+
+    </dialog>
 
     <main>
 
         <section class="advertisement-car">
             
             <article class="heading">
+                <div class="main-image">
 
-                <?php if ($car_infos["car_image"] === "no-photo-car.jpg"): ?>
-                    <img src="../img/no-photo-car/no-photo-car.jpg" alt="no-photo-car">
-                <?php else: ?>
-                    <img src="../uploads/cars/<?= htmlspecialchars($car_infos["car_id"]) ?>/<?= htmlspecialchars($car_infos["car_image"]) ?>" alt="">
-                <?php endif; ?>
-                
-                <?php if ($car_infos["reserved"]): ?>
-                    <div class="advert-label">
-                        Rezervované
-                    </div>
-                <?php elseif ($car_infos["sold"]): ?>
-                    <div class="advert-label">
-                        Predané
-                    </div>
-                <?php elseif (!$car_infos["active"]): ?>
-                    <div class="advert-label">
-                        Neaktívny
-                    </div>
-                <?php endif; ?>
+                    <?php if ($car_infos["car_image"] === "no-photo-car.jpg"): ?>
+                        <img src="../img/no-photo-car/no-photo-car.jpg" alt="no-photo-car">
+                    <?php else: ?>
+                        <img src="../uploads/cars/<?= htmlspecialchars($car_infos["car_id"]) ?>/<?= htmlspecialchars($car_infos["car_image"]) ?>" alt="">
+                    <?php endif; ?>
+                    
+                    <?php if ($car_infos["reserved"]): ?>
+                        <div class="advert-label">
+                            Rezervované
+                        </div>
+                    <?php elseif ($car_infos["sold"]): ?>
+                        <div class="advert-label">
+                            Predané
+                        </div>
+                    <?php elseif (!$car_infos["active"]): ?>
+                        <div class="advert-label">
+                            Neaktívny
+                        </div>
+                    <?php endif; ?>
 
+                    <div class="gallery-text">Otvoriť galériu</div>
+                    
+                </div>
                 <div class="main-car-info">
 
                     <div class="car-brand">
@@ -143,12 +181,7 @@ $inside_index = 12;
             </article>
 
             <article class="management-part">
-
-                <div class="slider-gallery">
-
-                </div>
                  
-
                 <div class="administration">
                     <h2>Administrácia</h2>
 
@@ -225,5 +258,6 @@ $inside_index = 12;
     <?php require "../assets/footer.php" ?>
     
     <script src="../js/header.js"></script>                   
+    <script src="../js/show-gallery.js"></script>                   
 </body>
 </html>

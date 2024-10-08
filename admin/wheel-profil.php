@@ -2,6 +2,7 @@
 
 require "../classes/Database.php";
 require "../classes/Wheel.php";
+require "../classes/WheelImage.php";
 
 // verifying by session if visitor have access to this website
 require "../classes/Authorization.php";
@@ -19,17 +20,15 @@ $connection = $database->connectionDB();
 
 if ((isset($_GET["wheel_id"]) and is_numeric($_GET["wheel_id"])) and (isset($_GET["active_advertisement"]) and is_numeric($_GET["active_advertisement"]))){
     $wheel_infos = Wheel::getWheel($connection, $_GET["wheel_id"]);
+    $wheel_images = WheelImage::getAllWheelsImages($connection, $_GET["wheel_id"]);
 
     // active true means aktice advertisement active false/0 means advertisement in history
     $active_advertisement = $_GET["active_advertisement"];
 } else {
     $wheel_infos = null;
     $active_advertisement = null;
+    $wheel_images = null;
 }
-
-// control if user choose image from image gallery 
-$image_sequence = null;
-
 ?>
 
 <!DOCTYPE html>
@@ -56,34 +55,71 @@ $image_sequence = null;
 
 </head>
 <body>
-
+   
     <?php require "../assets/admin-header.php" ?>
+
+    <dialog class="gallery-slider" id="gallery-slider">
+
+        <div class="close">X</div>
+
+        <div class="left arrow"></div>
+
+        <div class="show-image">
+
+        <?php if ($wheel_infos["wheel_image"] === "no-photo-car.jpg"): ?>
+            <img src="../img/no-photo-car/no-photo-car.jpg" alt="no-photo-car">
+        <?php else: ?>
+            <img src="../uploads/wheels/<?= htmlspecialchars($wheel_infos["wheel_id"]) ?>/<?= htmlspecialchars($wheel_infos["wheel_image"]) ?>" alt="">
+        <?php endif; ?>
+        
+        <?php foreach ($wheel_images as $wheel_image): ?>
+            <?php if ($wheel_image["image_name"] != $wheel_infos["wheel_image"]): ?>
+                <?php if ($wheel_image["image_name"] === "no-photo-car.jpg"): ?>
+                    <img src="../img/no-photo-car/no-photo-car.jpg" alt="no-photo-car">
+                <?php else: ?>
+                    <img src="../uploads/wheels/<?= htmlspecialchars($wheel_image["wheel_id"]) ?>/<?= htmlspecialchars($wheel_image["image_name"]) ?>" alt="">
+                <?php endif; ?>
+            <?php endif; ?>
+        <?php endforeach; ?>
+
+        <div class="img-info"></div>
+
+        </div>
+
+        <div class="right arrow"></div>   
+
+    </dialog>
 
     <main>
 
         <section class="advertisement-wheel">
             
             <article class="heading">
+                <div class="main-image">
 
-                <?php if ($wheel_infos["wheel_image"] === "no-photo-car.jpg"): ?>
-                    <img src="../img/no-photo-car/no-photo-car.jpg" alt="no-photo-car">
-                <?php else: ?>
-                    <img src="../uploads/wheels/<?= htmlspecialchars($wheel_infos["wheel_id"]) ?>/<?= htmlspecialchars($wheel_infos["wheel_image"]) ?>" alt="">
-                <?php endif; ?>
+                    <?php if ($wheel_infos["wheel_image"] === "no-photo-car.jpg"): ?>
+                        <img src="../img/no-photo-car/no-photo-car.jpg" alt="no-photo-car">
+                    <?php else: ?>
+                        <img src="../uploads/wheels/<?= htmlspecialchars($wheel_infos["wheel_id"]) ?>/<?= htmlspecialchars($wheel_infos["wheel_image"]) ?>" alt="">
+                    <?php endif; ?>
 
-                <?php if ($wheel_infos["reserved"]): ?>
-                    <div class="advert-label">
-                        Rezervované
-                    </div>
-                <?php elseif ($wheel_infos["sold"]): ?>
-                    <div class="advert-label">
-                        Predané
-                    </div>
-                <?php elseif (!$wheel_infos["active"]): ?>
-                    <div class="advert-label">
-                        Neaktívny
-                    </div>
-                <?php endif; ?>
+                    <?php if ($wheel_infos["reserved"]): ?>
+                        <div class="advert-label">
+                            Rezervované
+                        </div>
+                    <?php elseif ($wheel_infos["sold"]): ?>
+                        <div class="advert-label">
+                            Predané
+                        </div>
+                    <?php elseif (!$wheel_infos["active"]): ?>
+                        <div class="advert-label">
+                            Neaktívny
+                        </div>
+                    <?php endif; ?>
+
+                    <div class="gallery-text">Otvoriť galériu</div>
+
+                </div>
 
                 <div class="main-wheel-info">
 
@@ -138,11 +174,6 @@ $image_sequence = null;
             </article>
 
             <article class="management-part">
-
-                <div class="slider-gallery">
-
-                </div>
-                
 
                 <div class="administration">
                     <h2>Administrácia</h2>
@@ -204,6 +235,7 @@ $image_sequence = null;
     
     <?php require "../assets/footer.php" ?>
     
-    <script src="../js/header.js"></script>                   
+    <script src="../js/header.js"></script>    
+    <script src="../js/show-gallery.js"></script>                    
 </body>
 </html>
