@@ -103,13 +103,19 @@ class Car {
      *
      * @return array array of objects, one object mean one car infos
      */
-    public static function getAllCarsAdvertisement($connection, $status, $columns = "*"){
+    public static function getAllCarsAdvertisement($connection, $status, $page_nr, $show_nr_of_advert, $columns = "*"){
         $sql = "SELECT $columns
                 FROM car_advertisement
-                WHERE active = $status
-                ORDER BY car_id DESC";
+                WHERE active = :status
+                ORDER BY car_id DESC
+                LIMIT :page_nr, :show_nr_of_advert";
 
         $stmt = $connection->prepare($sql);
+
+        // filling and bind values will be execute to Database
+        $stmt->bindValue(":status", $status, PDO::PARAM_STR);
+        $stmt->bindValue(":page_nr", $page_nr, PDO::PARAM_INT);
+        $stmt->bindValue(":show_nr_of_advert", $show_nr_of_advert, PDO::PARAM_INT);
 
         try {
             if($stmt->execute()){
@@ -355,6 +361,35 @@ class Car {
         } catch (Exception $e){
             // 3 je že vyberiem vlastnú cestu k súboru
             error_log("Chyba pri funkcii updateCarImageAdvertisement, získanie informácií z databázy zlyhalo\n", 3, "../errors/error.log");
+            echo "Výsledná chyba je: " . $e->getMessage();
+        }
+    }
+
+
+    /**
+     *
+     * RETURN NUMBER OF CARS ADVERTISEMENT INFO FROM DATABASE
+     *
+     * @param object $connection - connection to database
+     *
+     * @return int numebr of all active or deactive advertisement
+     */
+    public static function countAllCarsAdvertisement($connection, $status, $columns = "*"){
+        $sql = "SELECT COUNT($columns)
+                FROM car_advertisement
+                WHERE active = $status";
+
+        $stmt = $connection->prepare($sql);
+
+        try {
+            if($stmt->execute()){
+                return $stmt->fetchColumn();
+            } else {
+                throw new Exception ("Príkaz pre získanie počtu inzerátov sa nepodaril");
+            }
+        } catch (Exception $e){
+            // 3 je že vyberiem vlastnú cestu k súboru
+            error_log("Chyba pri funckii countAllCarsAdvertisement, príkaz pre získanie informácií z databázy zlyhal\n", 3, "./errors/error.log");
             echo "Výsledná chyba je: " . $e->getMessage();
         }
     }

@@ -32,7 +32,7 @@ main h1 {
     margin-bottom: 20px;
 }
 
-.cars-menu a {
+.cars-menu > a {
     width: 100%;
     text-decoration: none;
     color: black;
@@ -140,4 +140,37 @@ main h1 {
     font-size: 36px;
     text-align: center;
 }
+
+
+/* pagination */
+.pagination {
+    display: flex;
+    gap: 10px;
+}
+
+.page-nr {
+    width: 40px;
+    height: 40px;
+    background-color: #b30606;
+    color: #fff;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 40px;
+    text-decoration: none;
+    font-weight: bold;
+}
+.actual-page {
+    border: 1px solid #fff;
+}
+
+/* disabled paginations arrows */
+.disabled {
+    pointer-events: none;
+    cursor: default;
+}
+/* disabled paginations arrows */
+
+/* pagination */
+
+
 

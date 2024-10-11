@@ -18,17 +18,28 @@ if (!Auth::isLoggedIn()){
 $database = new Database();
 $connection = $database->connectionDB();
 
+if (isset($_GET["page_nr"]) and is_numeric($_GET["page_nr"])){
+    $actual_page_nr = $_GET["page_nr"];
+} else {
+    $actual_page_nr = 1;
+}
+
+$show_nr_of_advert = 5;
+
+
 if (isset($_GET["car_history"]) and is_numeric($_GET["car_history"])){
     // active_advertisement means show active advetisement or show history
     $active_advertisement = $_GET["car_history"];
-    $cars_advertisements = Car::getAllCarsAdvertisement($connection, $active_advertisement, "car_id, car_brand, car_model, year_of_manufacture, past_km, fuel_type, car_description, car_price, reserved, sold, car_image");
+    $cars_advertisements = Car::getAllCarsAdvertisement($connection, $active_advertisement, (($actual_page_nr - 1) * $show_nr_of_advert), $show_nr_of_advert, "car_id, car_brand, car_model, year_of_manufacture, past_km, fuel_type, car_description, car_price, reserved, sold, car_image");
 } else {
     // active_advertisement means show active advetisement or show history
     $active_advertisement = 1;
-    $cars_advertisements = Car::getAllCarsAdvertisement($connection, $active_advertisement, "car_id, car_brand, car_model, year_of_manufacture, past_km, fuel_type, car_description, car_price, reserved, sold, car_image");
+    $cars_advertisements = Car::getAllCarsAdvertisement($connection, $active_advertisement, (($actual_page_nr - 1) * $show_nr_of_advert), $show_nr_of_advert, "car_id, car_brand, car_model, year_of_manufacture, past_km, fuel_type, car_description, car_price, reserved, sold, car_image");
 }
 
+$number_of_advert = Car::countAllCarsAdvertisement($connection, $active_advertisement);
 
+$number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
 
 ?>
 
@@ -64,7 +75,7 @@ if (isset($_GET["car_history"]) and is_numeric($_GET["car_history"])){
 
         <h1>Ponuka automobilov</h1>
 
-        <?php if (count($cars_advertisements) != 0 || $cars_advertisements != null): ?>
+        <?php if ($number_of_advert != 0 || $cars_advertisements != null): ?>
 
         <section class="cars-menu">
 
@@ -150,9 +161,60 @@ if (isset($_GET["car_history"]) and is_numeric($_GET["car_history"])){
             </a>        
             
             <?php endforeach ?>
+
+
+            <div class="pagination">
+
+            <?php if ($number_of_pages < 6): ?>
+
+                <a class="page-nr <?php echo ($actual_page_nr == 1) ? "disabled" : ''; ?>" href="./car-advertisement.php?page_nr=<?= $actual_page_nr - 1 ?>"><</a>
+
+                <?php for ($i = 0; $i < $number_of_pages; $i++): ?>
+                    <a class="page-nr <?php echo ($actual_page_nr == $i + 1) ? "actual-page" : ''; ?>" href="./car-advertisement.php?page_nr=<?= $i + 1 ?>"><?= $i + 1 ?></a>
+                <?php endfor; ?>
+
+                <a class="page-nr <?php echo ($actual_page_nr == $number_of_pages) ? "disabled" : ''; ?>" href="./car-advertisement.php?page_nr=<?= $actual_page_nr + 1 ?>">></a>
+
+            <?php else: ?>
+
+                <a class="page-nr <?php echo ($actual_page_nr == 1) ? "disabled" : ''; ?>" href="./car-advertisement.php?page_nr=<?= $actual_page_nr - 1 ?>"><</a>
+
+                <a class="page-nr <?php echo ($actual_page_nr == 1) ? "actual-page" : ''; ?>" href="./car-advertisement.php?page_nr=<?= 1 ?>"><?= 1 ?></a>
+
+                <?php for ($i = 0; $i < 3; $i++): ?>
+                    <?php if ($actual_page_nr + 2 < $number_of_pages): ?>
+
+                        <?php if ($actual_page_nr == 2): ?>
+                            <a class="page-nr <?php echo ($actual_page_nr == $i + $actual_page_nr) ? "actual-page" : ''; ?>" href="./car-advertisement.php?page_nr=<?= $i + $actual_page_nr ?>"><?= $i + $actual_page_nr ?></a>
+                        <?php elseif ($actual_page_nr < 2): ?>
+                            <a class="page-nr <?php echo ($actual_page_nr == $i + 1 + $actual_page_nr) ? "actual-page" : ''; ?>" href="./car-advertisement.php?page_nr=<?= $i + 1 + $actual_page_nr ?>"><?= $i + 1 + $actual_page_nr ?></a>
+                        <?php else: ?>
+                            <a class="page-nr <?php echo ($actual_page_nr == $i + $actual_page_nr - 1) ? "actual-page" : ''; ?>" href="./car-advertisement.php?page_nr=<?= $i + $actual_page_nr - 1?>"><?= $i + $actual_page_nr - 1 ?></a>
+                        <?php endif; ?>
+                    
+                    <?php else: ?>
+                        
+                        <a class="page-nr <?php echo ($actual_page_nr == $number_of_pages - 3 + $i) ? "actual-page" : ''; ?>" href="./car-advertisement.php?page_nr=<?= $number_of_pages - 3 + $i ?>"><?= $number_of_pages - 3 + $i ?></a>
+                    
+                    <?php endif; ?>
+
+                <?php endfor; ?>
+
+                <a class="page-nr <?php echo ($actual_page_nr == $number_of_pages) ? "actual-page" : ''; ?>" href="./car-advertisement.php?page_nr=<?= $number_of_pages ?>"><?= $number_of_pages ?></a>
+
+                <a class="page-nr <?php echo ($actual_page_nr == $number_of_pages) ? "disabled" : ''; ?>" href="./car-advertisement.php?page_nr=<?= $actual_page_nr + 1 ?>">></a>
+            
+            <?php endif; ?>
+
+            </div>
+
         </section>
 
+        
+
         <?php endif ?>
+
+
         
 
     </main>
