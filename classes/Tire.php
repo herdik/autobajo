@@ -79,16 +79,25 @@ class Tire {
      * RETURN ALL TIRES ADVERTISEMENT INFO FROM DATABASE
      *
      * @param object $connection - connection to database
+     * @param bool $status - active or historical advertisement
+     * @param int $page_nr - actual page number
+     * @param int $show_nr_of_advert - how many advertisement is printed on page/site
      *
      * @return array array of objects, one object mean one tire infos
      */
-    public static function getAllTiresAdvertisement($connection, $status, $columns = "*"){
+    public static function getAllTiresAdvertisement($connection, $status, $page_nr, $show_nr_of_advert, $columns = "*"){
         $sql = "SELECT $columns
                 FROM tire_advertisement
-                WHERE active = $status
-                ORDER BY tire_id DESC";
+                WHERE active = :status
+                ORDER BY tire_id DESC
+                LIMIT :page_nr, :show_nr_of_advert";
 
         $stmt = $connection->prepare($sql);
+
+        // filling and bind values will be execute to Database
+        $stmt->bindValue(":status", $status, PDO::PARAM_STR);
+        $stmt->bindValue(":page_nr", $page_nr, PDO::PARAM_INT);
+        $stmt->bindValue(":show_nr_of_advert", $show_nr_of_advert, PDO::PARAM_INT);
 
         try {
             if($stmt->execute()){
@@ -297,6 +306,35 @@ class Tire {
         } catch (Exception $e){
             // 3 je že vyberiem vlastnú cestu k súboru
             error_log("Chyba pri funkcii updateTireImageAdvertisement, získanie informácií z databázy zlyhalo\n", 3, "../errors/error.log");
+            echo "Výsledná chyba je: " . $e->getMessage();
+        }
+    }
+
+
+    /**
+     *
+     * RETURN NUMBER OF TIRES ADVERTISEMENT INFO FROM DATABASE
+     *
+     * @param object $connection - connection to database
+     *
+     * @return int numebr of all active or deactive advertisement
+     */
+    public static function countAllTiresAdvertisement($connection, $status, $columns = "*"){
+        $sql = "SELECT COUNT($columns)
+                FROM tire_advertisement
+                WHERE active = $status";
+
+        $stmt = $connection->prepare($sql);
+
+        try {
+            if($stmt->execute()){
+                return $stmt->fetchColumn();
+            } else {
+                throw new Exception ("Príkaz pre získanie počtu inzerátov sa nepodaril");
+            }
+        } catch (Exception $e){
+            // 3 je že vyberiem vlastnú cestu k súboru
+            error_log("Chyba pri funckii countAllTiresAdvertisement, príkaz pre získanie informácií z databázy zlyhal\n", 3, "./errors/error.log");
             echo "Výsledná chyba je: " . $e->getMessage();
         }
     }

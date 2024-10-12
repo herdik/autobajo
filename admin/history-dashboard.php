@@ -61,7 +61,7 @@ if (!Auth::isLoggedIn()){
             </article>
             </a>
 
-            <a href="./wheel-advertisement.php?rim_history=0
+            <a href="./wheel-advertisement.php?wheel_history=0
             ">
             <article class="div-menu-part part-rimes">
                 <img class="div-menu-images" src="../img/rim.jpg" alt="">

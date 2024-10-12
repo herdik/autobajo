@@ -100,6 +100,9 @@ class Car {
      * RETURN ALL CARS ADVERTISEMENT INFO FROM DATABASE
      *
      * @param object $connection - connection to database
+     * @param bool $status - active or historical advertisement
+     * @param int $page_nr - actual page number
+     * @param int $show_nr_of_advert - how many advertisement is printed on page/site
      *
      * @return array array of objects, one object mean one car infos
      */
