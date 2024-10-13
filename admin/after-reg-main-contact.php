@@ -29,10 +29,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
     $tel_2 = $_POST["tel_2"];
     
 
-    $create_contact_info = Contact::createContactInfo($connection, $company_name, $street_number, $town_post_nr, $email_1, $tel_1, $email_2, $tel_2);
+    $update_contact_info = Contact::updateContactInfo($connection, $company_name, $street_number, $town_post_nr, $email_1, $tel_1, $email_2, $tel_2);
 
     
-    if ($create_contact_info){
+    if ($update_contact_info){
         Url::redirectUrl("/autobajo/admin/admin-about-us.php");
     } else {
         $not_added_contact_info = "Kontaktné údaje sa nepodarilo pridať";

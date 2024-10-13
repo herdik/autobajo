@@ -82,5 +82,60 @@ class Contact {
         }
     }
 
+    /**
+     *
+     * RETURN BOOLEAN FROM DATABASE AFTER UPDATED CONTACT INFO
+     *
+     * @param object $connection - database connection
+     * @param string $company_name - company_name
+     * @param string $street_number - name of street and house number
+     * @param string $town_post_nr - name of town and postal code
+     * @param string $email_1 - email 1
+     * @param string $tel_1 - telephone number 1
+     * @param string $email_2 - email 2
+     * @param string $tel_2 - telephone number 2
+     * 
+     * @return boolean if update is successful
+     */
+    public static function updateContactInfo($connection, $company_name, $street_number, $town_post_nr, $email_1, $tel_1, $email_2, $tel_2){
+
+        $sql = "UPDATE contact_info
+                SET company_name = :company_name,
+                    street_number = :street_number,
+                    town_post_nr = :town_post_nr, 
+                    email_1 = :email_1, 
+                    tel_1 = :tel_1, 
+                    email_2 = :email_2, 
+                    tel_2 = :tel_2";
+        
+
+        // connect sql amend to database
+        $stmt = $connection->prepare($sql);
+
+        // all parameters to send to Database
+        // filling and bind values will be execute to Database
+        $stmt->bindValue(":company_name", $company_name, PDO::PARAM_STR);
+        $stmt->bindValue(":street_number", $street_number, PDO::PARAM_STR);
+        $stmt->bindValue(":town_post_nr", $town_post_nr, PDO::PARAM_STR);
+        $stmt->bindValue(":email_1", $email_1, PDO::PARAM_STR);
+        $stmt->bindValue(":tel_1", $tel_1, PDO::PARAM_STR);
+        $stmt->bindValue(":email_2", $email_2, PDO::PARAM_STR);
+        $stmt->bindValue(":tel_2", $tel_2, PDO::PARAM_STR);
+        
+        
+        
+        try {
+            if($stmt->execute()){
+                return true;
+            } else {
+                throw Exception ("Príkaz pre update zmeny kontaktných údajov sa nepodaril");
+            }
+        } catch (Exception $e){
+            // 3 je že vyberiem vlastnú cestu k súboru
+            error_log("Chyba pri funkcii updateContactInfo, získanie informácií z databázy zlyhalo\n", 3, "../errors/error.log");
+            echo "Výsledná chyba je: " . $e->getMessage();
+        }
+    }
+
 
 }
