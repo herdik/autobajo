@@ -54,12 +54,14 @@ $image_sequence = null;
 
                 
                     <div class="basic-car-info">
-                        <input type="text" id="answerCarBrand" name="car_brand" placeholder="Značka auta" list="car-brands" autocomplete="off" value="" required />
-                        <datalist id="car-brands">
-                        
-                            <option data-value=""></option>
-                    
-                        </datalist>
+                       
+                        <select name="car_brand" id="answerCarBrand" onfocus='this.size=5;' onblur='this.size=1;' 
+                        onchange='this.size=1; this.blur();'>
+                        <?php require "../assets/array-car-brand.php" ?>
+                        <?php for ($i = 0; $i < count($car_brands); $i++): ?>
+                            <option value="<?= htmlspecialchars($car_brands[$i]); ?>"><?= htmlspecialchars($car_brands[$i]); ?></option>
+                        <?php endfor; ?>
+                        </select>
 
                     </div>
 

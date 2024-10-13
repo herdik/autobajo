@@ -160,7 +160,7 @@ if (isset($_GET["wheel_id"]) and is_numeric($_GET["wheel_id"])){
                 
 
                 <div class="confirm-btn">
-                    <input class="btn" type="submit" name="submit" value="Pridať">
+                    <input class="btn" type="submit" name="submit" value="Potvrdiť">
                 </div>    
             </form>
 

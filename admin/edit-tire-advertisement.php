@@ -226,7 +226,7 @@ if (isset($_GET["tire_id"]) and is_numeric($_GET["tire_id"])){
                 
 
                 <div class="confirm-btn">
-                    <input class="btn" type="submit" name="submit" value="Pridať">
+                    <input class="btn" type="submit" name="submit" value="Potvrdiť">
                 </div>    
             </form>
 
