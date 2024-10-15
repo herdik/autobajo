@@ -21,10 +21,14 @@ if (isset($_GET["car_id"]) and is_numeric($_GET["car_id"])){
     $car_infos = Car::getCar($connection, $_GET["car_id"]);
     $car_equipments = ["Elekt. okná", "Elekt. sedadlá", "Bezkľúč. štartovanie", "Airbag", "Tempomat", "Vyhriev. sedadlá", "Park. senzory", "Isofix", "Hlin. disky", "Klimatizácia", "Ťažné zariadenie", "Alarm"];
     $car_equipments_hmtl = ["el-windows", "el-seats", "no-key-start", "airbag", "tempomat", "heated-seat", "parking-sensor", "isofix", "alu-rimes", "air-condition", "towing-device", "alarm"];
+    $car_models = Car::getAllCarsInfo($connection, 'car_model', $car_infos["car_brand"]);
+    $car_colors = Car::getAllCarsInfo($connection, 'car_color', '%');
 } else {
     $car_infos = null;
     $car_equipments = null;
     $car_equipments_hmtl = null;
+    $car_models = null;
+    $car_colors = null;
 }
 
 // control if user choose image from image gallery 
@@ -75,7 +79,7 @@ $inside_index = 12;
                     
                     <div class="basic-car-info">
                         
-                        <select name="car_brand" id="answerCarBrand" onfocus='this.size=5;' onblur='this.size=1;' 
+                        <select name="car_brand" id="car-brand" onfocus='this.size=5;' onblur='this.size=1;' 
                         onchange='this.size=1; this.blur();'>
                         <?php require "../assets/array-car-brand.php" ?>
                         <?php foreach ($car_brands as $car_brand): ?>
@@ -86,16 +90,25 @@ $inside_index = 12;
                     </div>
 
                     <div class="basic-car-info">
-                        <input type="text" id="answerCarModel" name="car_model" placeholder="Model auta" list="car-models" autocomplete="off" value="<?= htmlspecialchars($car_infos["car_model"]) ?>" required />
+                        <input type="text" id="car-model" name="car_model" placeholder="Model auta" list="car-models" autocomplete="off" value="<?= htmlspecialchars($car_infos["car_model"]) ?>" required />
                         <datalist id="car-models">
-                        
-                            <option data-value=""></option>
+                            <?php foreach($car_models as $car_model): ?>
+                                <option><?= htmlspecialchars($car_model); ?></option>
+                            <!-- <option data-value=""></option> -->
+                            <?php endforeach; ?>
                     
                         </datalist>
                     </div> 
 
                     <div class="basic-car-info">
-                        <input type="text" name="car_color" placeholder="Farba auta" value="<?= htmlspecialchars($car_infos["car_color"]) ?>" required />
+                        <input type="text" id="answerCarColor" name="car_color" placeholder="Farba auta" list="car-colors" autocomplete="off" value="<?= htmlspecialchars($car_infos["car_color"]) ?>" required />
+                        <datalist id="car-colors">
+                            <?php foreach($car_colors as $car_color): ?>
+                                <option><?= htmlspecialchars($car_color); ?></option>
+                            <!-- <option data-value=""></option> -->
+                            <?php endforeach; ?>
+                    
+                        </datalist>
                     </div>
 
                     <div class="basic-car-info">
@@ -179,9 +192,11 @@ $inside_index = 12;
     </main>
     
     <?php require "../assets/footer.php" ?>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    
     <script src="../js/header.js"></script>     
     <script src="../js/reg-form.js"></script>       
-        
+    <script src="../js/select-car-model.js"></script>  
 
 </body>
 </html>

@@ -1,4 +1,6 @@
 <?php
+require "../classes/Database.php";
+require "../classes/Car.php";
 
 // verifying by session if visitor have access to this website
 require "../classes/Authorization.php";
@@ -9,8 +11,14 @@ if (!Auth::isLoggedIn()){
     die ("nepovolený prístup");
 } 
 
+// database connection
+$database = new Database();
+$connection = $database->connectionDB();
+
 // control if user choose image from image gallery 
 $image_sequence = null;
+
+$car_colors = Car::getAllCarsInfo($connection, 'car_color', '%');
 
 ?>
 
@@ -55,7 +63,7 @@ $image_sequence = null;
                 
                     <div class="basic-car-info">
                        
-                        <select name="car_brand" id="answerCarBrand" onfocus='this.size=5;' onblur='this.size=1;' 
+                        <select name="car_brand" id="car-brand" onfocus='this.size=5;' onblur='this.size=1;' 
                         onchange='this.size=1; this.blur();'>
                         <?php require "../assets/array-car-brand.php" ?>
                         <?php for ($i = 0; $i < count($car_brands); $i++): ?>
@@ -66,16 +74,22 @@ $image_sequence = null;
                     </div>
 
                     <div class="basic-car-info">
-                        <input type="text" id="answerCarModel" name="car_model" placeholder="Model auta" list="car-models" autocomplete="off" value="" required />
+                        <input type="text" id="car-model" name="car_model" placeholder="Model auta" list="car-models" autocomplete="off" value="" required />
                         <datalist id="car-models">
-                        
-                            <option data-value=""></option>
+                            <!-- <option>ahojko</option> -->
                     
                         </datalist>
                     </div> 
 
                     <div class="basic-car-info">
-                        <input type="text" name="car_color" placeholder="Farba auta" required />
+                        <input size="3" type="text" id="answerCarColor" name="car_color" placeholder="Farba auta" list="car-colors" autocomplete="off" value="" required />
+                        <datalist id="car-colors">
+                            <?php foreach($car_colors as $car_color): ?>
+                                <option><?= htmlspecialchars($car_color); ?></option>
+                            <!-- <option data-value=""></option> -->
+                            <?php endforeach; ?>
+                    
+                        </datalist>
                     </div>
 
                     <div class="basic-car-info">
@@ -210,9 +224,13 @@ $image_sequence = null;
     </main>
     
     <?php require "../assets/footer.php" ?>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
     <script src="../js/header.js"></script> 
     <script src="../js/show-image-name.js"></script>       
     <script src="../js/reg-form.js"></script>       
+    <script src="../js/select-car-model.js"></script>       
+    
         
 
 </body>
