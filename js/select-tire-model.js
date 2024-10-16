@@ -1,28 +1,30 @@
 // JQUERY to added options (spesific car model) for selected car brand 
 $(document).ready(function () {
-    $("#car-brand").change(function (e) { 
+    $("#tire-brand").change(function (e) { 
         e.preventDefault();
         let currentBrand = $(this).val()
-        let carModels = $("#car-models")
-        let inputModel = $("#car-model")
+        let tireModels = $("#tires-model")
+        let inputModel = $("#model-tires")
         inputModel.val("")
+        
     
         $.ajax({
             type: "POST",
             url: "change-model.php",
             data: {
                 'select_changed': true,
-                'type': "car",
-                'car_brand': currentBrand
+                'type': "tire",
+                'tire_brand': currentBrand
                 
             },
 
             success: function (response) {
+
                 if (response){
-                    carModels.html("")
+                    tireModels.html("")
                     $.each(response, function (Key, value) { 
                         var newOption = $("<option></option>").text(value);
-                        carModels.append(newOption);
+                        tireModels.append(newOption);
                     });
                 }
             }

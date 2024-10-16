@@ -19,6 +19,9 @@ $connection = $database->connectionDB();
 
 if (isset($_GET["tire_id"]) and is_numeric($_GET["tire_id"])){
     $tire_infos = Tire::getTire($connection, $_GET["tire_id"]);
+    $tire_brands = Tire::getAllTiresInfo($connection, 'tire_brand', '%');
+    $tire_models = Tire::getAllTiresInfo($connection, 'tire_model', $tire_infos["tire_brand"]);
+
 } else {
     $tire_infos = null;
 }
@@ -77,20 +80,26 @@ if (isset($_GET["tire_id"]) and is_numeric($_GET["tire_id"])){
 
                     <div class="basic-tire-info">
                         <label for="answerTiresBrand">Značka:</label>
-                        <input type="text" id="answerTiresBrand" name="tire_brand" placeholder="Zadaj/Vyber" list="tires_brand" autocomplete="off" value="<?= htmlspecialchars($tire_infos["tire_brand"]) ?>" required />
+                        <input type="text" id="tire-brand" name="tire_brand" placeholder="Zadaj/Vyber" list="tires_brand" autocomplete="off" value="<?= htmlspecialchars($tire_infos["tire_brand"]) ?>" required />
                         <datalist id="tires_brand">
                         
-                            <option data-value=""></option>
+                            <?php foreach($tire_brands as $tire_brand): ?>
+                                <option><?= htmlspecialchars($tire_brand); ?></option>
+                            <!-- <option data-value=""></option> -->
+                            <?php endforeach; ?>
                     
                         </datalist>
                     </div> 
 
                     <div class="basic-tire-info">
                         <label for="tires-model">Model:</label>
-                        <input type="text" id="answerTiresModel" name="tire_model" placeholder="Zadaj/Vyber" list="tires-model" autocomplete="off" value="<?= htmlspecialchars($tire_infos["tire_model"]) ?>" required />
+                        <input type="text" id="model-tires" name="tire_model" placeholder="Zadaj/Vyber" list="tires-model" autocomplete="off" value="<?= htmlspecialchars($tire_infos["tire_model"]) ?>" required />
                         <datalist id="tires-model">
                         
-                            <option data-value=""></option>
+                            <?php foreach($tire_models as $tire_model): ?>
+                                <option><?= htmlspecialchars($tire_model); ?></option>
+                            <!-- <option data-value=""></option> -->
+                            <?php endforeach; ?>
                     
                         </datalist>
                     </div>
@@ -236,9 +245,11 @@ if (isset($_GET["tire_id"]) and is_numeric($_GET["tire_id"])){
     </main>
     
     <?php require "../assets/footer.php" ?>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    
     <script src="../js/header.js"></script>     
     <script src="../js/reg-form.js"></script>       
-        
+    <script src="../js/select-tire-model.js"></script>  
 
 </body>
 </html>

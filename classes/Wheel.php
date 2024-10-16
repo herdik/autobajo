@@ -106,6 +106,43 @@ class Wheel {
         }
     }
 
+
+    /**
+     *
+     * RETURN ALL WHEELS ADVERTISEMENT INFO FROM DATABASE
+     *
+     * @param object $connection - connection to database
+     * @param bool $status - active or historical advertisement
+     * @param int $page_nr - actual page number
+     * @param int $show_nr_of_advert - how many advertisement is printed on page/site
+     *
+     * @return array array of objects, one object mean one tire infos
+     */
+    public static function getAllWheelsInfo($connection, $column, $required_word){
+        $sql = "SELECT DISTINCT $column
+                FROM wheel_advertisement
+                WHERE wheel_brand LIKE :required_word
+                ORDER BY $column ASC";
+
+        $stmt = $connection->prepare($sql);
+
+        // filling and bind values will be execute to Database
+        $stmt->bindValue(":required_word", $required_word, PDO::PARAM_STR);
+        
+
+        try {
+            if($stmt->execute()){
+                return $stmt->fetchAll(PDO::FETCH_COLUMN);
+            } else {
+                throw new Exception ("Príkaz pre získanie špecifických dát o inzerátoch diskov sa nepodaril");
+            }
+        } catch (Exception $e){
+            // 3 je že vyberiem vlastnú cestu k súboru
+            error_log("Chyba pri funckii getAllWheelsInfo, príkaz pre získanie informácií z databázy zlyhal\n", 3, "./errors/error.log");
+            echo "Výsledná chyba je: " . $e->getMessage();
+        }
+    }
+
     /**
      *
      * RETURN ID WHEEL FROM DATABASE

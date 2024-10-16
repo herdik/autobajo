@@ -1,5 +1,7 @@
 <?php
 
+require "../classes/Database.php";
+require "../classes/Wheel.php";
 
 // verifying by session if visitor have access to this website
 require "../classes/Authorization.php";
@@ -10,9 +12,15 @@ if (!Auth::isLoggedIn()){
     die ("nepovolený prístup");
 } 
 
+// connection to Database
+$database = new Database();
+$connection = $database->connectionDB();
+
 // control if user choose image from image gallery 
 $image_sequence = null;
 
+$wheel_brands = Wheel::getAllWheelsInfo($connection, 'wheel_brand', '%');
+$wheel_colors = Wheel::getAllWheelsInfo($connection, 'wheel_color', '%');
 ?>
 
 
@@ -64,21 +72,24 @@ $image_sequence = null;
                     </div>
 
                     <div class="basic-car-info">
-                        <label for="answerWheelsBrand">Značka:</label>
-                        <input type="text" id="answerWheelsBrand" name="wheel_brand" placeholder="Zadaj/Vyber" list="wheels_brand" autocomplete="off" value="" required />
+                        <label for="wheels-brand">Značka:</label>
+                        <input type="text" id="wheels-brand" name="wheel_brand" placeholder="Zadaj/Vyber" list="wheels_brand" autocomplete="off" value="" required />
                         <datalist id="wheels_brand">
                         
-                            <option data-value=""></option>
+                            <?php foreach($wheel_brands as $wheel_brand): ?>
+                                <option><?= htmlspecialchars($wheel_brand); ?></option>
+                            <!-- <option data-value=""></option> -->
+                            <?php endforeach; ?>
                     
                         </datalist>
                     </div> 
 
                     <div class="basic-car-info">
-                        <label for="answerWheelsModel">Model:</label>
-                        <input type="text" id="answerWheelsModel" name="wheel_model" placeholder="Zadaj/Vyber" list="wheels-model" autocomplete="off" value="" required />
+                        <label for="model-wheels">Model:</label>
+                        <input type="text" id="model-wheels" name="wheel_model" placeholder="Zadaj/Vyber" list="wheels-model" autocomplete="off" value="" required />
                         <datalist id="wheels-model">
                         
-                            <option data-value=""></option>
+                            <!-- <option data-value=""></option> -->
                     
                         </datalist>
                     </div>
@@ -130,7 +141,10 @@ $image_sequence = null;
                         <input type="text" id="answerWheelsColor" name="wheel_color" placeholder="Zadaj/Vyber" list="wheels-color" autocomplete="off" value="" required />
                         <datalist id="wheels-color">
                         
-                            <option data-value=""></option>
+                            <?php foreach($wheel_colors as $wheel_color): ?>
+                                <option><?= htmlspecialchars($wheel_color); ?></option>
+                            <!-- <option data-value=""></option> -->
+                            <?php endforeach; ?>
                     
                         </datalist>
                     </div>
@@ -169,9 +183,12 @@ $image_sequence = null;
     </main>
     
     <?php require "../assets/footer.php" ?>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
     <script src="../js/header.js"></script> 
     <script src="../js/show-image-name.js"></script>       
-    <script src="../js/reg-form.js"></script>       
+    <script src="../js/reg-form.js"></script>  
+    <script src="../js/select-wheel-model.js"></script>       
         
 
 </body>

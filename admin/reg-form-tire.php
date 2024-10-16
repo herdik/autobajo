@@ -1,5 +1,8 @@
 <?php
 
+require "../classes/Database.php";
+require "../classes/Tire.php";
+
 // verifying by session if visitor have access to this website
 require "../classes/Authorization.php";
 // get session
@@ -9,11 +12,14 @@ if (!Auth::isLoggedIn()){
     die ("nepovolený prístup");
 } 
 
+// connection to Database
+$database = new Database();
+$connection = $database->connectionDB();
+
 // control if user choose image from image gallery 
 $image_sequence = null;
 
-
-
+$tire_brands = Tire::getAllTiresInfo($connection, 'tire_brand', '%');
 ?>
 
 
@@ -67,20 +73,23 @@ $image_sequence = null;
 
                     <div class="basic-car-info">
                         <label for="answerTiresBrand">Značka:</label>
-                        <input type="text" id="answerTiresBrand" name="tire_brand" placeholder="Zadaj/Vyber" list="tires_brand" autocomplete="off" value="" required />
+                        <input type="text" id="tire-brand" name="tire_brand" placeholder="Zadaj/Vyber" list="tires_brand" autocomplete="off" value="" required />
                         <datalist id="tires_brand">
                         
-                            <option data-value=""></option>
+                            <?php foreach($tire_brands as $tire_brand): ?>
+                                <option><?= htmlspecialchars($tire_brand); ?></option>
+                            <!-- <option data-value=""></option> -->
+                            <?php endforeach; ?>
                     
                         </datalist>
                     </div> 
 
                     <div class="basic-car-info">
                         <label for="tires-model">Model:</label>
-                        <input type="text" id="answerTiresModel" name="tire_model" placeholder="Zadaj/Vyber" list="tires-model" autocomplete="off" value="" required />
+                        <input type="text" id="model-tires" name="tire_model" placeholder="Zadaj/Vyber" list="tires-model" autocomplete="off" value="" required />
                         <datalist id="tires-model">
                         
-                            <option data-value=""></option>
+                            <!-- <option data-value=""></option> -->
                     
                         </datalist>
                     </div>
@@ -236,10 +245,12 @@ $image_sequence = null;
     </main>
     
     <?php require "../assets/footer.php" ?>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
     <script src="../js/header.js"></script> 
     <script src="../js/show-image-name.js"></script>       
     <script src="../js/reg-form.js"></script>       
-        
+    <script src="../js/select-tire-model.js"></script>  
 
 </body>
 </html>

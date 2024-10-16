@@ -3,6 +3,8 @@
 require "../classes/Database.php";
 require "../classes/Url.php";
 require "../classes/Car.php";
+require "../classes/Tire.php";
+require "../classes/Wheel.php";
 
 
 // verifying by session if visitor have access to this website
@@ -23,11 +25,26 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
     
     // ************ insert new title image/ add images to gallery *********
     if (isset($_POST['select_changed'])){
-        $selected_car_brand = $_POST["car_brand"];
-        $car_models = Car::getAllCarsInfo($connection, 'car_model', $selected_car_brand);
-        if ($car_models){
+        
+        if ($_POST['type'] === "car"){
+            $selected_car_brand = $_POST["car_brand"];
+            $models = Car::getAllCarsInfo($connection, 'car_model', $selected_car_brand);
+            
+        } elseif ($_POST['type'] === "tire"){
+            
+            $selected_tire_brand = $_POST["tire_brand"];
+            $models = Tire::getAllTiresInfo($connection, 'tire_model', $selected_tire_brand);
+
+        } elseif ($_POST['type'] === "wheel"){
+            
+            $selected_wheel_brand = $_POST["wheel_brand"];
+            $models = Wheel::getAllWheelsInfo($connection, 'wheel_model', $selected_wheel_brand);
+
+        }
+        
+        if ($models){
             header('content-type: application/json');
-            echo json_encode($car_models);
+            echo json_encode($models);
         }
         
     }

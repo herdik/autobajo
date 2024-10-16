@@ -19,8 +19,14 @@ $connection = $database->connectionDB();
 
 if (isset($_GET["wheel_id"]) and is_numeric($_GET["wheel_id"])){
     $wheel_infos = Wheel::getWheel($connection, $_GET["wheel_id"]);
+    $wheel_brands = Wheel::getAllWheelsInfo($connection, 'wheel_brand', '%');
+    $wheel_models = Wheel::getAllWheelsInfo($connection, 'wheel_model', $wheel_infos["wheel_brand"]);
+    $wheel_colors = Wheel::getAllWheelsInfo($connection, 'wheel_color', '%');
 } else {
     $wheel_infos = null;
+    $wheel_brands = null;
+    $wheel_models = null;
+    $wheel_colors = null;
 }
 ?>
 
@@ -75,21 +81,27 @@ if (isset($_GET["wheel_id"]) and is_numeric($_GET["wheel_id"])){
                     </div>
 
                     <div class="basic-car-info">
-                        <label for="answerWheelsBrand">Značka:</label>
-                        <input type="text" id="answerWheelsBrand" name="wheel_brand" placeholder="Zadaj/Vyber" list="wheels_brand" autocomplete="off" value="<?= htmlspecialchars($wheel_infos["wheel_brand"]) ?>" required />
+                        <label for="wheels-brand">Značka:</label>
+                        <input type="text" id="wheels-brand" name="wheel_brand" placeholder="Zadaj/Vyber" list="wheels_brand" autocomplete="off" value="<?= htmlspecialchars($wheel_infos["wheel_brand"]) ?>" required />
                         <datalist id="wheels_brand">
                         
-                            <option data-value=""></option>
+                            <?php foreach($wheel_brands as $wheel_brand): ?>
+                                <option><?= htmlspecialchars($wheel_brand); ?></option>
+                            <!-- <option data-value=""></option> -->
+                            <?php endforeach; ?>
                     
                         </datalist>
                     </div> 
 
                     <div class="basic-car-info">
-                        <label for="answerWheelsModel">Model:</label>
-                        <input type="text" id="answerWheelsModel" name="wheel_model" placeholder="Zadaj/Vyber" list="wheels-model" autocomplete="off" value="<?= htmlspecialchars($wheel_infos["wheel_model"]) ?>" required />
+                        <label for="model-wheels">Model:</label>
+                        <input type="text" id="model-wheels" name="wheel_model" placeholder="Zadaj/Vyber" list="wheels-model" autocomplete="off" value="<?= htmlspecialchars($wheel_infos["wheel_model"]) ?>" required />
                         <datalist id="wheels-model">
                         
-                            <option data-value=""></option>
+                            <?php foreach($wheel_models as $wheel_model): ?>
+                                <option><?= htmlspecialchars($wheel_model); ?></option>
+                            <!-- <option data-value=""></option> -->
+                            <?php endforeach; ?>
                     
                         </datalist>
                     </div>
@@ -141,7 +153,10 @@ if (isset($_GET["wheel_id"]) and is_numeric($_GET["wheel_id"])){
                         <input type="text" id="answerWheelsColor" name="wheel_color" placeholder="Zadaj/Vyber" list="wheels-color" autocomplete="off" value="<?= htmlspecialchars($wheel_infos["wheel_color"]) ?>" required />
                         <datalist id="wheels-color">
                         
-                            <option data-value=""></option>
+                            <?php foreach($wheel_colors as $wheel_color): ?>
+                                <option><?= htmlspecialchars($wheel_color); ?></option>
+                            <!-- <option data-value=""></option> -->
+                            <?php endforeach; ?>
                     
                         </datalist>
                     </div>
@@ -170,9 +185,11 @@ if (isset($_GET["wheel_id"]) and is_numeric($_GET["wheel_id"])){
     </main>
     
     <?php require "../assets/footer.php" ?>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
     <script src="../js/header.js"></script>     
     <script src="../js/reg-form.js"></script>       
-        
+    <script src="../js/select-wheel-model.js"></script>
 
 </body>
 </html>
