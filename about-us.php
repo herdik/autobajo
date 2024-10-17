@@ -61,9 +61,9 @@ if (count($contact_infos) === 0) {
 
         <div class="container">
             <h2 class="paragraph">Kontakt</h2>
-            <p class="small-text">Vitajte na stránkách spoločnosti AutoBajo. <br><br>Sme firma zaoberajúca sa predajom áut, pneumatík, diskov a v neposlednom rade ponúkame vynikajúce služby v oblasti pneuservisu.</p>
+            <p class="small-text">Vitajte na stránkách spoločnosti Pneuservis DB. <br><br>Sme firma zaoberajúca sa predajom áut, pneumatík, diskov a v neposlednom rade ponúkame vynikajúce služby v oblasti pneuservisu.</p>
             <br>
-            <p class="bigger-text">Môžete nás navštíviť osobne na nižšie spomínanej adrese, alebo nás môžete kontaktovať telefonicky. </p>
+            <p class="bigger-text">Môžete nás navštíviť osobne na nižšie spomínanej adrese. Taktiež nás môžete kontaktovať telefonicky, alebo mailom. </p>
 
             <br>
 
@@ -74,23 +74,39 @@ if (count($contact_infos) === 0) {
                 <div class="contact-info">
 
                 <?php foreach($contact_infos as $contact_info): ?>
-                
-                    <p><i class="fa-solid fa-building"></i> <?= htmlspecialchars($contact_info["company_name"]) ?></p>
-                   
-                    <p><?= htmlspecialchars($contact_info["street_number"]) ?></p>
                     
-                    <p class="address"><?= htmlspecialchars($contact_info["town_post_nr"]) ?></p>
+                    <div class="company-contact-info">
+
+                        <div class="working-time">
+                            <p>Otváracie hodiny</p>
+                            <p>Pondelok-Piatok:</p>
+                            <p><?= htmlspecialchars($contact_info["mon_fri_morning_open"]) . " - " .  htmlspecialchars($contact_info["mon_fri_morning_close"]) . ", " . htmlspecialchars($contact_info["mon_fri_afternoon_open"]) . " - " . htmlspecialchars($contact_info["mon_fri_afternoon_close"])?></p>
+                            <p><?= "Sobota: ". htmlspecialchars($contact_info["saturday_open"]) . " - " . htmlspecialchars($contact_info["saturday_close"]) ?></p>
+                            <p><?= "Nedeľa: ". htmlspecialchars($contact_info["sunday"]) ?></p>
+                            
+                        </div>
+
+
+                        <div class="company-info">
+                            <p><?= htmlspecialchars($contact_info["company_name"]) ?></p>
+                            
+                            <p><?= htmlspecialchars($contact_info["street_number"]) ?></p>
+                            
+                            <p class="address"><?= htmlspecialchars($contact_info["town_post_nr"]) ?></p>
+                        </div>
+
+                    </div>
 
                     <div class="basic-contact-info">
                         <div class="person">
-                            <label for="email1">Dalibor Bajzík</label><br>
+                            <label for="email1"><?= htmlspecialchars($contact_info["name_1"]) ?></label><br>
                             <i class="fa-regular fa-envelope"></i> <a href="mailto:<?= htmlspecialchars($contact_info["email_1"]) ?>"><?= htmlspecialchars($contact_info["email_1"]) ?></a><br>
                             <i class="fa-solid fa-phone"></i>
                             <a href="tel:+<?= htmlspecialchars($contact_info["tel_1"]) ?>">+<?= htmlspecialchars($contact_info["tel_1"]) ?></a>
                         </div>
                         
                         <div class="person person2">
-                            <label for="email2">Lucia Bajzíková</label><br>
+                            <label for="email2"><?= htmlspecialchars($contact_info["name_2"]) ?></label><br>
                             <i class="fa-regular fa-envelope"></i> <a href="mailto:<?= htmlspecialchars($contact_info["email_2"]) ?>"><?= htmlspecialchars($contact_info["email_2"]) ?></a><br>
                             <i class="fa-solid fa-phone"></i> <a href="tel:+<?= htmlspecialchars($contact_info["tel_2"]) ?>">+<?= htmlspecialchars($contact_info["tel_2"]) ?></a>
                         </div>   

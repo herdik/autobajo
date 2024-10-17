@@ -19,16 +19,6 @@ $connection = $database->connectionDB();
 
 $contact_infos = Contact::getAllContactInfos($connection);
 
-if (count($contact_infos) === 0) {
-    $contact_infos["company_name"] = "";
-    $contact_infos["street_number"] = "";
-    $contact_infos["town_post_nr"] = "";
-    $contact_infos["email_1"] = "";
-    $contact_infos["tel_1"] = "";
-    $contact_infos["email_2"] = "";
-    $contact_infos["tel_2"] = "";
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -58,6 +48,12 @@ if (count($contact_infos) === 0) {
 
     <?php require "../assets/admin-header.php" ?>
 
+    <dialog class="confirm-window" id="confirm-window">
+
+       <h1>Údaje boli zaregistrované!</h1> 
+
+    </dialog>
+
     <main>
 
         <h1>Kde nás nájdete</h1>
@@ -68,9 +64,9 @@ if (count($contact_infos) === 0) {
 
         <div class="container">
             <h2 class="paragraph">Kontakt</h2>
-            <p class="small-text">Vitajte na stránkách spoločnosti AutoBajo. <br><br>Sme firma zaoberajúca sa predajom áut, pneumatík, diskov a v neposlednom rade ponúkame vynikajúce služby v oblasti pneuservisu.</p>
+            <p class="small-text">Vitajte na stránkách spoločnosti Pneuservis DB. <br><br>Sme firma zaoberajúca sa predajom áut, pneumatík, diskov a v neposlednom rade ponúkame vynikajúce služby v oblasti pneuservisu.</p>
             <br>
-            <p class="bigger-text">Môžete nás navštíviť osobne na nižšie spomínanej adrese, alebo nás môžete kontaktovať telefonicky. </p>
+            <p class="bigger-text">Môžete nás navštíviť osobne na nižšie spomínanej adrese. Taktiež nás môžete kontaktovať telefonicky, alebo mailom. </p>
 
             <br>
 
@@ -78,9 +74,42 @@ if (count($contact_infos) === 0) {
             
             <form id="main-contact-form" action="after-reg-main-contact.php" method="POST">
                 
-                <div class="contact-info">
+            <div class="contact-info">
 
-                <?php foreach($contact_infos as $contact_info): ?>
+            <?php foreach($contact_infos as $contact_info): ?>
+                <div class="opening-time">
+
+                    <div class="days">
+                        <label for="mon-fri-mor-open">Pondelok-Piatok doobeda</label>
+                        <input type="time" name="mon_fri_morning_open" id="mon-fri-mor-open" value="<?= htmlspecialchars($contact_info["mon_fri_morning_open"]) ?>">
+                        <input type="time" name="mon_fri_morning_close" id="mon-fri-mor-close" value="<?= htmlspecialchars($contact_info["mon_fri_morning_close"]) ?>">
+                    </div>
+                    
+                    <div class="days">
+                        <label for="mon-fri-aft-open">Pondelok-Piatok poobede</label>
+                        <input type="time" name="mon_fri_afternoon_open" id="mon-fri-aft-open" value="<?= htmlspecialchars($contact_info["mon_fri_afternoon_open"]) ?>">
+                        <input type="time" name="mon_fri_afternoon_close" id="mon-fri-aft-close" value="<?= htmlspecialchars($contact_info["mon_fri_afternoon_close"]) ?>">
+                    </div>
+
+                </div>
+
+                <div class="weekend-time">
+                    <div class="weekend">
+                        <label for="saturday-open">Sobota od</label>
+                        <input type="time" name="saturday_open" id="saturday-open" value="<?= htmlspecialchars($contact_info["saturday_open"]) ?>">
+                    </div>
+                    <div class="weekend">
+                        <label for="saturday-close">Sobota do</label>
+                        <input type="time" name="saturday_close" id="saturday-slose" value="<?= htmlspecialchars($contact_info["saturday_close"]) ?>">
+                    </div>
+                    <div class="weekend">
+                        <label for="sunday">Nedeľa</label>
+                        <input type="text" name="sunday" id="sunday" value="<?= htmlspecialchars($contact_info["sunday"]) ?>">
+                    </div>
+                </div>
+                
+
+                
                     <label for="company-name">Názov spoločnosti</label>
                     <input type="text" name="company_name" id="company-name" placeholder="Názov spoločnosti" value="<?= htmlspecialchars($contact_info["company_name"]) ?>" required>
                     <label for="street-number">Ulica a číslo domu</label>
@@ -90,6 +119,8 @@ if (count($contact_infos) === 0) {
 
                     <div class="basic-contact-info">
                         <div class="person">
+                            <label for="name-1">Osoba 1</label>
+                            <input type="text" name="name_1" id="name-1" placeholder="Osoba 1" value="<?= htmlspecialchars($contact_info["name_1"]) ?>" required>
                             <label for="email1">Email 1</label>
                             <input type="email" name="email_1" id="email1" placeholder="Email" value="<?= htmlspecialchars($contact_info["email_1"]) ?>" required>
                             <label for="tel1">Telefónne číslo 1</label>
@@ -98,6 +129,8 @@ if (count($contact_infos) === 0) {
                         </div>
                         
                         <div class="person person2">
+                            <label for="name-2">Osoba 2</label>
+                            <input type="text" name="name_2" id="name-2" placeholder="Osoba 2" value="<?= htmlspecialchars($contact_info["name_2"]) ?>" required>
                             <label for="email2">Email 2</label>
                             <input type="email" name="email_2" id="email2" placeholder="Email" value="<?= htmlspecialchars($contact_info["email_2"]) ?>" required>
                             <label for="tel2">Telefónne číslo 2</label>
@@ -107,7 +140,7 @@ if (count($contact_infos) === 0) {
                     </div>
 
                     <div class="confirm-btn">
-                        <input class="btn" type="submit" name="submit" value="Potvrdiť">
+                        <input class="btn" id="btn-contact" type="submit" name="submit" value="Potvrdiť">
                     </div> 
                 <?php endforeach; ?>    
                 </div>
@@ -122,8 +155,11 @@ if (count($contact_infos) === 0) {
     </main>
     
     <?php require "../assets/footer.php" ?>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
     <script src="../js/header.js"></script>     
     <script src="../js/about-us.js"></script>     
+    <script src="../js/contact-info.js"></script>     
          
 </body>
 </html>

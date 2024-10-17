@@ -23,17 +23,27 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
     $company_name = $_POST["company_name"];
     $street_number = $_POST["street_number"];
     $town_post_nr = $_POST["town_post_nr"];
+    $name_1 = $_POST["name_1"];
     $email_1 = $_POST["email_1"];
     $tel_1 = $_POST["tel_1"];
+    $name_2 = $_POST["name_2"];
     $email_2 = $_POST["email_2"];
     $tel_2 = $_POST["tel_2"];
+    $mon_fri_morning_open = $_POST["mon_fri_morning_open"];
+    $mon_fri_morning_close = $_POST["mon_fri_morning_close"];
+    $mon_fri_afternoon_open = $_POST["mon_fri_afternoon_open"];
+    $mon_fri_afternoon_close = $_POST["mon_fri_afternoon_close"];
+    $saturday_open = $_POST["saturday_open"];
+    $saturday_close = $_POST["saturday_close"];
+    $sunday = $_POST["sunday"];
     
-
-    $update_contact_info = Contact::updateContactInfo($connection, $company_name, $street_number, $town_post_nr, $email_1, $tel_1, $email_2, $tel_2);
+    
+    $update_contact_info = Contact::updateContactInfo($connection, $company_name, $street_number, $town_post_nr, $name_1, $email_1, $tel_1, $name_2, $email_2, $tel_2, $mon_fri_morning_open, $mon_fri_morning_close, $mon_fri_afternoon_open, $mon_fri_afternoon_close, $saturday_open, $saturday_close, $sunday);
 
     
     if ($update_contact_info){
-        Url::redirectUrl("/autobajo/admin/admin-about-us.php");
+        header('content-type: application/json');
+        echo json_encode($update_contact_info);
     } else {
         $not_added_contact_info = "Kontaktné údaje sa nepodarilo pridať";
         Url::redirectUrl("/autobajo/admin/logedin-error.php?logedin_error=$not_added_contact_info");
