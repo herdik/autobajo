@@ -177,6 +177,7 @@ if ((isset($_GET["wheel_id"]) and is_numeric($_GET["wheel_id"])) and (isset($_GE
 
                 <div class="administration">
                     <h2>Administrácia</h2>
+                    <input type="hidden" id="current-id" name="wheel_id" value="<?= htmlspecialchars($wheel_infos["wheel_id"]) ?>">
 
                     <div class="administration-part">
                         <a class="btn" href="./edit-wheel-advertisement.php?wheel_id=<?= htmlspecialchars($wheel_infos["wheel_id"]) ?>">Upraviť</a>
@@ -191,15 +192,15 @@ if ((isset($_GET["wheel_id"]) and is_numeric($_GET["wheel_id"])) and (isset($_GE
 
                         <?php if ($active_advertisement): ?>
                             <?php if ($wheel_infos["reserved"]): ?>
-                                <a class="btn-green" href="./after-update-wheel-advert.php?reserved=false&wheel_id=<?= htmlspecialchars($wheel_infos["wheel_id"]) ?>">Dostupné</a>
+                                <a class="btn-green" id="btn-reserved" href="./after-update-wheel-advert.php?reserved=false&wheel_id=<?= htmlspecialchars($wheel_infos["wheel_id"]) ?>">Dostupné</a>
                                 <?php else: ?>
-                                    <a class="btn" href="./after-update-wheel-advert.php?reserved=true&wheel_id=<?= htmlspecialchars($wheel_infos["wheel_id"]) ?>">Rezervované</a>
+                                    <a class="btn" id="btn-reserved" href="./after-update-wheel-advert.php?reserved=true&wheel_id=<?= htmlspecialchars($wheel_infos["wheel_id"]) ?>">Rezervované</a>
                             <?php endif; ?>   
                             
                             <?php if ($wheel_infos["sold"]): ?>
-                                <a class="btn-green" href="./after-update-wheel-advert.php?sold=false&wheel_id=<?= htmlspecialchars($wheel_infos["wheel_id"]) ?>">Dostupné</a>
+                                <a class="btn-green" id="btn-sold" href="./after-update-wheel-advert.php?sold=false&wheel_id=<?= htmlspecialchars($wheel_infos["wheel_id"]) ?>">Dostupné</a>
                                 <?php else: ?>
-                                    <a class="btn" href="./after-update-wheel-advert.php?sold=true&wheel_id=<?= htmlspecialchars($wheel_infos["wheel_id"]) ?>">Predané</a>
+                                    <a class="btn" id="btn-sold" href="./after-update-wheel-advert.php?sold=true&wheel_id=<?= htmlspecialchars($wheel_infos["wheel_id"]) ?>">Predané</a>
                             <?php endif; ?> 
                         <?php endif; ?>
 
@@ -234,8 +235,11 @@ if ((isset($_GET["wheel_id"]) and is_numeric($_GET["wheel_id"])) and (isset($_GE
     </main>
     
     <?php require "../assets/footer.php" ?>
+    <?php require "../assets/footer.php" ?>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     
     <script src="../js/header.js"></script>    
-    <script src="../js/show-gallery.js"></script>                    
+    <script src="../js/show-gallery.js"></script>  
+    <script src="../js/update-wheel-advert.js"></script>                    
 </body>
 </html>

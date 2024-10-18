@@ -184,7 +184,7 @@ $inside_index = 12;
                  
                 <div class="administration">
                     <h2>Administrácia</h2>
-
+                    <input type="hidden" id="current-id" name="car_id" value="<?= htmlspecialchars($car_infos["car_id"]) ?>">
                     <div class="administration-part">
                         <a class="btn" href="./edit-car-advertisement.php?car_id=<?= htmlspecialchars($car_infos["car_id"]) ?>">Upraviť</a>
                         <a class="btn" href="./gallery-car.php?car_id=<?= htmlspecialchars($car_infos["car_id"]) ?>">Galéria</a>
@@ -197,15 +197,15 @@ $inside_index = 12;
 
                         <?php if ($active_advertisement): ?>
                             <?php if ($car_infos["reserved"]): ?>
-                                <a class="btn-green" href="./after-update-car-advert.php?reserved=false&car_id=<?= htmlspecialchars($car_infos["car_id"]) ?>">Dostupné</a>
+                                <a class="btn-green" id="btn-reserved" href="./after-update-car-advert.php?reserved=false&car_id=<?= htmlspecialchars($car_infos["car_id"]) ?>">Dostupné</a>
                                 <?php else: ?>
-                                    <a class="btn" href="./after-update-car-advert.php?reserved=true&car_id=<?= htmlspecialchars($car_infos["car_id"]) ?>">Rezervované</a>
+                                    <a class="btn" id="btn-reserved" href="./after-update-car-advert.php?reserved=true&car_id=<?= htmlspecialchars($car_infos["car_id"]) ?>">Rezervované</a>
                             <?php endif; ?>   
                             
                             <?php if ($car_infos["sold"]): ?>
-                                <a class="btn-green" href="./after-update-car-advert.php?sold=false&car_id=<?= htmlspecialchars($car_infos["car_id"]) ?>">Dostupné</a>
+                                <a class="btn-green" id="btn-sold" href="./after-update-car-advert.php?sold=false&car_id=<?= htmlspecialchars($car_infos["car_id"]) ?>">Dostupné</a>
                                 <?php else: ?>
-                                    <a class="btn" href="./after-update-car-advert.php?sold=true&car_id=<?= htmlspecialchars($car_infos["car_id"]) ?>">Predané</a>
+                                    <a class="btn" id="btn-sold" href="./after-update-car-advert.php?sold=true&car_id=<?= htmlspecialchars($car_infos["car_id"]) ?>">Predané</a>
                             <?php endif; ?> 
                         <?php endif; ?>
 
@@ -256,8 +256,10 @@ $inside_index = 12;
     </main>
     
     <?php require "../assets/footer.php" ?>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     
     <script src="../js/header.js"></script>                   
     <script src="../js/show-gallery.js"></script>                   
+    <script src="../js/update-car-advert.js"></script>                   
 </body>
 </html>

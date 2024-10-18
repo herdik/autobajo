@@ -25,61 +25,64 @@ if (($_SERVER["REQUEST_METHOD"] === "GET") || ($_SERVER["REQUEST_METHOD"] === "P
 
 
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
-        var_dump("");
+        $status = filter_var($_POST["status"], FILTER_VALIDATE_BOOLEAN);
+        $action = $_POST["action"];
+        $tire_id = $_POST["tire_id"];
     } else {
         $keys = array_keys($_GET);
         $status = filter_var($_GET[$keys[0]], FILTER_VALIDATE_BOOLEAN);
         $action = ($keys[0]);
         $tire_id = $_GET["tire_id"];
 
-        if ((isset($status) && is_bool($status)) && (isset($tire_id) && is_numeric($tire_id))){
-            
-            if ($action === "active"){
-                if ($status){
-                    $active = true;
-                    $reserved = false;
-                    $sold = false;
-                } else {
-                    $active = false;
-                    $reserved = false;
-                    $sold = false;
-                }
-            } elseif ($action === "reserved"){
-                if ($status){
-                    $active = true;
-                    $reserved = true;
-                    $sold = false;
-                } else {
-                    $active = true;
-                    $reserved = false;
-                    $sold = false;
-                }
-            } elseif ($action === "sold"){
-                if ($status){
-                    $active = true;
-                    $reserved = false;
-                    $sold = true;
-                } else {
-                    $active = true;
-                    $reserved = false;
-                    $sold = false;
-                }
-            }
-
-            $update_status_advertisement = Tire::updateTireStatusAdvertisement($connection, $active, $reserved, $sold, $tire_id);
-
-            if ($update_status_advertisement) {
-                $redirect_status_error = false;
-            } 
-
-        }
     } 
+
+    if ((isset($status) && is_bool($status)) && (isset($tire_id) && is_numeric($tire_id))){
+            
+        if ($action === "active"){
+            if ($status){
+                $active = true;
+                $reserved = false;
+                $sold = false;
+            } else {
+                $active = false;
+                $reserved = false;
+                $sold = false;
+            }
+        } elseif ($action === "reserved"){
+            if ($status){
+                $active = true;
+                $reserved = true;
+                $sold = false;
+            } else {
+                $active = true;
+                $reserved = false;
+                $sold = false;
+            }
+        } elseif ($action === "sold"){
+            if ($status){
+                $active = true;
+                $reserved = false;
+                $sold = true;
+            } else {
+                $active = true;
+                $reserved = false;
+                $sold = false;
+            }
+        }
+
+        $update_status_advertisement = Tire::updateTireStatusAdvertisement($connection, $active, $reserved, $sold, $tire_id);
+
+        if ($update_status_advertisement) {
+            $redirect_status_error = false;
+        } 
+
+    }
     
     if (!$redirect_status_error){
         if ($action === "active") {
             Url::redirectUrl("/autobajo/admin/tire-advertisement.php?");
         } else {
-            Url::redirectUrl("/autobajo/admin/tire-profil.php?tire_id=$tire_id&active_advertisement=1");
+            // Url::redirectUrl("/autobajo/admin/tire-profil.php?tire_id=$tire_id&active_advertisement=1");
         }
     } else {
         $not_added_tire = "Update inzerátu sa nepodaril.";

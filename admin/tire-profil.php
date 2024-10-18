@@ -173,6 +173,7 @@ if ((isset($_GET["tire_id"]) and is_numeric($_GET["tire_id"])) and (isset($_GET[
 
                 <div class="administration">
                     <h2>Administrácia</h2>
+                    <input type="hidden" id="current-id" name="tire_id" value="<?= htmlspecialchars($tire_infos["tire_id"]) ?>">
 
                     <div class="administration-part">
                         <a class="btn" href="./edit-tire-advertisement.php?tire_id=<?= htmlspecialchars($tire_infos["tire_id"]) ?>">Upraviť</a>
@@ -187,15 +188,15 @@ if ((isset($_GET["tire_id"]) and is_numeric($_GET["tire_id"])) and (isset($_GET[
 
                         <?php if ($active_advertisement): ?>
                             <?php if ($tire_infos["reserved"]): ?>
-                                <a class="btn-green" href="./after-update-tire-advert.php?reserved=false&tire_id=<?= htmlspecialchars($tire_infos["tire_id"]) ?>">Dostupné</a>
+                                <a class="btn-green" id="btn-reserved" href="./after-update-tire-advert.php?reserved=false&tire_id=<?= htmlspecialchars($tire_infos["tire_id"]) ?>">Dostupné</a>
                                 <?php else: ?>
-                                    <a class="btn" href="./after-update-tire-advert.php?reserved=true&tire_id=<?= htmlspecialchars($tire_infos["tire_id"]) ?>">Rezervované</a>
+                                    <a class="btn" id="btn-reserved" href="./after-update-tire-advert.php?reserved=true&tire_id=<?= htmlspecialchars($tire_infos["tire_id"]) ?>">Rezervované</a>
                             <?php endif; ?>   
                             
                             <?php if ($tire_infos["sold"]): ?>
-                                <a class="btn-green" href="./after-update-tire-advert.php?sold=false&tire_id=<?= htmlspecialchars($tire_infos["tire_id"]) ?>">Dostupné</a>
+                                <a class="btn-green" id="btn-sold" href="./after-update-tire-advert.php?sold=false&tire_id=<?= htmlspecialchars($tire_infos["tire_id"]) ?>">Dostupné</a>
                                 <?php else: ?>
-                                    <a class="btn" href="./after-update-tire-advert.php?sold=true&tire_id=<?= htmlspecialchars($tire_infos["tire_id"]) ?>">Predané</a>
+                                    <a class="btn" id="btn-sold" href="./after-update-tire-advert.php?sold=true&tire_id=<?= htmlspecialchars($tire_infos["tire_id"]) ?>">Predané</a>
                             <?php endif; ?> 
                         <?php endif; ?>
 
@@ -230,8 +231,10 @@ if ((isset($_GET["tire_id"]) and is_numeric($_GET["tire_id"])) and (isset($_GET[
     </main>
     
     <?php require "../assets/footer.php" ?>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     
     <script src="../js/header.js"></script>  
-    <script src="../js/show-gallery.js"></script>                  
+    <script src="../js/show-gallery.js"></script>    
+    <script src="../js/update-tire-advert.js"></script>                
 </body>
 </html>
