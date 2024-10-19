@@ -21,6 +21,13 @@ $redirect_fault = false;
 
 if ($_SERVER["REQUEST_METHOD"] === "POST"){
 
+    // echo $_POST["alu_wheel_id"];
+    // echo "\n";
+    // echo $_POST["type"];
+    // echo "\n";
+    // echo $_POST["price"];
+    // echo "\n";
+    // echo $_POST["btn"];
     // value from registration form for car advertisement
     $alu_wheel_id = $_POST["alu_wheel_id"];
     $type = $_POST["type"];
@@ -35,23 +42,25 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
     } 
     
     
-    if ($redirect_fault) {
-        Url::redirectUrl("/autobajo/admin/tires-service.php");
-    } else {
+    if (!$redirect_fault) {
+        // Url::redirectUrl("/autobajo/admin/tires-service.php");
         $not_added_contact_info = "Nastala chyba na pri Cenníku pneuservisu";
         Url::redirectUrl("/autobajo/admin/logedin-error.php?logedin_error=$not_added_contact_info");
-    }
+    } 
     
 
 } elseif ($_SERVER["REQUEST_METHOD"] === "GET") {
-    $create_new_line = AluWheelBasicService::createAluWheelBasicService($connection);
+    
+    if ($_GET["new_line"]) {
+        $create_new_line = AluWheelBasicService::createAluWheelBasicService($connection);
 
-    if ($create_new_line) {
-        Url::redirectUrl("/autobajo/admin/tires-service.php");
-    } else {
-        $not_added_contact_info = "Nastala chyba na pri Cenníku pneuservisu";
-        Url::redirectUrl("/autobajo/admin/logedin-error.php?logedin_error=$not_added_contact_info");
+        if (!$create_new_line) {
+            // Url::redirectUrl("/autobajo/admin/tires-service.php");
+            $not_added_contact_info = "Nastala chyba na pri Cenníku pneuservisu";
+            Url::redirectUrl("/autobajo/admin/logedin-error.php?logedin_error=$not_added_contact_info");
+        } 
     }
+    
     
 } else {
     $not_authorization = "Nepovolený prístup";

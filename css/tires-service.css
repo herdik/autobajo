@@ -13,12 +13,14 @@ main {
     flex-wrap: wrap;
 }
 
-main h1 {
+main > h1 {
     color: #fff;
     text-align: center;
     background: rgba(0, 0, 0, 0.5);
     border: 5px solid #fff;
     width: 100%;
+    max-width: 1280px;
+    border-bottom: 0px;
 }
 
 .tires-service-menu {  
@@ -34,6 +36,7 @@ main h1 {
     margin-bottom: 20px;
     background: rgba(0, 0, 0, 0.5);
     border: 5px solid #fff;
+    border-bottom: 0px solid transparent;
 }
 
 .tires-service-menu :last-child {

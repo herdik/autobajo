@@ -76,13 +76,13 @@ $adhesive_weight = AdhesiveWeight::getAllAdhesiveWeight($connection);
             
             <article class="wheels">
                 <h2>Hliníkové disky</h2>
-                <h3>Vyváženie a montáž <a class="new_line" href="./after-alu-price-list-basic-service.php?new_line=true">+</a></h3>
+                <h3>Vyváženie a montáž <a class="new_line add-alu-basic" href="./after-alu-price-list-basic-service.php?new_line=true">+</a></h3>
 
                 <div class="container">
 
                     
                         <?php foreach($alu_wheel_basic as $one_alu_wheel_basic): ?>
-                        <form action="./after-alu-price-list-basic-service.php" class="line-info" method="POST">       
+                        <form id="alu-basic-service" action="./after-alu-price-list-basic-service.php" class="line-info alu-basic-service" method="POST">       
                                 <input type="hidden" value="<?= htmlspecialchars($one_alu_wheel_basic["alu_wheel_id"]) ?>" name="alu_wheel_id">
                                 <div class="product-info">
                                     <input type="text" value="<?= htmlspecialchars($one_alu_wheel_basic["type"]) ?>" name="type" id="">
@@ -92,20 +92,20 @@ $adhesive_weight = AdhesiveWeight::getAllAdhesiveWeight($connection);
                                     <input  type="number" step="0.5" value="<?= htmlspecialchars($one_alu_wheel_basic["price"]) ?>" name="price" id="">
                                 </div>
                                 
-                                <input type="submit" value="X" name="btn">
-                                <input type="submit" value="OK" name="btn">
+                                <input type="submit" value="X" id="delete-btn" name="btn">
+                                <input type="submit" id="confirm-btn" value="OK" name="btn">
                         </form>
                         <?php endforeach ?>
                     
                     
                 </div>
                 
-                <h3>Vyzutie, obutie, vyváženie, montáž <a class="new_line" href="./after-alu-price-list-premium-service.php?new_line=true">+</a></h3>
+                <h3>Vyzutie, obutie, vyváženie, montáž <a class="new_line add-alu-premium" href="./after-alu-price-list-premium-service.php?new_line=true">+</a></h3>
                 <div class="container">
 
                     
                         <?php foreach($alu_wheel_premium as $one_alu_wheel_premium): ?>
-                        <form action="./after-alu-price-list-premium-service.php" class="line-info" method="POST">       
+                        <form id="alu-premium-service" action="./after-alu-price-list-premium-service.php" class="line-info alu-premium-service" method="POST">       
                                 <input type="hidden" value="<?= htmlspecialchars($one_alu_wheel_premium["alu_wheel_id"]) ?>" name="alu_wheel_id">
                                 <div class="product-info">
                                     <input type="text" value="<?= htmlspecialchars($one_alu_wheel_premium["type"]) ?>" name="type" id="">
@@ -115,8 +115,8 @@ $adhesive_weight = AdhesiveWeight::getAllAdhesiveWeight($connection);
                                     <input  type="number" step="0.5" value="<?= htmlspecialchars($one_alu_wheel_premium["price"]) ?>" name="price" id="">
                                 </div>
                                 
-                                <input type="submit" value="X" name="btn">
-                                <input type="submit" value="OK" name="btn"> 
+                                <input type="submit" value="X" id="delete-btn" name="btn">
+                                <input type="submit" id="confirm-btn" value="OK" name="btn"> 
                         </form>
                         <?php endforeach ?>
                     
@@ -128,12 +128,12 @@ $adhesive_weight = AdhesiveWeight::getAllAdhesiveWeight($connection);
 
             <article class="wheels">
                 <h2>Plechové disky</h2>
-                <h3>Vyváženie, montáž <a class="new_line" href="./after-metal-price-list-basic-service.php?new_line=true">+</a></h3>
+                <h3>Vyváženie, montáž <a class="new_line add-metal-basic" href="./after-metal-price-list-basic-service.php?new_line=true">+</a></h3>
                 <div class="container">
 
                     
                         <?php foreach($metal_wheel_basic as $one_metal_wheel_basic): ?>
-                        <form action="./after-metal-price-list-basic-service.php" class="line-info" method="POST">       
+                        <form id="metal-basic-service" action="./after-metal-price-list-basic-service.php" class="line-info metal-basic-service" method="POST">       
                                 <input type="hidden" value="<?= htmlspecialchars($one_metal_wheel_basic["metal_wheel_id"]) ?>" name="metal_wheel_id">
                                 <div class="product-info">
                                     <input type="text" value="<?= htmlspecialchars($one_metal_wheel_basic["type"]) ?>" name="type" id="">
@@ -143,20 +143,20 @@ $adhesive_weight = AdhesiveWeight::getAllAdhesiveWeight($connection);
                                     <input  type="number" step="0.5" value="<?= htmlspecialchars($one_metal_wheel_basic["price"]) ?>" name="price" id="">
                                 </div>
                                 
-                                <input type="submit" value="X" name="btn">
-                                <input type="submit" value="OK" name="btn"> 
+                                <input type="submit" value="X" id="delete-btn" name="btn">
+                                <input type="submit" id="confirm-btn" value="OK" name="btn"> 
                         </form>
                         <?php endforeach ?>
                     
                     
                 </div>
 
-                <h3>Vyzutie, obutie, vyváženie, montáž <a class="new_line" href="./after-metal-price-list-premium-service.php?new_line=true">+</a></h3>
+                <h3>Vyzutie, obutie, vyváženie, montáž <a class="new_line add-metal-premium" href="./after-metal-price-list-premium-service.php?new_line=true">+</a></h3>
                 <div class="container">
 
                     
                         <?php foreach($metal_wheel_premium as $one_metal_wheel_premium): ?>
-                        <form action="./after-metal-price-list-premium-service.php" class="line-info" method="POST">       
+                        <form id="metal-premium-service" action="./after-metal-price-list-premium-service.php" class="line-info metal-premium-service" method="POST">       
                                 <input type="hidden" value="<?= htmlspecialchars($one_metal_wheel_premium["metal_wheel_id"]) ?>" name="metal_wheel_id">
                                 <div class="product-info">
                                     <input type="text" value="<?= htmlspecialchars($one_metal_wheel_premium["type"]) ?>" name="type" id="">
@@ -166,21 +166,21 @@ $adhesive_weight = AdhesiveWeight::getAllAdhesiveWeight($connection);
                                     <input  type="number" step="0.5" value="<?= htmlspecialchars($one_metal_wheel_premium["price"]) ?>" name="price" id="">
                                 </div>
                                 
-                                <input type="submit" value="X" name="btn">
-                                <input type="submit" value="OK" name="btn"> 
+                                <input type="submit" value="X" id="delete-btn" name="btn">
+                                <input type="submit" id="confirm-btn" value="OK" name="btn"> 
                         </form>
                         <?php endforeach ?>
                     
                     
                 </div>
 
-                <h2>Nákladné autá do 3,5 t <a class="new_line" href="./after-price-list-truck-service.php?new_line=true">+</a></h2>
+                <h2>Nákladné autá do 3,5 t <a class="new_line add-truck-service" href="./after-price-list-truck-service.php?new_line=true">+</a></h2>
                 
                 <div class="container">
 
                     
                         <?php foreach($truck_service as $one_truck_service): ?>
-                        <form action="./after-price-list-truck-service.php" class="line-info" method="POST">       
+                        <form id="truck-service" action="./after-price-list-truck-service.php" class="line-info truck-service" method="POST">       
                                 <input type="hidden" value="<?= htmlspecialchars($one_truck_service["truck_service_id"]) ?>" name="truck_service_id">
                                 <div class="product-info">
                                     <input type="text" value="<?= htmlspecialchars($one_truck_service["service_type"]) ?>" name="service_type" id="">
@@ -190,8 +190,8 @@ $adhesive_weight = AdhesiveWeight::getAllAdhesiveWeight($connection);
                                     <input  type="number" step="0.5" value="<?= htmlspecialchars($one_truck_service["price"]) ?>" name="price" id="">
                                 </div>
                                 
-                                <input type="submit" value="X" name="btn">
-                                <input type="submit" value="OK" name="btn"> 
+                                <input type="submit" value="X" id="delete-btn" name="btn">
+                                <input type="submit" id="confirm-btn" value="OK" name="btn"> 
                         </form>
                         <?php endforeach ?>
                     
@@ -202,12 +202,12 @@ $adhesive_weight = AdhesiveWeight::getAllAdhesiveWeight($connection);
 
             <article class="wheels">
 
-                <h3>Lepiace závažie <a class="new_line" href="./after-price-list-adhesive-weight.php?new_line=true">+</a></h3>
+                <h3>Lepiace závažie <a class="new_line add-adhesive-weight" href="./after-price-list-adhesive-weight.php?new_line=true">+</a></h3>
                 <div class="container">
 
                     
                         <?php foreach($adhesive_weight as $one_adhesive_weight): ?>
-                        <form action="./after-price-list-adhesive-weight.php" class="line-info" method="POST">       
+                        <form id="adhesive-weight" action="./after-price-list-adhesive-weight.php" class="line-info adhesive-weight" method="POST">       
                                 <input type="hidden" value="<?= htmlspecialchars($one_adhesive_weight["adhesive_weight_id"]) ?>" name="adhesive_weight_id">
                                 <div class="product-info">
                                     <input type="text" value="<?= htmlspecialchars($one_adhesive_weight["type"]) ?>" name="type" id="">
@@ -217,8 +217,8 @@ $adhesive_weight = AdhesiveWeight::getAllAdhesiveWeight($connection);
                                     <input  type="number" value="<?= htmlspecialchars($one_adhesive_weight["price"]) ?>" step="0.01" name="price" id="">
                                 </div>
                                 
-                                <input type="submit" value="X" name="btn">
-                                <input type="submit" value="OK" name="btn"> 
+                                <input type="submit" value="X" id="delete-btn" name="btn">
+                                <input type="submit" id="confirm-btn" value="OK" name="btn"> 
                         </form>
                         <?php endforeach ?>
                     
@@ -233,8 +233,10 @@ $adhesive_weight = AdhesiveWeight::getAllAdhesiveWeight($connection);
     </main>
     
     <?php require "../assets/footer.php" ?>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
     <script src="../js/header.js"></script>    
-    <script src="../js/change-confirmed.js"></script>    
+    <script src="../js/tire-service.js"></script>    
 </body>
 </html>
 

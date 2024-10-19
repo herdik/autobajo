@@ -35,9 +35,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
     } 
     
     
-    if ($redirect_fault) {
-        Url::redirectUrl("/autobajo/admin/tires-service.php");
-    } else {
+    if (!$redirect_fault) {
+        // Url::redirectUrl("/autobajo/admin/tires-service.php");
         $not_added_contact_info = "Nastala chyba na pri Cenníku pneuservisu";
         Url::redirectUrl("/autobajo/admin/logedin-error.php?logedin_error=$not_added_contact_info");
     }
