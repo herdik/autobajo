@@ -43,13 +43,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
     
 
 } elseif ($_SERVER["REQUEST_METHOD"] === "GET") {
-    $create_new_line = TruckService::createTruckService($connection);
+   
+    if ($_GET["new_line"]) {
+        $create_new_line = TruckService::createTruckService($connection);
 
-    if ($create_new_line) {
-        Url::redirectUrl("/autobajo/admin/tires-service.php");
-    } else {
-        $not_added_contact_info = "Nastala chyba na pri Cenníku pneuservisu";
-        Url::redirectUrl("/autobajo/admin/logedin-error.php?logedin_error=$not_added_contact_info");
+        if (!$create_new_line) {
+            // Url::redirectUrl("/autobajo/admin/tires-service.php");
+            $not_added_contact_info = "Nastala chyba na pri Cenníku pneuservisu";
+            Url::redirectUrl("/autobajo/admin/logedin-error.php?logedin_error=$not_added_contact_info");
+        } 
     }
     
 } else {
