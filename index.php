@@ -7,6 +7,10 @@
 
     <link rel="icon" type="image/x-icon" href="./img/favicon.ico">
 
+    <!-- ICONS MENU -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <!-- ICONS MENU -->
+
     <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,7 +24,6 @@
     <link rel="stylesheet" href="./css/footer.css">
     <link rel="stylesheet" href="./query/header-query.css">
 
-    <script src="https://kit.fontawesome.com/ed8b583ef3.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -33,28 +36,28 @@
             <a href="./glob-car-advertisement.php">
                 <article class="div-menu-part part-cars">
                     <img class="div-menu-images" src="./img/cars.jpg" alt="">
-                    <span class="cars">Autá</span>
+                    <span class="cars advert-text">Autá</span>
                 </article>
             </a>
 
             <a href="./glob-tire-advertisement.php">
                 <article class="div-menu-part part-tires">
                     <img class="div-menu-images" src="./img/tires.jpg" alt="">
-                    <span class="tires">Pneumatiky</span>
+                    <span class="tires advert-text">Pneumatiky</span>
                 </article>
             </a>
 
             <a href="./glob-wheel-advertisement.php">
                 <article class="div-menu-part part-rimes">
                     <img class="div-menu-images" src="./img/rim.jpg" alt="">
-                    <span class="rimes">Disky</span>
+                    <span class="rimes advert-text">Disky</span>
                 </article>
             </a>
 
             <a href="./global-tires-service.php">
                 <article class="div-menu-part part-servis">
                     <img class="div-menu-images" src="./img/servis.jpg" alt="">
-                    <span class="servis">Pneuservis</span>
+                    <span class="servis advert-text">Pneuservis</span>
                 </article>
             </a>
             
@@ -64,5 +67,6 @@
 
     <?php require "./assets/footer.php" ?>
     <script src="./js/header.js"></script>
+    <script src="./js/header-nav-visibility.js"></script>
 </body>
 </html>

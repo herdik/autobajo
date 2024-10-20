@@ -24,7 +24,7 @@
     .menu-icon {
         display: block;
         color: white;
-        font-size: 23px;
+        /* font-size: 23px; */
         margin-right: 20px;
         cursor: pointer;
         z-index: 1;
@@ -53,4 +53,8 @@
         /* important means more dominant than style what is marked ou/scratched */
         display: block !important;
     }
+}
+
+.material-symbols-outlined {
+    font-size: 36px;
 }

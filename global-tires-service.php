@@ -31,6 +31,9 @@ $adhesive_weight = AdhesiveWeight::getAllAdhesiveWeight($connection);
     <title>Typ inzerátu</title>
 
     <link rel="icon" type="image/x-icon" href="./img/favicon.ico">
+    <!-- ICONS MENU -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <!-- ICONS MENU -->
 
     <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,19 +45,17 @@ $adhesive_weight = AdhesiveWeight::getAllAdhesiveWeight($connection);
     <link rel="stylesheet" href="./css/footer.css">
     <link rel="stylesheet" href="./css/global-tires-service.css">
     <link rel="stylesheet" href="./query/header-query.css">
-
-    <script src="https://kit.fontawesome.com/ed8b583ef3.js" crossorigin="anonymous"></script>
-
+    
 </head>
 <body>
 
     <?php require "./assets/header.php" ?>
-
+    
     <main>
 
-        <h1>Cenník poskytovaných služieb <br> Pneuservis DB</h1>
+        <h1>Cenník poskytovaných služieb <br> Pneuservis DB
+        </h1>
         <section class="tires-service-menu">
-        
             
             <article class="wheels">
                 <h2>Hliníkové disky</h2>
@@ -200,7 +201,10 @@ $adhesive_weight = AdhesiveWeight::getAllAdhesiveWeight($connection);
     </main>
     
     <?php require "./assets/footer.php" ?>
-    <script src="./js/header.js"></script>            
+
+    <script src="./js/header.js"></script>     
+    <script src="./js/header-nav-visibility.js"></script>   
+    
 </body>
 </html>
 

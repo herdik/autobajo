@@ -1,6 +1,7 @@
 document.addEventListener("scroll", (e) => {
     if (window.scrollY > 30) {
         
+        document.querySelector("header").style.position = "fixed"
         document.querySelector("header").style.backgroundColor = "#000"
         document.querySelector("header").style.zIndex = "100"
     

@@ -31,6 +31,10 @@ if (count($contact_infos) === 0) {
 
     <link rel="icon" type="image/x-icon" href="./img/favicon.ico">
 
+    <!-- ICONS MENU -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <!-- ICONS MENU -->
+
     <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,13 +43,11 @@ if (count($contact_infos) === 0) {
 
 
     <link rel="stylesheet" href="./css/general.css">
-    <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="./css/header.css">
     <link rel="stylesheet" href="./css/footer.css">
     <link rel="stylesheet" href="./css/about-us.css">
     <link rel="stylesheet" href="./query/header-query.css">
 
-    <script src="https://kit.fontawesome.com/ed8b583ef3.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -61,7 +63,7 @@ if (count($contact_infos) === 0) {
 
         <div class="container">
             <h2 class="paragraph">Kontakt</h2>
-            <p class="small-text">Vitajte na stránkách spoločnosti Pneuservis DB. <br><br>Sme firma zaoberajúca sa predajom áut, pneumatík, diskov a v neposlednom rade ponúkame vynikajúce služby v oblasti pneuservisu.</p>
+            <p class="small-text">Vitajte na stránkách spoločnosti <span class="no-wrap"> Pneuservis DB.</span> <br><br>Sme firma zaoberajúca sa predajom áut, pneumatík, diskov a v neposlednom rade ponúkame vynikajúce služby v oblasti pneuservisu.</p>
             <br>
             <p class="bigger-text">Môžete nás navštíviť osobne na nižšie spomínanej adrese. Taktiež nás môžete kontaktovať telefonicky, alebo mailom. </p>
 
@@ -125,6 +127,7 @@ if (count($contact_infos) === 0) {
     </main>
     
     <?php require "./assets/footer.php" ?>
-    <script src="./js/header.js"></script>       
+    <script src="./js/header.js"></script>  
+    <script src="./js/header-nav-visibility.js"></script>         
 </body>
 </html>

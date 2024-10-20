@@ -7,6 +7,15 @@
     font-style: normal;
 }
 
+body {
+    background: linear-gradient(black, rgba(0, 0, 0, 0.507)),
+                url(../img/background-photo.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
 input:focus {
     outline: none;
 }

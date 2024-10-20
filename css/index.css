@@ -1,19 +1,12 @@
 main {
     min-height: 100vh;
-    background: linear-gradient(black, rgba(0, 0, 0, 0.507)),
-                url(../img/background-photo.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-
+    
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
 }
-
 
 .div-menu {  
     margin-top: 100px;
@@ -26,8 +19,14 @@ main {
     gap: 20px;
 }
 
-.div-menu-part {
+.div-menu > a {
+    text-decoration: none;
+    color: #fff;
     width: 250px;
+}
+
+.div-menu-part {
+    width: 100%;
     height: 360px;
     display: flex;
     align-items: center;
@@ -41,7 +40,7 @@ main {
     height: 100%;
     cursor: pointer;
 }
-span { 
+.advert-text { 
     width: 15%;
     height: 100%;
     text-orientation: upright;
@@ -57,10 +56,7 @@ span {
     scale: 1.05;
 }
 
-a {
-    text-decoration: none;
-    color: #fff;
-}
+
 
 .part-cars {
     animation: fromLeft 1s linear;

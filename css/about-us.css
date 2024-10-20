@@ -190,6 +190,10 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     border-radius: 10px;
 }
 
+.no-wrap {
+    white-space: nowrap;
+}
+
 
 
 

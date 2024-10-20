@@ -1,22 +1,19 @@
 main {
     min-height: 100vh;
-    background: url(../img/background-photo.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
     flex-wrap: wrap;
+    padding: 20px;
 }
 
 main h1 {
     color: #fff;
     text-align: center;
     margin-top: 100px;
+    padding: 5px;
     width: 100%;
     max-width: 960px;
     background: rgba(0, 0, 0, 0.5);
@@ -25,7 +22,6 @@ main h1 {
 }
 
 .tires-service-menu {  
-    margin-top: 5px;
     width: 100%;
     max-width: 960px;
     display: flex;
@@ -101,8 +97,3 @@ main h1 {
     text-align: right;
     width: 30%;
 }
-
-
-
-
-
