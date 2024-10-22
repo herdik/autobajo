@@ -45,6 +45,10 @@ $inside_index = 12;
 
     <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
 
+    <!-- ICONS MENU -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <!-- ICONS MENU -->
+
     <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -55,8 +59,7 @@ $inside_index = 12;
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/car-profil.css">
     <link rel="stylesheet" href="../query/header-query.css">
-
-    <script src="https://kit.fontawesome.com/ed8b583ef3.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../query/profil-query.css">
 
 </head>
 <body>
@@ -125,7 +128,7 @@ $inside_index = 12;
                     <div class="gallery-text">Otvoriť galériu</div>
                     
                 </div>
-                <div class="main-car-info">
+                <div class="main-car-info main-product-info">
 
                     <div class="car-brand">
                         <h2 class="car-name"><?= htmlspecialchars($car_infos["car_brand"]) ?></h2>
@@ -138,40 +141,45 @@ $inside_index = 12;
 
                     <div class="car-infos">
 
-                        <div class="car year">
-                            <!-- <i class="fa-solid fa-hourglass-start"></i> -->
-                            <span class="sub-heading">Rok výroby</span>
+                        <div class="car year product-category">
+                            <span class="sub-heading text">Rok výroby</span>
+                            <span class="sub-heading material-symbols-outlined set-icon">pending_actions</span>
+
                             <span><?= htmlspecialchars($car_infos["year_of_manufacture"]) ?></span>
                         </div>
 
-                        <div class="car kilometer">
-                            <!-- <i class="fa-solid fa-car-side"></i> -->
-                            <!-- <i class="fa-solid fa-route"></i> -->
-                            <span class="sub-heading">Počet km</span>
+                        <div class="car kilometer product-category">
+                            <span class="sub-heading text">Počet km</span>
+                            <span class="sub-heading material-symbols-outlined set-icon">unpaved_road</span>
+
                             <span><?= htmlspecialchars(number_format($car_infos["past_km"],0,","," ")) ?></span>
                         </div>
 
-                        <div class="car fuel">
-                            <!-- <i class="fa-solid fa-gas-pump"></i> -->
-                            <span class="sub-heading">Palivo</span>
+                        <div class="car fuel product-category">
+                            <span class="sub-heading text">Palivo</span>
+                            <span class="sub-heading material-symbols-outlined set-icon">local_gas_station</span>
+
                             <span><?= htmlspecialchars($car_infos["fuel_type"]) ?></span>
                         </div>
                     </div>
 
                     <div class="car-infos">
-                        <div class="car color">
-                            <!-- <i class="fa-solid fa-palette"></i> -->
-                            <span class="sub-heading">Farba</span>
+                        <div class="car color product-category">
+                            <span class="sub-heading text">Farba</span>
+                            <span class="sub-heading material-symbols-outlined set-icon">palette</span>
+
                             <span><?= htmlspecialchars($car_infos["car_color"]) ?></span>
                         </div>
-                        <div class="car gear">
-                            <!-- <i class="fa-solid fa-gear"></i> -->
-                            <span class="sub-heading">Prevodovka</span>
+                        <div class="car gear product-category">
+                            <span class="sub-heading text">Prevodovka</span>
+                            <span class="sub-heading material-symbols-outlined set-icon">auto_transmission</span>
+
                             <span><?= htmlspecialchars($car_infos["gearbox"]) ?></span>
                         </div>
-                        <div class="car engine">
-                            <!-- <i class="fa-solid fa-gear"></i> -->
-                            <span class="sub-heading">Objem motora</span>
+                        <div class="car engine product-category">
+                            <span class="sub-heading text">Objem motora</span>
+                            <span class="sub-heading material-symbols-outlined set-icon">manufacturing</span>
+
                             <span><?= htmlspecialchars($car_infos["engine_volume"]) ?></span>
                         </div>
                     </div>
@@ -221,7 +229,7 @@ $inside_index = 12;
                 <?php foreach($car_equipments as $car_equipment): ?>
                     <?php if ($car_infos[$inside_index]): ?>
                         <div class="check box">
-                            <i class="fa-solid fa-clipboard-check"></i>
+                            <span class="material-symbols-outlined">verified_user</span>
                             <span><?= htmlspecialchars($car_equipment) ?></span>
                             
                         </div>

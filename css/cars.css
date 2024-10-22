@@ -12,11 +12,13 @@ main {
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
+    padding: 20px;
 }
 
 main h1 {
     color: #fff;
     margin-top: 80px;
+    font-size: clamp(1.2em, 7vw, 2em);
 }
 
 .cars-menu {  
@@ -69,18 +71,18 @@ main h1 {
 /* label on image */
 
 .car-picture {
-    width: 40%;
+    width: 45%;
     height: 100%;
 }
 
 .basic-car-info {
-    width: 60%;
+    width: 55%;
+    height: 100%;
     background-color: #fff;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-
 }
 
 .car-brand {
@@ -92,12 +94,18 @@ main h1 {
     gap: 10px;
 }
 
-.car-brand h2 {
+.car-brand  h2 {
     font-weight: bold;
+    font-size: clamp(1em, 6vw, 1.5em);
+}
+
+.model {
+    font-size: clamp(0.9em, 5vw, 1.17em);
 }
 
 .car-description h2 {
     color: #b30606;
+    font-size: clamp(1em, 6vw, 1.5em);
 }
 
 .car {
@@ -108,11 +116,11 @@ main h1 {
 
 .car :nth-child(1){
     font-weight: bold;
-    font-size: 24px;
+    font-size: clamp(1em, 6vw, 1.2em);
 }
 .car :nth-child(2){
     font-weight: bold;
-    font-size: 20px;
+    font-size: clamp(0.8em, 5vw, 1em);
     color: #b30606;
 }
 
@@ -134,10 +142,10 @@ main h1 {
     width: 100%;
 }
 
-.car-price  h2 {
+.car-price h2 {
     color: #fff;
     font-weight: bolder;
-    font-size: 36px;
+    font-size: clamp(1em, 6vw, 1.5em);
     text-align: center;
 }
 

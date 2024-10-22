@@ -46,6 +46,7 @@ if ((isset($_GET["tire_id"]) and is_numeric($_GET["tire_id"])) and (isset($_GET[
     <link rel="stylesheet" href="./css/footer.css">
     <link rel="stylesheet" href="./css/tire-profil.css">
     <link rel="stylesheet" href="./query/header-query.css">
+    <link rel="stylesheet" href="./query/profil-query.css">
 
 </head>
 <body>
@@ -110,7 +111,7 @@ if ((isset($_GET["tire_id"]) and is_numeric($_GET["tire_id"])) and (isset($_GET[
 
                 </div>
                 
-                <div class="main-tire-info">
+                <div class="main-tire-info main-product-info">
 
                     <div class="tire-brand">
                         <h2 class="tire-name"><?= htmlspecialchars($tire_infos["tire_brand"]) ?></h2>
@@ -123,33 +124,39 @@ if ((isset($_GET["tire_id"]) and is_numeric($_GET["tire_id"])) and (isset($_GET[
 
                     <div class="tire-infos">
 
-                        <div class="tire year">
-                            <span class="sub-heading">Rok výroby</span>
+                        <div class="tire year product-category">
+                            <span class="sub-heading text">Rok výroby</span>
+                            <span class="sub-heading material-symbols-outlined set-icon">pending_actions</span>
                             <span><?= htmlspecialchars($tire_infos["year_of_manufacture"]) ?></span>
                         </div>
 
-                        <div class="tire category">
-                            <span class="sub-heading">Kategória</span>
+                        <div class="tire category product-category">
+                            <span class="sub-heading text">Kategória</span>
+                            <span class="sub-heading material-symbols-outlined set-icon">traffic_jam</span>
                             <span><?= htmlspecialchars($tire_infos["tire_category"]) ?></span>
                         </div>
 
-                        <div class="tire width">
-                            <span class="sub-heading">Šírka</span>
+                        <div class="tire width product-category">
+                            <span class="sub-heading text">Šírka</span>
+                            <span class="sub-heading material-symbols-outlined set-icon">format_letter_spacing</span>
                             <span><?= htmlspecialchars($tire_infos["width"]) ?></span>
                         </div>
                     </div>
 
                     <div class="tire-infos">
-                        <div class="tire height">
-                            <span class="sub-heading">Výška</span>
+                        <div class="tire height product-category">
+                            <span class="sub-heading text">Výška</span>
+                            <span class="sub-heading material-symbols-outlined set-icon">expand</span>
                             <span><?= htmlspecialchars($tire_infos["height"]) ?></span>
                         </div>
-                        <div class="tire average">
-                            <span class="sub-heading">Priemer</span>
+                        <div class="tire average product-category">
+                            <span class="sub-heading text">Priemer</span>
+                            <span class="sub-heading material-symbols-outlined set-icon">hide_source</span>
                             <span><?= htmlspecialchars($tire_infos["construction"]) .  htmlspecialchars($tire_infos["average"])?></span>
                         </div>
-                        <div class="tire index">
-                            <span class="sub-heading">H/R index</span>
+                        <div class="tire index product-category">
+                            <span class="sub-heading text">H/R index</span>
+                            <span class="sub-heading material-symbols-outlined set-icon">rocket_launch</span>
                             <span><?= htmlspecialchars($tire_infos["weight_index"]) . htmlspecialchars($tire_infos["speed_index"])?></span>
                         </div>
                     </div>
@@ -176,7 +183,7 @@ if ((isset($_GET["tire_id"]) and is_numeric($_GET["tire_id"])) and (isset($_GET[
                 <h2>Popis pneumatiky </h2> 
 
                 <div class="check box">
-                    <p><?= htmlspecialchars($tire_infos["tire_description"]) ?></p>
+                    <?= htmlspecialchars($tire_infos["tire_description"]) ?></p>
                     
                 </div>
             </article>
@@ -200,7 +207,6 @@ if ((isset($_GET["tire_id"]) and is_numeric($_GET["tire_id"])) and (isset($_GET[
     
     <script src="./js/header.js"></script>  
     <script src="./js/show-gallery.js"></script>  
-    <script src="./js/slider-animation.js"></script>   
-    <script src="./js/header-nav-visibility.js"></script>                     
+    <script src="./js/slider-animation.js"></script>                      
 </body>
 </html>

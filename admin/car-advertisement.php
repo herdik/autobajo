@@ -265,7 +265,7 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
     </main>
     
     <?php require "../assets/footer.php" ?>
-    <script src="../js/header.js"></script>            
+    <script src="../js/header.js"></script>       
 </body>
 </html>
 

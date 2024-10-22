@@ -9,13 +9,15 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: flex-start;
     flex-wrap: wrap;
+    padding: 10px;
 }
 
 /* css for all wheel advertisement */
 
 .advertisement-wheel {  
+    margin-top: 20px;
     width: 100%;
     max-width: 1280px;
     display: flex;
@@ -42,7 +44,7 @@ main {
 /* heading image */
 .main-image {
     width: 50%;
-    min-height: 350px;
+    /* min-height: 350px; */
     max-height: 420px;
     border: 1px solid #fff;
     cursor: pointer;
@@ -74,7 +76,7 @@ main {
 
 /* Gallery open text */
 .gallery-text {
-    font-size: 16px;
+    font-size: clamp(0.7em, 4vw, 1em);
     position: absolute;
     color: #fff;
     background-color: rgba(0, 0, 0, 0.548);
@@ -114,11 +116,11 @@ main {
 
 .wheel-brand h2 {
     font-weight: bold;
-    font-size: 32px;
+    font-size: clamp(1.2em, 3vw, 2em);
 }
 .wheel-brand h3 {
     font-weight: bold;
-    font-size: 28px;
+    font-size: clamp(1em, 2vw, 1.5em);
 }
 /* wheel brand and model */
 
@@ -126,6 +128,7 @@ main {
 .wheel-description h2 {
     color: #fff;
     text-align: center;
+    font-size: clamp(1em, 2vw, 1.5em);
 }
 /* wheel description */
 
@@ -142,18 +145,29 @@ main {
 .wheel {
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
+    gap: 5px;
     align-items: center;
     width: 33%;
 }
 
 .wheel :nth-child(1){
     font-weight: bold;
-    font-size: 26px;
+    font-size: clamp(1em, 2vw, 1.5em);
 }
 .wheel :nth-child(2){
     font-weight: bold;
-    font-size: 20px;
+    font-size: clamp(1.2em, 1.5vw, 1.3em);
     color: #fff;
+}
+.wheel :nth-child(3){
+    font-weight: bold;
+    font-size: clamp(1.2em, 1.5vw, 1.3em);
+    color: #fff;
+}
+
+.sub-heading {
+    text-align: center;
 }
 /* basic wheel info */
 
@@ -211,11 +225,16 @@ main {
     width: 100%;
     gap: 20px;
     color: #fff;
-    font-size: 20px;
+    font-size: clamp(1.2em, 1.5vw, 1.3em);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+}
+
+.administration h2{
+    text-align: center;
+    font-size: clamp(1.2em, 3vw, 2em);
 }
 
 .administration-part {
@@ -288,13 +307,18 @@ main {
     text-align: center;
     border-bottom: 3px solid #fff;
     padding-bottom: 10px;
+    font-size: clamp(1.2em, 3vw, 2em);
 }
 /* settings for sequence */
 
 /* settings inside in sequence */
 .box {
-    font-size: 25px;
+    font-size: clamp(1em, 2vw, 1.5em);
     width: 100%;
+}
+
+.set-icon {
+    display: none;
 }
 /* settings inside in sequence */
 
@@ -340,7 +364,7 @@ main {
 .close {
     width: 40px;
     height: 40px;
-    font-size: 50px;
+    font-size: clamp(1.2em, 7vw, 2em);
     color: #fff;
     position: absolute;
     top: 2%;
@@ -348,25 +372,28 @@ main {
     cursor: pointer;
 }
 .left {
-    width:50px;
-    height: 50px;
+    width:40px;
+    height: 40px;
+    font-size: clamp(1.2em, 7vw, 2em);
     border-left: 5px solid #fff;
     border-bottom: 5px solid #fff;
     position: absolute;
-    top: 45%;
+    top: 50%;
     left: 5%;
     transform: rotate(45deg);
+    transform: rotate(45deg) translateY(-50%);
     cursor: pointer;
 }
 .right {
-    width:50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
+    font-size: clamp(1.2em, 7vw, 2em);
     border-right: 5px solid #fff;
     border-bottom: 5px solid #fff;
     position: absolute;
-    top: 45%;
+    top: 50%;
     right: 5%;
-    transform: rotate(-45deg);
+    transform: rotate(-45deg) translateY(-50%);
     cursor: pointer;
 }
 /* dialogs button */

@@ -1,4 +1,4 @@
-const mainImage = document.querySelector(".heading")
+const mainImage = document.querySelector(".main-image")
 const gallerySlider = document.querySelector(".gallery-slider")
 const closeBtn = document.querySelector(".close")
 

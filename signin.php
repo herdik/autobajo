@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="./css/signin.css">
     <link rel="stylesheet" href="./css/footer.css">
     <link rel="stylesheet" href="./query/header-query.css">
+    <link rel="stylesheet" href="./query/sign-in-query.css">
 
 </head>
 <body>
@@ -46,6 +47,5 @@
 
     <?php require "./assets/footer.php" ?>
     <script src="./js/header.js"></script>
-    <script src="./js/header-nav-visibility.js"></script>    
 </body>
 </html>

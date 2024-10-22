@@ -13,8 +13,11 @@ main {
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
+    padding: 20px;
 }
 .signin-form {
+    width: 100%;
+    max-width: 560px;
     border: 3px solid white;
     padding: 35px;
     text-align: center;
@@ -27,14 +30,16 @@ main {
 
 .signin-form h1 {
     color: white;
-    font-size: 48px;
+    font-size: clamp(1.2em, 7vw, 2em);
     letter-spacing: 3px;
     margin-bottom: 15px;
     text-align: center;
+    width: 100%;
 }
 
 .signin-form form {
     text-align: center;
+    width: 100%;
 }
 
 
@@ -43,11 +48,12 @@ main {
     background: none;
     border: none;
     border-bottom: 1px solid white;
-    font-size: 24px;
+    font-size: clamp(1em, 6vw, 1.5em);
     text-align: center;
     color: white;
     padding: 6px 8px;
     margin-bottom: 15px;
+    width: 100%;
 }
 
 .signin-form input[type="submit"]{
@@ -55,13 +61,14 @@ main {
     border: 5px solid #b30606;
     width: 100%;
     padding: 8px 12px;
-    font-size: 20px;
+    font-size: clamp(1em, 6vw, 1.5em);
     cursor: pointer;
     transition: all 0.3s linear;
     background-color: #b30606;
     color: #fff;
     transition: 0.4s all linear;
     font-weight: bold;
+    width: 100%;
 }
 
 .signin-form input[type="submit"]:hover {

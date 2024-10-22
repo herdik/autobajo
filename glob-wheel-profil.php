@@ -45,6 +45,7 @@ if ((isset($_GET["wheel_id"]) and is_numeric($_GET["wheel_id"])) and (isset($_GE
     <link rel="stylesheet" href="./css/footer.css">
     <link rel="stylesheet" href="./css/wheel-profil.css">
     <link rel="stylesheet" href="./query/header-query.css">
+    <link rel="stylesheet" href="./query/profil-query.css">
 
 </head>
 <body>
@@ -110,7 +111,7 @@ if ((isset($_GET["wheel_id"]) and is_numeric($_GET["wheel_id"])) and (isset($_GE
 
                 </div>
 
-                <div class="main-wheel-info">
+                <div class="main-wheel-info main-product-info">
 
                     <div class="wheel-brand">
                         <h2 class="wheel-name"><?= htmlspecialchars($wheel_infos["wheel_brand"]) ?></h2>
@@ -123,15 +124,17 @@ if ((isset($_GET["wheel_id"]) and is_numeric($_GET["wheel_id"])) and (isset($_GE
 
                     <div class="wheel-infos">
 
-                        <div class="wheel category">
+                        <div class="wheel category product-category">
                             
-                            <span class="sub-heading">Kategória</span>
+                            <span class="sub-heading text">Kategória</span>
+                            <span class="sub-heading material-symbols-outlined set-icon">apps</span>
                             <span><?= htmlspecialchars($wheel_infos["wheel_category"]) ?></span>
                         </div>
 
-                        <div class="wheel average">
+                        <div class="wheel average product-category">
                             
-                            <span class="sub-heading">Priemer</span>
+                            <span class="sub-heading text">Priemer</span>
+                            <span class="sub-heading material-symbols-outlined set-icon">hide_source</span>
                             <span><?= htmlspecialchars($wheel_infos["wheel_average"]) ?></span>
                         </div>
                         
@@ -139,20 +142,23 @@ if ((isset($_GET["wheel_id"]) and is_numeric($_GET["wheel_id"])) and (isset($_GE
 
                     <div class="wheel-infos">
                         
-                        <div class="wheel width">
+                        <div class="wheel width product-category">
                             
-                            <span class="sub-heading">Šírka</span>
+                            <span class="sub-heading text">Šírka</span>
+                            <span class="sub-heading material-symbols-outlined set-icon">format_letter_spacing</span>
                             <span><?= htmlspecialchars($wheel_infos["width"]) ?></span>
                         </div>
 
-                        <div class="wheel spacing">
-                            <span class="sub-heading">Rozteč</span>
+                        <div class="wheel spacing product-category">
+                            <span class="sub-heading text">Rozteč</span>
+                            <span class="sub-heading material-symbols-outlined set-icon">adjust</span>
                             <span><?= htmlspecialchars($wheel_infos["spacing"]) ?></span>
                         </div>
 
-                        <div class="wheel et">
+                        <div class="wheel et product-category">
                             
-                            <span class="sub-heading">ET</span>
+                            <span class="sub-heading text">ET</span>
+                            <span class="sub-heading material-symbols-outlined set-icon">ET</span>
                             <span><?= htmlspecialchars($wheel_infos["et"]) ?></span>
                         </div>
 
@@ -204,7 +210,6 @@ if ((isset($_GET["wheel_id"]) and is_numeric($_GET["wheel_id"])) and (isset($_GE
     
     <script src="./js/header.js"></script>    
     <script src="./js/show-gallery.js"></script>     
-    <script src="./js/slider-animation.js"></script>   
-    <script src="./js/header-nav-visibility.js"></script>                    
+    <script src="./js/slider-animation.js"></script>                     
 </body>
 </html>

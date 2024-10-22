@@ -47,7 +47,7 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Typ inzerátu</title>
+    <title>Inzeráty autá</title>
 
     <link rel="icon" type="image/x-icon" href="./img/favicon.ico">
 
@@ -65,6 +65,7 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
     <link rel="stylesheet" href="./css/footer.css">
     <link rel="stylesheet" href="./css/cars.css">
     <link rel="stylesheet" href="./query/header-query.css">
+    <link rel="stylesheet" href="./query/advertisement-query.css">
 
 </head>
 <body>
@@ -83,9 +84,8 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
 
             <!-- advertisement part -->
             <!-- if active advertisment is false added car history to HREF -->
-             
             <a href="./glob-car-profil.php?car_id=<?= htmlspecialchars($one_car["car_id"]) ?>&active_advertisement=<?= htmlspecialchars($active_advertisement) ?>"> 
-            <article class="car-advertisement">
+            <article class="car-advertisement advertisement">
 
             <!-- stamp for sold and reserved  -->
                 <?php if ($one_car["reserved"]): ?>
@@ -102,7 +102,7 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
             <!--image part of advertisement  -->
                 <?php if ($one_car["car_image"] != "no-photo-car.jpg"): ?>
 
-                    <div class="car-picture" style="
+                    <div class="car-picture picture" style="
                                     background: url(./uploads/cars/<?= htmlspecialchars($one_car["car_id"]) ?>/<?= htmlspecialchars($one_car["car_image"]) ?>);
                                     background-size: cover;
                                     background-position: center;
@@ -111,7 +111,7 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
                     </div>
                 
                 <?php else: ?>
-                    <div class="car-picture" style="
+                    <div class="car-picture picture" style="
                                     background: url(./img/no-photo-car/no-photo-car.jpg);
                                     background-size: cover;
                                     background-position: center;
@@ -123,7 +123,7 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
             <!--image part of advertisement  -->
 
             <!-- infos part of advertisement -->
-                <div class="basic-car-info">
+                <div class="basic-car-info info">
 
                     <div class="car-brand">
                         <h2 class="heading"><?= htmlspecialchars($one_car["car_brand"]) ?></h2>
@@ -165,8 +165,8 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
                     
                 </div>
                 
-            </article>
-            </a>        
+            </article> 
+            </a>    
             <!-- infos part of advertisement -->
             <?php endforeach ?>
 
@@ -257,7 +257,7 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
     
     <?php require "./assets/footer.php" ?>
     <script src="./js/header.js"></script>     
-    <script src="./js/header-nav-visibility.js"></script>              
+    <!-- <script src="./js/header-nav-visibility.js"></script>               -->
 </body>
 </html>
 

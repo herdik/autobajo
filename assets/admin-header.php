@@ -29,7 +29,8 @@
     </nav>
 
     <div class="menu-icon">
-        <i class="fa-solid fa-bars"></i>
+        <!-- burger menu -->
+        <span class="material-symbols-outlined current-menu-icon">menu</span> 
     </div>
 
 </header>
