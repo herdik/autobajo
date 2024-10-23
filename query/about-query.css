@@ -1,0 +1,28 @@
+@media (max-width: 1090px) {
+
+    .container {
+        width: 100%;
+    }
+
+    iframe {
+        width: 100%;
+        min-height: 450px;
+    }
+    
+}
+@media (max-width: 590px) {
+
+    iframe {
+        width: 100%;
+        min-height: 250px;
+    }
+    .company-info {
+        text-align: right;
+    }
+    .address {
+        text-align: right;
+    }
+    
+}
+
+

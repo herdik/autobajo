@@ -10,23 +10,26 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     
     color: #fff;
+    padding: 25px;
 }
 
 main h1 {
     color: #fff;
-    margin-top: 80px;
+    margin-top: 40px;
+    font-size: clamp(1.3em, 7vw, 2em);
 }
 
 .dashboard-menu {  
-    margin-top: 20px;
+    margin-top: 40px;
     width: 100%;
     height: 100%;
     max-width: 1280px;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap-reverse;
     gap: 20px;
     justify-content: space-between;
 }
@@ -40,19 +43,21 @@ iframe {
 }
 
 .paragraph {
-    font-size: 32px;
+    font-size: clamp(1.1em, 6.5vw, 1.7em);
     border-bottom: 5px solid #fff;
-    width: 250px;
+    width: 100%;
+    max-width: 250px;
     padding-bottom: 10px;
     margin-bottom: 30px;
+
 }
 
 .small-text {
-    font-size: 20px;
+    font-size: clamp(0.9em, 5vw, 1.17em);
 }
 
 .bigger-text {
-    font-size: 25px;
+    font-size: clamp(1em, 6vw, 1.4em);
 }
 
 .contact-info {
@@ -68,7 +73,7 @@ input {
     outline: none;
     background: #fff;
     border: 3px #fff solid;
-    font-size: 16px;
+    font-size: clamp(0.9em, 5vw, 1.17em);
     text-align: left;
     color: #000;
     padding: 2px 2px 2px 7px;
@@ -114,6 +119,9 @@ input {
 .person input {
     width: 100%;
 }
+.person a {
+    width: 100%;
+}
 
 
 .btn {
@@ -127,7 +135,7 @@ input[type="submit"]{
     background-color: #b30606;
     width: 100%;
     padding: 8px 12px;
-    font-size: 20px;
+    font-size: clamp(0.9em, 5vw, 1.17em);
     cursor: pointer;
     transition: all 0.3s linear;
     color: #fff;
@@ -148,6 +156,7 @@ input[type="submit"]:hover {
 .basic-contact-info a {
     color: #fff;
     text-decoration: none;
+    font-size: clamp(0.6em, 3.5vw, 1.1em);
 }
 
 .company-contact-info {
@@ -162,8 +171,14 @@ input[type="submit"]:hover {
 .company-info {
     width: 49%;
 }
+.company-info p {
+    font-size: clamp(0.7em, 4vw, 1.17em);
+}
 .working-time {
     width: 49%;
+}
+.working-time p  {
+    font-size: clamp(0.7em, 4vw, 1.17em);
 }
 
 input[type="time"] {

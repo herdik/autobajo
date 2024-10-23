@@ -12,7 +12,7 @@ main {
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    padding: 20px;
+    padding: 10px;
 }
 
 main h1 {
@@ -42,7 +42,7 @@ main h1 {
 
 .car-advertisement {
     width: 100%;
-    height: 270px;
+    height: 300px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -100,18 +100,19 @@ main h1 {
 }
 
 .model {
-    font-size: clamp(0.9em, 5vw, 1.17em);
+    font-size: clamp(0.9em, 4vw, 1.17em);
 }
 
 .car-description h2 {
     color: #b30606;
-    font-size: clamp(1em, 6vw, 1.5em);
+    font-size: clamp(1em, 4vw, 1.3em);
 }
 
 .car {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-evenly;
 }
 
 .car :nth-child(1){
@@ -133,9 +134,9 @@ main h1 {
 
 }
 
-/* .sub-heading {
-    font-weight: bold;
-} */
+.set-icon {
+    display: none;
+}
 
 .car-price {
     background-color: #b30606;

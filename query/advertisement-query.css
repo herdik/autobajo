@@ -1,23 +1,40 @@
 @media (max-width: 880px) {
 
     main h1 {
-        margin-top: 5px; 
+        margin-top: 10px; 
     }
 
-    .car-advertisement {
+    .advertisement {
         height: auto;
     }
 
-    .car-picture {
+    .advert-picture {
         width: 100%;
-        min-height: 350px;
-        max-height: 420px;
+        height: 50vw;
     }
 
-
-    .basic-car-info {
+    .main-advert {
+        text-align: center;
+    }
+    .basic-advert-infos {
         width: 100%;
     }
     
     
+}
+@media (max-width: 380px) {
+
+    .advert-infos  {
+        justify-content: space-between;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .text {
+        display: none;
+    }  
+    .set-icon {
+        display: block;
+        font-size: clamp(1.2em, 1.5vw, 1.3em);
+    }
 }

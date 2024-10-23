@@ -30,17 +30,6 @@
         z-index: 1;
     }
 
-
-    .div-menu-part {
-        width: 75%; 
-        height: 350px;
-        
-    }
-
-    .div-menu-part:hover {
-        scale: 1;
-        color: #fff;
-    }
     .logo {
         z-index: -1;
     }

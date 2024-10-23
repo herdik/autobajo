@@ -46,7 +46,7 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Typ inzerátu</title>
+    <title>Inzeráty pneumatiky</title>
 
     <link rel="icon" type="image/x-icon" href="./img/favicon.ico">
 
@@ -64,6 +64,7 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
     <link rel="stylesheet" href="./css/footer.css">
     <link rel="stylesheet" href="./css/tires.css">
     <link rel="stylesheet" href="./query/header-query.css">
+    <link rel="stylesheet" href="./query/advertisement-query.css">
 
 </head>
 <body>
@@ -84,7 +85,7 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
             <!-- if active advertisment is false added tire history to HREF -->
 
             <a href="./glob-tire-profil.php?tire_id=<?= htmlspecialchars($one_tire["tire_id"]) ?>&active_advertisement=<?= htmlspecialchars($active_advertisement) ?>"> 
-            <article class="tire-advertisement">
+            <article class="tire-advertisement advertisement">
 
             <!-- stamp for sold and reserved  -->
                 <?php if ($one_tire["reserved"]): ?>
@@ -101,7 +102,7 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
             <!--image part of advertisement  -->  
                 <?php if ($one_tire["tire_image"] != "no-photo-car.jpg"): ?>
 
-                    <div class="tire-picture" style="
+                    <div class="tire-picture advert-picture" style="
                                     background: url(./uploads/tires/<?= htmlspecialchars($one_tire["tire_id"]) ?>/<?= htmlspecialchars($one_tire["tire_image"]) ?>);
                                     background-size: cover;
                                     background-position: center;
@@ -110,7 +111,7 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
                     </div>
                 
                 <?php else: ?>
-                    <div class="tire-picture" style="
+                    <div class="tire-picture advert-picture" style="
                                     background: url(./img/no-photo-car/no-photo-car.jpg);
                                     background-size: cover;
                                     background-position: center;
@@ -122,7 +123,7 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
                 <!--image part of advertisement  -->
 
                 <!-- infos part of advertisement -->
-                <div class="basic-tire-info">
+                <div class="basic-tire-info basic-advert-infos">
 
                     <div class="tire-brand">
                         <h2 class="heading"><?= htmlspecialchars($one_tire["tire_brand"]) ?></h2>
@@ -134,22 +135,25 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
                         <span class="product-type"><?= htmlspecialchars($one_tire["type"]) ?></span>
                     </div>
 
-                    <div class="tire-infos">
+                    <div class="tire-infos advert-infos">
 
-                        <div class="tire width">
-                            <!-- <i class="fa-solid fa-hourglass-start"></i> -->
-                            <span class="sub-heading">Šírka</span>
+                        <div class="tire width main-advert">
+                            
+                            <span class="sub-heading text">Šírka</span>
+                            <span class="sub-heading material-symbols-outlined set-icon">format_letter_spacing</span>
                             <span><?= htmlspecialchars($one_tire["width"]) ?></span>
                         </div>
 
-                        <div class="tire height">
-                            <span class="sub-heading">Výška</span>
+                        <div class="tire height main-advert">
+                            <span class="sub-heading text">Výška</span>
+                            <span class="sub-heading material-symbols-outlined set-icon">expand</span>
                             <span><?= htmlspecialchars($one_tire["height"]) ?></span>
                         </div>
 
-                        <div class="tire average">
-                            <!-- <i class="fa-solid fa-gas-pump"></i> -->
-                            <span class="sub-heading">Priemer</span>
+                        <div class="tire average main-advert">
+                            
+                            <span class="sub-heading text">Priemer</span>
+                            <span class="sub-heading material-symbols-outlined set-icon">hide_source</span>
                             <span><?= htmlspecialchars($one_tire["construction"]) . htmlspecialchars($one_tire["average"])?></span>
                         </div>
             
@@ -250,8 +254,7 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
     </main>
     
     <?php require "./assets/footer.php" ?>
-    <script src="./js/header.js"></script>  
-    <script src="./js/header-nav-visibility.js"></script>              
+    <script src="./js/header.js"></script>             
 </body>
 </html>
 

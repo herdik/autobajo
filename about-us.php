@@ -11,16 +11,6 @@ $connection = $database->connectionDB();
 
 $contact_infos = Contact::getAllContactInfos($connection);
 
-if (count($contact_infos) === 0) {
-    $contact_infos["company_name"] = "";
-    $contact_infos["street_number"] = "";
-    $contact_infos["town_post_nr"] = "";
-    $contact_infos["email_1"] = "";
-    $contact_infos["tel_1"] = "";
-    $contact_infos["email_2"] = "";
-    $contact_infos["tel_2"] = "";
-}
-
 ?>
 <!DOCTYPE html>
 <html lang="sk">
@@ -47,7 +37,7 @@ if (count($contact_infos) === 0) {
     <link rel="stylesheet" href="./css/footer.css">
     <link rel="stylesheet" href="./css/about-us.css">
     <link rel="stylesheet" href="./query/header-query.css">
-
+    <link rel="stylesheet" href="./query/about-query.css">
 </head>
 <body>
 
@@ -71,7 +61,7 @@ if (count($contact_infos) === 0) {
 
             
             
-            <form id="main-contact-form" action="after-reg-main-contact.php" method="POST">
+            <form id="main-contact-form">
                 
                 <div class="contact-info">
 
@@ -127,7 +117,6 @@ if (count($contact_infos) === 0) {
     </main>
     
     <?php require "./assets/footer.php" ?>
-    <script src="./js/header.js"></script>  
-    <script src="./js/header-nav-visibility.js"></script>         
+    <script src="./js/header.js"></script>       
 </body>
 </html>

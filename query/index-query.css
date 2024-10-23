@@ -1,0 +1,102 @@
+@media (max-width: 1150px) {
+
+    .menu-part {
+        width: 40%;
+    }
+    .div-menu-part {
+        height: 300px;
+        font-weight: bold;
+    }
+    
+}
+
+
+@media (max-width: 640px) {
+
+    .menu-part {
+        width: 80%;
+    }
+
+    .div-menu-part {
+        height: 240px;
+        font-weight: bold;
+    }
+
+    .part-cars {
+        animation: fromLeftmobile1 1.2s linear;
+    }
+    .part-tires {
+        animation: fromLeftmobile2 1.8s linear;
+    }
+    .part-rimes {
+        animation: fromLeftmobile3 1.8s linear;
+    }
+    .part-servis {
+        animation: fromLeftmobile4 2.1s linear;
+    }
+
+    .comp-logo {
+        width: 70px;
+        height: 70px;
+        top: 10px; 
+        right: 5px;
+    }
+    
+}
+@media (max-width: 350px) {
+
+    .comp-logo {
+        width: 50px;
+        height: 50px;
+        top: 10px; 
+        right: 5px;
+    }
+    
+}
+
+@keyframes fromLeftmobile1 {
+    0% {
+        transform: translateX(-400px);
+    }
+
+
+    100% {
+        transform: translateX(0px);
+    }
+
+}
+@keyframes fromLeftmobile2 {
+    0% {
+        transform: translateX(-600px);
+    }
+
+
+    100% {
+        transform: translateX(0px);
+    }
+
+}
+@keyframes fromLeftmobile3 {
+    0% {
+        transform: translateX(-800px);
+    }
+
+
+    100% {
+        transform: translateX(0px);
+    }
+
+}
+@keyframes fromLeftmobile4 {
+    0% {
+        transform: translateX(-1000px);
+    }
+
+
+    100% {
+        transform: translateX(0px);
+    }
+
+}
+
+

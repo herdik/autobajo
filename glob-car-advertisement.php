@@ -102,7 +102,7 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
             <!--image part of advertisement  -->
                 <?php if ($one_car["car_image"] != "no-photo-car.jpg"): ?>
 
-                    <div class="car-picture picture" style="
+                    <div class="car-picture advert-picture" style="
                                     background: url(./uploads/cars/<?= htmlspecialchars($one_car["car_id"]) ?>/<?= htmlspecialchars($one_car["car_image"]) ?>);
                                     background-size: cover;
                                     background-position: center;
@@ -111,7 +111,7 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
                     </div>
                 
                 <?php else: ?>
-                    <div class="car-picture picture" style="
+                    <div class="car-picture advert-picture" style="
                                     background: url(./img/no-photo-car/no-photo-car.jpg);
                                     background-size: cover;
                                     background-position: center;
@@ -123,7 +123,7 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
             <!--image part of advertisement  -->
 
             <!-- infos part of advertisement -->
-                <div class="basic-car-info info">
+                <div class="basic-car-info basic-advert-infos">
 
                     <div class="car-brand">
                         <h2 class="heading"><?= htmlspecialchars($one_car["car_brand"]) ?></h2>
@@ -134,24 +134,26 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
                         <h2><?= htmlspecialchars($one_car["car_description"]) ?></h2>
                     </div>
 
-                    <div class="car-infos">
+                    <div class="car-infos advert-infos">
 
-                        <div class="car year">
-                            <!-- <i class="fa-solid fa-hourglass-start"></i> -->
-                            <span class="sub-heading">Rok výroby</span>
+                        <div class="car year main-advert">
+                            
+                            <span class="sub-heading text">Rok výroby</span>
+                            <span class="sub-heading material-symbols-outlined set-icon">pending_actions</span>
                             <span><?= htmlspecialchars($one_car["year_of_manufacture"]) ?></span>
                         </div>
 
-                        <div class="car kilometer">
-                            <!-- <i class="fa-solid fa-car-side"></i> -->
-                            <!-- <i class="fa-solid fa-route"></i> -->
-                            <span class="sub-heading">Počet km</span>
-                            <span><?= htmlspecialchars(number_format($one_car["past_km"],0,","," ")) ?></span>
+                        <div class="car kilometer main-advert">
+                            
+                            <span class="sub-heading text">Počet km</span>
+                            <span class="sub-heading material-symbols-outlined set-icon">unpaved_road</span>
+                            <span><?= htmlspecialchars(number_format($one_car["past_km"],0,","," ")) . " km" ?></span>
                         </div>
 
-                        <div class="car fuel">
-                            <!-- <i class="fa-solid fa-gas-pump"></i> -->
-                            <span class="sub-heading">Palivo</span>
+                        <div class="car fuel main-advert">
+                            
+                            <span class="sub-heading text">Palivo</span>
+                            <span class="sub-heading material-symbols-outlined set-icon">local_gas_station</span>
                             <span><?= htmlspecialchars($one_car["fuel_type"]) ?></span>
                         </div>
             
@@ -257,7 +259,6 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
     
     <?php require "./assets/footer.php" ?>
     <script src="./js/header.js"></script>     
-    <!-- <script src="./js/header-nav-visibility.js"></script>               -->
 </body>
 </html>
 

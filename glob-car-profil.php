@@ -140,7 +140,7 @@ $inside_index = 12;
                             
                             <span class="sub-heading text">Počet km</span>
                             <span class="sub-heading material-symbols-outlined set-icon">unpaved_road</span>
-                            <span><?= htmlspecialchars(number_format($car_infos["past_km"],0,","," ")) ?></span>
+                            <span><?= htmlspecialchars(number_format($car_infos["past_km"],0,","," ")) . " km"?></span>
                         </div>
 
                         <div class="car fuel product-category">

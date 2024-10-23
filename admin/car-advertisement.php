@@ -58,9 +58,13 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Typ inzerátu</title>
+    <title>Inzeráty autá</title>
 
     <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
+
+    <!-- ICONS MENU -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <!-- ICONS MENU -->
 
     <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -72,8 +76,7 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/cars.css">
     <link rel="stylesheet" href="../query/header-query.css">
-
-    <script src="https://kit.fontawesome.com/ed8b583ef3.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../query/advertisement-query.css">
 
 </head>
 <body>
@@ -94,7 +97,7 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
             <!-- if active advertisment is false added car history to HREF -->
              
             <a href="./car-profil.php?car_id=<?= htmlspecialchars($one_car["car_id"]) ?>&active_advertisement=<?= htmlspecialchars($active_advertisement) ?>"> 
-            <article class="car-advertisement">
+            <article class="car-advertisement advertisement">
 
             <!-- stamp for sold and reserved  -->
                 <?php if ($one_car["reserved"]): ?>
@@ -111,7 +114,7 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
             <!--image part of advertisement  -->
                 <?php if ($one_car["car_image"] != "no-photo-car.jpg"): ?>
 
-                    <div class="car-picture" style="
+                    <div class="car-picture advert-picture" style="
                                     background: url(../uploads/cars/<?= htmlspecialchars($one_car["car_id"]) ?>/<?= htmlspecialchars($one_car["car_image"]) ?>);
                                     background-size: cover;
                                     background-position: center;
@@ -120,7 +123,7 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
                     </div>
                 
                 <?php else: ?>
-                    <div class="car-picture" style="
+                    <div class="car-picture advert-picture" style="
                                     background: url(../img/no-photo-car/no-photo-car.jpg);
                                     background-size: cover;
                                     background-position: center;
@@ -132,7 +135,7 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
             <!--image part of advertisement  -->
 
             <!-- infos part of advertisement -->
-                <div class="basic-car-info">
+                <div class="basic-car-info basic-advert-infos">
 
                     <div class="car-brand">
                         <h2 class="heading"><?= htmlspecialchars($one_car["car_brand"]) ?></h2>
@@ -143,24 +146,23 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
                         <h2><?= htmlspecialchars($one_car["car_description"]) ?></h2>
                     </div>
 
-                    <div class="car-infos">
+                    <div class="car-infos advert-infos">
 
-                        <div class="car year">
-                            <!-- <i class="fa-solid fa-hourglass-start"></i> -->
-                            <span class="sub-heading">Rok výroby</span>
+                        <div class="car year main-advert">
+                            <span class="sub-heading text">Rok výroby</span>
+                            <span class="sub-heading material-symbols-outlined set-icon">pending_actions</span>
                             <span><?= htmlspecialchars($one_car["year_of_manufacture"]) ?></span>
                         </div>
 
-                        <div class="car kilometer">
-                            <!-- <i class="fa-solid fa-car-side"></i> -->
-                            <!-- <i class="fa-solid fa-route"></i> -->
-                            <span class="sub-heading">Počet km</span>
-                            <span><?= htmlspecialchars(number_format($one_car["past_km"],0,","," ")) ?></span>
+                        <div class="car kilometer main-advert">
+                            <span class="sub-heading text">Počet km</span>
+                            <span class="sub-heading material-symbols-outlined set-icon">unpaved_road</span>
+                            <span><?= htmlspecialchars(number_format($one_car["past_km"],0,","," ")) . " km"?></span>
                         </div>
 
-                        <div class="car fuel">
-                            <!-- <i class="fa-solid fa-gas-pump"></i> -->
-                            <span class="sub-heading">Palivo</span>
+                        <div class="car fuel main-advert">
+                            <span class="sub-heading text">Palivo</span>
+                            <span class="sub-heading material-symbols-outlined set-icon">local_gas_station</span>
                             <span><?= htmlspecialchars($one_car["fuel_type"]) ?></span>
                         </div>
             

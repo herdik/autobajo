@@ -11,10 +11,47 @@ main {
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
+    padding: 10px;
+}
+
+.menu-border-animation {
+    position: relative;
+    border: 8px solid transparent;
+            
+    border-image: linear-gradient(to right, #b30606, rgb(255, 136, 0));
+    border-image-slice: 1;
+    padding: 18px;
+}
+
+.comp-logo {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: 5px;
+    right:0px;
+}
+.comp-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+main h1, main p {
+    color: #fff;
+    
+}
+main h1 {
+    color: #fff;
+    font-size: clamp(1em, 5vw, 2em);
+}
+
+main p {
+    margin-bottom: 40px;
+    font-size: clamp(0.75em, 3vw, 1.17em);
 }
 
 .div-menu {  
-    margin-top: 100px;
+    width: 100%;
     max-width: 1280px;
     display: flex;
     flex-direction: row;
@@ -24,7 +61,7 @@ main {
     gap: 20px;
 }
 
-.div-menu > a {
+.menu-part {
     text-decoration: none;
     color: #fff;
     width: 250px;
@@ -52,7 +89,7 @@ main {
     writing-mode: vertical-rl;
     cursor: pointer;
     font-weight: bold;
-    font-size: 1.3rem;
+    font-size: clamp(1em, 2vw, 1.3em);
     text-align: center;
 }
 

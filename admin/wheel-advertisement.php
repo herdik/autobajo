@@ -57,9 +57,13 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Typ inzerátu</title>
+    <title>Inzeráty disky</title>
 
     <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
+
+    <!-- ICONS MENU -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <!-- ICONS MENU -->
 
     <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -71,8 +75,7 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/wheels.css">
     <link rel="stylesheet" href="../query/header-query.css">
-
-    <script src="https://kit.fontawesome.com/ed8b583ef3.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../query/advertisement-query.css">
 
 </head>
 <body>
@@ -93,7 +96,7 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
             <!-- if active advertisment is false added wheel history to HREF -->
 
             <a href="./wheel-profil.php?wheel_id=<?= htmlspecialchars($one_wheel["wheel_id"]) ?>&active_advertisement=<?= htmlspecialchars($active_advertisement) ?>"> 
-            <article class="wheel-advertisement">
+            <article class="wheel-advertisement advertisement">
 
             <!-- stamp for sold and reserved  -->
                 <?php if ($one_wheel["reserved"]): ?>
@@ -110,7 +113,7 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
             <!--image part of advertisement  -->  
                 <?php if ($one_wheel["wheel_image"] != "no-photo-car.jpg"): ?>
 
-                    <div class="wheel-picture" style="
+                    <div class="wheel-picture advert-picture" style="
                                     background: url(../uploads/wheels/<?= htmlspecialchars($one_wheel["wheel_id"]) ?>/<?= htmlspecialchars($one_wheel["wheel_image"]) ?>);
                                     background-size: cover;
                                     background-position: center;
@@ -119,7 +122,7 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
                     </div>
                 
                 <?php else: ?>
-                    <div class="wheel-picture" style="
+                    <div class="wheel-picture advert-picture" style="
                                     background: url(../img/no-photo-car/no-photo-car.jpg);
                                     background-size: cover;
                                     background-position: center;
@@ -131,7 +134,7 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
                 <!--image part of advertisement  --> 
 
                 <!-- infos part of advertisement -->
-                <div class="basic-wheel-info">
+                <div class="basic-wheel-info basic-advert-infos">
 
                     <div class="wheel-brand">
                         <h2 class="heading"><?= htmlspecialchars($one_wheel["wheel_brand"]) ?></h2>
@@ -143,26 +146,29 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
                         <span class="product-color"><?= htmlspecialchars($one_wheel["wheel_color"]) ?></span>
                     </div>
 
-                    <div class="wheel-infos">
+                    <div class="wheel-infos advert-infos">
 
-                        <div class="wheel year">
-                            <span class="sub-heading">Šírka</span>
+                        <div class="wheel year main-advert">
+                            <span class="sub-heading text">Šírka</span>
+                            <span class="sub-heading material-symbols-outlined set-icon">format_letter_spacing</span>
                             <span><?= htmlspecialchars($one_wheel["width"]) ?></span>
                         </div>
 
-                        <div class="wheel average">
-                            <span class="sub-heading">Priemer</span>
+                        <div class="wheel average main-advert">
+                            <span class="sub-heading text">Priemer</span>
+                            <span class="sub-heading material-symbols-outlined set-icon">hide_source</span>
                             <span><?= htmlspecialchars($one_wheel["wheel_average"])?></span>
                         </div>
 
-                        <div class="wheel spacing">
-                            <span class="sub-heading">Rozteč</span>
+                        <div class="wheel spacing main-advert">
+                            <span class="sub-heading text">Rozteč</span>
+                            <span class="sub-heading material-symbols-outlined set-icon">adjust</span>
                             <span><?= htmlspecialchars($one_wheel["spacing"]) ?></span>
                         </div>
 
-                        <div class="wheel et">
-                            <!-- <i class="fa-solid fa-gas-pump"></i> -->
-                            <span class="sub-heading">ET</span>
+                        <div class="wheel et main-advert">
+                            <span class="sub-heading text">ET</span>
+                            <span class="sub-heading material-symbols-outlined set-icon">ET</span>
                             <span><?= htmlspecialchars($one_wheel["et"])?></span>
                         </div>
             
