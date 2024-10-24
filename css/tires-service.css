@@ -11,6 +11,7 @@ main {
     align-items: center;
     justify-content: flex-end;
     flex-wrap: wrap;
+    padding: 10px;
 }
 
 main > h1 {
@@ -21,10 +22,10 @@ main > h1 {
     width: 100%;
     max-width: 1280px;
     border-bottom: 0px;
+    font-size: clamp(1.2em, 7vw, 2em);
 }
 
 .tires-service-menu {  
-    margin-top: 5px;
     width: 100%;
     max-width: 1280px;
     display: flex;
@@ -36,7 +37,7 @@ main > h1 {
     margin-bottom: 20px;
     background: rgba(0, 0, 0, 0.5);
     border: 5px solid #fff;
-    border-bottom: 0px solid transparent;
+    border-top: 2px solid #fff;
 }
 
 .tires-service-menu :last-child {
@@ -51,12 +52,15 @@ main > h1 {
 .wheels h2 {
     color: #fff;
     text-align: center;
+    margin-bottom: 7px;
+    font-size: clamp(1em, 6vw, 1.5em);
     
 }
 .wheels h3 {
     color: #fff;
     text-align: left;
-    margin-bottom: 5px;
+    margin-bottom: 7px;
+    font-size: clamp(0.9em, 5vw, 1.17em);
 }
 
 .container {
@@ -126,7 +130,7 @@ main > h1 {
     position: absolute;
     color: #fff;
     right: 32px;
-    font-size: 18px;
+    font-size: clamp(0.7em, 3vw, 1em);
     top: 8px;
 }
 
@@ -136,7 +140,7 @@ input[type="text"] {
     width: 100%;
     /* border: 3px #fff solid; */
     /* background-color: #fff; */
-    font-size: 18px;
+    font-size: clamp(0.7em, 2.8vw, 0.9em);
     text-align: center;
     color: #000;
     /* padding: 6px 8px;
@@ -152,8 +156,7 @@ input[type="number"] {
     background-color: #b30606;
     width: 100%;
     /* border: 3px #fff solid; */
-    font-size: 18px;
-    text-align: left;
+    font-size: clamp(0.7em, 3vw, 1em);
     color: #fff;
     height: 100%;
     padding: 6px 4px 6px 12px;
@@ -170,7 +173,7 @@ input[type="submit"] {
     color: #fff;
     background-color: #10da09;
     border-radius: 50%;
-    padding: 0px 10px;
+    padding: 0px 10px 2px 10px;
 
 }
 

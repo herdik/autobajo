@@ -73,7 +73,7 @@ input {
     outline: none;
     background: #fff;
     border: 3px #fff solid;
-    font-size: clamp(0.9em, 5vw, 1.17em);
+    font-size: clamp(0.7em, 4vw, 1em);
     text-align: left;
     color: #000;
     padding: 2px 2px 2px 7px;

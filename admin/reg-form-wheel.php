@@ -33,6 +33,10 @@ $wheel_colors = Wheel::getAllWheelsInfo($connection, 'wheel_color', '%');
 
     <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
 
+    <!-- ICONS MENU -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <!-- ICONS MENU -->
+
     <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -43,8 +47,7 @@ $wheel_colors = Wheel::getAllWheelsInfo($connection, 'wheel_color', '%');
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/reg-form-wheel.css">
     <link rel="stylesheet" href="../query/header-query.css">
-
-    <script src="https://kit.fontawesome.com/ed8b583ef3.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../query/reg-form-query.css">
 
 </head>
 <body>
@@ -64,7 +67,8 @@ $wheel_colors = Wheel::getAllWheelsInfo($connection, 'wheel_color', '%');
                 
                     <div class="basic-car-info">
                         <label for="wheel-category">Kategória:</label>
-                        <select name="wheel_category" id="wheel-category">
+                        <select name="wheel_category" id="wheel-category" onfocus='this.size=2;' onblur='this.size=1;' 
+                        onchange='this.size=1; this.blur();'>
                             <option value="Hliníkové">Hliníkové</option>
                             <option value="Plechové">Plechové</option>
                         </select>

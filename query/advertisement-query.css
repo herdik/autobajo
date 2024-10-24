@@ -1,3 +1,14 @@
+@media (max-width: 1150px) {
+
+    .advert-label {
+        width: 100px;
+        font-size: 16px;
+        padding: 40px 0px;
+    }
+    
+    
+}
+
 @media (max-width: 880px) {
 
     main h1 {
@@ -19,6 +30,12 @@
     .basic-advert-infos {
         width: 100%;
     }
+
+    .advert-label {
+        width: 120px;
+        font-size: 14px;
+        padding: 50px 0px;
+    }
     
     
 }
@@ -36,5 +53,11 @@
     .set-icon {
         display: block;
         font-size: clamp(1.2em, 1.5vw, 1.3em);
+    }
+
+    .advert-label {
+        width: 100px;
+        font-size: 16px;
+        padding: 40px 0px;
     }
 }

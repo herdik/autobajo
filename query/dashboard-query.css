@@ -1,0 +1,35 @@
+
+
+
+@media (max-width: 400px) {
+
+    .menu-part {
+        width: 80%;
+    }
+
+    .div-menu-part {
+        width: 100%;
+        height: 240px;
+        font-weight: bold;
+    }
+
+    .longword { 
+        
+        text-orientation: upright;
+        writing-mode: vertical-lr;
+        width: 20%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+    }
+
+    
+
+    
+    
+}
+
+
+

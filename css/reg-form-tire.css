@@ -18,7 +18,7 @@ main {
     border-bottom: 5px #fff solid;
     width: 80%;
     text-align: center;
-    font-size: 35px;
+    font-size: clamp(1.2em, 7vw, 2em);
 }
 
 .registration {  
@@ -75,7 +75,7 @@ input[type="number"], input[type="text"] {
     width: 100%;
     background: #fff;
     border: 3px #fff solid;
-    font-size: 20px;
+    font-size: clamp(0.9em, 5vw, 1.17em);
     text-align: center;
     color: #000;
     padding: 6px 8px;
@@ -89,13 +89,13 @@ input[type="number"], input[type="text"] {
 
 .basic-car-info span {
     color: #fff;
-    font-size: 20px;
+    font-size: clamp(0.9em, 5vw, 1.17em);
 }
 
 select {
     padding: 6px 25px;
     margin: 0 10px 15px 10px;
-    font-size: 20px;
+    font-size: clamp(0.9em, 5vw, 1.17em);
     width: 100%;
     cursor: pointer;
     background-color: #fff;
@@ -112,7 +112,7 @@ select:hover, option:hover {
 
 .basic-car-info label {
     color: #fff;
-    font-size: 20px;
+    font-size: clamp(0.9em, 5vw, 1.17em);
     margin-top: 15px;
 }
 

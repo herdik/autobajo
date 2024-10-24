@@ -10,7 +10,7 @@
     }
     
 }
-@media (max-width: 590px) {
+@media (max-width: 600px) {
 
     iframe {
         width: 100%;
@@ -22,7 +22,27 @@
     .address {
         text-align: right;
     }
+
+    #main-contact-form {
+        width: 100%; 
+    }
+    .contact-info {
+        width: 100%;
+    }
+    .person {
+        width: 100%; 
+    }
+    .person input {
+        width: 100%;
+    }
+    .opening-time, .weekend-time {
+        flex-wrap: wrap;
+    }
+    .days, .weekend {
+        width: 100%;
+    }
     
+      
 }
 
 

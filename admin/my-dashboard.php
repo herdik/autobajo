@@ -21,6 +21,10 @@ if (!Auth::isLoggedIn()){
 
     <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
 
+    <!-- ICONS MENU -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <!-- ICONS MENU -->
+
     <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,8 +35,7 @@ if (!Auth::isLoggedIn()){
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/dashboard.css">
     <link rel="stylesheet" href="../query/header-query.css">
-
-    <script src="https://kit.fontawesome.com/ed8b583ef3.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../query/dashboard-query.css">
 
 </head>
 <body>
@@ -45,50 +48,50 @@ if (!Auth::isLoggedIn()){
         <section class="dashboard-menu">
 
             
-            <a href="./advertisement.php
+            <a class="menu-part" href="./advertisement.php
             ">
             <article class="div-menu-part part-advertisement">
                 <img class="div-menu-images" src="../img/advertisement.jpg" alt="">
-                <span class="cars">Nový inzerát</span>
+                <span class="cars advert-text longword">Nový inzerát</span>
             </article>
             </a>
-            <a href="./car-advertisement.php
+            <a class="menu-part" href="./car-advertisement.php
             ">
             <article class="div-menu-part part-cars">
                 <img class="div-menu-images" src="../img/cars.jpg" alt="">
-                <span class="cars">Autá</span>
+                <span class="cars advert-text">Autá</span>
             </article>
             </a>
 
-            <a href="./tire-advertisement.php
+            <a class="menu-part" href="./tire-advertisement.php
             ">
             <article class="div-menu-part part-tires">
                 <img class="div-menu-images" src="../img/tires.jpg" alt="">
-                <span class="tires">Pneumatiky</span>
+                <span class="tires advert-text">Pneumatiky</span>
             </article>
             </a>
 
-            <a href="./wheel-advertisement.php
+            <a class="menu-part" href="./wheel-advertisement.php
             ">
             <article class="div-menu-part part-rimes">
                 <img class="div-menu-images" src="../img/rim.jpg" alt="">
-                <span class="rimes">Disky</span>
+                <span class="rimes advert-text">Disky</span>
             </article>
             </a>
 
-            <a href="./tires-service.php
+            <a class="menu-part" href="./tires-service.php
             ">
             <article class="div-menu-part part-servis">
                 <img class="div-menu-images" src="../img/servis.jpg" alt="">
-                <span class="servis">Pneuservis</span>
+                <span class="servis advert-text">Pneuservis</span>
             </article>
             </a>
 
-            <a href="./history-dashboard.php
+            <a class="menu-part" href="./history-dashboard.php
             ">
             <article class="div-menu-part part-history">
                 <img class="div-menu-images" src="../img/history.jpg" alt="">
-                <span class="servis">História</span>
+                <span class="servis advert-text">História</span>
             </article>
             </a>
         </section>

@@ -21,6 +21,10 @@ if (!Auth::isLoggedIn()){
 
     <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
 
+    <!-- ICONS MENU -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <!-- ICONS MENU -->
+
     <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,8 +35,8 @@ if (!Auth::isLoggedIn()){
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/dashboard.css">
     <link rel="stylesheet" href="../query/header-query.css">
+    <link rel="stylesheet" href="../query/dashboard-query.css">
 
-    <script src="https://kit.fontawesome.com/ed8b583ef3.js" crossorigin="anonymous"></script>
 
 </head>
 <body>
@@ -45,27 +49,27 @@ if (!Auth::isLoggedIn()){
         <section class="dashboard-menu">
 
             
-            <a href="./car-advertisement.php?car_history=0
+            <a class="menu-part" href="./car-advertisement.php?car_history=0
             ">
             <article class="div-menu-part part-cars">
                 <img class="div-menu-images" src="../img/cars.jpg" alt="">
-                <span class="cars">Autá</span>
+                <span class="cars advert-text">Autá</span>
             </article>
             </a>
 
-            <a href="./tire-advertisement.php?tire_history=0
+            <a class="menu-part" href="./tire-advertisement.php?tire_history=0
             ">
             <article class="div-menu-part part-tires">
                 <img class="div-menu-images" src="../img/tires.jpg" alt="">
-                <span class="tires">Pneumatiky</span>
+                <span class="tires advert-text">Pneumatiky</span>
             </article>
             </a>
 
-            <a href="./wheel-advertisement.php?wheel_history=0
+            <a class="menu-part" href="./wheel-advertisement.php?wheel_history=0
             ">
             <article class="div-menu-part part-rimes">
                 <img class="div-menu-images" src="../img/rim.jpg" alt="">
-                <span class="rimes">Disky</span>
+                <span class="rimes advert-text">Disky</span>
             </article>
             </a>
 

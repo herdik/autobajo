@@ -1,0 +1,42 @@
+@media (max-width: 1090px) {
+
+    .wheels {
+        width: 100%;
+    }
+    
+}
+@media (max-width: 560px) {
+
+    form {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin: 10px 0;
+        border: 3px solid #fff;
+        padding: 5px;
+    }
+    .product-info {
+        width: 100%;
+    }
+    .price {
+        background-color: #b30606;
+        color: #fff;
+        position: relative;
+        border: 3px #fff solid;
+        width: 100%;
+    }
+
+    .price::before {
+        
+        right: 7px;
+        
+    }
+
+    #delete-btn {
+        width: 40%;
+    }
+    #confirm-btn {
+        min-width: 40%;
+    }
+}
+

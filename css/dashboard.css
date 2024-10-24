@@ -12,11 +12,12 @@ main {
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
+    padding: 10px;
 }
 
 main h1 {
     color: #fff;
-    margin-top: 80px;
+    font-size: clamp(1em, 5vw, 2em);
 }
 
 .dashboard-menu {  
@@ -46,14 +47,14 @@ main h1 {
     height: 100%;
     cursor: pointer;
 }
-span { 
+.advert-text { 
     width: 15%;
     height: 100%;
     text-orientation: upright;
     writing-mode: vertical-rl;
     cursor: pointer;
     font-weight: bold;
-    font-size: 1.3rem;
+    font-size: clamp(1em, 2vw, 1.3em);
     text-align: center;
 }
 

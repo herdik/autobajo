@@ -1,0 +1,43 @@
+
+
+@media (max-width: 800px) {
+
+    .basic-car-info {
+        
+        width: 100%;
+        
+    }
+
+    .basic-car-info:nth-child(10),
+    .basic-car-info:nth-child(11) {
+    /* justify-content: end; */
+    width: 100%;
+    }
+
+    select {
+        text-align: center;
+    }
+
+    #choose-img-text {
+        width: 100%;
+        text-align: center;
+    }
+
+    input[type="checkbox"] {
+        width: 10px;
+        height: 10px;
+    }
+
+    .car-equipment-category {
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+
+    
+    
+}
+
+
+
+
+

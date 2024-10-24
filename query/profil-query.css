@@ -1,3 +1,14 @@
+@media (max-width: 1150px) {
+
+    .advert-label {
+        width: 100px;
+        font-size: 16px;
+        padding: 40px 0px;
+    }
+    
+    
+}
+
 @media (max-width: 800px) {
 
     .administration-part {
@@ -7,6 +18,12 @@
     .btn {
         padding: 6px 12px;
         border: 3px solid #b30606;
+    }
+
+    .advert-label {
+        width: 80px;
+        font-size: 14px;
+        padding: 30px 0px;
     }
     
 }
@@ -32,6 +49,12 @@
         width: 30px;
         height: 30px;
     }
+
+    .advert-label {
+        width: 100px;
+        font-size: 16px;
+        padding: 40px 0px;
+    }
     
 }
 
@@ -53,6 +76,16 @@
     .btn {
         padding: 4px 8px;
         border: 3px solid #b30606;
+    }
+    .btn-green {
+        padding: 4px 8px;
+        border: 3px solid green;
+    }
+
+    .advert-label {
+        width: 80px;
+        font-size: 14px;
+        padding: 30px 0px;
     }
     
 }

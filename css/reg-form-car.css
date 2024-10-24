@@ -18,7 +18,7 @@ main {
     border-bottom: 5px #fff solid;
     width: 80%;
     text-align: center;
-    font-size: 35px;
+    font-size: clamp(1.2em, 7vw, 2em);
 }
 
 .registration {  
@@ -73,7 +73,7 @@ input[type="number"], input[type="text"] {
     width: 100%;
     background: #fff;
     border: 3px #fff solid;
-    font-size: 20px;
+    font-size: clamp(0.9em, 5vw, 1.17em);
     text-align: center;
     color: #000;
     padding: 6px 8px;
@@ -87,13 +87,13 @@ input[type="number"], input[type="text"] {
 
 .basic-car-info span {
     color: #fff;
-    font-size: 20px;
+    font-size: clamp(0.9em, 5vw, 1.17em);
 }
 
 select {
     padding: 6px 25px;
     margin: 0 10px 15px 10px;
-    font-size: 20px;
+    font-size: clamp(0.9em, 5vw, 1.17em);
     width: 100%;
     background-color: #fff;
 }
@@ -104,7 +104,7 @@ select > option{
 
 .basic-car-info label {
     color: #fff;
-    font-size: 20px;
+    font-size: clamp(0.9em, 5vw, 1.17em);
     margin-top: 15px;
 }
 
@@ -135,7 +135,7 @@ select > option{
     width: 100%;
     color: #fff;
     text-align: center;
-    font-size: 24px;
+    font-size: clamp(1em, 5.5vw, 1.3em);
     border-bottom: 3px solid #fff;
     flex-wrap: wrap;  
 }
@@ -161,16 +161,17 @@ select > option{
 .car-equipment-category label, 
 .car-equipment-category input {
     cursor: pointer;
+    font-size: clamp(0.2em, 2vw, 1em);
 }
 
 #picture-titel {
     margin: 20px 0;
-    font-size: 20px;
+    font-size: clamp(0.9em, 5vw, 1.17em);
 }
 
 textarea {
     background: #fff;
-    font-size: 18px;
+    font-size: clamp(0.8em, 4vw, 1em);
     color: #000;
     border: 3px #fff solid;
     padding: 10px;
@@ -183,7 +184,7 @@ input[type="submit"]{
     background-color: #b30606;
     width: 100%;
     padding: 8px 12px;
-    font-size: 20px;
+    font-size: clamp(0.9em, 5vw, 1.17em);
     cursor: pointer;
     transition: all 0.3s linear;
     color: #fff;

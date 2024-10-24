@@ -12,15 +12,17 @@ main {
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
+    padding: 10px;
 }
 
 main h1 {
     color: #fff;
-    margin-top: 80px;
+    font-size: clamp(1em, 5vw, 2em);
 }
 
 .dashboard-menu {  
     margin-top: 20px;
+    width: 100%;
     max-width: 1280px;
     display: flex;
     flex-direction: row;
@@ -46,25 +48,33 @@ main h1 {
     cursor: pointer;
 }
 .part-cars span, .part-rimes span { 
-    width: 15%;
+    width: 20%;
     height: 100%;
     writing-mode: vertical-rl;
     text-orientation: upright;
     cursor: pointer;
     font-weight: bold;
-    font-size: 1.3rem;
+    font-size: clamp(1em, 2vw, 1.3em);
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .part-tires span {
-    width: 15%;
+    width: 20%;
     height: 100%;
     writing-mode: vertical-lr;
     text-orientation: upright;
     cursor: pointer;
     font-weight: bold;
-    font-size: 1.3rem;
+    font-size: clamp(0.9em, 1.8vw, 1.3em);
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .div-menu-part:hover {

@@ -32,6 +32,10 @@ $tire_brands = Tire::getAllTiresInfo($connection, 'tire_brand', '%');
 
     <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
 
+    <!-- ICONS MENU -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <!-- ICONS MENU -->
+
     <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,8 +46,7 @@ $tire_brands = Tire::getAllTiresInfo($connection, 'tire_brand', '%');
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/reg-form-tire.css">
     <link rel="stylesheet" href="../query/header-query.css">
-
-    <script src="https://kit.fontawesome.com/ed8b583ef3.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../query/reg-form-query.css">
 
 </head>
 <body>
@@ -63,7 +66,8 @@ $tire_brands = Tire::getAllTiresInfo($connection, 'tire_brand', '%');
                 
                     <div class="basic-car-info">
                         <label for="tire-category">Kategória:</label>
-                        <select name="tire_category" id="tire-category">
+                        <select name="tire_category" id="tire-category" onfocus='this.size=3;' onblur='this.size=1;' 
+                        onchange='this.size=1; this.blur();'>
                             <option value="Osobné">Osobné</option>
                             <option value="SUV">SUV</option>
                             <option value="Nákladné">Nákladné</option>
@@ -96,7 +100,8 @@ $tire_brands = Tire::getAllTiresInfo($connection, 'tire_brand', '%');
 
                     <div class="basic-car-info">
                     <label for="type">Obdobie:</label>
-                        <select name="type" id="type">
+                        <select name="type" id="type" onfocus='this.size=3;' onblur='this.size=1;' 
+                        onchange='this.size=1; this.blur();'>
                             <option value="Letné">Letné</option>
                             <option value="Zimné">Zimné</option>
                             <option value="Celoročné">Celoročné</option>
@@ -157,7 +162,8 @@ $tire_brands = Tire::getAllTiresInfo($connection, 'tire_brand', '%');
 
                     <div class="basic-car-info">
                         <label for="construction">Konštrukcia:</label>
-                        <select name="construction" id="construction">
+                        <select name="construction" id="construction" onfocus='this.size=4;' onblur='this.size=1;' 
+                        onchange='this.size=1; this.blur();'>
                             <option value="R">R</option>
                             <option value="D">D</option>
                             <option value="ZR">ZR</option>

@@ -21,6 +21,10 @@ if (!Auth::isLoggedIn()){
 
     <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
 
+    <!-- ICONS MENU -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <!-- ICONS MENU -->
+
     <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,9 +34,8 @@ if (!Auth::isLoggedIn()){
     <link rel="stylesheet" href="../css/admin-header.css">
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/advertisement.css">
-    <link rel="stylesheet" href="../query/header-query.css">
-
-    <script src="https://kit.fontawesome.com/ed8b583ef3.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../query/header-query.css"> 
+    <link rel="stylesheet" href="../query/new-advert-query.css"> 
 
 </head>
 <body>
@@ -44,7 +47,7 @@ if (!Auth::isLoggedIn()){
         <h1>Typ inzerátu</h1>
         <section class="dashboard-menu">
 
-            <a href="./reg-form-car.php
+            <a class="main-part" href="./reg-form-car.php
             ">  
                 <article class="div-menu-part part-cars">
                     <img class="div-menu-images" src="../img/cars-advert.jpg" alt="">
@@ -52,7 +55,7 @@ if (!Auth::isLoggedIn()){
                 </article>
             </a>
 
-            <a href="./reg-form-tire.php
+            <a class="main-part" href="./reg-form-tire.php
             ">
             <article class="div-menu-part part-tires">
                 <img class="div-menu-images" src="../img/tires-advert.jpg" alt="">
@@ -60,7 +63,7 @@ if (!Auth::isLoggedIn()){
             </article>
             </a>
 
-            <a href="./reg-form-wheel.php
+            <a class="main-part" href="./reg-form-wheel.php
             ">
             <article class="div-menu-part part-rimes">
                 <img class="div-menu-images" src="../img/rimes-advert.jpg" alt="">
