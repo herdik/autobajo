@@ -58,7 +58,7 @@ main {
 
 textarea {
     background: #fff;
-    font-size: 18px;
+    font-size: clamp(0.9em, 5vw, 1.17em);
     color: #000;
     border: 3px #fff solid;
     padding: 10px;

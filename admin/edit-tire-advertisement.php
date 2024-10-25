@@ -37,6 +37,10 @@ if (isset($_GET["tire_id"]) and is_numeric($_GET["tire_id"])){
 
     <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
 
+    <!-- ICONS MENU -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <!-- ICONS MENU -->
+
     <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,8 +51,7 @@ if (isset($_GET["tire_id"]) and is_numeric($_GET["tire_id"])){
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/edit-form-tire.css">
     <link rel="stylesheet" href="../query/header-query.css">
-
-    <script src="https://kit.fontawesome.com/ed8b583ef3.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../query/reg-form-query.css">
 
 </head>
 <body>
@@ -70,7 +73,8 @@ if (isset($_GET["tire_id"]) and is_numeric($_GET["tire_id"])){
                 
                     <div class="basic-tire-info">
                         <label for="tire-category">Kategória:</label>
-                        <select name="tire_category" id="tire-category">
+                        <select name="tire_category" id="tire-category" onfocus='this.size=3;' onblur='this.size=1;' 
+                        onchange='this.size=1; this.blur();'>
                             <option <?php echo (htmlspecialchars($tire_infos["tire_category"]) === 'Osobné') ? 'selected' : ''; ?> value="Osobné">Osobné</option>
                             <option <?php echo (htmlspecialchars($tire_infos["tire_category"]) === 'SUV') ? 'selected' : ''; ?> value="SUV">SUV</option>
                             <option <?php echo (htmlspecialchars($tire_infos["tire_category"]) === 'Nákladné') ? 'selected' : ''; ?> value="Nákladné">Nákladné</option>
@@ -106,7 +110,8 @@ if (isset($_GET["tire_id"]) and is_numeric($_GET["tire_id"])){
 
                     <div class="basic-tire-info">
                     <label for="type">Obdobie:</label>
-                        <select name="type" id="type">
+                        <select name="type" id="type" onfocus='this.size=3;' onblur='this.size=1;' 
+                        onchange='this.size=1; this.blur();'>
                             <option <?php echo (htmlspecialchars($tire_infos["type"]) === 'Letné') ? 'selected' : ''; ?> value="Letné">Letné</option>
                             <option <?php echo (htmlspecialchars($tire_infos["type"]) === 'Zimné') ? 'selected' : ''; ?> value="Zimné">Zimné</option>
                             <option <?php echo (htmlspecialchars($tire_infos["type"]) === 'Celoročné') ? 'selected' : ''; ?> value="Celoročné">Celoročné</option>
@@ -167,7 +172,8 @@ if (isset($_GET["tire_id"]) and is_numeric($_GET["tire_id"])){
 
                     <div class="basic-tire-info">
                         <label for="construction">Konštrukcia:</label>
-                        <select name="construction" id="construction">
+                        <select name="construction" id="construction" onfocus='this.size=4;' onblur='this.size=1;' 
+                        onchange='this.size=1; this.blur();'>
                             <option <?php echo (htmlspecialchars($tire_infos["construction"]) === "R") ? 'selected' : ''; ?> value="R">R</option>
                             <option <?php echo (htmlspecialchars($tire_infos["construction"]) === "D") ? 'selected' : ''; ?> value="D">D</option>
                             <option <?php echo (htmlspecialchars($tire_infos["construction"]) === "ZR") ? 'selected' : ''; ?> value="ZR">ZR</option>

@@ -209,6 +209,11 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     white-space: nowrap;
 }
 
+/* icons */
+.my-icons {
+    font-size: clamp(0.7em, 4vw, 1em);
+}
+
 
 
 

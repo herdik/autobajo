@@ -39,6 +39,10 @@ $image_sequence = null;
 
     <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
 
+    <!-- ICONS MENU -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <!-- ICONS MENU -->
+
     <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -49,8 +53,6 @@ $image_sequence = null;
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/gallery.css">
     <link rel="stylesheet" href="../query/header-query.css">
-
-    <script src="https://kit.fontawesome.com/ed8b583ef3.js" crossorigin="anonymous"></script>
 
 </head>
 <body>

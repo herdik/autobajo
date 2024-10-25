@@ -49,6 +49,10 @@ $inside_index = 12;
 
     <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
 
+    <!-- ICONS MENU -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <!-- ICONS MENU -->
+
     <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -59,8 +63,7 @@ $inside_index = 12;
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/edit-form-car.css">
     <link rel="stylesheet" href="../query/header-query.css">
-
-    <script src="https://kit.fontawesome.com/ed8b583ef3.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../query/reg-form-query.css">
 
 </head>
 <body>
@@ -125,7 +128,8 @@ $inside_index = 12;
                     
                     <div class="basic-car-info">
                         <label for="fuel-type">Druh paliva:</label>
-                        <select name="fuel_type" id="fuel-type">
+                        <select name="fuel_type" id="fuel-type" onfocus='this.size=5;' onblur='this.size=1;' 
+                        onchange='this.size=1; this.blur();'>
                             <option <?php echo (htmlspecialchars($car_infos["fuel_type"]) === 'Benzín') ? 'selected' : ''; ?> value='Benzín'>Benzín</option>
                             <option <?php echo (htmlspecialchars($car_infos["fuel_type"]) === 'Diesel') ? 'selected' : ''; ?> value="Diesel">Diesel</option>
                             <option <?php echo (htmlspecialchars($car_infos["fuel_type"]) === 'LPG') ? 'selected' : ''; ?> value="LPG">LPG</option>
@@ -136,7 +140,8 @@ $inside_index = 12;
 
                     <div class="basic-car-info">
                         <label for="gearbox">Prevodovka:</label>
-                        <select name="gearbox" id="gearbox">
+                        <select name="gearbox" id="gearbox" onfocus='this.size=2;' onblur='this.size=1;' 
+                        onchange='this.size=1; this.blur();'>
                             <option <?php echo (htmlspecialchars($car_infos["gearbox"]) === 'Manuálna') ? 'selected' : ''; ?> value="Manuálna">Manuálna</option>
                             <option <?php echo (htmlspecialchars($car_infos["gearbox"]) === 'Automatická') ? 'selected' : ''; ?> value="Automatická">Automatická</option>
                         </select>

@@ -92,15 +92,22 @@ $contact_infos = Contact::getAllContactInfos($connection);
                     <div class="basic-contact-info">
                         <div class="person">
                             <label for="email1"><?= htmlspecialchars($contact_info["name_1"]) ?></label><br>
-                            <i class="fa-regular fa-envelope"></i> <a href="mailto:<?= htmlspecialchars($contact_info["email_1"]) ?>"><?= htmlspecialchars($contact_info["email_1"]) ?></a><br>
-                            <i class="fa-solid fa-phone"></i>
-                            <a href="tel:+<?= htmlspecialchars($contact_info["tel_1"]) ?>">+<?= htmlspecialchars($contact_info["tel_1"]) ?></a>
+                            <span class="material-symbols-outlined my-icons">
+                            mail
+                            </span> <a href="mailto:<?= htmlspecialchars($contact_info["email_1"]) ?>"><?= htmlspecialchars($contact_info["email_1"]) ?></a><br>
+                            <span class="material-symbols-outlined my-icons">
+                            phone_in_talk
+                            </span> <a href="tel:+<?= htmlspecialchars($contact_info["tel_1"]) ?>">+<?= htmlspecialchars($contact_info["tel_1"]) ?></a>
                         </div>
                         
                         <div class="person person2">
                             <label for="email2"><?= htmlspecialchars($contact_info["name_2"]) ?></label><br>
-                            <i class="fa-regular fa-envelope"></i> <a href="mailto:<?= htmlspecialchars($contact_info["email_2"]) ?>"><?= htmlspecialchars($contact_info["email_2"]) ?></a><br>
-                            <i class="fa-solid fa-phone"></i> <a href="tel:+<?= htmlspecialchars($contact_info["tel_2"]) ?>">+<?= htmlspecialchars($contact_info["tel_2"]) ?></a>
+                            <span class="material-symbols-outlined my-icons">
+                            mail
+                            </span> <a href="mailto:<?= htmlspecialchars($contact_info["email_2"]) ?>"><?= htmlspecialchars($contact_info["email_2"]) ?></a><br>
+                            <span class="material-symbols-outlined my-icons">
+                            phone_in_talk
+                            </span> <a href="tel:+<?= htmlspecialchars($contact_info["tel_2"]) ?>">+<?= htmlspecialchars($contact_info["tel_2"]) ?></a>
                         </div>   
                     </div>
  

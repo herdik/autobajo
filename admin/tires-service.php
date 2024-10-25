@@ -66,8 +66,6 @@ $adhesive_weight = AdhesiveWeight::getAllAdhesiveWeight($connection);
     <link rel="stylesheet" href="../query/header-query.css">
     <link rel="stylesheet" href="../query/tires-service-query.css">
 
-    <script src="https://kit.fontawesome.com/ed8b583ef3.js" crossorigin="anonymous"></script>
-
 </head>
 <body>
 
