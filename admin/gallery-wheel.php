@@ -53,6 +53,7 @@ $image_sequence = null;
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/gallery.css">
     <link rel="stylesheet" href="../query/header-query.css">
+    <link rel="stylesheet" href="../query/gallery-query.css">
 
 </head>
 <body>
@@ -69,7 +70,7 @@ $image_sequence = null;
                     
                     <label for="image-name-gallery" id="choose-img-text">Vybrať</label>
                     <?php if (htmlspecialchars($image_sequence) == NULL): ?>
-                        <p id="picture-titel" style="opacity:1; color:white; font-size:24px;">Vybrané obrázky: 0</p>
+                        <p id="picture-titel" style="opacity:1; color:white;">Vybrané obrázky: 0</p>
                     <?php else: ?>
                         <p style="opacity:1;">Zvolený obrázok: Obrázok č.<?= htmlspecialchars($image_sequence) ?></p>
                     <?php endif; ?>
@@ -93,7 +94,7 @@ $image_sequence = null;
                     
                     <label for="image-name-title" id="choose-img-text">Vybrať</label>
                     <?php if (htmlspecialchars($image_sequence) == NULL): ?>
-                        <p id="picture-titel" style="opacity:1; color:white; font-size:24px;">Vybrané obrázky: 0</p>
+                        <p id="picture-titel" style="opacity:1; color:white;">Vybrané obrázky: 0</p>
                     <?php else: ?>
                         <p style="opacity:1;">Zvolený obrázok: Obrázok č.<?= htmlspecialchars($image_sequence) ?></p>
                     <?php endif; ?>
