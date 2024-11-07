@@ -170,7 +170,7 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
                     </div>
 
                     <div class="tire-price">
-                        <h2><?= htmlspecialchars(number_format($one_tire["tire_price"],0,","," ")) ?> &#8364;</h2>
+                        <h2><?= htmlspecialchars(number_format($one_tire["tire_price"],0,","," ")) ?> &#8364; s DPH</h2>
                     </div>
 
                     

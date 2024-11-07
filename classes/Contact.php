@@ -104,11 +104,12 @@ class Contact {
      * @param string $mon_fri_afternoon_close - openings hours
      * @param string $saturday_open - openings hours
      * @param string $saturday_close - openings hours
+     * @param string $saturday - openings hours
      * @param string $sunday - openings hours
      * 
      * @return boolean if update is successful
      */
-    public static function updateContactInfo($connection, $company_name, $street_number, $town_post_nr, $name_1, $email_1, $tel_1, $name_2, $email_2, $tel_2, $mon_fri_morning_open, $mon_fri_morning_close, $mon_fri_afternoon_open, $mon_fri_afternoon_close, $saturday_open, $saturday_close, $sunday){
+    public static function updateContactInfo($connection, $company_name, $street_number, $town_post_nr, $name_1, $email_1, $tel_1, $name_2, $email_2, $tel_2, $mon_fri_morning_open, $mon_fri_morning_close, $mon_fri_afternoon_open, $mon_fri_afternoon_close, $saturday_open, $saturday_close, $saturday_time, $saturday, $saturday_string, $sunday){
 
         $sql = "UPDATE contact_info
                 SET company_name = :company_name,
@@ -126,6 +127,9 @@ class Contact {
                     mon_fri_afternoon_close = :mon_fri_afternoon_close,
                     saturday_open = :saturday_open,
                     saturday_close = :saturday_close,
+                    saturday_time = :saturday_time,
+                    saturday = :saturday,
+                    saturday_string = :saturday_string,
                     sunday = :sunday";
         
 
@@ -149,6 +153,9 @@ class Contact {
         $stmt->bindValue(":mon_fri_afternoon_close", $mon_fri_afternoon_close, PDO::PARAM_STR);
         $stmt->bindValue(":saturday_open", $saturday_open, PDO::PARAM_STR);
         $stmt->bindValue(":saturday_close", $saturday_close, PDO::PARAM_STR);
+        $stmt->bindValue(":saturday_time", $saturday_time, PDO::PARAM_BOOL);
+        $stmt->bindValue(":saturday", $saturday, PDO::PARAM_STR);
+        $stmt->bindValue(":saturday_string", $saturday_string, PDO::PARAM_BOOL);
         $stmt->bindValue(":sunday", $sunday, PDO::PARAM_STR);
         
         

@@ -53,14 +53,17 @@ main {
 }
 
 
- 
-.basic-car-info:nth-child(10),
-.basic-car-info:nth-child(11) {
+.basic-car-info:nth-child(7),
+.basic-car-info:nth-child(8), 
+.basic-car-info:nth-child(9),
+.basic-car-info:nth-child(10), 
+.basic-car-info:nth-child(11),
+.basic-car-info:nth-child(12) {
     /* justify-content: end; */
     width: 48%;
 }
 
-.basic-car-info:nth-child(12) {
+.basic-car-info:nth-child(13) {
     width: 100%;
     display: flex;
     flex-direction: column;

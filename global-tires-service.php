@@ -71,7 +71,7 @@ $adhesive_weight = AdhesiveWeight::getAllAdhesiveWeight($connection);
                                 </div>
                                 
                                 <div class="price">
-                                    <span><?= htmlspecialchars($one_alu_wheel_basic["price"]) ?> &#8364;/kus</span>
+                                    <span><?= htmlspecialchars($one_alu_wheel_basic["price"]) ?> &#8364; s DPH/kus</span>
                                 </div>
                         </div>
                         <?php endforeach ?>
@@ -91,7 +91,7 @@ $adhesive_weight = AdhesiveWeight::getAllAdhesiveWeight($connection);
                                 </div>
                                 
                                 <div class="price">
-                                    <span><?= htmlspecialchars($one_alu_wheel_premium["price"]) ?> &#8364;/kus</span>
+                                    <span><?= htmlspecialchars($one_alu_wheel_premium["price"]) ?> &#8364; s DPH/kus</span>
                                     
                                 </div>
                                 
@@ -114,7 +114,7 @@ $adhesive_weight = AdhesiveWeight::getAllAdhesiveWeight($connection);
                                 </div>
                                 
                                 <div class="price">
-                                    <span><?= htmlspecialchars($one_metal_wheel_basic["price"]) ?> &#8364;/kus</span>
+                                    <span><?= htmlspecialchars($one_metal_wheel_basic["price"]) ?> &#8364; s DPH/kus</span>
                                 </div>
                                 
                         </div>
@@ -135,7 +135,7 @@ $adhesive_weight = AdhesiveWeight::getAllAdhesiveWeight($connection);
                                 </div>
                                 
                                 <div class="price">
-                                    <span><?= htmlspecialchars($one_metal_wheel_premium["price"]) ?> &#8364;/kus</span>
+                                    <span><?= htmlspecialchars($one_metal_wheel_premium["price"]) ?> &#8364; s DPH/kus</span>
                                 </div>
                                  
                         </div>
@@ -157,7 +157,7 @@ $adhesive_weight = AdhesiveWeight::getAllAdhesiveWeight($connection);
                                 </div>
                                 
                                 <div class="price">
-                                    <span><?= htmlspecialchars($one_truck_service["price"]) ?> &#8364;/kus</span>
+                                    <span><?= htmlspecialchars($one_truck_service["price"]) ?> &#8364; s DPH/kus</span>
                                 </div>
                                 
                         </div>
@@ -178,7 +178,7 @@ $adhesive_weight = AdhesiveWeight::getAllAdhesiveWeight($connection);
                                 </div>
                                 
                                 <div class="price">
-                                    <span><?= htmlspecialchars($one_adhesive_weight["price"]) ?>  &#8364;/kus</span>
+                                    <span><?= htmlspecialchars($one_adhesive_weight["price"]) ?>  &#8364; s DPH/kus</span>
                                     
                                 </div>
                                 

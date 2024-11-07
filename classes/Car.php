@@ -14,6 +14,7 @@ class Car {
      * @param string $year_of_manufacture - year_of_manufacture
      * @param int $engine_volume - engine_volume
      * @param int $past_km - past kilometers
+     * @param int $kw - kilowatts
      * @param int $car_price - car_price
      * @param integer $fuel_type - fuel_type
      * @param string $gearbox - gearbox
@@ -39,12 +40,12 @@ class Car {
      * @return integer $car_id - id for car advertisement
      * 
      */
-    public static function createCarAdvertisement($connection, $car_brand, $car_model, $car_color, $year_of_manufacture, $engine_volume, $past_km, $car_price, $fuel_type, $gearbox, $car_description, $other_equipment, $el_windows, $el_seats, $no_key_start, $airbag, $tempomat, $heated_seat, $parking_sensor, $isofix, $alu_rimes, $air_condition, $towing_device, $alarm, $active, $reserved, $sold, $car_image) {
+    public static function createCarAdvertisement($connection, $car_brand, $car_model, $car_color, $year_of_manufacture, $engine_volume, $past_km, $kw, $car_price, $fuel_type, $gearbox, $car_description, $other_equipment, $el_windows, $el_seats, $no_key_start, $airbag, $tempomat, $heated_seat, $parking_sensor, $isofix, $alu_rimes, $air_condition, $towing_device, $alarm, $active, $reserved, $sold, $car_image) {
 
 
         // sql scheme
-        $sql = "INSERT INTO car_advertisement (car_brand, car_model, car_color, year_of_manufacture, engine_volume, past_km, car_price, fuel_type, gearbox, car_description, other_equipment, el_windows, el_seats, no_key_start, airbag, tempomat, heated_seat, parking_sensor, isofix, alu_rimes, air_condition, towing_device, alarm, active, reserved, sold, car_image)
-        VALUES ( :car_brand, :car_model, :car_color, :year_of_manufacture, :engine_volume, :past_km, :car_price, :fuel_type, :gearbox, :car_description, :other_equipment, :el_windows, :el_seats, :no_key_start, :airbag, :tempomat, :heated_seat, :parking_sensor, :isofix, :alu_rimes, :air_condition, :towing_device, :alarm, :active, :reserved, :sold, :car_image)";
+        $sql = "INSERT INTO car_advertisement (car_brand, car_model, car_color, year_of_manufacture, engine_volume, past_km, kw, car_price, fuel_type, gearbox, car_description, other_equipment, el_windows, el_seats, no_key_start, airbag, tempomat, heated_seat, parking_sensor, isofix, alu_rimes, air_condition, towing_device, alarm, active, reserved, sold, car_image)
+        VALUES ( :car_brand, :car_model, :car_color, :year_of_manufacture, :engine_volume, :past_km, :kw, :car_price, :fuel_type, :gearbox, :car_description, :other_equipment, :el_windows, :el_seats, :no_key_start, :airbag, :tempomat, :heated_seat, :parking_sensor, :isofix, :alu_rimes, :air_condition, :towing_device, :alarm, :active, :reserved, :sold, :car_image)";
 
         // prepare data to send to Database
         $stmt = $connection->prepare($sql);
@@ -56,6 +57,7 @@ class Car {
         $stmt->bindValue(":year_of_manufacture", $year_of_manufacture, PDO::PARAM_INT);
         $stmt->bindValue(":engine_volume", $engine_volume, PDO::PARAM_INT);
         $stmt->bindValue(":past_km", $past_km, PDO::PARAM_INT);
+        $stmt->bindValue(":kw", $kw, PDO::PARAM_INT);
         $stmt->bindValue(":car_price", $car_price, PDO::PARAM_INT);
         $stmt->bindValue(":fuel_type", $fuel_type, PDO::PARAM_STR);
         $stmt->bindValue(":gearbox", $gearbox, PDO::PARAM_STR);
@@ -265,6 +267,7 @@ class Car {
      * @param string $year_of_manufacture - year_of_manufacture
      * @param int $engine_volume - engine_volume
      * @param int $past_km - past kilometers
+     * @param int $kw - kilowatts
      * @param int $car_price - car_price
      * @param integer $fuel_type - fuel_type
      * @param string $gearbox - gearbox
@@ -290,7 +293,7 @@ class Car {
      * 
      * @return boolean if update is successful
      */
-    public static function updateCarInfoAdvertisement($connection, $car_id, $car_brand, $car_model, $car_color, $year_of_manufacture, $engine_volume, $past_km, $fuel_type, $gearbox, $car_price, $car_description, $other_equipment, $el_windows, $el_seats, $no_key_start, $airbag, $tempomat, $heated_seat, $parking_sensor, $isofix, $alu_rimes, $air_condition, $towing_device, $alarm){
+    public static function updateCarInfoAdvertisement($connection, $car_id, $car_brand, $car_model, $car_color, $year_of_manufacture, $engine_volume, $past_km, $kw, $fuel_type, $gearbox, $car_price, $car_description, $other_equipment, $el_windows, $el_seats, $no_key_start, $airbag, $tempomat, $heated_seat, $parking_sensor, $isofix, $alu_rimes, $air_condition, $towing_device, $alarm){
 
         $sql = "UPDATE car_advertisement
                 SET car_brand = :car_brand,
@@ -299,6 +302,7 @@ class Car {
                     year_of_manufacture = :year_of_manufacture,
                     engine_volume = :engine_volume,
                     past_km = :past_km,
+                    kw = :kw,
                     fuel_type = :fuel_type,
                     gearbox = :gearbox,
                     car_price = :car_price,
@@ -331,6 +335,7 @@ class Car {
         $stmt->bindValue(":year_of_manufacture", $year_of_manufacture, PDO::PARAM_INT);
         $stmt->bindValue(":engine_volume", $engine_volume, PDO::PARAM_INT);
         $stmt->bindValue(":past_km", $past_km, PDO::PARAM_INT);
+        $stmt->bindValue(":kw", $kw, PDO::PARAM_INT);
         $stmt->bindValue(":fuel_type", $fuel_type, PDO::PARAM_STR);
         $stmt->bindValue(":gearbox", $gearbox, PDO::PARAM_STR);
         $stmt->bindValue(":car_price", $car_price, PDO::PARAM_INT);

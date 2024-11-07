@@ -7,9 +7,12 @@
         width: 100%;
         
     }
-
-    .basic-car-info:nth-child(10),
-    .basic-car-info:nth-child(11) {
+    .basic-car-info:nth-child(7),
+    .basic-car-info:nth-child(8), 
+    .basic-car-info:nth-child(9),
+    .basic-car-info:nth-child(10), 
+    .basic-car-info:nth-child(11),
+    .basic-car-info:nth-child(12) {
     /* justify-content: end; */
     width: 100%;
     }

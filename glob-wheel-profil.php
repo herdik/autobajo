@@ -49,6 +49,10 @@ if ((isset($_GET["wheel_id"]) and is_numeric($_GET["wheel_id"])) and (isset($_GE
 
 </head>
 <body>
+
+    <div class="loader">
+        <div class="loader-animation"></div>
+    </div>
    
     <?php require "./assets/header.php" ?>
 
@@ -196,7 +200,7 @@ if ((isset($_GET["wheel_id"]) and is_numeric($_GET["wheel_id"])) and (isset($_GE
 
                 <div class="wheel-price box">
                 
-                    <h2><?= htmlspecialchars(number_format($wheel_infos["wheel_price"],0,","," ")) ?> &#8364;</h2>
+                    <h2><?= htmlspecialchars(number_format($wheel_infos["wheel_price"],0,","," ")) ?> &#8364; s DPH</h2>
                     
                 </div>
 
@@ -210,6 +214,7 @@ if ((isset($_GET["wheel_id"]) and is_numeric($_GET["wheel_id"])) and (isset($_GE
     
     <script src="./js/header.js"></script>    
     <script src="./js/show-gallery.js"></script>     
-    <script src="./js/slider-animation.js"></script>                     
+    <script src="./js/slider-animation.js"></script>  
+    <script src="./js/loading.js"></script>                     
 </body>
 </html>

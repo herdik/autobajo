@@ -101,10 +101,24 @@ $contact_infos = Contact::getAllContactInfos($connection);
                         <label for="saturday-open">Sobota od</label>
                         <input type="time" name="saturday_open" id="saturday-open" value="<?= htmlspecialchars($contact_info["saturday_open"]) ?>">
                     </div>
-                    <div class="weekend">
+                    <div class="weekend selected-radio-text">
                         <label for="saturday-close">Sobota do</label>
                         <input type="time" name="saturday_close" id="saturday-slose" value="<?= htmlspecialchars($contact_info["saturday_close"]) ?>">
+
+                        <div class="selected-radio">
+                            <input type="radio" name="saturday_option" value="time" id="saturday-close" <?php echo (htmlspecialchars($contact_info["saturday_time"])) ? 'checked' : ''; ?>>
+                        </div>
                     </div>
+
+                    <div class="weekend selected-radio-text2">
+                        <label for="saturday-op">Sobota</label>
+                        <input type="text" name="saturday" id="saturday" value="<?= htmlspecialchars($contact_info["saturday"]) ?>">
+
+                        <div class="selected-radio2">
+                            <input type="radio" name="saturday_option" id="saturday-op" value="string" <?php echo (htmlspecialchars($contact_info["saturday_string"])) ? 'checked' : ''; ?>>
+                        </div>
+                    </div>
+
                     <div class="weekend">
                         <label for="sunday">Nedeľa</label>
                         <input type="text" name="sunday" id="sunday" value="<?= htmlspecialchars($contact_info["sunday"]) ?>">

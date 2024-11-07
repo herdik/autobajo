@@ -35,7 +35,7 @@ if (isset($_GET["car_id"]) and is_numeric($_GET["car_id"])){
 $image_sequence = null;
 
 // first index for $car_equipments loop
-$inside_index = 12;
+$inside_index = 13;
 
 ?>
 
@@ -150,6 +150,11 @@ $inside_index = 12;
                     <div class="basic-car-info">   
                         <label for="car-price">Cena:</label>
                         <input type="number" name="car_price" placeholder="Cena" value="<?= htmlspecialchars($car_infos["car_price"]) ?>" required>
+                    </div>
+
+                    <div class="basic-car-info">  
+                        <label for="car-kw">KW:</label>
+                        <input type="number" name="kw" placeholder="KW" value="<?= htmlspecialchars($car_infos["kw"]) ?>" required id="car-kw">
                     </div>
 
                     <div class="basic-car-info">  

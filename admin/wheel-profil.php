@@ -232,7 +232,7 @@ if ((isset($_GET["wheel_id"]) and is_numeric($_GET["wheel_id"])) and (isset($_GE
 
                 <div class="wheel-price box">
                 
-                    <h2><?= htmlspecialchars(number_format($wheel_infos["wheel_price"],0,","," ")) ?> &#8364;</h2>
+                    <h2><?= htmlspecialchars(number_format($wheel_infos["wheel_price"],0,","," ")) ?> &#8364; s DPH</h2>
                     
                 </div>
 

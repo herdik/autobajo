@@ -41,6 +41,20 @@
     .days, .weekend {
         width: 100%;
     }
+
+    .selected-radio {
+        position: absolute;
+        transform: scale(1.5); 
+        top: 110%;
+        left: 50%;
+    }
+
+    .selected-radio2 {
+        position: absolute;
+        transform: scale(1.5); 
+        top: 110%;
+        left: 50%;
+    }
     
       
 }

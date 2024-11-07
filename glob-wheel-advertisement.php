@@ -68,6 +68,10 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
 </head>
 <body>
 
+    <div class="loader">
+        <div class="loader-animation"></div>
+    </div>
+
     <?php require "./assets/header.php" ?>
 
     <main>
@@ -164,7 +168,7 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
                     </div>
 
                     <div class="wheel-price">
-                        <h2><?= htmlspecialchars(number_format($one_wheel["wheel_price"],0,","," ")) ?> &#8364;</h2>
+                        <h2><?= htmlspecialchars(number_format($one_wheel["wheel_price"],0,","," ")) ?> &#8364; s DPH</h2>
                     </div>
 
                     
@@ -257,7 +261,8 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
     </main>
     
     <?php require "./assets/footer.php" ?>
-    <script src="./js/header.js"></script>              
+    <script src="./js/header.js"></script>  
+    <script src="./js/loading.js"></script>              
 </body>
 </html>
 

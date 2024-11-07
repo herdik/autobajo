@@ -129,8 +129,12 @@ $car_colors = Car::getAllCarsInfo($connection, 'car_color', '%');
                     </div>
 
                     <div class="basic-car-info">  
-                        <label for="car-price">Cena:</label> 
+                        
                         <input type="number" name="car_price" placeholder="Cena" required id="car-price">
+                    </div>
+
+                    <div class="basic-car-info">  
+                        <input type="number" name="kw" placeholder="KW" required id="car-kw">
                     </div>
 
                     <div class="basic-car-info">  

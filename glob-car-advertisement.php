@@ -23,13 +23,13 @@ if (isset($_GET["car_history"]) and is_numeric($_GET["car_history"])){
     $active_advertisement = $_GET["car_history"];
 
     // get all car info according selected page nr 
-    $cars_advertisements = Car::getAllCarsAdvertisement($connection, $active_advertisement, (($actual_page_nr - 1) * $show_nr_of_advert), $show_nr_of_advert, "car_id, car_brand, car_model, year_of_manufacture, past_km, fuel_type, car_description, car_price, reserved, sold, car_image");
+    $cars_advertisements = Car::getAllCarsAdvertisement($connection, $active_advertisement, (($actual_page_nr - 1) * $show_nr_of_advert), $show_nr_of_advert, "car_id, car_brand, car_model, year_of_manufacture, past_km, fuel_type, kw, car_description, car_price, reserved, sold, car_image");
 } else {
     // active_advertisement means show active advetisement or show history
     $active_advertisement = 1;
 
     // get all car info according selected page nr 
-    $cars_advertisements = Car::getAllCarsAdvertisement($connection, $active_advertisement, (($actual_page_nr - 1) * $show_nr_of_advert), $show_nr_of_advert, "car_id, car_brand, car_model, year_of_manufacture, past_km, fuel_type, car_description, car_price, reserved, sold, car_image");
+    $cars_advertisements = Car::getAllCarsAdvertisement($connection, $active_advertisement, (($actual_page_nr - 1) * $show_nr_of_advert), $show_nr_of_advert, "car_id, car_brand, car_model, year_of_manufacture, past_km, fuel_type, kw, car_description, car_price, reserved, sold, car_image");
 }
 
 // number of all active or historical advertisemment 
@@ -70,10 +70,14 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
 </head>
 <body>
 
+    <div class="loader">
+        <div class="loader-animation"></div>
+    </div>
+
     <?php require "./assets/header.php" ?>
 
     <main>
-
+        
         <h1>Ponuka automobilov</h1>
 
         <?php if ($number_of_advert != 0 || $cars_advertisements != null): ?>
@@ -156,12 +160,18 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
                             <span class="sub-heading material-symbols-outlined set-icon">local_gas_station</span>
                             <span><?= htmlspecialchars($one_car["fuel_type"]) ?></span>
                         </div>
+
+                        <div class="car kw main-advert">
+                            <span class="sub-heading text">KW</span>
+                            <span class="sub-heading material-symbols-outlined set-icon">electric_bolt</span>
+                            <span><?= htmlspecialchars($one_car["kw"]) ?></span>
+                        </div>
             
             
                     </div>
 
                     <div class="car-price">
-                        <h2><?= htmlspecialchars(number_format($one_car["car_price"],0,","," ")) ?> &#8364;</h2>
+                        <h2><?= htmlspecialchars(number_format($one_car["car_price"],0,","," ")) ?> &#8364; s DPH</h2>
                     </div>
 
                     
@@ -259,6 +269,7 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
     
     <?php require "./assets/footer.php" ?>
     <script src="./js/header.js"></script>     
+    <script src="./js/loading.js"></script>  
 </body>
 </html>
 

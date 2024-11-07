@@ -35,10 +35,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
     $mon_fri_afternoon_close = $_POST["mon_fri_afternoon_close"];
     $saturday_open = $_POST["saturday_open"];
     $saturday_close = $_POST["saturday_close"];
+    $saturday = $_POST["saturday"];
+    $saturday_option = $_POST["saturday_option"];
     $sunday = $_POST["sunday"];
+
+    if ($saturday_option === "time") {
+        $saturday_time = true;
+        $saturday_string = false;
+    } else {
+        $saturday_time = false;
+        $saturday_string = true;
+    }
     
     
-    $update_contact_info = Contact::updateContactInfo($connection, $company_name, $street_number, $town_post_nr, $name_1, $email_1, $tel_1, $name_2, $email_2, $tel_2, $mon_fri_morning_open, $mon_fri_morning_close, $mon_fri_afternoon_open, $mon_fri_afternoon_close, $saturday_open, $saturday_close, $sunday);
+    $update_contact_info = Contact::updateContactInfo($connection, $company_name, $street_number, $town_post_nr, $name_1, $email_1, $tel_1, $name_2, $email_2, $tel_2, $mon_fri_morning_open, $mon_fri_morning_close, $mon_fri_afternoon_open, $mon_fri_afternoon_close, $saturday_open, $saturday_close, $saturday_time, $saturday, $saturday_string, $sunday);
 
     
     if ($update_contact_info){

@@ -34,6 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
     $year_of_manufacture = $_POST["year_of_manufacture"];
     $engine_volume = $_POST["engine_volume"];
     $past_km = $_POST["past_km"];
+    $kw = $_POST["kw"];
     $car_price = $_POST["car_price"];
     $fuel_type = $_POST["fuel_type"];
     $gearbox = $_POST["gearbox"];
@@ -68,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
 
 
     // save all car dvertisement do SQL car_advertisement table
-    $update_car = Car::updateCarInfoAdvertisement($connection, $car_id, $car_brand, $car_model, $car_color, $year_of_manufacture, $engine_volume, $past_km, $fuel_type, $gearbox, $car_price, $car_description, $other_equipment, $vehicle_equipment[0], $vehicle_equipment[1], $vehicle_equipment[2], $vehicle_equipment[3], $vehicle_equipment[4], $vehicle_equipment[5], $vehicle_equipment[6], $vehicle_equipment[7], $vehicle_equipment[8], $vehicle_equipment[9], $vehicle_equipment[10], $vehicle_equipment[11]);
+    $update_car = Car::updateCarInfoAdvertisement($connection, $car_id, $car_brand, $car_model, $car_color, $year_of_manufacture, $engine_volume, $past_km, $kw, $fuel_type, $gearbox, $car_price, $car_description, $other_equipment, $vehicle_equipment[0], $vehicle_equipment[1], $vehicle_equipment[2], $vehicle_equipment[3], $vehicle_equipment[4], $vehicle_equipment[5], $vehicle_equipment[6], $vehicle_equipment[7], $vehicle_equipment[8], $vehicle_equipment[9], $vehicle_equipment[10], $vehicle_equipment[11]);
 
     
     if ($update_car){

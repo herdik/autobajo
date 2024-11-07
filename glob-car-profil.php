@@ -55,6 +55,9 @@ $inside_index = 12;
 </head>
 <body>
     
+    <div class="loader">
+        <div class="loader-animation"></div>
+    </div>
     <?php require "./assets/header.php" ?>
 
     <dialog class="gallery-slider" id="gallery-slider">
@@ -124,6 +127,12 @@ $inside_index = 12;
 
                     <div class="car-description">
                         <h2><?= htmlspecialchars($car_infos["car_description"]) ?></h2>
+                    </div>
+
+                    <div class="car-description watts">
+                        <span class="sub-heading text bolder">KW</span>
+                        <span class="sub-heading material-symbols-outlined set-icon">electric_bolt</span>
+                        <span><?= htmlspecialchars($car_infos["kw"]) ?></span>
                     </div>
 
                     <div class="car-infos">
@@ -222,7 +231,7 @@ $inside_index = 12;
 
                 <div class="car-price box">
                 
-                    <h2><?= htmlspecialchars(number_format($car_infos["car_price"],0,","," ")) ?> &#8364;</h2>
+                    <h2><?= htmlspecialchars(number_format($car_infos["car_price"],0,","," ")) ?> &#8364; s DPH</h2>
                     
                 </div>
 
@@ -236,6 +245,7 @@ $inside_index = 12;
     
     <script src="./js/header.js"></script>                   
     <script src="./js/show-gallery.js"></script>                   
-    <script src="./js/slider-animation.js"></script>                  
+    <script src="./js/slider-animation.js"></script>  
+    <script src="./js/loading.js"></script>                  
 </body>
 </html>

@@ -229,7 +229,7 @@ if ((isset($_GET["tire_id"]) and is_numeric($_GET["tire_id"])) and (isset($_GET[
 
                 <div class="tire-price box">
                 
-                    <h2><?= htmlspecialchars(number_format($tire_infos["tire_price"],0,","," ")) ?> &#8364;</h2>
+                    <h2><?= htmlspecialchars(number_format($tire_infos["tire_price"],0,","," ")) ?> &#8364; s DPH</h2>
                     
                 </div>
 

@@ -73,7 +73,13 @@ $contact_infos = Contact::getAllContactInfos($connection);
                             <p>Otváracie hodiny</p>
                             <p>Pondelok-Piatok:</p>
                             <p><?= htmlspecialchars($contact_info["mon_fri_morning_open"]) . " - " .  htmlspecialchars($contact_info["mon_fri_morning_close"]) . ", " . htmlspecialchars($contact_info["mon_fri_afternoon_open"]) . " - " . htmlspecialchars($contact_info["mon_fri_afternoon_close"])?></p>
-                            <p><?= "Sobota: ". htmlspecialchars($contact_info["saturday_open"]) . " - " . htmlspecialchars($contact_info["saturday_close"]) ?></p>
+
+                            <?php if (htmlspecialchars($contact_info["saturday_time"])): ?>
+                                <p><?= "Sobota: ". htmlspecialchars($contact_info["saturday_open"]) . " - " . htmlspecialchars($contact_info["saturday_close"]) ?></p>
+                            <?php else: ?>
+                                <p><?= "Sobota: ". htmlspecialchars($contact_info["saturday"]) ?></p>
+                            <?php endif; ?>
+
                             <p><?= "Nedeľa: ". htmlspecialchars($contact_info["sunday"]) ?></p>
                             
                         </div>
@@ -101,10 +107,10 @@ $contact_infos = Contact::getAllContactInfos($connection);
                         </div>
                         
                         <div class="person person2">
-                            <label for="email2"><?= htmlspecialchars($contact_info["name_2"]) ?></label><br>
-                            <span class="material-symbols-outlined my-icons">
+                            <label class="<?php echo (htmlspecialchars($contact_info["name_2"]) === "") ? 'hide' : ''; ?>" for="email2"><?= htmlspecialchars($contact_info["name_2"]) ?></label><br>
+                            <span class="material-symbols-outlined my-icons <?php echo (htmlspecialchars($contact_info["email_2"]) === "") ? 'hide' : ''; ?>">
                             mail
-                            </span> <a href="mailto:<?= htmlspecialchars($contact_info["email_2"]) ?>"><?= htmlspecialchars($contact_info["email_2"]) ?></a><br>
+                            </span> <a class="<?php echo (htmlspecialchars($contact_info["email_2"]) === "") ? 'hide' : ''; ?>" href="mailto:<?= htmlspecialchars($contact_info["email_2"]) ?>"><?= htmlspecialchars($contact_info["email_2"]) ?></a><br>
                             <span class="material-symbols-outlined my-icons">
                             phone_in_talk
                             </span> <a href="tel:+<?= htmlspecialchars($contact_info["tel_2"]) ?>">+<?= htmlspecialchars($contact_info["tel_2"]) ?></a>

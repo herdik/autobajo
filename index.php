@@ -38,7 +38,7 @@
                 <img src="./img/autobajo-logo-transparent.png" alt="">
             </div>
             <h1>AutoBajo / Pneuservis DB</h1>
-            <p>predaj automobilov, pneumatík a diskov</p>
+            <p>predaj  ojazdených automobilov, pneumatík a diskov</p>
 
             <section class="div-menu">
                 

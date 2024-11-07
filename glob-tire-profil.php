@@ -50,7 +50,10 @@ if ((isset($_GET["tire_id"]) and is_numeric($_GET["tire_id"])) and (isset($_GET[
 
 </head>
 <body>
-   
+    
+    <div class="loader">
+        <div class="loader-animation"></div>
+    </div>
     <?php require "./assets/header.php" ?>
 
     <dialog class="gallery-slider" id="gallery-slider">
@@ -193,7 +196,7 @@ if ((isset($_GET["tire_id"]) and is_numeric($_GET["tire_id"])) and (isset($_GET[
 
                 <div class="tire-price box">
                 
-                    <h2><?= htmlspecialchars(number_format($tire_infos["tire_price"],0,","," ")) ?> &#8364;</h2>
+                    <h2><?= htmlspecialchars(number_format($tire_infos["tire_price"],0,","," ")) ?> &#8364; s DPH</h2>
                     
                 </div>
 
@@ -207,6 +210,7 @@ if ((isset($_GET["tire_id"]) and is_numeric($_GET["tire_id"])) and (isset($_GET[
     
     <script src="./js/header.js"></script>  
     <script src="./js/show-gallery.js"></script>  
-    <script src="./js/slider-animation.js"></script>                      
+    <script src="./js/slider-animation.js"></script>     
+    <script src="./js/loading.js"></script>                   
 </body>
 </html>
