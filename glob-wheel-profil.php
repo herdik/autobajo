@@ -44,7 +44,7 @@ if ((isset($_GET["wheel_id"]) and is_numeric($_GET["wheel_id"])) and (isset($_GE
     <link rel="stylesheet" href="./css/header.css">
     <link rel="stylesheet" href="./css/footer.css">
     <link rel="stylesheet" href="./css/wheel-profil.css">
-    <link rel="stylesheet" href="./query/header-query.css">
+    <link rel="stylesheet" href="./query/global-header-query.css">
     <link rel="stylesheet" href="./query/profil-query.css">
 
 </head>

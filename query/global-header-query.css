@@ -1,4 +1,4 @@
-@media (max-width: 1220px) {
+@media (max-width: 1014px) {
 
     
     header nav {
@@ -37,7 +37,7 @@
 }
 
 
-@media (min-width: 1221px){
+@media (min-width: 1015px){
     header nav {
         /* important means more dominant than style what is marked ou/scratched */
         display: block !important;

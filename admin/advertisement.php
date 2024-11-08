@@ -71,6 +71,14 @@ if (!Auth::isLoggedIn()){
             </article>
             </a>
 
+            <a class="main-part" href="./reg-form-tire-wheel.php
+            ">
+            <article class="div-menu-part part-tires-wheels">
+                <img class="div-menu-images" src="../img/tires-wheels.jpg" alt="">
+                <span class="rimes">Pridať pneumatiky s&nbsp;diskami</span>
+            </article>
+            </a>
+
         </section>
         
 

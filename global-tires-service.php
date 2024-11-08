@@ -44,7 +44,7 @@ $adhesive_weight = AdhesiveWeight::getAllAdhesiveWeight($connection);
     <link rel="stylesheet" href="./css/header.css">
     <link rel="stylesheet" href="./css/footer.css">
     <link rel="stylesheet" href="./css/global-tires-service.css">
-    <link rel="stylesheet" href="./query/header-query.css">
+    <link rel="stylesheet" href="./query/global-header-query.css">
     
 </head>
 <body>

@@ -45,7 +45,7 @@ if ((isset($_GET["tire_id"]) and is_numeric($_GET["tire_id"])) and (isset($_GET[
     <link rel="stylesheet" href="./css/header.css">
     <link rel="stylesheet" href="./css/footer.css">
     <link rel="stylesheet" href="./css/tire-profil.css">
-    <link rel="stylesheet" href="./query/header-query.css">
+    <link rel="stylesheet" href="./query/global-header-query.css">
     <link rel="stylesheet" href="./query/profil-query.css">
 
 </head>

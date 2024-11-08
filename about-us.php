@@ -36,7 +36,7 @@ $contact_infos = Contact::getAllContactInfos($connection);
     <link rel="stylesheet" href="./css/header.css">
     <link rel="stylesheet" href="./css/footer.css">
     <link rel="stylesheet" href="./css/about-us.css">
-    <link rel="stylesheet" href="./query/header-query.css">
+    <link rel="stylesheet" href="./query/global-header-query.css">
     <link rel="stylesheet" href="./query/about-query.css">
 </head>
 <body>

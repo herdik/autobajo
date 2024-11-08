@@ -62,7 +62,7 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
     <link rel="stylesheet" href="./css/header.css">
     <link rel="stylesheet" href="./css/footer.css">
     <link rel="stylesheet" href="./css/wheels.css">
-    <link rel="stylesheet" href="./query/header-query.css">
+    <link rel="stylesheet" href="./query/global-header-query.css">
     <link rel="stylesheet" href="./query/advertisement-query.css">
 
 </head>

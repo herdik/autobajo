@@ -17,6 +17,7 @@
             <li><a href="./car-advertisement.php">Autá</a></li>
             <li><a href="./tire-advertisement.php">Pneumatiky</a></li>
             <li><a href="./wheel-advertisement.php">Disky</a></li>
+            <li><a href="./tire-wheel-advertisement.php">Pneumatiky s diskami</a></li>
             <li><a href="./tires-service.php">Pneuservis</a></li>
             <li><a href="./admin-about-us.php">O nás</a></li>
             <li><a href="./history-dashboard.php">História</a></li>

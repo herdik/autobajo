@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="./css/header.css">
     <link rel="stylesheet" href="./css/footer.css">
-    <link rel="stylesheet" href="./query/header-query.css">
+    <link rel="stylesheet" href="./query/global-header-query.css">
     <link rel="stylesheet" href="./query/index-query.css">
 
 </head>
@@ -42,7 +42,7 @@
 
             <section class="div-menu">
                 
-                <a class="menu-part" href="./glob-car-advertisement.php">
+            <a class="menu-part" href="./glob-car-advertisement.php">
                     <article class="div-menu-part part-cars">
                         <img class="div-menu-images" src="./img/cars.jpg" alt="">
                         <span class="cars advert-text">Autá</span>
@@ -56,6 +56,13 @@
                     </article>
                 </a>
 
+                <a class="menu-part part-hide" href="./global-tires-service.php">
+                    <article class="div-menu-part part-servis">
+                        <img class="div-menu-images" src="./img/servis.jpg" alt="">
+                        <span class="servis advert-text">Pneuservis</span>
+                    </article>
+                </a>
+
                 <a class="menu-part" href="./glob-wheel-advertisement.php">
                     <article class="div-menu-part part-rimes">
                         <img class="div-menu-images" src="./img/rim.jpg" alt="">
@@ -63,10 +70,11 @@
                     </article>
                 </a>
 
-                <a class="menu-part" href="./global-tires-service.php">
-                    <article class="div-menu-part part-servis">
-                        <img class="div-menu-images" src="./img/servis.jpg" alt="">
-                        <span class="servis advert-text">Pneuservis</span>
+            
+                <a class="menu-part" href="./glob-tire-wheel-advertisement.php">
+                    <article class="div-menu-part part-tires-wheels">
+                        <img class="div-menu-images-last" src="./img/tires-wheels.jpg" alt="">
+                        <span class="tires-wheels advert-text">Pneumatiky s diskami</span>
                     </article>
                 </a>
                 

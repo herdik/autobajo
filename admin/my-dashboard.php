@@ -87,11 +87,31 @@ if (!Auth::isLoggedIn()){
             </article>
             </a>
 
+            <a class="menu-part" href="./tire-wheel-advertisement.php
+            ">
+            <article class="div-menu-part part-tires-wheels">
+                <img class="div-menu-images" src="../img/tires-wheels.jpg" alt="">
+                <span class="servis advert-text tires-wheels">Pneumatiky s&nbsp;diskami</span>
+            </article>
+            </a>
             <a class="menu-part" href="./history-dashboard.php
             ">
             <article class="div-menu-part part-history">
                 <img class="div-menu-images" src="../img/history.jpg" alt="">
                 <span class="servis advert-text">História</span>
+            </article>
+            </a>
+            <a class="menu-part" href="./admin-about-us.php
+            ">
+            <article class="div-menu-part part-about-us">
+                <img class="div-menu-images" src="../img/about-us.jpg" alt="">
+                <span class="servis advert-text">O nás</span>
+            </article>
+            </a>
+            <a class="menu-part" href="./change-password.php?user_id=<?= htmlspecialchars($_SESSION["logged_in_user_id"]) ?>">
+            <article class="div-menu-part part-password">
+                <img class="div-menu-images" src="../img/password.jpg" alt="">
+                <span class="servis advert-text">Zmena hesla</span>
             </article>
             </a>
         </section>

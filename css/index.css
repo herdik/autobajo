@@ -47,7 +47,7 @@ main h1 {
 
 main p {
     margin-bottom: 40px;
-    font-size: clamp(0.75em, 3vw, 1.17em);
+    font-size: clamp(0.75em, 2.8vw, 1.17em);
 }
 
 .div-menu {  
@@ -64,12 +64,12 @@ main p {
 .menu-part {
     text-decoration: none;
     color: #fff;
-    width: 250px;
+    width: 200px;
 }
 
 .div-menu-part {
     width: 100%;
-    height: 360px;
+    height: 320px;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -82,6 +82,11 @@ main p {
     height: 100%;
     cursor: pointer;
 }
+.div-menu-images-last {
+    width: 75%;
+    height: 100%;
+    cursor: pointer;
+}
 .advert-text { 
     width: 15%;
     height: 100%;
@@ -89,7 +94,7 @@ main p {
     writing-mode: vertical-rl;
     cursor: pointer;
     font-weight: bold;
-    font-size: clamp(1em, 2vw, 1.3em);
+    font-size: clamp(1em, 1.5vw, 1.3em);
     text-align: center;
 }
 
@@ -98,25 +103,43 @@ main p {
     scale: 1.05;
 }
 
+.tires-wheels { 
+        
+    text-orientation: upright;
+    writing-mode: vertical-lr;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
 
 
 .part-cars {
-    animation: fromLeft 1s linear;
+    animation: fromLeft 2s linear;
 }
 .part-tires {
-    animation: fromTop 1s linear;
+    animation: fromTop 2s linear;
 }
 .part-rimes {
-    animation: fromBottom 1s linear;
+    animation: fromBottom 2s linear;
 }
 .part-servis {
-    animation: fromRight 1s linear;
+    animation: toDiscover 2s linear;
+}
+.part-tires-wheels {
+    animation: fromRight 2s linear;
 }
 
 
 @keyframes fromLeft {
     0% {
-        transform: translateX(-400px);
+        transform: translateX(-300px);
+    }
+
+    50% {
+        transform: translateX(0px);
     }
 
 
@@ -127,7 +150,11 @@ main p {
 }
 @keyframes fromTop {
     0% {
-        transform: translateY(-400px);
+        transform: translateY(-300px);
+    }
+
+    50% {
+        transform: translateX(0px);
     }
 
 
@@ -138,7 +165,11 @@ main p {
 }
 @keyframes fromBottom {
     0% {
-        transform: translateY(400px);
+        transform: translateY(300px);
+    }
+
+    50% {
+        transform: translateX(0px);
     }
 
 
@@ -149,12 +180,31 @@ main p {
 }
 @keyframes fromRight {
     0% {
-        transform: translateX(400px);
+        transform: translateX(300px);
     }
 
+    50% {
+        transform: translateX(0px);
+    }
 
     100% {
         transform: translateX(0px);
+    }
+
+}
+
+
+@keyframes toDiscover {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
     }
 
 }

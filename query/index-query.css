@@ -1,11 +1,27 @@
-@media (max-width: 1150px) {
+@media (max-width: 1170px) {
+
+    main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
 
     .menu-part {
-        width: 40%;
+        width: 28%;
+    }
+    .menu-part:nth-child(1), 
+    .menu-part:nth-child(2) {
+        width: 44.5%;
     }
     .div-menu-part {
-        height: 300px;
+        height: 250px;
         font-weight: bold;
+    }
+
+    .part-servis {
+        animation: fromLeft 2s linear;
     }
     
 }
@@ -14,6 +30,11 @@
 @media (max-width: 640px) {
 
     .menu-part {
+        width: 80%;
+    }
+
+    .menu-part:nth-child(1), 
+    .menu-part:nth-child(2) {
         width: 80%;
     }
 
@@ -26,13 +47,16 @@
         animation: fromLeftmobile1 1.2s linear;
     }
     .part-tires {
-        animation: fromLeftmobile2 1.8s linear;
-    }
-    .part-rimes {
-        animation: fromLeftmobile3 1.8s linear;
+        animation: fromLeftmobile2 1.6s linear;
     }
     .part-servis {
+        animation: fromLeftmobile3 1.8s linear;
+    }
+    .part-rimes {
         animation: fromLeftmobile4 2.1s linear;
+    }
+    .part-tires-wheels {
+        animation: fromLeftmobile5 2.4s linear;
     }
 
     .comp-logo {
@@ -90,6 +114,17 @@
 @keyframes fromLeftmobile4 {
     0% {
         transform: translateX(-1000px);
+    }
+
+
+    100% {
+        transform: translateX(0px);
+    }
+
+}
+@keyframes fromLeftmobile5 {
+    0% {
+        transform: translateX(-1200px);
     }
 
 
