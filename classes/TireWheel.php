@@ -209,19 +209,9 @@ class TireWheel {
      * RETURN BOOLEAN FROM DATABASE AFTER UPDATED TIRE ADVERTISEMENT
      *
      * @param object $connection - database connection
-     * @param string $tire_category - tire_category
-     * @param string $tire_brand - tire_brand
-     * @param string $tire_model - tire_model
-     * @param string $type - type - sommer/winter or all year
-     * @param integer $year_of_manufactur - year_of_manufactur
-     * @param float $tire_width - tire_width tire
-     * @param float $height - height tire
-     * @param string $construction - construction tire
-     * @param integer $average - average of tire
-     * @param integer $weight_index - weight_index
-     * @param string $speed_index - speed_index
-     * @param integer $price - price
-     * @param string $description - description
+     * @param string $active - active advertisement
+     * @param string $reserved - reserved advertisement
+     * @param int $sold -  sold advertisement
      * @param int $tire_wheel_id -  spesific tire advertisement
      * 
      * @return boolean if update is successful
@@ -263,16 +253,34 @@ class TireWheel {
     /**
      *
      * RETURN BOOLEAN FROM DATABASE AFTER UPDATED INFO TIRE ADVERTISEMENT
-     *
-     * @param object $connection - database connection
-     * @param string $active - active advertisement
-     * @param string $reserved - reserved advertisement
-     * @param int $sold -  sold advertisement
-     * @param int $tire_wheel_id -  spesific tire advertisement
      * 
+     * @param object $connection - database connection
+     * @param string $tire_category - tire_category
+     * @param string $tire_brand - tire_brand
+     * @param string $tire_model - tire_model
+     * @param string $type - type - sommer/winter or all year
+     * @param integer $year_of_manufactur - year_of_manufactur
+     * @param float $tire_width - tire_width
+     * @param float $height - height tire
+     * @param string $construction - construction tire
+     * @param integer $average - average of tire
+     * @param integer $weight_index - weight_index
+     * @param string $speed_index - speed_index
+     * 
+     * @param string $wheel_category - wheel_category
+     * @param string $wheel_brand - wheel_brand
+     * @param string $wheel_model - wheel_model
+     * @param string wheel_average - wheel_average
+     * @param integer spacing - spacing of wheel
+     * @param float $wheel_width - width wheel
+     * @param float $et - et wheel
+     * @param string $wheel_color - color of wheel
+     * 
+     * @param integer $price - price
+     * @param string $description - description
      * @return boolean if update is successful
      */
-    public static function updateTireWheelInfoAdvertisement($connection, $tire_wheel_id, $tire_category, $tire_brand, $tire_model, $type, $year_of_manufacture, $tire_width, $height, $construction, $average, $weight_index, $speed_index, $price, $description){
+    public static function updateTireWheelInfoAdvertisement($connection, $tire_wheel_id, $tire_category, $tire_brand, $tire_model, $type, $year_of_manufacture, $tire_width, $height, $construction, $average, $weight_index, $speed_index, $wheel_category, $wheel_brand, $wheel_model, $wheel_average, $spacing, $wheel_width, $et, $wheel_color, $price, $description){
 
         $sql = "UPDATE tire_wheel_advertisement
                 SET tire_category = :tire_category, 
@@ -285,7 +293,15 @@ class TireWheel {
                     construction = :construction, 
                     average = :average, 
                     weight_index = :weight_index, 
-                    speed_index = :speed_index, 
+                    speed_index = :speed_index,
+                    wheel_category = :wheel_category, 
+                    wheel_brand = :wheel_brand, 
+                    wheel_model = :wheel_model, 
+                    wheel_average = :wheel_average, 
+                    spacing = :spacing, 
+                    wheel_width = :wheel_width, 
+                    et = :et, 
+                    wheel_color = :wheel_color, 
                     price = :price, 
                     description = :description
                 WHERE tire_wheel_id = :tire_wheel_id";
@@ -308,6 +324,14 @@ class TireWheel {
         $stmt->bindValue(":average", $average, PDO::PARAM_INT);
         $stmt->bindValue(":weight_index", $weight_index, PDO::PARAM_INT);
         $stmt->bindValue(":speed_index", $speed_index, PDO::PARAM_STR);
+        $stmt->bindValue(":wheel_category", $wheel_category, PDO::PARAM_STR);
+        $stmt->bindValue(":wheel_brand", $wheel_brand, PDO::PARAM_STR);
+        $stmt->bindValue(":wheel_model", $wheel_model, PDO::PARAM_STR);
+        $stmt->bindValue(":wheel_average", $wheel_average, PDO::PARAM_INT);
+        $stmt->bindValue(":spacing", $spacing, PDO::PARAM_STR);
+        $stmt->bindValue(":wheel_width", $wheel_width, PDO::PARAM_STR);
+        $stmt->bindValue(":et", $et, PDO::PARAM_INT);
+        $stmt->bindValue(":wheel_color", $wheel_color, PDO::PARAM_STR);
         $stmt->bindValue(":price", $price, PDO::PARAM_INT);
         $stmt->bindValue(":description", $description, PDO::PARAM_STR);
         

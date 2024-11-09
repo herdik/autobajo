@@ -28,9 +28,9 @@ if (isset($_GET["page_nr"]) and is_numeric($_GET["page_nr"])){
 // how many advertisement will be printed on website
 $show_nr_of_advert = 5;
 
-if (isset($_GET["tire_history"]) and is_numeric($_GET["tire_history"])){
+if (isset($_GET["tire_wheel_history"]) and is_numeric($_GET["tire_wheel_history"])){
     // active_advertisement means show active advetisement or show history
-    $active_advertisement = $_GET["tire_history"];
+    $active_advertisement = $_GET["tire_wheel_history"];
 
     // get all tire info according selected page nr 
     $tires_wheel_advertisements = TireWheel::getAllTireWheelsAdvertisement($connection, $active_advertisement, (($actual_page_nr - 1) * $show_nr_of_advert), $show_nr_of_advert, "tire_wheel_id, tire_brand, tire_model, type, tire_width, height, construction, average, wheel_brand, wheel_model, wheel_width, wheel_average, spacing, et, wheel_color, price, reserved, sold, tire_wheel_image");
@@ -237,15 +237,15 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
             <?php if ($number_of_pages < 6): ?>
 
                 <!-- arrow left -->
-                <a class="page-nr <?php echo ($actual_page_nr == 1) ? "disabled" : ''; ?>" href="./tire-wheel-advertisement.php?page_nr=<?= $actual_page_nr - 1 ?><?php echo (!$active_advertisement) ? "&tire_history=0" : ''; ?>"><</a>
+                <a class="page-nr <?php echo ($actual_page_nr == 1) ? "disabled" : ''; ?>" href="./tire-wheel-advertisement.php?page_nr=<?= $actual_page_nr - 1 ?><?php echo (!$active_advertisement) ? "&tire_wheel_history=0" : ''; ?>"><</a>
 
                 <!-- pages -->
                 <?php for ($i = 0; $i < $number_of_pages; $i++): ?>
-                    <a class="page-nr <?php echo ($actual_page_nr == $i + 1) ? "actual-page" : ''; ?>" href="./tire-wheel-advertisement.php?page_nr=<?= $i + 1 ?><?php echo (!$active_advertisement) ? "&tire_history=0" : ''; ?>"><?= $i + 1 ?></a>
+                    <a class="page-nr <?php echo ($actual_page_nr == $i + 1) ? "actual-page" : ''; ?>" href="./tire-wheel-advertisement.php?page_nr=<?= $i + 1 ?><?php echo (!$active_advertisement) ? "&tire_wheel_history=0" : ''; ?>"><?= $i + 1 ?></a>
                 <?php endfor; ?>
                 
                 <!-- arrow right -->
-                <a class="page-nr <?php echo ($actual_page_nr == $number_of_pages) ? "disabled" : ''; ?>" href="./tire-wheel-advertisement.php?page_nr=<?= $actual_page_nr + 1 ?><?php echo (!$active_advertisement) ? "&tire_history=0" : ''; ?>">></a>
+                <a class="page-nr <?php echo ($actual_page_nr == $number_of_pages) ? "disabled" : ''; ?>" href="./tire-wheel-advertisement.php?page_nr=<?= $actual_page_nr + 1 ?><?php echo (!$active_advertisement) ? "&tire_wheel_history=0" : ''; ?>">></a>
 
             <!-- pagination part if max pages number are 5 -->        
 
@@ -253,10 +253,10 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
             <?php else: ?>
 
                 <!-- arrow left -->
-                <a class="page-nr <?php echo ($actual_page_nr == 1) ? "disabled" : ''; ?>" href="./tire-wheel-advertisement.php?page_nr=<?= $actual_page_nr - 1 ?><?php echo (!$active_advertisement) ? "&tire_history=0" : ''; ?>"><</a>
+                <a class="page-nr <?php echo ($actual_page_nr == 1) ? "disabled" : ''; ?>" href="./tire-wheel-advertisement.php?page_nr=<?= $actual_page_nr - 1 ?><?php echo (!$active_advertisement) ? "&tire_wheel_history=0" : ''; ?>"><</a>
 
                 <!-- first page -->
-                <a class="page-nr <?php echo ($actual_page_nr == 1) ? "actual-page" : ''; ?>" href="./tire-wheel-advertisement.php?page_nr=<?= 1 ?><?php echo (!$active_advertisement) ? "&tire_history=0" : ''; ?>"><?= 1 ?></a>
+                <a class="page-nr <?php echo ($actual_page_nr == 1) ? "actual-page" : ''; ?>" href="./tire-wheel-advertisement.php?page_nr=<?= 1 ?><?php echo (!$active_advertisement) ? "&tire_wheel_history=0" : ''; ?>"><?= 1 ?></a>
 
 
                 <!-- pages from second page until max page (without max page) -->
@@ -266,20 +266,20 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
 
                         <!-- if actual page is 2 print pages 2, 3, 4 -->
                         <?php if ($actual_page_nr == 2): ?>
-                            <a class="page-nr <?php echo ($actual_page_nr == $i + $actual_page_nr) ? "actual-page" : ''; ?>" href="./tire-wheel-advertisement.php?page_nr=<?= $i + $actual_page_nr ?><?php echo (!$active_advertisement) ? "&tire_history=0" : ''; ?>"><?= $i + $actual_page_nr ?></a>
+                            <a class="page-nr <?php echo ($actual_page_nr == $i + $actual_page_nr) ? "actual-page" : ''; ?>" href="./tire-wheel-advertisement.php?page_nr=<?= $i + $actual_page_nr ?><?php echo (!$active_advertisement) ? "&tire_wheel_history=0" : ''; ?>"><?= $i + $actual_page_nr ?></a>
 
                         <!-- if actual page is one print page 2, 3, 4 -->
                         <?php elseif ($actual_page_nr < 2): ?>
-                            <a class="page-nr <?php echo ($actual_page_nr == $i + 1 + $actual_page_nr) ? "actual-page" : ''; ?>" href="./tire-wheel-advertisement.php?page_nr=<?= $i + 1 + $actual_page_nr ?><?php echo (!$active_advertisement) ? "&tire_history=0" : ''; ?>"><?= $i + 1 + $actual_page_nr ?></a>
+                            <a class="page-nr <?php echo ($actual_page_nr == $i + 1 + $actual_page_nr) ? "actual-page" : ''; ?>" href="./tire-wheel-advertisement.php?page_nr=<?= $i + 1 + $actual_page_nr ?><?php echo (!$active_advertisement) ? "&tire_wheel_history=0" : ''; ?>"><?= $i + 1 + $actual_page_nr ?></a>
 
                         <!-- print one page before actual, actual page and one page after actual page -->
                         <?php else: ?>
-                            <a class="page-nr <?php echo ($actual_page_nr == $i + $actual_page_nr - 1) ? "actual-page" : ''; ?>" href="./tire-wheel-advertisement.php?page_nr=<?= $i + $actual_page_nr - 1?><?php echo (!$active_advertisement) ? "&tire_history=0" : ''; ?>"><?= $i + $actual_page_nr - 1 ?></a>
+                            <a class="page-nr <?php echo ($actual_page_nr == $i + $actual_page_nr - 1) ? "actual-page" : ''; ?>" href="./tire-wheel-advertisement.php?page_nr=<?= $i + $actual_page_nr - 1?><?php echo (!$active_advertisement) ? "&tire_wheel_history=0" : ''; ?>"><?= $i + $actual_page_nr - 1 ?></a>
                         <?php endif; ?>
                     
                     <?php else: ?>
                         <!-- printed still last three pages before last page -->
-                        <a class="page-nr <?php echo ($actual_page_nr == $number_of_pages - 3 + $i) ? "actual-page" : ''; ?>" href="./tire-wheel-advertisement.php?page_nr=<?= $number_of_pages - 3 + $i ?><?php echo (!$active_advertisement) ? "&tire_history=0" : ''; ?>"><?= $number_of_pages - 3 + $i ?></a>
+                        <a class="page-nr <?php echo ($actual_page_nr == $number_of_pages - 3 + $i) ? "actual-page" : ''; ?>" href="./tire-wheel-advertisement.php?page_nr=<?= $number_of_pages - 3 + $i ?><?php echo (!$active_advertisement) ? "&tire_wheel_history=0" : ''; ?>"><?= $number_of_pages - 3 + $i ?></a>
                     
                     <?php endif; ?>
 
@@ -288,10 +288,10 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
                 <!-- system for pages show actual page and one page before and one page after -->
                 
                 <!-- max page - last page -->
-                <a class="page-nr <?php echo ($actual_page_nr == $number_of_pages) ? "actual-page" : ''; ?>" href="./tire-wheel-advertisement.php?page_nr=<?= $number_of_pages ?><?php echo (!$active_advertisement) ? "&tire_history=0" : ''; ?>"><?= $number_of_pages ?></a>
+                <a class="page-nr <?php echo ($actual_page_nr == $number_of_pages) ? "actual-page" : ''; ?>" href="./tire-wheel-advertisement.php?page_nr=<?= $number_of_pages ?><?php echo (!$active_advertisement) ? "&tire_wheel_history=0" : ''; ?>"><?= $number_of_pages ?></a>
                 
                 <!-- arrow right -->
-                <a class="page-nr <?php echo ($actual_page_nr == $number_of_pages) ? "disabled" : ''; ?>" href="./tire-wheel-advertisement.php?page_nr=<?= $actual_page_nr + 1 ?><?php echo (!$active_advertisement) ? "&tire_history=0" : ''; ?>">></a>
+                <a class="page-nr <?php echo ($actual_page_nr == $number_of_pages) ? "disabled" : ''; ?>" href="./tire-wheel-advertisement.php?page_nr=<?= $actual_page_nr + 1 ?><?php echo (!$active_advertisement) ? "&tire_wheel_history=0" : ''; ?>">></a>
             
             <!-- pagination part if max pages number are more than 5 -->
             <?php endif; ?>

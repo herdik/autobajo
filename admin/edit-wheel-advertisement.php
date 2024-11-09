@@ -138,7 +138,7 @@ if (isset($_GET["wheel_id"]) and is_numeric($_GET["wheel_id"])){
                     onchange='this.size=1; this.blur();'>
                     <?php for ($i = 4.5; $i < 13.5; $i+=0.5): ?>
                         <option <?php echo (htmlspecialchars($wheel_infos["width"]) == $i) ? 'selected' : ''; ?> value="<?= htmlspecialchars($i); ?>"><?= htmlspecialchars($i); ?></option>
-                        <?php endfor; ?>
+                    <?php endfor; ?>
                     </select>
                     </div>
 

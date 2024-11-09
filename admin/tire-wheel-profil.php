@@ -250,7 +250,7 @@ if ((isset($_GET["tire_wheel_id"]) and is_numeric($_GET["tire_wheel_id"])) and (
 
                     <div class="administration-part">
                         <a class="btn" href="./edit-tire-wheel-advertisement.php?tire_wheel_id=<?= htmlspecialchars($tire_wheel_infos["tire_wheel_id"]) ?>">Upraviť</a>
-                        <a class="btn" href="./gallery-tire.php?tire_wheel_id=<?= htmlspecialchars($tire_wheel_infos["tire_wheel_id"]) ?>">Galéria</a>
+                        <a class="btn" href="./gallery-tire-wheel.php?tire_wheel_id=<?= htmlspecialchars($tire_wheel_infos["tire_wheel_id"]) ?>">Galéria</a>
 
                         <?php if ($tire_wheel_infos["active"]): ?>
                             <a class="btn" href="./after-update-tire-wheel-advert.php?active=false&tire_wheel_id=<?= htmlspecialchars($tire_wheel_infos["tire_wheel_id"]) ?>">Dektivovať</a>

@@ -128,6 +128,10 @@ class Tire {
         $sql = "SELECT DISTINCT $column
                 FROM tire_advertisement
                 WHERE tire_brand LIKE :required_word
+                UNION
+                SELECT $column
+                FROM tire_wheel_advertisement
+                WHERE tire_brand LIKE :required_word
                 ORDER BY $column ASC";
 
         $stmt = $connection->prepare($sql);
@@ -191,19 +195,9 @@ class Tire {
      * RETURN BOOLEAN FROM DATABASE AFTER UPDATED TIRE ADVERTISEMENT
      *
      * @param object $connection - database connection
-     * @param string $tire_category - tire_category
-     * @param string $tire_brand - tire_brand
-     * @param string $tire_model - tire_model
-     * @param string $type - type - sommer/winter or all year
-     * @param integer $year_of_manufactur - year_of_manufactur
-     * @param float $width - width tire
-     * @param float $height - height tire
-     * @param string $construction - construction tire
-     * @param integer $average - average of tire
-     * @param integer $weight_index - weight_index
-     * @param string $speed_index - speed_index
-     * @param integer $tire_price - tire_price
-     * @param string $tire_description - tire_description
+     * @param string $active - active advertisement
+     * @param string $reserved - reserved advertisement
+     * @param int $sold -  sold advertisement
      * @param int $tire_id -  spesific tire advertisement
      * 
      * @return boolean if update is successful
@@ -247,9 +241,19 @@ class Tire {
      * RETURN BOOLEAN FROM DATABASE AFTER UPDATED INFO TIRE ADVERTISEMENT
      *
      * @param object $connection - database connection
-     * @param string $active - active advertisement
-     * @param string $reserved - reserved advertisement
-     * @param int $sold -  sold advertisement
+     * @param string $tire_category - tire_category
+     * @param string $tire_brand - tire_brand
+     * @param string $tire_model - tire_model
+     * @param string $type - type - sommer/winter or all year
+     * @param integer $year_of_manufactur - year_of_manufactur
+     * @param float $width - width tire
+     * @param float $height - height tire
+     * @param string $construction - construction tire
+     * @param integer $average - average of tire
+     * @param integer $weight_index - weight_index
+     * @param string $speed_index - speed_index
+     * @param integer $tire_price - tire_price
+     * @param string $tire_description - tire_description
      * @param int $tire_id -  spesific tire advertisement
      * 
      * @return boolean if update is successful

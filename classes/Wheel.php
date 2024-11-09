@@ -122,6 +122,10 @@ class Wheel {
         $sql = "SELECT DISTINCT $column
                 FROM wheel_advertisement
                 WHERE wheel_brand LIKE :required_word
+                UNION
+                SELECT DISTINCT $column
+                FROM tire_wheel_advertisement
+                WHERE wheel_brand LIKE :required_word
                 ORDER BY $column ASC";
 
         $stmt = $connection->prepare($sql);

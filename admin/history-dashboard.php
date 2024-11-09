@@ -73,6 +73,14 @@ if (!Auth::isLoggedIn()){
             </article>
             </a>
 
+            <a class="menu-part" href="./tire-wheel-advertisement.php?tire_wheel_history=0
+            ">
+            <article class="div-menu-part part-tires-wheels">
+                <img class="div-menu-images" src="../img/tires-wheels.jpg" alt="">
+                <span class="tires-wheels advert-text">Pneumatiky na diskoch</span>
+            </article>
+            </a>
+
             
         </section>
         
