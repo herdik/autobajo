@@ -5,9 +5,26 @@
         font-size: 16px;
         padding: 40px 0px;
     }
+
+    .product {
+        width: 25px;
+        height: 25px;
+    }
+    
     
     
 }
+
+/* @media (max-width: 900px) {
+
+    .product {
+        width: 25px;
+        height: 25px;
+        top: 30px;
+    }
+    
+    
+} */
 
 @media (max-width: 800px) {
 
@@ -86,6 +103,12 @@
         width: 80px;
         font-size: 14px;
         padding: 30px 0px;
+    }
+
+    .product {
+        width: 20px;
+        height: 20px;
+        top: 25px;
     }
     
 }

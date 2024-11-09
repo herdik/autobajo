@@ -28,6 +28,18 @@
     width: 100%;
     }
 
+    .basic-wheel-info {
+        
+        width: 100%;
+        
+    }
+
+    .basic-wheel-info:nth-child(7),
+    .basic-wheel-info:nth-child(8) {
+    /* justify-content: end; */
+    width: 100%;
+    }
+
     select {
         text-align: center;
     }

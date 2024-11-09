@@ -13,7 +13,7 @@
             <li><a href="./glob-car-advertisement.php">Autá</a></li>
             <li><a href="./glob-tire-advertisement.php">Pneumatiky</a></li>
             <li><a href="./glob-wheel-advertisement.php">Disky</a></li>
-            <li><a href="./glob-tire-wheel-advertisement.php">Pneumatiky s diskami</a></li>
+            <li><a href="./glob-tire-wheel-advertisement.php">Pneumatiky na diskoch</a></li>
             <li><a href="./global-tires-service.php">Pneuservis</a></li>
             <li><a href="./about-us.php">O nás</a></li>
             <!-- <li><a href="./signin.php">Prihlásenie</a></li> -->

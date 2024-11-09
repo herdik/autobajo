@@ -1,0 +1,245 @@
+main {
+    min-height: 100vh;
+    background: linear-gradient(black, rgba(0, 0, 0, 0.507)),
+                url(../img/background-photo.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+main h1 {
+    color: #fff;
+    margin-top: 80px;
+    font-size: clamp(1.2em, 7vw, 2em);
+}
+
+.tires-menu {  
+    margin-top: 20px;
+    width: 100%;
+    max-width: 1280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.tires-menu > a {
+    width: 100%;
+    text-decoration: none;
+    color: black;
+}
+
+.tire-wheel-advertisement {
+    width: 100%;
+    height: 310px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border: 5px solid #fff;
+    padding: 5px;
+    position: relative;
+}
+
+
+/* label on image */
+.advert-label {
+    left: 15px;
+    top: 15px;
+    position: absolute;
+    width: 160px;
+    background-color: #b30606;
+    border-radius: 50%;
+    padding: 60px 0px;
+    color: #fff;
+    font-size: 22px;
+    text-align: center;
+    transform: rotate(-45deg);
+    font-weight: bold;
+    border: 2px dashed #fff;
+}
+/* label on image */
+
+.tire-picture {
+    width: 45%;
+    height: 100%;
+}
+
+.basic-tire-info {
+    width: 55%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.tire-wheel-part {
+    width: 100%;
+    position: relative;
+}
+.first {
+    border-bottom: 1px solid #000;
+}
+
+.product {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 50px;
+    height: 50px;
+}
+
+.product > img {
+    width: 100%;
+    height: 100%;
+}
+
+.tire-brand {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.tire-brand h2 {
+    font-weight: bold;
+    font-size: clamp(1em, 6vw, 1.5em);
+}
+
+.model {
+    font-size: clamp(0.9em, 4vw, 1.17em);
+}
+
+.tire-type {
+    text-align: center;
+}
+.tire-type h2{
+    font-weight: bold;
+    font-size: clamp(1em, 4vw, 1.3em);
+}
+
+.product-type {
+    color: #b30606;
+    font-size: clamp(0.9em, 4vw, 1.2em);
+}
+
+.tire {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tire :nth-child(1){
+    font-weight: bold;
+    font-size: clamp(1em, 6vw, 1.2em);
+}
+.tire :nth-child(2){
+    font-weight: bold;
+    font-size: clamp(0.8em, 5vw, 1em);
+    color: #b30606;
+}
+
+.tire-infos {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+
+}
+
+.set-icon {
+    display: none;
+}
+
+.tire-price {
+    background-color: #b30606;
+    width: 100%;
+}
+
+.tire-price  h2 {
+    color: #fff;
+    font-weight: bolder;
+    font-size: clamp(1em, 6vw, 1.5em);
+    text-align: center;
+}
+
+/* pagination */
+.pagination {
+    display: flex;
+    gap: 10px;
+}
+
+.page-nr {
+    width: 40px;
+    height: 40px;
+    background-color: #b30606;
+    color: #fff;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 40px;
+    text-decoration: none;
+    font-weight: bold;
+}
+.actual-page {
+    border: 1px solid #fff;
+}
+
+/* disabled paginations arrows */
+.disabled {
+    pointer-events: none;
+    cursor: default;
+}
+/* disabled paginations arrows */
+
+/* pagination */
+
+/* loader animation */
+
+.loader {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.loader-animation {
+    width: 50px;
+    height: 50px;
+    border: 10px solid #a09696;
+    border-top: 10px solid #b30606;
+    border-radius: 50%;
+    animation: rounded 1s ease-out infinite;
+}
+
+
+@keyframes rounded {
+    0% {
+        transform: rotate(0deg);
+    }
+
+
+    100% {
+        transform: rotate(360deg);
+    }
+
+}
+/* loader animation */
+

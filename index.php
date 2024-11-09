@@ -74,7 +74,7 @@
                 <a class="menu-part" href="./glob-tire-wheel-advertisement.php">
                     <article class="div-menu-part part-tires-wheels">
                         <img class="div-menu-images-last" src="./img/tires-wheels.jpg" alt="">
-                        <span class="tires-wheels advert-text">Pneumatiky s diskami</span>
+                        <span class="tires-wheels advert-text">Pneumatiky na diskoch</span>
                     </article>
                 </a>
                 

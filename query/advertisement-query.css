@@ -39,6 +39,15 @@
     
     
 }
+
+@media (max-width: 500px) {
+    .product {
+        top: 30px;
+        width: 25px;
+        height: 25px;
+    }
+}
+
 @media (max-width: 380px) {
 
     .advert-infos  {
@@ -60,4 +69,5 @@
         font-size: 16px;
         padding: 40px 0px;
     }
+
 }

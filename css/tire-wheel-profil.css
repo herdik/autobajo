@@ -1,0 +1,487 @@
+main {
+    min-height: 100vh;
+    background: url(../img/background-photo.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+/* css for all tire advertisement */
+
+.advertisement-tire {  
+    margin-top: 20px;
+    width: 100%;
+    max-width: 1280px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    background: rgba(0, 0, 0, 0.877);
+    border: 5px solid #fff;
+}
+
+/* css for all tire advertisement */
+
+/* heading part */
+
+.heading {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+/* heading image */
+.main-image {
+    width: 50%;
+    /* min-height: 350px; */
+    max-height: 420px;
+    border: 1px solid #fff;
+    cursor: pointer;
+    position: relative;
+}
+
+.main-image img {
+    width: 100%;
+    height: 100%;
+}
+/* heading image */
+
+/* label on image */
+.advert-label {
+    left: 10px;
+    top: 10px;
+    position: absolute;
+    width: 160px;
+    background-color: #b30606;
+    border-radius: 50%;
+    padding: 60px 0px;
+    color: #fff;
+    font-size: 22px;
+    text-align: center;
+    transform: rotate(-45deg);
+    font-weight: bold;
+}
+/* label on image */
+
+
+/* Gallery open text */
+.gallery-text {
+    font-size: clamp(0.7em, 4vw, 1em);
+    position: absolute;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.548);
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px 30px;
+}
+/* Gallery open text */
+
+
+/* main tire info */
+.main-tire-info {
+    width: 50%;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+/* main tire info */
+
+/* tire brand and model */
+.product-part {
+    width: 100%;
+    position: relative;
+}
+
+.part-tire {
+    border-bottom: 2px dashed #fff;
+    padding-bottom: 15px;
+}
+
+/* icons */
+.product {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 40px;
+    height: 40px;
+}
+
+.product > img {
+    width: 100%;
+    height: 100%;
+}
+/* icons */
+
+.tire-brand {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.tire-brand h2 {
+    font-weight: bold;
+    font-size: clamp(1.2em, 3vw, 2em);
+}
+.tire-brand h3 {
+    font-weight: bold;
+    font-size: clamp(1em, 2vw, 1.5em);
+}
+/* tire brand and model */
+
+/* tire description */
+.tire-description h2 {
+    color: #fff;
+    text-align: center;
+    font-size: clamp(1em, 2vw, 1.5em);
+}
+/* tire description */
+
+/* basic tire info */
+.tire-infos {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+
+}
+
+.tire {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 5px;
+    align-items: center;
+    width: 33%;
+}
+
+
+.tire :nth-child(1){
+    font-weight: bold;
+    font-size: clamp(1em, 2vw, 1.5em);
+}
+.tire :nth-child(2){
+    font-weight: bold;
+    font-size: 20px;
+    color: #fff;
+}
+
+.sub-heading {
+    text-align: center;
+}
+/* basic tire info */
+
+/* heading part */
+
+/* slider */
+
+.slider{
+    width: 100%;
+    height: 110px;
+    margin-inline: auto;
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    mask-image: linear-gradient(to right,
+    rgba(0,0,0,0),
+    rgba(0,0,0,1) 20%,
+    rgba(0,0,0,1) 80%,
+    rgba(0, 0, 0, 0)
+    );
+}
+
+
+.slide {
+    width: 200px;
+    height: 100px;
+    border: 1px solid #fff;
+    position: absolute;
+    /* right: max(calc(200px * 6), 100%); */
+    animation-name: sliderLeft;
+    animation-timing-function: linear;
+    animation-duration: 30s;
+    animation-iteration-count: infinite; 
+}
+.hide-slider {
+    display: none;
+}
+
+.slider:hover {
+    cursor: pointer;
+}
+/* slider */
+
+/* administration */
+.management-part {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+}
+
+.administration  {
+    width: 100%;
+    gap: 20px;
+    color: #fff;
+    font-size: clamp(1.2em, 1.5vw, 1.3em);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.administration h2{
+    text-align: center;
+    font-size: clamp(1.2em, 3vw, 2em);
+}
+
+.administration-part {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    gap: 20px;
+}
+
+/* button administration */
+
+.btn {
+    padding: 8px 15px;
+    cursor: pointer;
+    color: #fff;
+    border: 5px solid #b30606;
+    background-color: #b30606;
+    font-weight: bold;
+    transition: 0.4s all linear;
+    text-decoration: none;
+}
+.btn:hover {
+    cursor: pointer;
+    color: #b30606;
+    border: 5px solid #b30606;
+    background-color: #fff;
+}
+
+.btn-green{
+    padding: 8px 15px;
+    cursor: pointer;
+    color: #fff;
+    font-weight: bold;
+    transition: 0.4s all linear;
+    text-decoration: none;
+    background-color: green;
+    border: 5px solid green;
+}
+.btn-green:hover {
+    cursor: pointer;
+    color: green;
+    border: 5px solid green;
+    background-color: #fff;
+}
+/* button administration */
+
+/* administration */
+
+
+/* Other equipments and vehicle condition */
+
+/* settings for sequence */
+.part {
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    
+}
+
+.part :nth-child(2) {
+    margin-top: 20px;
+}
+.part h2{
+    text-align: center;
+    border-bottom: 3px solid #fff;
+    padding-bottom: 10px;
+    font-size: clamp(1.2em, 3vw, 2em);
+}
+/* settings for sequence */
+
+/* settings inside in sequence */
+.box {
+    font-size: clamp(1em, 2vw, 1.5em);
+    width: 100%;
+}
+
+.set-icon {
+    display: none;
+}
+/* settings inside in sequence */
+
+/* tire price */
+.tire-price {
+    background-color: #b30606;
+}
+/* tire price */
+
+
+/* Other equipments and vehicle condition */
+
+/* dialog gallery slider */
+#gallery-slider {
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.856);
+    overflow: hidden;
+}
+#gallery-slider::backdrop {
+    background-color: rgba(0, 0, 0, 0.856);
+}
+.show-image {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    overflow: hidden;
+}
+
+.show-image img {
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border: 3px solid #fff;
+}
+
+
+/* dialogs button */
+.close {
+    width: 40px;
+    height: 40px;
+    font-size: clamp(1.2em, 7vw, 2em);
+    color: #fff;
+    position: absolute;
+    top: 2%;
+    right: 2%;
+    cursor: pointer;
+}
+.left {
+    width:40px;
+    height: 40px;
+    font-size: 100px;
+    border-left: 5px solid #fff;
+    border-bottom: 5px solid #fff;
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    transform: rotate(45deg) translateY(-50%);
+    cursor: pointer;
+}
+.right {
+    width: 40px;
+    height: 40px;
+    font-size: clamp(1.2em, 7vw, 2em);
+    border-right: 5px solid #fff;
+    border-bottom: 5px solid #fff;
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    transform: rotate(-45deg) translateY(-50%);
+    cursor: pointer;
+}
+/* dialogs button */
+
+/* dialog image info */
+.img-info {
+    width: 65px;
+    height: 65px;
+    font-size: 1.3rem;
+    position: absolute;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.856);
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 5%;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 65px;
+    letter-spacing: 3px;
+}
+/* dialog image info */
+
+/* dialog gallery slider */
+
+/* loader animation */
+
+.loader {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.loader-animation {
+    width: 50px;
+    height: 50px;
+    border: 10px solid #a09696;
+    border-top: 10px solid #b30606;
+    border-radius: 50%;
+    animation: rounded 1s ease-out infinite;
+}
+
+
+@keyframes rounded {
+    0% {
+        transform: rotate(0deg);
+    }
+
+
+    100% {
+        transform: rotate(360deg);
+    }
+
+}
+/* loader animation */
+
+
+/* animation slider */
+@keyframes sliderLeft {
+    to {
+        right: -200px;
+    }
+}
+
+/* animation slider */
