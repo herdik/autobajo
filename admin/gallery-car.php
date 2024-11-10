@@ -58,6 +58,13 @@ $image_sequence = null;
 </head>
 <body>
     <?php require "../assets/admin-header.php" ?>
+
+    <dialog class="confirm-window" id="confirm-window">
+
+       <h1>Poradie bolo zmenené!</h1> 
+
+    </dialog>
+
     <main>
     
         
@@ -149,6 +156,24 @@ $image_sequence = null;
 
                     </div>
 
+                    <div class="sort-part">
+                        <div class="button-info">
+                            <h3>Upraviť poradie v Galérii</h3>
+                        </div>
+                        <input class="btn" id="image-name-sortable" type="submit" name="start_sort" value="Zmeniť">
+
+                        <form class="edit-form" id="delete-form" method="POST">
+
+                            <input type="hidden" name="action" value="delete">
+                            <input type="hidden" name="gallery" value="true">
+                            <input type="hidden" id="image-id-delete" name="image_id[]" value="">
+
+                            <input class="btn" id="image-submit-sortable" type="submit" name="submit" value="Potvrdiť">
+
+                        </form> 
+
+                    </div>
+
                 </div>
           
         </section>
@@ -158,10 +183,10 @@ $image_sequence = null;
         <section class="dashboard-menu">
          
 
-            <article class="images-part">
+            <article class="images-part" id="sortable">
                
                     <?php foreach ($car_images as $car_image): ?>
-                    <div class="div-menu-images">
+                    <div class="div-menu-images ui-state-default">
                         
                         <input type="hidden" name="image_id" value="<?= htmlspecialchars($car_image["image_id"]) ?>">
 
@@ -189,11 +214,13 @@ $image_sequence = null;
     <?php require "../assets/footer.php" ?>
     
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
 
     <script src="../js/header.js"></script>    
     <script src="../js/show-image-info-advertisement.js"></script>   
     <script src="../js/reg-form.js"></script>   
     <script src="../js/choose-car-image-gallery.js"></script>   
+    <script src="../js/sortable-gallery-car.js"></script>   
             
 </body>
 </html>

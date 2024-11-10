@@ -92,7 +92,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
 
                     if ($tire_wheel_id) {
                         // save title image for tire advertisement to tire_wheel_image table
-                        $image_id = TireWheelImage::insertTireWheelImage($connection, $tire_wheel_id, $new_image_name);
+                        $priority = TireWheelImage::getMaxPriorityNumber($connection, $tire_wheel_id);
+                        if (empty($priority)){
+                            $priority = 0;
+                        }
+
+                        $image_id = TireWheelImage::insertTireWheelImage($connection, $tire_wheel_id, $new_image_name, $priority + 1);
                     }
 
                     if ($tire_wheel_id && $image_id) {
@@ -129,7 +134,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
 
                 if ($tire_wheel_id) {
                     // save title image for tire advertisement to tire_wheel_image table
-                    $image_id = TireWheelImage::insertTireWheelImage($connection, $tire_wheel_id, $new_image_name);
+                    $priority = TireWheelImage::getMaxPriorityNumber($connection, $tire_wheel_id);
+                    if (empty($priority)){
+                        $priority = 0;
+                    }
+
+                    $image_id = TireWheelImage::insertTireWheelImage($connection, $tire_wheel_id, $new_image_name, $priority + 1);
                 }
             }
         }

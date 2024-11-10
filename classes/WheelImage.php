@@ -16,15 +16,16 @@ class WheelImage {
      * @return boolean true or false
      * 
      */
-    public static function insertWheelImage($connection, $wheel_id, $image_name){
-        $sql = "INSERT INTO wheel_image (wheel_id, image_name)
-                VALUES (:wheel_id, :image_name)";
+    public static function insertWheelImage($connection, $wheel_id, $image_name, $priority){
+        $sql = "INSERT INTO wheel_image (wheel_id, image_name, priority)
+                VALUES (:wheel_id, :image_name, :priority)";
        
         $stmt = $connection->prepare($sql);
 
 
         $stmt->bindValue(":wheel_id", $wheel_id, PDO::PARAM_INT);
         $stmt->bindValue(":image_name", $image_name, PDO::PARAM_STR);
+        $stmt->bindValue(":priority", $priority, PDO::PARAM_INT);
 
 
         try {
@@ -55,7 +56,7 @@ class WheelImage {
         $sql = "SELECT $columns
                 FROM wheel_image
                 WHERE wheel_id = :wheel_id
-                ORDER BY image_id";
+                ORDER BY priority, image_id";
 
         $stmt = $connection->prepare($sql);
 
@@ -155,6 +156,43 @@ class WheelImage {
 
     /**
      *
+     * RETURN WHEEL IMAGE FROM DATABASE
+     *
+     * @param object $connection - connection to database
+     * @param int image_id - represent one image_id
+     * @return array all info for one image
+     */
+    public static function getMaxPriorityNumber($connection, $wheel_id){
+        $sql = "SELECT MAX(priority) 
+                FROM wheel_image
+                WHERE wheel_id = :wheel_id";
+        
+
+        // connect sql amend to database
+        $stmt = $connection->prepare($sql);
+
+        // all parameters to send to Database
+        $stmt->bindValue(":wheel_id", $wheel_id, PDO::PARAM_INT);
+
+        try {
+            if($stmt->execute()){
+                // asscoc array for one wheel
+                return $stmt->fetch(PDO::FETCH_COLUMN);
+            } else {
+                throw Exception ("Príkaz pre získanie najvyšieho priority čísla podľa wheel id obrázku auta sa nepodaril");
+            }
+        } catch (Exception $e){
+            // 3 je že vyberiem vlastnú cestu k súboru
+            error_log("Chyba pri funkcii getWheelImage, získanie informácií z databázy zlyhalo\n", 3, "../errors/error.log");
+            echo "Výsledná chyba je: " . $e->getMessage();
+        }
+
+
+    }
+
+
+    /**
+     *
      * DELETE SELECTED IMAGE FROM FOLDER
      *
      * @param object $connection - connection to database
@@ -215,6 +253,46 @@ class WheelImage {
         } catch (Exception $e){
             // 3 je že vyberiem vlastnú cestu k súboru
             error_log("Chyba pri funkcii deleteWheelImage, získanie informácií z databázy zlyhalo\n", 3, "../errors/error.log");
+            echo "Výsledná chyba je: " . $e->getMessage();
+        }
+    }
+
+    /**
+     *
+     * RETURN BOOLEAN FROM DATABASE AFTER UPDATED WHEEL IMAGE
+     *
+     * @param object $connection - database connection
+     * @param int $image_id - specifically id for specifically wheel advertisement
+     * @param string $priority - priority for specifically wheel advertisement
+     *
+     * 
+     * @return boolean true or false
+     */
+    public static function updateWheelImagePriority($connection, $image_id, $priority){
+
+        $sql = "UPDATE wheel_image
+                SET priority = :priority
+                WHERE image_id = :image_id";
+        
+
+        // connect sql amend to database
+        $stmt = $connection->prepare($sql);
+
+        // all parameters to send to Database
+        // filling and bind values will be execute to Database
+        $stmt->bindValue(":image_id", $image_id, PDO::PARAM_INT);
+        $stmt->bindValue(":priority", $priority, PDO::PARAM_INT);
+        
+        
+        try {
+            if($stmt->execute()){
+                return true;
+            } else {
+                throw Exception ("Príkaz pre update obrázku auta inzerátu sa nepodaril");
+            }
+        } catch (Exception $e){
+            // 3 je že vyberiem vlastnú cestu k súboru
+            error_log("Chyba pri funkcii updateWheelImagePriority, získanie informácií z databázy zlyhalo\n", 3, "../errors/error.log");
             echo "Výsledná chyba je: " . $e->getMessage();
         }
     }

@@ -109,7 +109,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
                                     }
                                 }
                                 // save title image for tire advertisement to tire_image table / insert new images to gallery
-                                $image_id = TireImage::insertTireImage($connection, $tire_id, $new_image_name);
+                                $priority = TireImage::getMaxPriorityNumber($connection, $tire_id);
+                                if (empty($priority)){
+                                    $priority = 0;
+                                }
+
+                                $image_id = TireImage::insertTireImage($connection, $tire_id, $new_image_name, $priority + 1);
                                 
                                 
                                 

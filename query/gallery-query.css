@@ -1,11 +1,11 @@
-@media (max-width: 650px) {
+@media (max-width: 660px) {
 
     #choose-img-text, #btn-gall, #btn-title, .add-image > p {
         width: 100%;
         height: 50px;
     }
 
-    .add-part, .deleted-part {
+    .add-part, .deleted-part, .sort-part {
         width: 100%;
 
         border: 3px solid #fff;

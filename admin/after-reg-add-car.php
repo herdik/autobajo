@@ -114,7 +114,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
 
                     if ($car_id) {
                         // save title image for car advertisement to car_image table
-                        $image_id = CarImage::insertCarImage($connection, $car_id, $new_image_name);
+                        $priority = CarImage::getMaxPriorityNumber($connection, $car_id);
+                        if (empty($priority)){
+                            $priority = 0;
+                        } 
+
+                        $image_id = CarImage::insertCarImage($connection, $car_id, $new_image_name, $priority + 1);
                     }
 
                     if ($car_id && $image_id) {
@@ -151,7 +156,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
 
                 if ($car_id) {
                     // save title image for car advertisement to car_image table
-                    $image_id = CarImage::insertCarImage($connection, $car_id, $new_image_name);
+                    $priority = CarImage::getMaxPriorityNumber($connection, $car_id);
+                    if (empty($priority)){
+                            $priority = 0;
+                    }
+                    $image_id = CarImage::insertCarImage($connection, $car_id, $new_image_name, $priority + 1);
                 }
             }
         }

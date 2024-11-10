@@ -16,15 +16,16 @@ class CarImage {
      * @return boolean true or false
      * 
      */
-    public static function insertCarImage($connection, $car_id, $image_name){
-        $sql = "INSERT INTO car_image (car_id, image_name)
-                VALUES (:car_id, :image_name)";
+    public static function insertCarImage($connection, $car_id, $image_name, $priority){
+        $sql = "INSERT INTO car_image (car_id, image_name, priority)
+                VALUES (:car_id, :image_name, :priority)";
        
         $stmt = $connection->prepare($sql);
 
 
         $stmt->bindValue(":car_id", $car_id, PDO::PARAM_INT);
         $stmt->bindValue(":image_name", $image_name, PDO::PARAM_STR);
+        $stmt->bindValue(":priority", $priority, PDO::PARAM_INT);
 
 
         try {
@@ -54,7 +55,7 @@ class CarImage {
         $sql = "SELECT $columns
                 FROM car_image
                 WHERE car_id = :car_id
-                ORDER BY image_id";
+                ORDER BY priority, image_id";
 
         $stmt = $connection->prepare($sql);
 
@@ -151,6 +152,42 @@ class CarImage {
 
     }
 
+    /**
+     *
+     * RETURN CAR IMAGE FROM DATABASE
+     *
+     * @param object $connection - connection to database
+     * @param int image_id - represent one image_id
+     * @return array all info for one image
+     */
+    public static function getMaxPriorityNumber($connection, $car_id){
+        $sql = "SELECT MAX(priority) 
+                FROM car_image
+                WHERE car_id = :car_id";
+        
+
+        // connect sql amend to database
+        $stmt = $connection->prepare($sql);
+
+        // all parameters to send to Database
+        $stmt->bindValue(":car_id", $car_id, PDO::PARAM_INT);
+
+        try {
+            if($stmt->execute()){
+                // asscoc array for one car
+                return $stmt->fetch(PDO::FETCH_COLUMN);
+            } else {
+                throw Exception ("Príkaz pre získanie najvyšieho priority čísla podľa car id obrázku auta sa nepodaril");
+            }
+        } catch (Exception $e){
+            // 3 je že vyberiem vlastnú cestu k súboru
+            error_log("Chyba pri funkcii getCarImage, získanie informácií z databázy zlyhalo\n", 3, "../errors/error.log");
+            echo "Výsledná chyba je: " . $e->getMessage();
+        }
+
+
+    }
+
 
     /**
      *
@@ -214,6 +251,48 @@ class CarImage {
         } catch (Exception $e){
             // 3 je že vyberiem vlastnú cestu k súboru
             error_log("Chyba pri funkcii deleteCarImage, získanie informácií z databázy zlyhalo\n", 3, "../errors/error.log");
+            echo "Výsledná chyba je: " . $e->getMessage();
+        }
+    }
+
+
+
+    /**
+     *
+     * RETURN BOOLEAN FROM DATABASE AFTER UPDATED CAR IMAGE
+     *
+     * @param object $connection - database connection
+     * @param int $image_id - specifically id for specifically car advertisement
+     * @param string $priority - priority for specifically car advertisement
+     *
+     * 
+     * @return boolean true or false
+     */
+    public static function updateCarImagePriority($connection, $image_id, $priority){
+
+        $sql = "UPDATE car_image
+                SET priority = :priority
+                WHERE image_id = :image_id";
+        
+
+        // connect sql amend to database
+        $stmt = $connection->prepare($sql);
+
+        // all parameters to send to Database
+        // filling and bind values will be execute to Database
+        $stmt->bindValue(":image_id", $image_id, PDO::PARAM_INT);
+        $stmt->bindValue(":priority", $priority, PDO::PARAM_INT);
+        
+        
+        try {
+            if($stmt->execute()){
+                return true;
+            } else {
+                throw Exception ("Príkaz pre update obrázku auta inzerátu sa nepodaril");
+            }
+        } catch (Exception $e){
+            // 3 je že vyberiem vlastnú cestu k súboru
+            error_log("Chyba pri funkcii updateCarImagePriority, získanie informácií z databázy zlyhalo\n", 3, "../errors/error.log");
             echo "Výsledná chyba je: " . $e->getMessage();
         }
     }

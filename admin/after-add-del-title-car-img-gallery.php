@@ -109,7 +109,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
                                     }
                                 }
                                 // save title image for car advertisement to car_image table / insert new images to gallery
-                                $image_id = CarImage::insertCarImage($connection, $car_id, $new_image_name);
+                                $priority = CarImage::getMaxPriorityNumber($connection, $car_id);
+                                if (empty($priority)){
+                                    $priority = 0;
+                                }
+                                
+                                $image_id = CarImage::insertCarImage($connection, $car_id, $new_image_name, $priority + 1);
                                 
                                 
                                 

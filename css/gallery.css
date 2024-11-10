@@ -134,7 +134,7 @@ input[type="submit"]:hover {
     flex-wrap: wrap;
 }
 
-.add-part, .deleted-part {
+.add-part, .deleted-part, .sort-part {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -143,7 +143,7 @@ input[type="submit"]:hover {
     width: 25%;
 }
 
-#image-name-add, #image-name-delete {
+#image-name-add, #image-name-delete, #image-name-sortable {
     width: 100%;
 }
 
@@ -151,7 +151,7 @@ input[type="submit"]:hover {
     width: 100%;
     text-align: center;
 }
-#image-submit-add,  #image-submit-delete{
+#image-submit-add,  #image-submit-delete, #image-submit-sortable{
     width: 100%;
     border: 5px solid green;
     background-color: green;
@@ -233,4 +233,17 @@ input[type="submit"]:hover {
         opacity: 1;
     }
 
+}
+
+/* dialog confirm */
+.confirm-window {
+    padding: 20px;
+    background-color: #b30606;
+    max-width: 350px;
+    text-align: center;
+    color: #fff;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    border-radius: 10px;
 }

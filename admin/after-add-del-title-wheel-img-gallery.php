@@ -109,7 +109,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
                                     }
                                 }
                                 // save title image for wheel advertisement to wheel_image table / insert new images to gallery
-                                $image_id = WheelImage::insertWheelImage($connection, $wheel_id, $new_image_name);
+                                $priority = WheelImage::getMaxPriorityNumber($connection, $wheel_id);
+                                if (empty($priority)){
+                                    $priority = 0;
+                                }
+
+                                $image_id = WheelImage::insertWheelImage($connection, $wheel_id, $new_image_name, $priority + 1);
                                 
                                 
                                 
