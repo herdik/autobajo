@@ -10,3 +10,66 @@
 input:focus {
     outline: none;
 }
+
+/* cookies */
+
+.cookies-content {
+    justify-content: flex-start;
+    background-color: #b30606;
+}
+
+.cookies {
+    width: 100vw;
+    height: 100vh;
+    bottom: 10px;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: transparent;
+    position: fixed;
+    z-index: 10000;
+    color: #fff;
+    text-align: center;
+}
+
+.cookies-bar {
+    width: 100%;
+    max-width: 400px;
+    min-width: 200px;
+    min-height: 150px;
+    background: linear-gradient(#b30606, #7e4343);;
+    border: 2px solid #fff;
+    z-index: 999;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.cookies-bar > p, .cookies-bar p > a {
+    font-size: 12px;
+    color: #fff;
+}
+
+.cookies-btns {
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.cook-btn {
+    width: 120px;
+    padding: 4px 8px;
+    color: #b30606;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+@media (max-width: 640px) {
+
+    
+    
+}
+/* cookies */
