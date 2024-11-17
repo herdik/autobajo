@@ -192,6 +192,10 @@ function selectImages () {
 // JQUERY
 $(document).ready(function () {
     $("#btn-gall").click(function (e) { 
+        // show loader 
+        loader[0].style.display = "flex"
+        // show loader 
+
         e.preventDefault();
         let galImages = $("#registration-form-images")[0]
         let formData = new FormData(galImages)
@@ -211,7 +215,8 @@ $(document).ready(function () {
                     $(".error-message")[0].textContent += response + " " + "!!!"
                     $(".error-message").removeClass("hide-error")
                 } else {
-                    window.location.reload()
+                    // window.location.reload()
+                    window.location.reload(history.back())
                 }
                 
             }
@@ -222,6 +227,10 @@ $(document).ready(function () {
 
 $(document).ready(function () {
     $("#image-submit-delete").click(function (e) { 
+        // show loader 
+        loader[0].style.display = "flex"
+        // show loader 
+        
         e.preventDefault();
 
         let forDeleteData
@@ -248,7 +257,8 @@ $(document).ready(function () {
                     $(".error-message")[0].textContent += res + " " + "!!!"
                     $(".error-message").removeClass("hide-error")
                 } else {
-                    window.location.reload()
+                    // window.location.reload()
+                    window.location.reload(history.back())
                 }
             }
         }); 

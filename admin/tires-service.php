@@ -69,6 +69,10 @@ $adhesive_weight = AdhesiveWeight::getAllAdhesiveWeight($connection);
 </head>
 <body>
 
+    <div class="loader">
+        <div class="loader-animation"></div>
+    </div>
+
     <?php require "../assets/admin-header.php" ?>
 
     <main>
@@ -240,6 +244,7 @@ $adhesive_weight = AdhesiveWeight::getAllAdhesiveWeight($connection);
 
     <script src="../js/header.js"></script>    
     <script src="../js/tire-service.js"></script>    
+    <script src="../js/loading.js"></script>  
 </body>
 </html>
 

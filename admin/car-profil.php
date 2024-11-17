@@ -63,6 +63,10 @@ $inside_index = 13;
 
 </head>
 <body>
+
+    <div class="loader">
+        <div class="loader-animation"></div>
+    </div>
     
     <?php require "../assets/admin-header.php" ?>
 
@@ -274,6 +278,7 @@ $inside_index = 13;
     
     <script src="../js/header.js"></script>                   
     <script src="../js/show-gallery.js"></script>                   
-    <script src="../js/update-car-advert.js"></script>                   
+    <script src="../js/update-car-advert.js"></script>
+    <script src="../js/loading.js"></script>                     
 </body>
 </html>

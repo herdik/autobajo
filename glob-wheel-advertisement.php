@@ -87,7 +87,7 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
             <!-- advertisement part -->
             <!-- if active advertisment is false added wheel history to HREF -->
 
-            <a href="./glob-wheel-profil.php?wheel_id=<?= htmlspecialchars($one_wheel["wheel_id"]) ?>&active_advertisement=<?= htmlspecialchars($active_advertisement) ?>"> 
+            <a href="./glob-wheel-profil/<?= htmlspecialchars($one_wheel["wheel_id"]) ?>/<?= htmlspecialchars($active_advertisement) ?>"> 
             <article class="wheel-advertisement advertisement">
 
             <!-- stamp for sold and reserved  -->

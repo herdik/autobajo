@@ -25,7 +25,8 @@ if ((isset($_GET["wheel_id"]) and is_numeric($_GET["wheel_id"])) and (isset($_GE
 <!DOCTYPE html>
 <html lang="sk">
 <head>
-<meta charset="UTF-8">
+<base href="http://localhost/autobajo/">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profil pneumatík</title>
 

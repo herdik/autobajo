@@ -26,7 +26,8 @@ function runEvent(event) {
             },
 
             success: function () {
-                window.location.reload()
+                // window.location.reload()
+                window.location.reload(history.back())
             }
         }); 
 }

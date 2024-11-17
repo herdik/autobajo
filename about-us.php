@@ -41,6 +41,10 @@ $contact_infos = Contact::getAllContactInfos($connection);
 </head>
 <body>
 
+    <div class="loader">
+        <div class="loader-animation"></div>
+    </div>
+
     <?php require "./assets/header.php" ?>
 
     <main>
@@ -130,6 +134,7 @@ $contact_infos = Contact::getAllContactInfos($connection);
     </main>
     
     <?php require "./assets/footer.php" ?>
-    <script src="./js/header.js"></script>       
+    <script src="./js/header.js"></script>    
+    <script src="./js/loading.js"></script>    
 </body>
 </html>

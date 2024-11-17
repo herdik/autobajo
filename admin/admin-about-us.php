@@ -49,6 +49,10 @@ $contact_infos = Contact::getAllContactInfos($connection);
 </head>
 <body>
 
+    <div class="loader">
+        <div class="loader-animation"></div>
+    </div>
+
     <?php require "../assets/admin-header.php" ?>
 
     <dialog class="confirm-window" id="confirm-window">
@@ -176,7 +180,8 @@ $contact_infos = Contact::getAllContactInfos($connection);
 
     <script src="../js/header.js"></script>     
     <script src="../js/about-us.js"></script>     
-    <script src="../js/contact-info.js"></script>     
+    <script src="../js/contact-info.js"></script>   
+    <script src="../js/loading.js"></script>    
          
 </body>
 </html>

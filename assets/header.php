@@ -10,12 +10,12 @@
         <ul id="main-menu">
 
             <li><a href="./index.php">Domov</a></li>
-            <li><a href="./glob-car-advertisement.php">Autá</a></li>
-            <li><a href="./glob-tire-advertisement.php">Pneumatiky</a></li>
-            <li><a href="./glob-wheel-advertisement.php">Disky</a></li>
-            <li><a href="./glob-tire-wheel-advertisement.php">Pneumatiky na diskoch</a></li>
-            <li><a href="./global-tires-service.php">Pneuservis</a></li>
-            <li><a href="./about-us.php">O nás</a></li>
+            <li><a href="./glob-car-advertisement">Autá</a></li>
+            <li><a href="./glob-tire-advertisement">Pneumatiky</a></li>
+            <li><a href="./glob-wheel-advertisement">Disky</a></li>
+            <li><a href="./glob-tire-wheel-advertisement">Pneumatiky na diskoch</a></li>
+            <li><a href="./global-tires-service">Pneuservis</a></li>
+            <li><a href="./about-us">O nás</a></li>
             <!-- <li><a href="./signin.php">Prihlásenie</a></li> -->
             
 

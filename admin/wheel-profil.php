@@ -58,6 +58,10 @@ if ((isset($_GET["wheel_id"]) and is_numeric($_GET["wheel_id"])) and (isset($_GE
 
 </head>
 <body>
+
+    <div class="loader">
+        <div class="loader-animation"></div>
+    </div>
    
     <?php require "../assets/admin-header.php" ?>
 
@@ -248,6 +252,7 @@ if ((isset($_GET["wheel_id"]) and is_numeric($_GET["wheel_id"])) and (isset($_GE
     
     <script src="../js/header.js"></script>    
     <script src="../js/show-gallery.js"></script>  
-    <script src="../js/update-wheel-advert.js"></script>                    
+    <script src="../js/update-wheel-advert.js"></script>  
+    <script src="../js/loading.js"></script>                     
 </body>
 </html>

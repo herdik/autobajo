@@ -1,17 +1,6 @@
 <?php
-require "../classes/Database.php";
-require "../classes/TireWheel.php";
-
-
-
-// verifying by session if visitor have access to this website
-require "../classes/Authorization.php";
-// get session
-session_start();
-// authorization for visitor - if has access to website 
-if (!Auth::isLoggedIn()){
-    die ("nepovolený prístup");
-} 
+require "./classes/Database.php";
+require "./classes/TireWheel.php";
 
 
 // database connection
@@ -59,7 +48,7 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inzeráty pneumatiky na diskoch</title>
 
-    <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="./img/favicon.ico">
 
     <!-- ICONS MENU -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
@@ -70,12 +59,12 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kodchasan:wght@200&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="../css/general.css">
-    <link rel="stylesheet" href="../css/admin-header.css">
-    <link rel="stylesheet" href="../css/footer.css">
-    <link rel="stylesheet" href="../css/tires-wheels.css">
-    <link rel="stylesheet" href="../query/header-query.css">
-    <link rel="stylesheet" href="../query/advertisement-query.css">
+    <link rel="stylesheet" href="./css/general.css">
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/footer.css">
+    <link rel="stylesheet" href="./css/tires-wheels.css">
+    <link rel="stylesheet" href="./query/global-header-query.css">
+    <link rel="stylesheet" href="./query/advertisement-query.css">
 
 </head>
 <body>
@@ -84,58 +73,58 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
         <div class="loader-animation"></div>
     </div>
 
-    <?php require "../assets/admin-header.php" ?>
+    <?php require "./assets/header.php" ?>
 
     <main>
 
-        <h1>Ponuka pneumatík na diskoch</h1>
+    <h1>Ponuka pneumatík na diskoch</h1>
 
-        <?php if ($number_of_advert != 0 || $tires_wheel_advertisements != null): ?>
+<?php if ($number_of_advert != 0 || $tires_wheel_advertisements != null): ?>
 
-        <section class="tires-menu">
+<section class="tires-menu">
 
-            <?php foreach ($tires_wheel_advertisements as $one_tire_wheel): ?>
+    <?php foreach ($tires_wheel_advertisements as $one_tire_wheel): ?>
 
-            <!-- advertisement part -->
-            <!-- if active advertisment is false added tire history to HREF -->
-            
-            <a href="./tire-wheel-profil.php?tire_wheel_id=<?= htmlspecialchars($one_tire_wheel["tire_wheel_id"]) ?>&active_advertisement=<?= htmlspecialchars($active_advertisement) ?>"> 
-            <article class="tire-wheel-advertisement advertisement">
+    <!-- advertisement part -->
+    <!-- if active advertisment is false added tire history to HREF -->
+    
+    <a href="./glob-tire-wheel-profil/<?= htmlspecialchars($one_tire_wheel["tire_wheel_id"]) ?>/<?= htmlspecialchars($active_advertisement) ?>"> 
+    <article class="tire-wheel-advertisement advertisement">
 
-            <!-- stamp for sold and reserved  -->
-                <?php if ($one_tire_wheel["reserved"]): ?>
-                    <div class="advert-label">
-                        Rezervované
-                    </div>
-                <?php elseif ($one_tire_wheel["sold"]): ?>
-                    <div class="advert-label">
-                        Predané
-                    </div>
-                <?php endif; ?>
-            <!-- stamp for sold and reserved  -->
+    <!-- stamp for sold and reserved  -->
+        <?php if ($one_tire_wheel["reserved"]): ?>
+            <div class="advert-label">
+                Rezervované
+            </div>
+        <?php elseif ($one_tire_wheel["sold"]): ?>
+            <div class="advert-label">
+                Predané
+            </div>
+        <?php endif; ?>
+    <!-- stamp for sold and reserved  -->
 
-            <!--image part of advertisement  -->  
-                <?php if ($one_tire_wheel["tire_wheel_image"] != "no-photo-car.jpg"): ?>
+    <!--image part of advertisement  -->  
+        <?php if ($one_tire_wheel["tire_wheel_image"] != "no-photo-car.jpg"): ?>
 
-                    <div class="tire-picture advert-picture" style="
-                                    background: url(../uploads/tireswithwheels/<?= htmlspecialchars($one_tire_wheel["tire_wheel_id"]) ?>/<?= htmlspecialchars($one_tire_wheel["tire_wheel_image"]) ?>);
-                                    background-size: cover;
-                                    background-position: center;
-                                    background-repeat: no-repeat;
-                                    ">
-                    </div>
-                
-                <?php else: ?>
-                    <div class="tire-picture advert-picture" style="
-                                    background: url(../img/no-photo-car/no-photo-car.jpg);
-                                    background-size: cover;
-                                    background-position: center;
-                                    background-repeat: no-repeat;
-                                    ">
-                    </div>
+            <div class="tire-picture advert-picture" style="
+                            background: url(./uploads/tireswithwheels/<?= htmlspecialchars($one_tire_wheel["tire_wheel_id"]) ?>/<?= htmlspecialchars($one_tire_wheel["tire_wheel_image"]) ?>);
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                            ">
+            </div>
+        
+        <?php else: ?>
+            <div class="tire-picture advert-picture" style="
+                            background: url(./img/no-photo-car/no-photo-car.jpg);
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                            ">
+            </div>
 
-                <?php endif ?>
-                <!--image part of advertisement  -->
+        <?php endif ?>
+        <!--image part of advertisement  -->
 
                 <!-- infos part of advertisement -->
                 <div class="basic-tire-info basic-advert-infos">
@@ -172,7 +161,7 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
                 
                         </div>
                         <div class="product">
-                            <img src="../img/icon-tire.png" alt="tire" alt="">
+                            <img src="./img/icon-tire.png" alt="tire" alt="">
                         </div>
                     </div>
 
@@ -216,7 +205,7 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
                 
                         </div>
                         <div class="product">
-                            <img src="../img/icon-wheel.png" alt="wheel" alt="">
+                            <img src="./img/icon-wheel.png" alt="wheel" alt="">
                         </div>
                     </div>
                     <div class="tire-price">
@@ -241,15 +230,15 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
             <?php if ($number_of_pages < 6): ?>
 
                 <!-- arrow left -->
-                <a class="page-nr <?php echo ($actual_page_nr == 1) ? "disabled" : ''; ?>" href="./tire-wheel-advertisement.php?page_nr=<?= $actual_page_nr - 1 ?><?php echo (!$active_advertisement) ? "&tire_wheel_history=0" : ''; ?>"><</a>
+                <a class="page-nr <?php echo ($actual_page_nr == 1) ? "disabled" : ''; ?>" href="./glob-tire-wheel-advertisement.php?page_nr=<?= $actual_page_nr - 1 ?><?php echo (!$active_advertisement) ? "&tire_wheel_history=0" : ''; ?>"><</a>
 
                 <!-- pages -->
                 <?php for ($i = 0; $i < $number_of_pages; $i++): ?>
-                    <a class="page-nr <?php echo ($actual_page_nr == $i + 1) ? "actual-page" : ''; ?>" href="./tire-wheel-advertisement.php?page_nr=<?= $i + 1 ?><?php echo (!$active_advertisement) ? "&tire_wheel_history=0" : ''; ?>"><?= $i + 1 ?></a>
+                    <a class="page-nr <?php echo ($actual_page_nr == $i + 1) ? "actual-page" : ''; ?>" href="./glob-tire-wheel-advertisement.php?page_nr=<?= $i + 1 ?><?php echo (!$active_advertisement) ? "&tire_wheel_history=0" : ''; ?>"><?= $i + 1 ?></a>
                 <?php endfor; ?>
                 
                 <!-- arrow right -->
-                <a class="page-nr <?php echo ($actual_page_nr == $number_of_pages) ? "disabled" : ''; ?>" href="./tire-wheel-advertisement.php?page_nr=<?= $actual_page_nr + 1 ?><?php echo (!$active_advertisement) ? "&tire_wheel_history=0" : ''; ?>">></a>
+                <a class="page-nr <?php echo ($actual_page_nr == $number_of_pages) ? "disabled" : ''; ?>" href="./glob-tire-wheel-advertisement.php?page_nr=<?= $actual_page_nr + 1 ?><?php echo (!$active_advertisement) ? "&tire_wheel_history=0" : ''; ?>">></a>
 
             <!-- pagination part if max pages number are 5 -->        
 
@@ -257,10 +246,10 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
             <?php else: ?>
 
                 <!-- arrow left -->
-                <a class="page-nr <?php echo ($actual_page_nr == 1) ? "disabled" : ''; ?>" href="./tire-wheel-advertisement.php?page_nr=<?= $actual_page_nr - 1 ?><?php echo (!$active_advertisement) ? "&tire_wheel_history=0" : ''; ?>"><</a>
+                <a class="page-nr <?php echo ($actual_page_nr == 1) ? "disabled" : ''; ?>" href="./glob-tire-wheel-advertisement.php?page_nr=<?= $actual_page_nr - 1 ?><?php echo (!$active_advertisement) ? "&tire_wheel_history=0" : ''; ?>"><</a>
 
                 <!-- first page -->
-                <a class="page-nr <?php echo ($actual_page_nr == 1) ? "actual-page" : ''; ?>" href="./tire-wheel-advertisement.php?page_nr=<?= 1 ?><?php echo (!$active_advertisement) ? "&tire_wheel_history=0" : ''; ?>"><?= 1 ?></a>
+                <a class="page-nr <?php echo ($actual_page_nr == 1) ? "actual-page" : ''; ?>" href="./glob-tire-wheel-advertisement.php?page_nr=<?= 1 ?><?php echo (!$active_advertisement) ? "&tire_wheel_history=0" : ''; ?>"><?= 1 ?></a>
 
 
                 <!-- pages from second page until max page (without max page) -->
@@ -270,20 +259,20 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
 
                         <!-- if actual page is 2 print pages 2, 3, 4 -->
                         <?php if ($actual_page_nr == 2): ?>
-                            <a class="page-nr <?php echo ($actual_page_nr == $i + $actual_page_nr) ? "actual-page" : ''; ?>" href="./tire-wheel-advertisement.php?page_nr=<?= $i + $actual_page_nr ?><?php echo (!$active_advertisement) ? "&tire_wheel_history=0" : ''; ?>"><?= $i + $actual_page_nr ?></a>
+                            <a class="page-nr <?php echo ($actual_page_nr == $i + $actual_page_nr) ? "actual-page" : ''; ?>" href="./glob-tire-wheel-advertisement.php?page_nr=<?= $i + $actual_page_nr ?><?php echo (!$active_advertisement) ? "&tire_wheel_history=0" : ''; ?>"><?= $i + $actual_page_nr ?></a>
 
                         <!-- if actual page is one print page 2, 3, 4 -->
                         <?php elseif ($actual_page_nr < 2): ?>
-                            <a class="page-nr <?php echo ($actual_page_nr == $i + 1 + $actual_page_nr) ? "actual-page" : ''; ?>" href="./tire-wheel-advertisement.php?page_nr=<?= $i + 1 + $actual_page_nr ?><?php echo (!$active_advertisement) ? "&tire_wheel_history=0" : ''; ?>"><?= $i + 1 + $actual_page_nr ?></a>
+                            <a class="page-nr <?php echo ($actual_page_nr == $i + 1 + $actual_page_nr) ? "actual-page" : ''; ?>" href="./glob-tire-wheel-advertisement.php?page_nr=<?= $i + 1 + $actual_page_nr ?><?php echo (!$active_advertisement) ? "&tire_wheel_history=0" : ''; ?>"><?= $i + 1 + $actual_page_nr ?></a>
 
                         <!-- print one page before actual, actual page and one page after actual page -->
                         <?php else: ?>
-                            <a class="page-nr <?php echo ($actual_page_nr == $i + $actual_page_nr - 1) ? "actual-page" : ''; ?>" href="./tire-wheel-advertisement.php?page_nr=<?= $i + $actual_page_nr - 1?><?php echo (!$active_advertisement) ? "&tire_wheel_history=0" : ''; ?>"><?= $i + $actual_page_nr - 1 ?></a>
+                            <a class="page-nr <?php echo ($actual_page_nr == $i + $actual_page_nr - 1) ? "actual-page" : ''; ?>" href="./glob-tire-wheel-advertisement.php?page_nr=<?= $i + $actual_page_nr - 1?><?php echo (!$active_advertisement) ? "&tire_wheel_history=0" : ''; ?>"><?= $i + $actual_page_nr - 1 ?></a>
                         <?php endif; ?>
                     
                     <?php else: ?>
                         <!-- printed still last three pages before last page -->
-                        <a class="page-nr <?php echo ($actual_page_nr == $number_of_pages - 3 + $i) ? "actual-page" : ''; ?>" href="./tire-wheel-advertisement.php?page_nr=<?= $number_of_pages - 3 + $i ?><?php echo (!$active_advertisement) ? "&tire_wheel_history=0" : ''; ?>"><?= $number_of_pages - 3 + $i ?></a>
+                        <a class="page-nr <?php echo ($actual_page_nr == $number_of_pages - 3 + $i) ? "actual-page" : ''; ?>" href="./glob-tire-wheel-advertisement.php?page_nr=<?= $number_of_pages - 3 + $i ?><?php echo (!$active_advertisement) ? "&tire_wheel_history=0" : ''; ?>"><?= $number_of_pages - 3 + $i ?></a>
                     
                     <?php endif; ?>
 
@@ -292,10 +281,10 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
                 <!-- system for pages show actual page and one page before and one page after -->
                 
                 <!-- max page - last page -->
-                <a class="page-nr <?php echo ($actual_page_nr == $number_of_pages) ? "actual-page" : ''; ?>" href="./tire-wheel-advertisement.php?page_nr=<?= $number_of_pages ?><?php echo (!$active_advertisement) ? "&tire_wheel_history=0" : ''; ?>"><?= $number_of_pages ?></a>
+                <a class="page-nr <?php echo ($actual_page_nr == $number_of_pages) ? "actual-page" : ''; ?>" href="./glob-tire-wheel-advertisement.php?page_nr=<?= $number_of_pages ?><?php echo (!$active_advertisement) ? "&tire_wheel_history=0" : ''; ?>"><?= $number_of_pages ?></a>
                 
                 <!-- arrow right -->
-                <a class="page-nr <?php echo ($actual_page_nr == $number_of_pages) ? "disabled" : ''; ?>" href="./tire-wheel-advertisement.php?page_nr=<?= $actual_page_nr + 1 ?><?php echo (!$active_advertisement) ? "&tire_wheel_history=0" : ''; ?>">></a>
+                <a class="page-nr <?php echo ($actual_page_nr == $number_of_pages) ? "disabled" : ''; ?>" href="./glob-tire-wheel-advertisement.php?page_nr=<?= $actual_page_nr + 1 ?><?php echo (!$active_advertisement) ? "&tire_wheel_history=0" : ''; ?>">></a>
             
             <!-- pagination part if max pages number are more than 5 -->
             <?php endif; ?>
@@ -311,9 +300,9 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
 
     </main>
     
-    <?php require "../assets/footer.php" ?>
-    <script src="../js/header.js"></script>     
-    <script src="../js/loading.js"></script>        
+    <?php require "./assets/footer.php" ?>
+    <script src="./js/header.js"></script>    
+    <script src="./js/loading.js"></script>           
 </body>
 </html>
 

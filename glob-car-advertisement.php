@@ -88,7 +88,7 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
 
             <!-- advertisement part -->
             <!-- if active advertisment is false added car history to HREF -->
-            <a href="./glob-car-profil.php?car_id=<?= htmlspecialchars($one_car["car_id"]) ?>&active_advertisement=<?= htmlspecialchars($active_advertisement) ?>"> 
+            <a href="./glob-car-profil/<?= htmlspecialchars($one_car["car_id"]) ?>/<?= htmlspecialchars($active_advertisement) ?>"> 
             <article class="car-advertisement advertisement">
 
             <!-- stamp for sold and reserved  -->

@@ -1,17 +1,8 @@
 <?php
 
-require "../classes/Database.php";
-require "../classes/TireWheel.php";
-require "../classes/TireWheelImage.php";
-
-// verifying by session if visitor have access to this website
-require "../classes/Authorization.php";
-// get session
-session_start();
-// authorization for visitor - if has access to website 
-if (!Auth::isLoggedIn()){
-    die ("nepovolený prístup");
-} 
+require "./classes/Database.php";
+require "./classes/TireWheel.php";
+require "./classes/TireWheelImage.php";
 
 // connection to Database
 $database = new Database();
@@ -29,41 +20,43 @@ if ((isset($_GET["tire_wheel_id"]) and is_numeric($_GET["tire_wheel_id"])) and (
     $active_advertisement = null;
     $tire_wheel_images = null;
 }
+
 ?>
 
 <!DOCTYPE html>
 <html lang="sk">
 <head>
-<meta charset="UTF-8">
+<base href="http://localhost/autobajo/">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profil pneumatík na diskoch</title>
 
-    <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="./img/favicon.ico">
 
     <!-- ICONS MENU -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
     <!-- ICONS MENU -->
-
+     
     <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kodchasan:wght@200&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="../css/general.css">
-    <link rel="stylesheet" href="../css/admin-header.css">
-    <link rel="stylesheet" href="../css/footer.css">
-    <link rel="stylesheet" href="../css/tire-wheel-profil.css">
-    <link rel="stylesheet" href="../query/header-query.css">
-    <link rel="stylesheet" href="../query/profil-query.css">
+    <link rel="stylesheet" href="./css/general.css">
+    <link rel="stylesheet" href="./css/header.css">
+    <link rel="stylesheet" href="./css/footer.css">
+    <link rel="stylesheet" href="./css/tire-wheel-profil.css">
+    <link rel="stylesheet" href="./query/global-header-query.css">
+    <link rel="stylesheet" href="./query/profil-query.css">
 
 </head>
 <body>
-
-    <div class="loader">
+    
+<div class="loader">
         <div class="loader-animation"></div>
     </div>
    
-    <?php require "../assets/admin-header.php" ?>
+    <?php require "./assets/header.php" ?>
 
     <dialog class="gallery-slider" id="gallery-slider">
 
@@ -74,17 +67,17 @@ if ((isset($_GET["tire_wheel_id"]) and is_numeric($_GET["tire_wheel_id"])) and (
         <div class="show-image">
 
         <?php if ($tire_wheel_infos["tire_wheel_image"] === "no-photo-car.jpg"): ?>
-            <img src="../img/no-photo-car/no-photo-car.jpg" alt="no-photo-car">
+            <img src="./img/no-photo-car/no-photo-car.jpg" alt="no-photo-car">
         <?php else: ?>
-            <img src="../uploads/tireswithwheels/<?= htmlspecialchars($tire_wheel_infos["tire_wheel_id"]) ?>/<?= htmlspecialchars($tire_wheel_infos["tire_wheel_image"]) ?>" alt="">
+            <img src="./uploads/tireswithwheels/<?= htmlspecialchars($tire_wheel_infos["tire_wheel_id"]) ?>/<?= htmlspecialchars($tire_wheel_infos["tire_wheel_image"]) ?>" alt="">
         <?php endif; ?>
         
         <?php foreach ($tire_wheel_images as $tire_wheel_image): ?>
             <?php if ($tire_wheel_image["image_name"] != $tire_wheel_infos["tire_wheel_image"]): ?>
                 <?php if ($tire_wheel_image["image_name"] === "no-photo-car.jpg"): ?>
-                    <img src="../img/no-photo-car/no-photo-car.jpg" alt="no-photo-car">
+                    <img src="./img/no-photo-car/no-photo-car.jpg" alt="no-photo-car">
                 <?php else: ?>
-                    <img src="../uploads/tireswithwheels/<?= htmlspecialchars($tire_wheel_image["tire_wheel_id"]) ?>/<?= htmlspecialchars($tire_wheel_image["image_name"]) ?>" alt="">
+                    <img src="./uploads/tireswithwheels/<?= htmlspecialchars($tire_wheel_image["tire_wheel_id"]) ?>/<?= htmlspecialchars($tire_wheel_image["image_name"]) ?>" alt="">
                 <?php endif; ?>
             <?php endif; ?>
         <?php endforeach; ?>
@@ -101,13 +94,13 @@ if ((isset($_GET["tire_wheel_id"]) and is_numeric($_GET["tire_wheel_id"])) and (
 
         <section class="advertisement-tire">
             
-            <article class="heading">
+        <article class="heading">
                 <div class="main-image">    
 
                     <?php if ($tire_wheel_infos["tire_wheel_image"] === "no-photo-car.jpg"): ?>
-                        <img src="../img/no-photo-car/no-photo-car.jpg" alt="no-photo-car">
+                        <img src="./img/no-photo-car/no-photo-car.jpg" alt="no-photo-car">
                     <?php else: ?>
-                        <img src="../uploads/tireswithwheels/<?= htmlspecialchars($tire_wheel_infos["tire_wheel_id"]) ?>/<?= htmlspecialchars($tire_wheel_infos["tire_wheel_image"]) ?>" alt="">
+                        <img src="./uploads/tireswithwheels/<?= htmlspecialchars($tire_wheel_infos["tire_wheel_id"]) ?>/<?= htmlspecialchars($tire_wheel_infos["tire_wheel_image"]) ?>" alt="">
                     <?php endif; ?>
 
                     <?php if ($tire_wheel_infos["reserved"]): ?>
@@ -117,10 +110,6 @@ if ((isset($_GET["tire_wheel_id"]) and is_numeric($_GET["tire_wheel_id"])) and (
                     <?php elseif ($tire_wheel_infos["sold"]): ?>
                         <div class="advert-label">
                             Predané
-                        </div>
-                    <?php elseif (!$tire_wheel_infos["active"]): ?>
-                        <div class="advert-label">
-                            Neaktívny
                         </div>
                     <?php endif; ?>
                     <div class="gallery-text">Otvoriť galériu</div> 
@@ -181,7 +170,7 @@ if ((isset($_GET["tire_wheel_id"]) and is_numeric($_GET["tire_wheel_id"])) and (
                         </div>
 
                         <div class="product">
-                            <img src="../img/icon-tire.png" alt="tire" alt="">
+                            <img src="./img/icon-tire.png" alt="tire" alt="">
                         </div>
                     </div>
 
@@ -239,7 +228,7 @@ if ((isset($_GET["tire_wheel_id"]) and is_numeric($_GET["tire_wheel_id"])) and (
                         </div>
 
                         <div class="product">
-                            <img src="../img/icon-wheel.png" alt="tire" alt="">
+                            <img src="./img/icon-wheel.png" alt="tire" alt="">
                         </div>
                     </div>
                 </div>
@@ -248,38 +237,15 @@ if ((isset($_GET["tire_wheel_id"]) and is_numeric($_GET["tire_wheel_id"])) and (
 
             <article class="management-part">
 
-                <div class="administration">
-                    <h2>Administrácia</h2>
-                    <input type="hidden" id="current-id" name="tire_wheel_id" value="<?= htmlspecialchars($tire_wheel_infos["tire_wheel_id"]) ?>">
-
-                    <div class="administration-part">
-                        <a class="btn" href="./edit-tire-wheel-advertisement.php?tire_wheel_id=<?= htmlspecialchars($tire_wheel_infos["tire_wheel_id"]) ?>">Upraviť</a>
-                        <a class="btn" href="./gallery-tire-wheel.php?tire_wheel_id=<?= htmlspecialchars($tire_wheel_infos["tire_wheel_id"]) ?>">Galéria</a>
-
-                        <?php if ($tire_wheel_infos["active"]): ?>
-                            <a class="btn" href="./after-update-tire-wheel-advert.php?active=false&tire_wheel_id=<?= htmlspecialchars($tire_wheel_infos["tire_wheel_id"]) ?>">Dektivovať</a>
+                <div class="slider">
+                    <?php foreach ($tire_wheel_images as $tire_wheel_image): ?>
+                        <?php if ($tire_wheel_image["image_name"] === "no-photo-car.jpg"): ?>
+                            <img class="slide" src="./img/no-photo-car/no-photo-car.jpg" alt="no-photo-car">
                         <?php else: ?>
-                            <a class="btn-green" href="./after-update-tire-wheel-advert.php?active=true&tire_wheel_id=<?= htmlspecialchars($tire_wheel_infos["tire_wheel_id"]) ?>">Aktivovať</a>
+                            <img class="slide" src="./uploads/tireswithwheels/<?= htmlspecialchars($tire_wheel_image["tire_wheel_id"]) ?>/<?= htmlspecialchars($tire_wheel_image["image_name"]) ?>" alt="">
                         <?php endif; ?>
-
-
-                        <?php if ($active_advertisement): ?>
-                            <?php if ($tire_wheel_infos["reserved"]): ?>
-                                <a class="btn-green" id="btn-reserved" href="./after-update-tire-wheel-advert.php?reserved=false&tire_wheel_id=<?= htmlspecialchars($tire_wheel_infos["tire_wheel_id"]) ?>">Dostupné</a>
-                                <?php else: ?>
-                                    <a class="btn" id="btn-reserved" href="./after-update-tire-wheel-advert.php?reserved=true&tire_wheel_id=<?= htmlspecialchars($tire_wheel_infos["tire_wheel_id"]) ?>">Rezervované</a>
-                            <?php endif; ?>   
-                            
-                            <?php if ($tire_wheel_infos["sold"]): ?>
-                                <a class="btn-green" id="btn-sold" href="./after-update-tire-wheel-advert.php?sold=false&tire_wheel_id=<?= htmlspecialchars($tire_wheel_infos["tire_wheel_id"]) ?>">Dostupné</a>
-                                <?php else: ?>
-                                    <a class="btn" id="btn-sold" href="./after-update-tire-wheel-advert.php?sold=true&tire_wheel_id=<?= htmlspecialchars($tire_wheel_infos["tire_wheel_id"]) ?>">Predané</a>
-                            <?php endif; ?> 
-                        <?php endif; ?>
-
-                    </div>
+                    <?php endforeach; ?>
                 </div>
-
 
             </article>
 
@@ -307,12 +273,11 @@ if ((isset($_GET["tire_wheel_id"]) and is_numeric($_GET["tire_wheel_id"])) and (
 
     </main>
     
-    <?php require "../assets/footer.php" ?>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <?php require "./assets/footer.php" ?>
     
-    <script src="../js/header.js"></script>  
-    <script src="../js/show-gallery.js"></script>    
-    <script src="../js/update-tire-wheel-advert.js"></script>   
-    <script src="../js/loading.js"></script>                
+    <script src="./js/header.js"></script>  
+    <script src="./js/show-gallery.js"></script>  
+    <script src="./js/slider-animation.js"></script>     
+    <script src="./js/loading.js"></script>                   
 </body>
 </html>

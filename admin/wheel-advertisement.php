@@ -80,6 +80,10 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
 </head>
 <body>
 
+    <div class="loader">
+        <div class="loader-animation"></div>
+    </div>
+
     <?php require "../assets/admin-header.php" ?>
 
     <main>
@@ -269,7 +273,8 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
     </main>
     
     <?php require "../assets/footer.php" ?>
-    <script src="../js/header.js"></script>            
+    <script src="../js/header.js"></script>     
+    <script src="../js/loading.js"></script>        
 </body>
 </html>
 

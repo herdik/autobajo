@@ -27,6 +27,7 @@ if ((isset($_GET["tire_id"]) and is_numeric($_GET["tire_id"])) and (isset($_GET[
 <html lang="sk">
 <head>
 <meta charset="UTF-8">
+    <base href="http://localhost/autobajo/">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profil pneumatík</title>
 

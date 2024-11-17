@@ -57,6 +57,11 @@ $image_sequence = null;
 
 </head>
 <body>
+
+    <div class="loader">
+        <div class="loader-animation"></div>
+    </div>
+
     <?php require "../assets/admin-header.php" ?>
 
     <dialog class="confirm-window" id="confirm-window">
@@ -220,7 +225,8 @@ $image_sequence = null;
     <script src="../js/show-image-info-advertisement.js"></script>   
     <script src="../js/reg-form.js"></script>   
     <script src="../js/choose-car-image-gallery.js"></script>   
-    <script src="../js/sortable-gallery-car.js"></script>   
+    <script src="../js/sortable-gallery-car.js"></script> 
+    <script src="../js/loading.js"></script>   
             
 </body>
 </html>

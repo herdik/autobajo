@@ -30,6 +30,7 @@ $(document).ready(function () {
             success: function (res) {
                 if (res){
                     confirmWindow.showModal()
+                    window.location.reload(history.back())
                 }
                     
                 

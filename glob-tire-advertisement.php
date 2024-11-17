@@ -88,7 +88,7 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
             <!-- advertisement part -->
             <!-- if active advertisment is false added tire history to HREF -->
 
-            <a href="./glob-tire-profil.php?tire_id=<?= htmlspecialchars($one_tire["tire_id"]) ?>&active_advertisement=<?= htmlspecialchars($active_advertisement) ?>"> 
+            <a href="./glob-tire-profil/<?= htmlspecialchars($one_tire["tire_id"]) ?>/<?= htmlspecialchars($active_advertisement) ?>"> 
             <article class="tire-advertisement advertisement">
 
             <!-- stamp for sold and reserved  -->

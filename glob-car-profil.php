@@ -30,7 +30,8 @@ $inside_index = 12;
 <!DOCTYPE html>
 <html lang="sk">
 <head>
-<meta charset="UTF-8">
+    <base href="http://localhost/autobajo/">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profil auto</title>
 
