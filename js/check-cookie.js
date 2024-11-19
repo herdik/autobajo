@@ -3,6 +3,8 @@ let reject = document.querySelector(".reject")
 
 let cookies = document.querySelector(".cookies")
 
+let googleMap = document.querySelector("iframe")
+sectionWithoutMap = document.querySelector(".dashboard-menu")
 
 accept.addEventListener("click", () => {
 
@@ -40,9 +42,7 @@ document.cookie.split(';').map(function(cookiestring) {
             cookies.style.display = "none"
          }
       }
-  } else {
-   console.log("nie sú cookies");
-  }
+  } 
 })
 
 // rejected cookies
@@ -51,6 +51,12 @@ let rejectedCookies = sessionStorage.getItem('reject_cookie')
 
 if (rejectedCookies){
    cookies.style.display = "none"
+   if (googleMap != null){
+      // rejected cookies remove google map
+      googleMap.remove()
+      sectionWithoutMap.style.justifyContent = "center"
+   }
+   
 } 
 
 
