@@ -51,15 +51,6 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
 
     <link rel="icon" type="image/x-icon" href="./img/favicon.ico">
 
-    <!-- ICONS MENU -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
-    <!-- ICONS MENU -->
-
-    <!-- Google fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kodchasan:wght@200&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="./css/general.css">
     <link rel="stylesheet" href="./css/header.css">
     <link rel="stylesheet" href="./css/footer.css">
@@ -270,6 +261,7 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
     <?php require "./assets/footer.php" ?>
     <script src="./js/header.js"></script>     
     <script src="./js/loading.js"></script>  
+    <script src="./js/check-cookie.js"></script>
 </body>
 </html>
 

@@ -32,15 +32,6 @@ $car_colors = Car::getAllCarsInfo($connection, 'car_color', '%');
 
     <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
 
-    <!-- ICONS MENU -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
-    <!-- ICONS MENU -->
-
-    <!-- Google fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kodchasan:wght@200&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="../css/general.css">
     <link rel="stylesheet" href="../css/admin-header.css">
     <link rel="stylesheet" href="../css/footer.css">

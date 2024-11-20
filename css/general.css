@@ -1,9 +1,72 @@
+/* fonts */
+@font-face {
+    font-family: "Kodchasan";
+    font-weight: 400;
+    src: url('./import/fonts/kodchasan-regular-webfont.woff2') format('woff2'),
+         url('./import/fonts/kodchasan-regular-webfont.woff') format('woff');
+}
+
+@font-face {
+    font-family: "Kodchasan";
+    font-weight: 300;
+    src: url('./import/fonts/kodchasan-light-webfont.woff2') format('woff2'),
+         url('./import/fonts/kodchasan-light-webfont.woff') format('woff');
+}
+
+@font-face {
+    font-family: "Kodchasan";
+    font-weight: 700;
+    src: url('./import/fonts/kodchasan-bold-webfont.woff2') format('woff2'),
+         url('./import/fonts/kodchasan-bold-webfont.woff') format('woff');
+}
+
+@font-face {
+    font-family: "Kodchasan";
+    font-weight: 500;
+    src: url('./import/fonts/kodchasan-medium-webfont.woff2') format('woff2'),
+         url('./import/fonts/kodchasan-medium-webfont.woff') format('woff');
+}
+
+/* fonts */
+
+
+
+
+/* symbols-icons */
+
+/* fallback */
+@font-face {
+    font-family: 'Material Symbols Outlined';
+    font-style: normal;
+    font-weight: 400;
+    src: url('./import/icons/symbol-icon-outlined.woff2') format('woff2');
+  }
+  
+.material-symbols-outlined {
+font-family: 'Material Symbols Outlined';
+font-weight: normal;
+font-style: normal;
+font-size: 24px;
+line-height: 1;
+letter-spacing: normal;
+text-transform: none;
+display: inline-block;
+white-space: nowrap;
+word-wrap: normal;
+direction: ltr;
+font-feature-settings: 'liga';
+-webkit-font-feature-settings: 'liga';
+-webkit-font-smoothing: antialiased;
+}
+
+/* symbols-icons */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Kodchasan", sans-serif;
-    font-weight: 200;
+    font-weight: 400;
     font-style: normal;
 }
 
