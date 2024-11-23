@@ -33,13 +33,13 @@ if (isset($_GET["tire_history"]) and is_numeric($_GET["tire_history"])){
     $active_advertisement = $_GET["tire_history"];
 
     // get all tire info according selected page nr 
-    $tires_advertisements = Tire::getAllTiresAdvertisement($connection, $active_advertisement, (($actual_page_nr - 1) * $show_nr_of_advert), $show_nr_of_advert, "tire_id, tire_brand, tire_model, type, width, height, construction, average, tire_price, reserved, sold, tire_image");
+    $tires_advertisements = Tire::getAllTiresAdvertisement($connection, $active_advertisement, (($actual_page_nr - 1) * $show_nr_of_advert), $show_nr_of_advert, "tire_id, tire_brand, tire_model, type, width, height, construction, average, tire_price, active, reserved, sold, tire_image");
 } else {
     // active_advertisement means show active advetisement or show history
     $active_advertisement = 1;
 
     // get all tire info according selected page nr 
-    $tires_advertisements = Tire::getAllTiresAdvertisement($connection, $active_advertisement, (($actual_page_nr - 1) * $show_nr_of_advert), $show_nr_of_advert, "tire_id, tire_brand, tire_model, type, width, height, construction, average, tire_price, reserved, sold, tire_image");
+    $tires_advertisements = Tire::getAllTiresAdvertisement($connection, $active_advertisement, (($actual_page_nr - 1) * $show_nr_of_advert), $show_nr_of_advert, "tire_id, tire_brand, tire_model, type, width, height, construction, average, tire_price, active, reserved, sold, tire_image");
 }
 
 // number of all active or historical advertisemment 
@@ -102,6 +102,22 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
                     <div class="advert-label">
                         Predané
                     </div>
+                <?php endif; ?>
+
+                <?php if (!$active_advertisement): ?>
+                    <?php if (!$one_tire["active"]): ?>
+                        <div class="advert-label">
+                            Neaktívne
+                        </div>
+                        
+                        <form id="delete-advertisement" action="delete-tire-advertisement.php" method="POST">
+                            
+                            <input type="hidden" name="tire_id" value="<?= htmlspecialchars($one_tire["tire_id"]) ?>">
+                            <input class="delete-label" type="submit" name="submit" value="Vymazať">
+                            
+                        </form>
+                       
+                    <?php endif; ?>
                 <?php endif; ?>
             <!-- stamp for sold and reserved  -->
 
@@ -258,7 +274,9 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
     </main>
     
     <?php require "../assets/footer.php" ?>
-    <script src="../js/header.js"></script>   
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/header.js"></script>  
+    <script src="../js/delete-tire-advert.js"></script>   
     <script src="../js/loading.js"></script>          
 </body>
 </html>

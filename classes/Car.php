@@ -439,4 +439,75 @@ class Car {
         }
     }
 
+
+    /**
+     * DELETE ALL IMAGES FROM FOLDER SPECIFIC FOR ADVERTISEMENT
+     * DELETE ALL IMAGES FROM GALLERY AND FROM DATABASE SPECIFIC FOR ADVERTISEMENT 
+     * DELETE SELECTED CAR ADVERTISEMENT FROM DATABASE
+     *
+     * @param object $connection - connection to database
+     * @param integer $car_id - truck wheel for truck service
+     * 
+     * @return boolean if delete is successful
+     */
+    public static function deleteCarAdvertImgsDirImgs($connection, $car_id, $dirname){
+
+        $sql_1 = "DELETE 
+                FROM car_image
+                WHERE car_id = :car_id";
+        
+    
+        $sql_2 = "DELETE 
+                FROM car_advertisement
+                WHERE car_id = :car_id";
+
+        
+
+        // connect sql amend to database
+        $stmt_1 = $connection->prepare($sql_1);
+
+        // connect sql amend to database
+        $stmt_2 = $connection->prepare($sql_2);
+
+        // all parameters to send to Database
+        // filling and bind values will be execute to Database
+        $stmt_1->bindValue(":car_id", $car_id, PDO::PARAM_INT);
+        $stmt_2->bindValue(":car_id", $car_id, PDO::PARAM_INT);
+
+        
+
+        $connection->beginTransaction();
+
+        try {
+
+            $stmt_1->execute();
+            if($stmt_1->rowCount()) {
+                $stmt_2->execute();
+                if($stmt_2->rowCount()){
+                    // check Folder is exists
+                    if(is_dir($dirname)){
+                        array_map('unlink', glob("$dirname/*.*"));
+                        rmdir($dirname);          
+                    }   
+                    $connection->commit();
+                    return true;
+                } else {
+                    throw new Exception ("Príkaz pre vymazanie všetkých dát o inzeráte auta sa nepodaril");
+                }
+            } else {
+                throw new Exception ("Príkaz pre vymazanie všetkých dát o vybraných obrázkoch z galérie sa nepodaril");
+            }
+            
+        } catch (Exception $e){
+            $connection->rollback();
+            // 3 je že vyberiem vlastnú cestu k súboru
+            error_log("Chyba pri funkcii deleteCarAdvertImgsDirImgs, získanie informácií z databázy zlyhalo\n", 3, "../errors/error.log");
+            echo "Výsledná chyba je: " . $e->getMessage();
+        
+        }
+                 
+    }
+
+   
+
 }

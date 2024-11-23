@@ -34,13 +34,13 @@ if (isset($_GET["car_history"]) and is_numeric($_GET["car_history"])){
     $active_advertisement = $_GET["car_history"];
 
     // get all car info according selected page nr 
-    $cars_advertisements = Car::getAllCarsAdvertisement($connection, $active_advertisement, (($actual_page_nr - 1) * $show_nr_of_advert), $show_nr_of_advert, "car_id, car_brand, car_model, year_of_manufacture, past_km, fuel_type, kw, car_description, car_price, reserved, sold, car_image");
+    $cars_advertisements = Car::getAllCarsAdvertisement($connection, $active_advertisement, (($actual_page_nr - 1) * $show_nr_of_advert), $show_nr_of_advert, "car_id, car_brand, car_model, year_of_manufacture, past_km, fuel_type, kw, car_description, car_price, active, reserved, sold, car_image");
 } else {
     // active_advertisement means show active advetisement or show history
     $active_advertisement = 1;
 
     // get all car info according selected page nr 
-    $cars_advertisements = Car::getAllCarsAdvertisement($connection, $active_advertisement, (($actual_page_nr - 1) * $show_nr_of_advert), $show_nr_of_advert, "car_id, car_brand, car_model, year_of_manufacture, past_km, fuel_type, kw, car_description, car_price, reserved, sold, car_image");
+    $cars_advertisements = Car::getAllCarsAdvertisement($connection, $active_advertisement, (($actual_page_nr - 1) * $show_nr_of_advert), $show_nr_of_advert, "car_id, car_brand, car_model, year_of_manufacture, past_km, fuel_type, kw, car_description, car_price, active, reserved, sold, car_image");
 }
 
 // number of all active or historical advertisemment 
@@ -104,6 +104,23 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
                         Predané
                     </div>
                 <?php endif; ?>
+                
+                <?php if (!$active_advertisement): ?>
+                    <?php if (!$one_car["active"]): ?>
+                        <div class="advert-label">
+                            Neaktívne
+                        </div>
+                        
+                        <form id="delete-advertisement" action="delete-car-advertisement.php" method="POST">
+                            
+                            <input type="hidden" name="car_id" value="<?= htmlspecialchars($one_car["car_id"]) ?>">
+                            <input class="delete-label" type="submit" name="submit" value="Vymazať">
+                            
+                        </form>
+                       
+                    <?php endif; ?>
+                <?php endif; ?>
+
             <!-- stamp for sold and reserved  -->
 
             <!--image part of advertisement  -->
@@ -268,7 +285,9 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
     </main>
     
     <?php require "../assets/footer.php" ?>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="../js/header.js"></script>
+    <script src="../js/delete-car-advert.js"></script>        
     <script src="../js/loading.js"></script>        
 </body>
 </html>

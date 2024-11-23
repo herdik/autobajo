@@ -33,13 +33,13 @@ if (isset($_GET["wheel_history"]) and is_numeric($_GET["wheel_history"])){
     $active_advertisement = $_GET["wheel_history"];
 
     // get all wheel info according selected page nr 
-    $wheels_advertisements = Wheel::getAllWheelsAdvertisement($connection, $active_advertisement, (($actual_page_nr - 1) * $show_nr_of_advert), $show_nr_of_advert, "wheel_id, wheel_brand, wheel_model, wheel_average, spacing, width, et, wheel_color, wheel_image, reserved, sold, wheel_price");
+    $wheels_advertisements = Wheel::getAllWheelsAdvertisement($connection, $active_advertisement, (($actual_page_nr - 1) * $show_nr_of_advert), $show_nr_of_advert, "wheel_id, wheel_brand, wheel_model, wheel_average, spacing, width, et, wheel_color, wheel_image, active, reserved, sold, wheel_price");
 } else {
     // active_advertisement means show active advetisement or show history
     $active_advertisement = 1;
 
     // get all wheel info according selected page nr 
-    $wheels_advertisements = Wheel::getAllWheelsAdvertisement($connection, $active_advertisement, (($actual_page_nr - 1) * $show_nr_of_advert), $show_nr_of_advert, "wheel_id, wheel_brand, wheel_model, wheel_average, spacing, width, et, wheel_color, wheel_image, reserved, sold, wheel_price");
+    $wheels_advertisements = Wheel::getAllWheelsAdvertisement($connection, $active_advertisement, (($actual_page_nr - 1) * $show_nr_of_advert), $show_nr_of_advert, "wheel_id, wheel_brand, wheel_model, wheel_average, spacing, width, et, wheel_color, wheel_image, active, reserved, sold, wheel_price");
 }
 
 // number of all active or historical advertisemment 
@@ -103,6 +103,23 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
                         Predané
                     </div>
                 <?php endif; ?>
+
+                <?php if (!$active_advertisement): ?>
+                    <?php if (!$one_wheel["active"]): ?>
+                        <div class="advert-label">
+                            Neaktívne
+                        </div>
+                        
+                        <form id="delete-advertisement" action="delete-wheel-advertisement.php" method="POST">
+                            
+                            <input type="hidden" name="wheel_id" value="<?= htmlspecialchars($one_wheel["wheel_id"]) ?>">
+                            <input class="delete-label" type="submit" name="submit" value="Vymazať">
+                            
+                        </form>
+                       
+                    <?php endif; ?>
+                <?php endif; ?>
+
             <!-- stamp for sold and reserved  -->
 
             <!--image part of advertisement  -->  
@@ -264,7 +281,9 @@ $number_of_pages = ceil($number_of_advert / $show_nr_of_advert);
     </main>
     
     <?php require "../assets/footer.php" ?>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="../js/header.js"></script>     
+    <script src="../js/delete-wheel-advert.js"></script>  
     <script src="../js/loading.js"></script>        
 </body>
 </html>

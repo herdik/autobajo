@@ -70,6 +70,35 @@ main h1 {
 
 /* label on image */
 
+
+
+/* delete for history */
+
+    /* delete label on image */
+    .delete-label {
+        right: 15px;
+        top: 15px;
+        position: absolute;
+        width: 160px;
+        background-color: #b30606;
+        padding: 10px;
+        color: #fff;
+        font-size: 18px;
+        text-align: center;
+        font-weight: bold;
+        border: 2px dashed #fff;
+        cursor: pointer;
+    }
+    .delete-label:hover {
+        background-color: #fff;
+        color: #b30606;
+        border: 2px dashed #b30606;
+    }
+
+    /* delete label on image */
+
+/* delete for history */
+
 .car-picture {
     width: 45%;
     height: 100%;
@@ -83,6 +112,7 @@ main h1 {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    padding: 3px;
 }
 
 .car-brand {
@@ -141,6 +171,11 @@ main h1 {
 .car-price {
     background-color: #b30606;
     width: 100%;
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 .car-price h2 {
