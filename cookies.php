@@ -30,9 +30,11 @@
 
         <br>
 
-        <p>Na našich stránkach používame len nevyhnutné súbory cookies, pre správnu funkčnosť našich stránok. Týka sa to priradenia špeciálneho unikátneho Id pre konkrétneho navštevníka stránky pre potreby identifikácie na stránke.
+        <p>Na našich stránkach používame len nevyhnutné súbory cookies, pre správnu funkčnosť našich stránok. Týka sa to priradenia špeciálneho unikátneho Id pre konkrétneho navštevníka stránky pre potreby identifikácie na stránke. Tieto základné súbory cookies, umožňujú správne fungovanie webovej stránky a používať jej funkcie. Základné súbory cookies neukladajú žiadne informácie o vás, ktoré by sa dali použiť na marketingové/reklamné účely alebo na zapamätanie si, vašej činnosti na internete.
         </p>
-        <p>Taktiež v súvislosti so službou Google maps, využíva spoločnosť Google súbory cookies. Bližšie informácie ohľadom súborov cookies spoločnosti Google nájdete tu : https://policies.google.com/technologies/cookies?hl=sk    
+
+        <p>Taktiež v súvislosti so službou Google maps, využíva spoločnosť Google súbory cookies. Tieto súbory sú súbory cookies tretích strán. Zbierajú informácie o používaní webových stránok, zabezpečujú funkčnosť rôznych nástrojov (napr Google maps...) pre kvalitný zážitok užívateľa.
+        Bližšie informácie ohľadom súborov cookies spoločnosti Google nájdete tu : https://policies.google.com/technologies/cookies?hl=sk    
         </p>
 
         <h1>Kontrola a zmazanie Cookies</h1>

@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
     if (User::authentication($connection, $log_user_email, $log_password)){
 
         // user ID for user/admin who is logged in
-        $id = User::getUserId($connection, $log_user_email)["user_id"];
+        $id = User::getUserId($connection, $log_user_email);
 
         // prevents 'Fixation attack'
         session_regenerate_id(true);

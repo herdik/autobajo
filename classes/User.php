@@ -26,7 +26,9 @@ class User {
         try {
             if($stmt->execute()){
                 // asscoc array for one user and we want to get user_id
-                return $stmt->fetch();
+                $result = $stmt->fetch();
+                $user_id = $result[0];
+                return $user_id;
             } else {
                 throw Exception ("Príkaz pre získanie všetkých ID o užívateľovi sa nepodaril");
             }
