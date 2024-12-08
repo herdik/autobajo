@@ -29,6 +29,6 @@ session_destroy();
 
 
 // redirect to index php after log out
-Url::redirectUrl("/autobajo/index.php");
+Url::redirectUrl("/autobajo");
 
 ?>
