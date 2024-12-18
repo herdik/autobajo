@@ -58,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
 
         <?php if(!empty($error)): ?>
             <h1><?= $error ?></h1>
-            <a href="../signin.php">Späť na prihlásenie</a>
+            <a href="../db-admin">Späť na prihlásenie</a>
         <?php endif; ?>
 
 

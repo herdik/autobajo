@@ -219,6 +219,63 @@ class CarImage {
     }
 
 
+    /**
+     *
+     * REDUCE IMAGE SIZE
+     *
+     * @param object $current_image - image ["tmp_name"] 
+     * @param string $path - $upload_folder to save image in folder
+     * @param int $maxWidth - max width for image
+     * @param int $maxHeight - max height for image
+     * @param int $quality - quality of image
+     * 
+     * @return boolean if delete file is successful
+     */
+    public static function reduce_img_size($current_image, $upload_folder, $maxWidth, $maxHeight, $quality){
+
+        $info_image = getimagesize($current_image);
+        $current_width = $info_image[0];
+        $current_height = $info_image[1];
+        $type = $info_image['mime'];
+        
+
+        // New Dimenssions of Image
+        $aspectRatio = $current_width / $current_height;
+        if ($current_width > $current_height) {
+            $newWidth = $maxWidth;
+            $newHeight = $maxWidth / $aspectRatio;
+        } else {
+            $newHeight = $maxHeight;
+            $newWidth = $maxHeight * $aspectRatio;
+        }
+
+        // Načítať pôvodný obrázok podľa jeho typu
+        if ($type == 'image/jpeg' || $type == 'image/jpeg'){
+            $image = imagecreatefromjpeg($current_image);
+        } elseif ($type == 'image/png'){
+            $image = imagecreatefrompng($current_image);
+        }
+
+        // New Image with new dimensions
+        $newImage = imagecreatetruecolor($newWidth, $newHeight);
+        imagecopyresampled($newImage, $image, 0, 0, 0, 0, $newWidth, $newHeight, $current_width, $current_height);
+
+        // save compressed image to folder
+        if ($type == 'image/jpeg' || $type == 'image/jpeg'){
+            imagejpeg($newImage, $upload_folder, $quality);
+        } elseif ($type == 'image/png'){
+            imagepng($newImage, $upload_folder);
+        }
+
+
+        // DELETED FROM MEMORY
+        imagedestroy($image);
+        imagedestroy($newImage);
+
+        return true;
+    }
+
+
 
     /**
      *

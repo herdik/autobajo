@@ -99,8 +99,28 @@ if ($_SERVER["REQUEST_METHOD"] === "POST"){
                         // create path where will save image
                         $image_upload_path = "../uploads/tires/" . $tire_id . "/" . $new_image_name;
     
-                        // upload image - change temporary image path for path to current registered player
-                        move_uploaded_file($image_tmp_name, $image_upload_path);
+                        // save file in folder and resize and change quality
+                        if ($image_size > 4000000){
+                            $quality = 65;
+                        } elseif ($image_size > 2000000){
+                            $quality = 80;
+                        } elseif ($image_size > 1000000){
+                            $quality = 90;
+                        } elseif ($image_size > 500000){
+                            $quality = 95;
+                        } else {
+                            $quality = false;
+                        }
+                        if ($quality){
+                            // Max width and height for resize image
+                            $maxWidth = 1280;
+                            $maxHeight = 1024;
+                            // resize and change quality
+                            TireImage::reduce_img_size($image_tmp_name, $image_upload_path, $maxWidth, $maxHeight, $quality);
+                        } else {
+                            // upload image - change temporary image path for path to current registered player
+                            move_uploaded_file($image_tmp_name, $image_upload_path);
+                        }
                     }
 
                     

@@ -42,6 +42,10 @@ $car_colors = Car::getAllCarsInfo($connection, 'car_color', '%');
 </head>
 <body>
 
+    <div class="loader">
+        <div class="loader-animation"></div>
+    </div>
+
     <?php require "../assets/admin-header.php" ?>
 
     <main>
@@ -50,7 +54,7 @@ $car_colors = Car::getAllCarsInfo($connection, 'car_color', '%');
 
             <h1>Registrácia auta</h1>
 
-            <form id="registration-form" action="after-reg-add-car.php" method="POST" enctype="multipart/form-data">
+            <!-- <form id="registration-form" action="after-reg-add-car.php" method="POST" enctype="multipart/form-data"> -->
 
                 <div class="main-car-info">
 
@@ -216,7 +220,7 @@ $car_colors = Car::getAllCarsInfo($connection, 'car_color', '%');
                 <div class="confirm-btn">
                     <input class="btn" type="submit" name="submit" value="Pridať">
                 </div>    
-            </form>
+            <!-- </form> -->
 
         </section>
         
@@ -229,7 +233,9 @@ $car_colors = Car::getAllCarsInfo($connection, 'car_color', '%');
     <script src="../js/header.js"></script> 
     <script src="../js/show-image-name.js"></script>       
     <script src="../js/reg-form.js"></script>       
-    <script src="../js/select-car-model.js"></script>       
+    <script src="../js/select-car-model.js"></script>  
+    <script src="../js/loading.js"></script>        
+    <script src="../js/confirm-uploading.js"></script>        
     
         
 
